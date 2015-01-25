@@ -29,12 +29,15 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <% if user_signed_in? %>
-        <li class="active"><a href="#">Right Button Active</a></li>
+        <li class="active"><a href="#"><%= current_user.email %></a></li>
         <li class="has-dropdown">
-          <a href="#">Right Button Dropdown</a>
+          <a href="#"><%= current_user.username %></a>
           <ul class="dropdown">
-            <li><a href="#">First link in dropdown</a></li>
-            <li class="active"><a href="#">Active link in dropdown</a></li>
+            <li><a href="#">个人主页</a></li>
+            <li><a href="#">修改头像</a></li>
+            <li><%= link_to '设置', edit_user_registration_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to '注销', destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
       <% else %>
