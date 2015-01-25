@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :topics
+
   get 'pages/:name' => "pages#show", as: :page
 
   devise_for :users
