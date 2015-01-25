@@ -31,9 +31,9 @@
       <% if user_signed_in? %>
         <li class="active"><a href="#"><%= current_user.email %></a></li>
         <li class="has-dropdown">
-          <a href="#"><%= current_user.username %></a>
+          <%= link_to current_user.username, user_path(current_user) %>
           <ul class="dropdown">
-            <li><a href="#">个人主页</a></li>
+            <li><%= link_to '个人主页', user_path(current_user) %></li>
             <li><a href="#">修改头像</a></li>
             <li><%= link_to '设置', edit_user_registration_path %></li>
             <li class="divider"></li>
