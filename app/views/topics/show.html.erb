@@ -20,5 +20,12 @@
   <%= @topic.body %>
 </p>
 
+<p>
+  <strong>Tag List:</strong>
+  <% @topic.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
