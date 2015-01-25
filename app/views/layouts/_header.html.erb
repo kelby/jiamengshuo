@@ -1,7 +1,7 @@
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
-      <h1><a href="#">Mentor</a></h1>
+      <h1><%= link_to "Mentor", root_path %></h1>
     </li>
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -10,7 +10,7 @@
   <section class="top-bar-section">
     <!-- Left Nav Section -->
     <ul class="left">
-      <li><a href="#">首页</a></li>
+      <li><%= link_to "首页", root_path %></li>
       <li><a href="#">寻找导师</a></li>
       <li><a href="#">发现话题</a></li>
 
@@ -39,10 +39,10 @@
         </li>
       <% else %>
         <li class="has-form">
-          <a href="http://foundation.zurb.com/docs" class="small button">注册</a>
+          <%= link_to '注册', new_user_registration_path, class: "small button" %>
         </li>
         <li class="divider"></li>
-        <li><a href="#">登录</a></li>
+        <li><%= link_to '登录', new_user_session_path %></li>
       <% end %>
     </ul>
   </section>
