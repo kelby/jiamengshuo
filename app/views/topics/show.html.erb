@@ -6,6 +6,16 @@
 </p>
 
 <p>
+  <strong>Created At:</strong>
+  <%= @topic.created_at %>
+</p>
+
+<p>
+  <strong>Created By:</strong>
+  <%= @topic.user.username %>
+</p>
+
+<p>
   <strong>Body:</strong>
   <%= @topic.body %>
 </p>
