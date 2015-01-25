@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -21,8 +22,8 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
-    @topic.save
+    @topic = current_user.topics.build(topic_params)
+    @topic.save!
     respond_with(@topic)
   end
 
