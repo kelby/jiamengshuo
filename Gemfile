@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
 
 gem 'foundation-rails'
- gem 'foundation-icons-sass-rails'
+gem 'foundation-icons-sass-rails'
 
 gem 'contact_us', '~> 0.5.1'
 
