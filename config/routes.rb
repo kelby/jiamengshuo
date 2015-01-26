@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  post 'topic_and_user/sticking'
-  post 'topic_and_user/followering'
-  post 'topic_and_user/keepering'
+  post 'topic_and_user/sticking/:id' => 'topic_and_user#sticking', as: :sticking_topic
+  post 'topic_and_user/followering/:id' => 'topic_and_user#followering', as: :followering_topic
+  post 'topic_and_user/keepering/:id' => 'topic_and_user#keepering', as: :keepering_topic
 
   resources :topics
 

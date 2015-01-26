@@ -18,6 +18,18 @@ class User < ActiveRecord::Base
   has_many :follower_topics, class_name: 'Topic', through: :followers
   has_many :keeper_topics, class_name: 'Topic', through: :keepers
 
+  def sticking? topic
+    self.stick_topics.exists? topic.id
+  end
+
+  def followering? topic
+    self.follower_topics.exists? topic.id
+  end
+
+  def keepering? topic
+    self.keeper_topics.exists? topic.id
+  end
+
   def login=(login)
     @login = login
   end

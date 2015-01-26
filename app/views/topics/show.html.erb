@@ -27,8 +27,17 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<%# unless current_user.sticking? @topic %>
+  <%= button_to 'Sticking', sticking_topic_path(@topic), remote: true %>
+<%# end %>
+
+<%# unless current_user.followering? @topic %>
+  <%= button_to 'Followering', followering_topic_path(@topic), remote: true %>
+<%# end %>
+
+<%# unless current_user.keepering? @topic %>
+  <%= button_to 'Keepering', keepering_topic_path(@topic), remote: true %>
+<%# end %>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
