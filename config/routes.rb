@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :catalogs
+  end
+
   post 'topic_and_user/sticking/:id' => 'topic_and_user#sticking', as: :sticking_topic
   post 'topic_and_user/followering/:id' => 'topic_and_user#followering', as: :followering_topic
   post 'topic_and_user/keepering/:id' => 'topic_and_user#keepering', as: :keepering_topic
