@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125164761) do
+ActiveRecord::Schema.define(version: 20150126115031) do
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20150125164761) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "topic_and_users", force: :cascade do |t|
+    t.integer  "topic_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.string   "related_by", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",      limit: 255

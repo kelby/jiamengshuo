@@ -9,6 +9,15 @@ class User < ActiveRecord::Base
 
   has_many :topics, dependent: :destroy
 
+  # join tables
+  has_many :sticks, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'
+  has_many :followers, ->{ where related_by: 'follower'}, class_name: 'TopicAndUser'
+  has_many :keepers, ->{ where related_by: 'keeper'}, class_name: 'TopicAndUser'
+
+  has_many :stick_topics, class_name: 'Topic', through: :sticks
+  has_many :follower_topics, class_name: 'Topic', through: :followers
+  has_many :keeper_topics, class_name: 'Topic', through: :keepers
+
   def login=(login)
     @login = login
   end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  post 'topic_and_user/sticking'
+  post 'topic_and_user/followering'
+  post 'topic_and_user/keepering'
+
   resources :topics
 
   get 'pages/:name' => "pages#show", as: :page
