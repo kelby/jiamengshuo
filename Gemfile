@@ -10,6 +10,8 @@ gem 'contact_us', '~> 0.5.1'
 gem 'kaminari'
 
 gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'social-share-button'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
