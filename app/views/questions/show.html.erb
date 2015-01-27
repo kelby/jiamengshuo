@@ -10,9 +10,11 @@
   <%= @question.body %>
 </p>
 
-<div class="panel social-share-section" style="padding: 0">
-  <%= social_share_button_tag @question.title %>
-</div>
+<% cache @question do %>
+  <div class="panel social-share-section" style="padding: 0">
+    <%= social_share_button_tag @question.title %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
