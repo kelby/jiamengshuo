@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   post 'topic_and_user/followering/:id' => 'topic_and_user#followering', as: :followering_topic
   post 'topic_and_user/keepering/:id' => 'topic_and_user#keepering', as: :keepering_topic
 
-  resources :topics
+  resources :topics do
+    collection do
+       get :search
+     end
+  end
 
   get 'pages/:name' => "pages#show", as: :page
 

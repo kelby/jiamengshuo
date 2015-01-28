@@ -12,4 +12,11 @@ class Topic < ActiveRecord::Base
   has_many :keepered_users, class_name: 'User', through: :keepers
 
   validates_presence_of :user_id, :title, :body
+
+  searchable do
+    text :title, :default_boost => 2
+    text :body
+
+    integer :user_id
+  end
 end

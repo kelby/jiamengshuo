@@ -37,6 +37,18 @@ class TopicsController < ApplicationController
     respond_with(@topic)
   end
 
+  def search
+    search = Topic.search do
+      fulltext params[:q]
+
+      order_by :score, :desc
+    end
+
+    @topics = search.results
+
+    render :index
+  end
+
   private
     def set_topic
       @topic = Topic.find(params[:id])
