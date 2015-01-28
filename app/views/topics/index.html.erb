@@ -21,8 +21,12 @@
         </td>
         <td><%= topic.body %></td>
 
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, topic %>
+          <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+        <% end %>
+        <% if can? :delete, topic %>
+          <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
