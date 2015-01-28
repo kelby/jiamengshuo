@@ -13,3 +13,9 @@
 /tmp
 config/secrets.yml
 config/database.yml
+
+solr/data
+solr/default/data
+solr/development
+solr/pids
+solr/test
