@@ -15,3 +15,8 @@
  *= require foundation_and_overrides
 
  */
+
+.vertical {
+  height: 100px;
+  line-height: 100px;/*值等于元素高度的值*/
+}

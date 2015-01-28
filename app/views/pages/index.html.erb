@@ -26,7 +26,11 @@
 <!-- Sidebar -->
 
 <aside class="large-3 columns">
-  <ul class="disc panel-white">
+  <% if user_signed_in? %>
+    <ul class="disc">
+  <% else %>
+    <ul class="disc panel-white">
+  <% end %>
     <li><h3>每个人都在建造自己的生活~~</h3></li>
     <li><h3>很多前人成长的经历对于你应该很有借鉴价值~~</h3></li>
     <li><h3>Mentor会给你他的经验~~他的建议~</h3></li>

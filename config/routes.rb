@@ -15,7 +15,7 @@ Rails.application.routes.draw do
      end
   end
 
-  get 'pages/:name' => "pages#show", as: :page
+  get 'page/:name' => "pages#show", as: :page
 
   devise_for :users
   resources :users, :only => [:show, :index]

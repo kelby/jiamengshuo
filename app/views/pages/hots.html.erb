@@ -1,0 +1,139 @@
+              <h1 id="panels">热门课程</h1>
+              <h3 class="subheader"> A panel is a simple, helpful Foundation component that enables you to outline sections of your page easily. This allows you to view your page sections as you add content to them, or add emphasis to a section. The width is controlled by the grid columns you put them inside. </h3>
+
+<hr>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="panel">
+      <h5>This is a regular panel.</h5>
+      <p>It has an easy to override visual style, and is appropriately subdued.</p>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="panel callout radius">
+      <h5>This is a callout panel.</h5>
+      <p>It's a little ostentatious, but useful for important content.</p>
+    </div>
+  </div>
+</div>
+
+
+<hr>
+<h3>Basic</h3>
+
+<p>You can create a panel using minimal markup.</p>
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h5</span>&gt;</span>This is a regular panel.<span class="tag">&lt;/<span class="title">h5</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>It has an easy to override visual style, and is appropriately subdued.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+<div class="panel">
+  <h5>This is a regular panel.</h5>
+  <p>It has an easy to override visual style, and is appropriately subdued.</p>
+</div>
+
+<p>  </p></div>
+</div><p></p>
+<hr>
+<h3>Advanced</h3>
+
+<p>Additional classes can be added to your panels.</p>
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel callout radius"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h5</span>&gt;</span>This is a callout panel.<span class="tag">&lt;/<span class="title">h5</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>It's a little ostentatious, but useful for important content.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+<div class="panel callout radius">
+  <h5>This is a callout panel.</h5>
+  <p>It's a little ostentatious, but useful for important content.</p>
+</div>
+  </div>
+</div>
+
+<hr>
+<h2 id="customize-with-sass">Customize with Sass</h2>
+<p>Panels can be easily customized using our Sass variables.</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container">$include-<span class="tag">html</span>-panel-classes<span class="value">: $include-html-classes !default;</span>
+
+<span class="comment">// We use these to control the background and border styles</span>
+$panel-bg<span class="value">: scale-color($white, $lightness: -<span class="number">5</span>%) !default;</span>
+$panel-<span class="attribute">border-style</span><span class="value">: solid !default;</span>
+$panel-<span class="attribute">border</span>-size<span class="value">: <span class="number">1</span>px !default;</span>
+
+<span class="comment">// We use this % to control how much we darken things on hover</span>
+$panel-function-factor<span class="value">: -<span class="number">11</span>% !default;</span>
+$panel-<span class="attribute">border-color</span><span class="value">: scale-color($panel-bg, $lightness: $panel-function-factor) !default;</span>
+
+<span class="comment">// We use these to set default inner padding and bottom margin</span>
+$panel-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>) !default;</span>
+$panel-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">20</span>) !default;</span>
+
+<span class="comment">// We use these to set default font colors</span>
+$panel-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: $oil !default;</span>
+$panel-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: $white !default;</span>
+
+$panel-<span class="tag">header</span>-adjust<span class="value">: true !default;</span>
+$callout-panel-<span class="tag">link</span>-<span class="attribute">color</span><span class="value">: $primary-color !default;</span></div></code></pre>
+
+
+<hr>
+<h2 id="semantic-markup-with-sass">Semantic Markup with Sass</h2>
+<p>You can create your own panels using our Sass mixins.</p>
+<h3>Basic</h3>
+
+<p>You can use the <code>panel()</code> mixin to create your own panel, like so:</p>
+<h4>SCSS</h4>
+<pre><code class="language-scss"><div class="code-container"><span class="class">.custom-panel</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> panel</span>();</span>
+}</div></code></pre>
+
+
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"custom-panel"</span>&gt;</span>Custom panel content goes here<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+
+<h3>Advanced</h3>
+
+<p>You can further customize your panels using the provided options in the <code>panel()</code> mixin:</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="class">.custom-panel</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> panel</span>(
+    //<span class="preprocessor"> Sets</span><span class="preprocessor"> the</span><span class="preprocessor"> panel</span><span class="preprocessor"> background</span><span class="preprocessor"> color.</span><span class="preprocessor"> Default</span>: $panel-pg
+    $bg:orange,
+    //<span class="preprocessor"> Sets</span><span class="preprocessor"> the</span><span class="preprocessor"> panel</span><span class="preprocessor"> padding</span><span class="preprocessor"> amount.</span><span class="preprocessor"> Default</span>: $panel-padding
+    $padding:<span class="number">20</span>px,
+    //<span class="preprocessor"> Sets</span><span class="preprocessor"> the</span><span class="preprocessor"> font</span><span class="preprocessor"> color</span><span class="preprocessor"> based</span><span class="preprocessor"> on</span><span class="preprocessor"> the</span><span class="preprocessor"> darkness</span><span class="preprocessor"> of</span><span class="preprocessor"> the</span><span class="preprocessor"> bg</span> &amp;<span class="preprocessor"> resets</span><span class="preprocessor"> header</span><span class="preprocessor"> line-heights</span><span class="preprocessor"> for</span><span class="preprocessor"> panels.</span><span class="preprocessor"> Default</span>: $panel-header-adjust
+    $adjust:true
+  );</span>
+}</div></code></pre>
+
+
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"custom-panel"</span>&gt;</span>Custom panel content with options goes here<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h5 id="sass-errors-">Sass Errors?</h5>
+<p>If the default "foundation" import was commented out, then make sure you import this file:</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/panels"</span>;</span></div></code></pre>
+

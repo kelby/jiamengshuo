@@ -9,3 +9,7 @@
 50.times do
   User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: 'password')
 end
+
+%w(hots recommend tags badges divider course wish_list).each do |page|
+  Page.create!(name: page)
+end

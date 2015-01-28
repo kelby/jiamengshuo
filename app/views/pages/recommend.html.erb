@@ -1,0 +1,62 @@
+              <h1 id="keystrokes">导师推荐</h1>
+              <h3 class="subheader">If you have keyboard affordances, you might need to explain them to users. For example, to quit your browser hit <kbd>Cmd</kbd> + <kbd>Q</kbd>. (Don't actually type that now - there are more docs to read.) Keystroke is Foundation's simple character affordance tool.</h3>
+
+<hr>
+<h3>Basic</h3>
+
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">p</span>&gt;</span>For example, to close your browser hit <span class="tag">&lt;<span class="title">kbd</span>&gt;</span>Cmd<span class="tag">&lt;/<span class="title">kbd</span>&gt;</span> + <span class="tag">&lt;<span class="title">kbd</span>&gt;</span>Q<span class="tag">&lt;/<span class="title">kbd</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h3 id="customize-with-sass">Customize with Sass</h3>
+<p>Keystrokes can easily be customized using our Sass variables</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container">$include-<span class="tag">html</span>-keystroke-classes<span class="value">: $include-html-classes;</span>
+
+<span class="comment">// We use these to control text styles.</span>
+$keystroke-<span class="attribute">font</span><span class="value">: <span class="string">"Consolas"</span>, <span class="string">"Menlo"</span>, <span class="string">"Courier"</span>, monospace;</span>
+$keystroke-<span class="attribute">font-size</span><span class="value">: inherit;</span>
+$keystroke-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: $jet;</span>
+$keystroke-<span class="attribute">font</span>-<span class="attribute">color</span>-alt<span class="value">: $white;</span>
+$keystroke-function-factor<span class="value">: -<span class="number">7</span>%;</span>
+
+<span class="comment">// We use this to control keystroke padding.</span>
+$keystroke-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">2</span> <span class="number">4</span> <span class="number">0</span>);</span>
+
+<span class="comment">// We use these to control background and border styles.</span>
+$keystroke-bg<span class="value">: scale-color($white, $lightness: $keystroke-function-factor);</span>
+$keystroke-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$keystroke-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$keystroke-<span class="attribute">border-color</span><span class="value">: scale-color($keystroke-bg, $lightness: $keystroke-function-factor);</span>
+$keystroke-radius<span class="value">: $global-radius;</span></div></code></pre>
+
+
+<hr>
+<h3 id="semantic-markup-with-sass">Semantic Markup With Sass</h3>
+<p>You can create your own keystrokes using our Sass mixins.</p>
+<h3>Basic</h3>
+
+<p>You can use the <code>keystroke()</code> mixin to create your own keystroke style, like so:</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/keystrokes"</span>;</span>
+
+<span class="class">.custom-keystroke-class</span> {
+  <span class="comment">// You can set the background color of your keystrokes, which also effects text and border</span>
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> keystroke</span>($bg:orange);</span>
+}</div></code></pre>
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">kbd</span> <span class="attribute">class</span>=<span class="value">"custom-keystroke-class"</span>&gt;</span><span class="tag">&lt;/<span class="title">kbd</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h5 id="sass-errors-">Sass Errors?</h5>
+<p>If the default "foundation" import was commented out, then make sure you import this file:</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/keystrokes"</span>;</span></div></code></pre>
+
