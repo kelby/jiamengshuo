@@ -1,14 +1,14 @@
 <div class="row">
   <dl class="sub-nav vertical">
-    <div class="small-3 columns">
+    <!-- <div class="small-3 columns">
       <dt class="logo">
-        <%= link_to root_path do %>
-          <%= image_tag 'logo.png' %>
-        <% end %>
+        <%#= link_to root_path do %>
+          <%#= image_tag 'logo.png' %>
+        <%# end %>
       </dt>
-    </div>
+    </div> -->
 
-    <div class="small-9 columns">
+    <!-- <div class="small-9 columns"> -->
       <dd class="<%= current_page?(root_path)? 'active' : '' %>"><a href="javascript:void(0)">All</a></dd>
       <dd class="<%= current_page?(page_path(:hots))? 'active' : '' %>"><a id="nav-hots" href="/page/hots">热门课程</a></dd>
       <dd class="<%= current_page?(page_path(:recommend))? 'active' : '' %>"><a id="nav-recommend" href="/page/recommend">导师推荐</a></dd>
@@ -17,6 +17,6 @@
       <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd>
       <dd class="<%= current_page?(page_path(:course))? 'active' : '' %>"><a id="nav-course" href="/page/course">发布课程</a></dd>
       <dd class="<%= current_page?(page_path(:wish_list))? 'active' : '' %>"><a id="nav-wish-list" href="/page/wish_list">心愿单</a></dd>
-    </div>
+    <!-- </div> -->
   </dl>
 </div>
