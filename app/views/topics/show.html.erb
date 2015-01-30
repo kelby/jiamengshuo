@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
+  <h1><%= @topic.title %></h1>
 </p>
 
 <p>
@@ -16,8 +15,7 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @topic.body %>
+  <%= raw(markdown_for @topic.body) %>
 </p>
 
 <p>
@@ -47,5 +45,10 @@
 
 <br>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<% if can? :update, @topic %>
+  <%= link_to 'Edit', edit_topic_path(@topic) %>
+<% end %>
+
+<% if can? :delete, @topic %>
+  <td><%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
