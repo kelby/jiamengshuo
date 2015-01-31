@@ -24,7 +24,7 @@ gem 'carrierwave'
 # need install ImageMagick/GraphicsMagick
 gem "mini_magick"
 
-gem 'ancestry'
+gem 'acts_as_tree'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
