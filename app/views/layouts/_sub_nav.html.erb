@@ -16,7 +16,9 @@
       <dd class="<%= current_page?(page_path(:badges))? 'active' : '' %>"><a id="nav-badges" href="/page/badges">成就榜</a></dd>
       <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd>
       <dd class="<%= current_page?(page_path(:course))? 'active' : '' %>"><a id="nav-course" href="/page/course">发布课程</a></dd>
-      <dd class="<%= current_page?(page_path(:wish_list))? 'active' : '' %>"><a id="nav-wish-list" href="/page/wish_list">心愿单</a></dd>
+      <dd class="<%= current_page?(wishes_path)? 'active' : '' %>">
+        <%= link_to '心愿单', wishes_path, id: "nav-wish-list" %>
+      </dd>
     <!-- </div> -->
   </dl>
 </div>

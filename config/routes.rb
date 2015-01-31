@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :wishes
+
   resources :questions
 
   namespace :admin do
