@@ -22,15 +22,18 @@
   <% end %>
 
 
-
   <!-- <div class="field"> -->
-    <%#= f.label :position %><br>
+    <%#= f.label :position %>
     <%#= f.number_field :position %>
   <!-- </div> -->
   <!-- <div class="field"> -->
-    <%#= f.label :post_id %><br>
+    <%#= f.label :post_id %>
     <%#= f.number_field :post_id %>
   <!-- </div> -->
+
+  <section id="add_section">
+    <%= link_to "添加课程及简述", add_section_path, remote: true, method: :post, disable_with: '...' %>
+  </section>
 
   <div class="actions">
     <%= f.submit %>

@@ -1,8 +1,12 @@
 <div class="field">
-  <%= f.label :heading, "Section Heading" %><i class="fi-x medium"></i><br>
+  <%= f.label :heading, "课程标题" %>
+  <%= link_to remove_section_path(), method: :delete, remote: true do %>
+    <i class="fi-x medium"></i>
+  <% end %>
+    <br>
   <%= f.text_field :heading %>
 </div>
 <div class="field">
-  <%= f.label :body %><br>
-  <%= f.text_area :body %>
+  <%= f.label :description, "课程简述" %><br>
+  <%= f.text_area :description %>
 </div>

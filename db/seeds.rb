@@ -57,3 +57,9 @@ end
   Catalog.create!(name: name, parent: Catalog.find_by(name: "IT技术"))
 end
 =end
+
+50.times do
+  Section.create!(heading: Faker::Name.name, body: Faker::Lorem.sentence)
+  Section.create!(heading: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
+  Section.create!(heading: Faker::Name.name, body: Faker::Lorem.paragraph(2))
+end

@@ -36,6 +36,13 @@ class SectionsController < ApplicationController
     respond_with(@section)
   end
 
+  def add
+    render :add
+  end
+
+  def remove
+  end
+
   private
     def set_section
       @section = Section.find(params[:id])

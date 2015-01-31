@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  post '/add_section', to: "sections#add", as: :add_section
+  delete '/remove_section', to: "sections#remove", as: :remove_section
+
   resources :sections
 
   resources :wishes

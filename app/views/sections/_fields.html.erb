@@ -1,0 +1,13 @@
+<% new_id = Time.now.to_i %>
+
+<div class="field">
+  <label for="post_sections_attributes_<%= new_id %>_heading">课程标题</label><i class="fi-x medium"></i><br>
+  <input type="text" name="post[sections_attributes][<%= new_id %>][heading]" id="post_sections_attributes_<%= new_id %>_heading">
+</div>
+
+<div class="field">
+  <label for="post_sections_attributes_<%= new_id %>_description">课程简述</label><br>
+  <textarea name="post[sections_attributes][<%= new_id %>][description]" id="post_sections_attributes_<%= new_id %>_description"></textarea>
+</div>
+
+<input type="hidden" id="post_sections_attributes_<%= new_id %>_id" name="post[sections_attributes][<%= new_id %>][id]" value="" />
