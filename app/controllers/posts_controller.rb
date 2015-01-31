@@ -9,11 +9,16 @@ class PostsController < ApplicationController
   end
 
   def show
+    @sections = @post.sections
     respond_with(@post)
   end
 
   def new
     @post = Post.new
+    3.times do
+      section = @post.sections.build
+    end
+
     respond_with(@post)
   end
 
@@ -42,6 +47,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :description)
+      params.require(:post).permit(:title, :description, {:sections_attributes => [:heading, :body]})
     end
 end

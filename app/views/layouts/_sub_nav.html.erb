@@ -17,11 +17,26 @@
       <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd>
       <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
         <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
-        <%= link_to "发布课程", new_post_path %>
+        <%= link_to "发布课程大纲", new_post_path %>
+      </dd>
+      <dd class="<%= current_page?(new_section_path)? 'active' : '' %>">
+        <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
+        <%= link_to "发布课程", new_section_path %>
       </dd>
       <dd class="<%= current_page?(wishes_path)? 'active' : '' %>">
         <%= link_to '心愿单', wishes_path, id: "nav-wish-list" %>
       </dd>
+
+      <% if current_page?(wishes_path) || current_page?(new_wish_path) %>
+        <dd class="<%= current_page?(new_wish_path)? 'active' : '' %>">
+          <%= link_to '新建心愿单', new_wish_path, id: "nav-wish-list" %>
+        </dd>
+      <% end %>
     <!-- </div> -->
+      <% if current_page?(questions_path) || current_page?(new_question_path) %>
+        <dd class="<%= current_page?(new_question_path)? 'active' : '' %>">
+          <%= link_to '新建问题', new_question_path, id: "nav-wish-list" %>
+        </dd>
+      <% end %>
   </dl>
 </div>

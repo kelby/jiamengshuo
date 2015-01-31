@@ -1,4 +1,5 @@
 class WishesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_wish, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -14,7 +15,7 @@ class WishesController < ApplicationController
   end
 
   def new
-    @wish = Wish.new
+    @wish = current_user.wishes.build
     respond_with(@wish)
   end
 
@@ -22,9 +23,10 @@ class WishesController < ApplicationController
   end
 
   def create
-    @wish = Wish.new(wish_params)
+    @wish = current_user.wishes.build(wish_params)
     @wish.save
-    respond_with(@wish)
+    # respond_with(@wish)
+    redirect_to wishes_path
   end
 
   def update
