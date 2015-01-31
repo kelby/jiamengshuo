@@ -23,11 +23,8 @@ ActiveRecord::Schema.define(version: 20150131063954) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.string   "ancestry",   limit: 255
     t.integer  "parent_id",  limit: 4
   end
-
-  add_index "catalogs", ["ancestry"], name: "index_catalogs_on_ancestry", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "name",       limit: 255
