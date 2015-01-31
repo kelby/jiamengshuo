@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :catalogs
+
   resources :posts
 
   resources :sections
