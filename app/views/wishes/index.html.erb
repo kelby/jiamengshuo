@@ -33,6 +33,22 @@
 </div>
 
 
+<% @wishes.each do |wish| %>
+  <div>
+    <hr>
+    <h4><%= wish.username %></h4>
+    <a href="#" class="button white_backgroud"><i class="fi-plus"></i>  关注</a>
+ 
+<%= time_ago_in_words wish.updated_at %>
+    <p>
+      <%= sanitize wish.content, tags: %w(br p) %>
+    </p>
+
+    添加到心愿卡<br>
+    帮他实现
+  </div>
+<% end %>
+
 
 <hr>
 <h4 id="alert-boxes">Alert Boxes</h4>

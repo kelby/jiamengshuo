@@ -14,5 +14,10 @@ end
   Page.create!(name: page)
 end
 
+10.times do
+  Wish.create!(content: Faker::Lorem.paragraph, user_id: User.ids.sample)
+  Wish.create!(content: Faker::Lorem.paragraph(2), user_id: User.ids.sample, updated_at: Faker::Time.between(100.days.ago, Time.now))
+end
+
 Wish.create!(content: "我老爸不断提醒我：“干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。”<br>
-              我希望在这个网站里，能找到自己的导师；或者发现欣赏的人，成为他的导师。")
+              我希望在这个网站里，能找到自己的导师；或者发现欣赏的人，成为他的导师。", user_id: User.first.id)
