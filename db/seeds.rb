@@ -84,3 +84,8 @@ I'll try reducing the header, the active state was just conceptual at this point
 
 Again, thanks everyone. I really enjoy the feedback on Forrst. Much more in depth than over at Dribbble. :P",
   comment: comment, user: user)
+
+user_ids = User.ids
+200.times do
+  Apply.create!(user_id: user_ids.sample, mentor_id: user_ids.sample, info: Faker::Lorem.paragraph)
+end

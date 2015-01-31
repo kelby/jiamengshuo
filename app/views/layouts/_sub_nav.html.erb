@@ -39,6 +39,8 @@
         </dd>
       <% end %>
 
-      <dd class="<%= current_page?(page_path(:students))? 'active' : '' %>"><a id="nav-students" href="/page/students">申请学生</a></dd>
+      <dd class="<%= current_page?(pending_apply_students_user_path(current_user))? 'active' : '' %>">
+        <%= link_to "申请学生", pending_apply_students_user_path(current_user), id: "nav-students" %>
+      </dd>
   </dl>
 </div>

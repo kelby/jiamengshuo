@@ -32,8 +32,14 @@ Rails.application.routes.draw do
     member do
       get :edit_avatar
       put :update_avatar
+
+      get :pending_apply_students, to: "applies#pending_apply_students"
     end
+
+    put :approve_apply, to: "applies#approve_apply"
+    put :refuse_apply, to: "applies#refuse_apply"
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

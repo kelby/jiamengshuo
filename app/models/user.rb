@@ -12,6 +12,15 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :replies, dependent: :destroy
 
+  # join table
+  has_many :applies
+  has_many :apply_students, class_name: 'User', through: :applies, foreign_key: :mentor_id
+  has_many :applied_mentors,  class_name: 'User', through: :applies, foreign_key: :user_id
+
+  # join table
+  has_many :mentor_pending_applies, ->{ pending }, class_name: 'Apply', foreign_key: :mentor_id
+  has_many :pending_apply_students, class_name: 'User', through: :mentor_pending_applies, foreign_key: :mentor_id
+
   # join tables
   has_many :sticks, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'
   has_many :followers, ->{ where related_by: 'follower'}, class_name: 'TopicAndUser'
