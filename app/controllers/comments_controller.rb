@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -21,9 +22,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @topic = Topic.find(params[:topic_id])
+    @comment = @topic.comments.build(comment_params.merge(user_id: current_user.id))
     @comment.save
-    respond_with(@comment)
+
+    redirect_to @topic
   end
 
   def update
