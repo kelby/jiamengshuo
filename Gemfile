@@ -21,6 +21,7 @@ gem 'cancancan', '~> 1.10'
 gem 'redcarpet'
 
 gem 'carrierwave'
+# need install ImageMagick/GraphicsMagick
 gem "mini_magick"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
