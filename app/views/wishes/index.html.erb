@@ -1,14 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-
-
-              <h1 id="kitchen-sink">我的心愿</h1>
-              <h3 class="subheader">我老爸不断提醒我：“干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。”<br>
-              我希望在这个网站里，能找到自己的导师；或者发现欣赏的人，成为他的导师。</h3>
+<h1 id="kitchen-sink">心愿卡片</h1>
+<h3 class="subheader"><%= sanitize @active_wish.content, tags: %w(br p) %></h3>
 
 <div>
 
-<h4 id="joyride">Kelby Lee</h4>
+<h4 id="joyride"><%= @active_wish.username %></h4>
 <!-- <h5 class="so-awesome" id="numero1">Build Joyride with HTML</h5> -->
 
 <p class="so-awesome" id="numero2">Wed, 28 Jan 2015 12:10:23</p><!--stops-->

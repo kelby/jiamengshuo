@@ -5,6 +5,7 @@ class WishesController < ApplicationController
 
   def index
     @wishes = Wish.all
+    @active_wish = Wish.active_wish
     respond_with(@wishes)
   end
 
