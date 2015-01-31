@@ -22,7 +22,6 @@ end
 Wish.create!(content: "我老爸不断提醒我：“干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。”<br>
               我希望在这个网站里，能找到自己的导师；或者发现欣赏的人，成为他的导师。", user_id: User.first.id)
 
-=begin
 ['个人发展', '职场', '兴趣爱好', '生活', '设计师', '语言', 'IT技术', '投资理财', '演讲', '其它'].each do |name|
   Catalog.create!(name: name)
 end
@@ -56,10 +55,32 @@ end
 ['产品', '需求分析', 'axure'].each do |name|
   Catalog.create!(name: name, parent: Catalog.find_by(name: "IT技术"))
 end
-=end
 
 50.times do
   Section.create!(heading: Faker::Name.name, body: Faker::Lorem.sentence)
   Section.create!(heading: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
   Section.create!(heading: Faker::Name.name, body: Faker::Lorem.paragraph(2))
 end
+
+user = User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com")
+topic = Topic.create!(title: Faker::Name.name, user: user, body: Faker::Lorem.paragraph)
+
+comment = Comment.create!(user: user, content: "
+          <p>Nice start, Becky. I really like some of the elements you have going so far. The header and footer tie in nicely and the ribbon on tiles works well. The font is great also and looks readable. Here are a few areas you can keep iterating on:</p>
+
+          <p>Simplify your color palette.</p>", topic: topic)
+
+user = User.create!(username: 'Kyle Schmidt Post Author', password: 'password', email: "Kyle_Schmidt@gmail.com")
+
+Reply.create!(content: "Wow, guys. Lots of great feedback.
+
+First, @Milkmusket, I agree. I've struggled with that section and might take advice for @albanesetr and focus on a single feature rather than the whole screenshot.
+
+@Hans, I usually try to go for drop shadows pumped with a little color, may not be the case here but thanks for the comment. And for the header noise, and noise overall in the site, I need to try reducing it all around before we go live.
+
+@albanesetr, thanks for all the good feedback. The pricing plans are definitely still WIP, the yellow $150 should have a 'Most Popular' header, you're right. Other mockups had it, not sure why I haven't put it up yet.
+
+I'll try reducing the header, the active state was just conceptual at this point. For the one shown, I was considering a fixed header and wanted the user to see where they were at when scrolling. So the thick yellow bar would slide when you scroll.
+
+Again, thanks everyone. I really enjoy the feedback on Forrst. Much more in depth than over at Dribbble. :P",
+  comment: comment, user: user)

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :topics, dependent: :destroy
   has_many :wishes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :replies, dependent: :destroy
 
   # join tables
   has_many :sticks, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'

@@ -12,6 +12,8 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @comment = @topic.comments.build
+    @comments = @topic.comments.reload
     respond_with(@topic)
   end
 
