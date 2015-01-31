@@ -38,5 +38,7 @@
           <%= link_to '新建问题', new_question_path, id: "nav-wish-list" %>
         </dd>
       <% end %>
+
+      <dd class="<%= current_page?(page_path(:students))? 'active' : '' %>"><a id="nav-students" href="/page/students">申请学生</a></dd>
   </dl>
 </div>
