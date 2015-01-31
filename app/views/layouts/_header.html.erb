@@ -37,12 +37,12 @@
       </li>
 
       <% if user_signed_in? %>
-        <li class="active"><a href="#"><%= current_user.email %></a></li>
+        <li class="active"><%= image_tag(@user.avatar_url :tiny) %></li>
         <li class="has-dropdown">
           <%= link_to current_user.username, user_path(current_user) %>
           <ul class="dropdown">
             <li><%= link_to '个人主页', user_path(current_user) %></li>
-            <li><a href="#">修改头像</a></li>
+            <li><%= link_to '修改头像', edit_avatar_user_path(current_user) %></li>
             <li><%= link_to '设置', edit_user_registration_path %></li>
             <li class="divider"></li>
             <li><%= link_to '注销', destroy_user_session_path, method: :delete %></li>

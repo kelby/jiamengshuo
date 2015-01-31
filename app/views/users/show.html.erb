@@ -5,7 +5,7 @@
     <!-- Clicking this placeholder fires the mapModal Reveal modal -->
     <p>
       <a href="" data-reveal-id="mapModal">
-        <%= image_tag("u58.png", size: "116x116", alt: "User Avatar") %>
+        <%= image_tag(@user.avatar_url :thumb) %>
       </a>
       <%= @user.username %>
       男

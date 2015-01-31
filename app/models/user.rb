@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :follower_topics, class_name: 'Topic', through: :followers
   has_many :keeper_topics, class_name: 'Topic', through: :keepers
 
+  mount_uploader :avatar, AvatarUploader
+
   def sticking? topic
     self.stick_topics.exists? topic.id
   end

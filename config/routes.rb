@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   get 'page/:name' => "pages#show", as: :page
 
   devise_for :users
-  resources :users, :only => [:show, :index]
+  resources :users, :only => [:show, :index] do
+    member do
+      get :edit_avatar
+      put :update_avatar
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
