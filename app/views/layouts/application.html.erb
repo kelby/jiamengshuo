@@ -16,6 +16,8 @@
 
     <%= render 'layouts/sub_nav' %>
 
+    <%= render 'layouts/flash_messages' %>
+
     <% if current_page?(root_path) && !user_signed_in? %>
       <div class="index-background">
         <div class="row">
