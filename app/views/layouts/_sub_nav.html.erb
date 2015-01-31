@@ -15,7 +15,10 @@
       <dd class="<%= current_page?(page_path(:tags))? 'active' : '' %>"><a id="nav-tags" href="/page/tags">标签</a></dd>
       <dd class="<%= current_page?(page_path(:badges))? 'active' : '' %>"><a id="nav-badges" href="/page/badges">成就榜</a></dd>
       <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd>
-      <dd class="<%= current_page?(page_path(:course))? 'active' : '' %>"><a id="nav-course" href="/page/course">发布课程</a></dd>
+      <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+        <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
+        <%= link_to "发布课程", new_post_path %>
+      </dd>
       <dd class="<%= current_page?(wishes_path)? 'active' : '' %>">
         <%= link_to '心愿单', wishes_path, id: "nav-wish-list" %>
       </dd>

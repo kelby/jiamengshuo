@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :posts
+
+  resources :sections
+
   resources :wishes
 
   resources :questions
