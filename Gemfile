@@ -19,6 +19,8 @@ gem 'sunspot_solr'
 gem 'cancancan', '~> 1.10'
 
 gem 'redcarpet'
+gem 'rouge'
+gem 'md_emoji'
 
 gem 'carrierwave'
 # need install ImageMagick/GraphicsMagick

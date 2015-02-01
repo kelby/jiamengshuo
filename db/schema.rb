@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150131161707) do
   end
 
   create_table "applies", force: :cascade do |t|
-    t.boolean  "status",     limit: 1,   default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "status",     limit: 255, default: "0"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "user_id",    limit: 4
     t.integer  "mentor_id",  limit: 4
     t.string   "info",       limit: 255
