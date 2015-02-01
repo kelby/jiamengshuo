@@ -19,4 +19,6 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_post_path(@post) %>
+<% if can? :update, @post %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %>

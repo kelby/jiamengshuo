@@ -72,7 +72,8 @@ comment = Comment.create!(user: user, content: "
 
 user = User.create!(username: 'Kyle Schmidt Post Author', password: 'password', email: "Kyle_Schmidt@gmail.com")
 
-Reply.create!(content: "Wow, guys. Lots of great feedback.
+50.times do
+  Comment.create!(content: "Wow, guys. Lots of great feedback.
 
 First, @Milkmusket, I agree. I've struggled with that section and might take advice for @albanesetr and focus on a single feature rather than the whole screenshot.
 
@@ -83,7 +84,59 @@ First, @Milkmusket, I agree. I've struggled with that section and might take adv
 I'll try reducing the header, the active state was just conceptual at this point. For the one shown, I was considering a fixed header and wanted the user to see where they were at when scrolling. So the thick yellow bar would slide when you scroll.
 
 Again, thanks everyone. I really enjoy the feedback on Forrst. Much more in depth than over at Dribbble. :P",
-  comment: comment, user: user)
+  topic_id: Topic.ids.sample, user_id: User.ids.sample)
+end
+
+50.times do
+  Comment.create!(content: "## 其它
+
+包含了：Readonly Attributes 和 Translation 等。
+
+### Readonly Attributes
+
+提供方法：
+
+```
+attr_readonly
+
+readonly_attributes
+```
+
+`attr_readonly` 和其它 attr_x 类似，只不过这里设置的是某属性为只读。注意，这里不是校验，所以保存出错的话，不会放到 record 对象的 errors 里。
+",
+  topic_id: Topic.ids.sample, user_id: User.ids.sample)
+end
+
+100.times do
+  Reply.create!(content: "Wow, guys. Lots of great feedback.
+
+First, @Milkmusket, I agree. I've struggled with that section and might take advice for @albanesetr and focus on a single feature rather than the whole screenshot.
+
+I'll try reducing the header, the active state was just conceptual at this point. For the one shown, I was considering a fixed header and wanted the user to see where they were at when scrolling. So the thick yellow bar would slide when you scroll.
+
+Again, thanks everyone. I really enjoy the feedback on Forrst. Much more in depth than over at Dribbble. :P",
+  comment_id: Comment.ids.sample, user_id: User.ids.sample)
+end
+
+100.times do
+  Reply.create!(content:
+"### 跳过回调
+
+主要有 3 种方式：
+
+#### update_columns
+
+类似 update_columns，直接使用不会触发回调的方法进行操作。
+
+#### skip_callback
+
+跳过某个回调。
+
+#### x_without_callbacks
+
+以 object.send(:x_without_callbacks) 跳过某个系列的回调。",
+  comment_id: Comment.ids.sample, user_id: User.ids.sample)
+end
 
 user_ids = User.ids
 200.times do

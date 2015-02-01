@@ -1,4 +1,6 @@
 class Section < ActiveRecord::Base
-  # attr_accessor :heading, :body, :post_id
   belongs_to :post
+  belongs_to :user
+
+  validates_presence_of :user_id
 end

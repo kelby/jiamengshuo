@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :wishes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :replies, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :sections, dependent: :destroy
 
   # join table
   has_many :applies
