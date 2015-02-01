@@ -28,6 +28,7 @@ gem "mini_magick"
 
 gem 'acts_as_tree'
 
+gem 'rack-utf8_sanitizer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
