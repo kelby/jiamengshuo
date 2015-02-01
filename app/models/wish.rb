@@ -6,4 +6,5 @@ class Wish < ActiveRecord::Base
   delegate :username, to: :user
 
   validates_presence_of :content, :user_id
+  validates_length_of :content, maximum: 140, message: "less than 140 if you don't mind"
 end

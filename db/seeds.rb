@@ -56,6 +56,8 @@ end
   Catalog.create!(name: name, parent: Catalog.find_by(name: "IT技术"))
 end
 
+Catalog.update_all(info: "Cupcake ipsum dolor sit. Amet I love liquorice jujubes pudding croissant I love pudding. Apple pie macaroon toffee jujubes pie tart.")
+
 50.times do
   Section.create!(heading: Faker::Name.name, body: Faker::Lorem.sentence)
   Section.create!(heading: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
@@ -142,3 +144,8 @@ user_ids = User.ids
 200.times do
   Apply.create!(user_id: user_ids.sample, mentor_id: user_ids.sample, info: Faker::Lorem.paragraph)
 end
+
+User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。 无限感激"
+User.where(id: user_ids.sample(10)).update_all info: "互联网爱好者，努力充电，寻找机遇。"
+User.where(id: user_ids.sample(10)).update_all info: "Dreams will keep me young."
+User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。有想法去实现~shixian.com"

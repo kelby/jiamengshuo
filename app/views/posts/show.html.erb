@@ -12,7 +12,10 @@
           <!-- <h3><%#= index %></h3> -->
         <!-- </div> -->
 
-        <p class="panel"><%= section.heading %></p>
+        <% if section.heading.present? %>
+          <p class="panel"><%= section.heading %></p>
+        <% end %>
+
         <p><%= raw(markdown_for section.description) %></p>
       <!-- </div> -->
     <% end %>

@@ -5,8 +5,9 @@ class WishesController < ApplicationController
   respond_to :html
 
   def index
-    @wishes = Wish.all
+    @wishes = Wish.page(params[:page] || 1).per(24)
     @active_wish = Wish.active_wish
+
     respond_with(@wishes)
   end
 
@@ -24,9 +25,12 @@ class WishesController < ApplicationController
 
   def create
     @wish = current_user.wishes.build(wish_params)
-    @wish.save
-    # respond_with(@wish)
-    redirect_to wishes_path
+
+    if @wish.save
+      redirect_to wishes_path
+    else
+      render :new
+    end
   end
 
   def update

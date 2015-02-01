@@ -10,13 +10,13 @@
   <section class="top-bar-section">
     <!-- Left Nav Section -->
     <ul class="left">
-      <li><%= link_to "首页", root_path %></li>
+      <!-- <li><%#= link_to "首页", root_path %></li> -->
       <li><%= link_to "寻找导师", users_path %></li>
       <li><%= link_to '话题、提问', topics_path %></li>
       <!-- <li><%#= link_to '我要提问', questions_path %></li> -->
       <li><%= link_to '课程大纲', posts_path %></li>
       <li><%= link_to '课程列表', sections_path %></li>
-      <li><%= link_to '心愿单', wishes_path %></li>
+      <li><%= link_to '心愿卡片', wishes_path %></li>
 
       <li class="has-form">
         <%= form_tag search_topics_path, method: :get, class: "row collapse" do |f| %>

@@ -5,5 +5,11 @@
   <%= @catalog.name %>
 </p>
 
-<%= link_to 'Edit', edit_catalog_path(@catalog) %> |
-<%= link_to 'Back', catalogs_path %>
+<p>
+  <strong>Info:</strong>
+  <%= @catalog.info %>
+</p>
+
+<% if can? :update, @catalog %>
+  <%= link_to 'Edit', edit_catalog_path(@catalog) %> |
+<% end %>

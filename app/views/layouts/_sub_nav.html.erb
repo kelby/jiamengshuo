@@ -9,12 +9,12 @@
     </div> -->
 
     <!-- <div class="small-9 columns"> -->
-      <dd class="<%= current_page?(root_path)? 'active' : '' %>"><a href="javascript:void(0)">All</a></dd>
-      <dd class="<%= current_page?(page_path(:hots))? 'active' : '' %>"><a id="nav-hots" href="/page/hots">热门课程</a></dd>
-      <dd class="<%= current_page?(page_path(:recommend))? 'active' : '' %>"><a id="nav-recommend" href="/page/recommend">导师推荐</a></dd>
-      <dd class="<%= current_page?(page_path(:tags))? 'active' : '' %>"><a id="nav-tags" href="/page/tags">标签</a></dd>
-      <dd class="<%= current_page?(page_path(:badges))? 'active' : '' %>"><a id="nav-badges" href="/page/badges">成就榜</a></dd>
-      <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd>
+      <!-- <dd class="<%#= current_page?(root_path)? 'active' : '' %>"><a href="javascript:void(0)">All</a></dd> -->
+      <!-- <dd class="<%#= current_page?(page_path(:hots))? 'active' : '' %>"><a id="nav-hots" href="/page/hots">热门课程</a></dd> -->
+      <!-- <dd class="<%#= current_page?(page_path(:recommend))? 'active' : '' %>"><a id="nav-recommend" href="/page/recommend">导师推荐</a></dd> -->
+      <!-- <dd class="<%#= current_page?(page_path(:tags))? 'active' : '' %>"><a id="nav-tags" href="/page/tags">标签</a></dd> -->
+      <!-- <dd class="<%#= current_page?(page_path(:badges))? 'active' : '' %>"><a id="nav-badges" href="/page/badges">成就榜</a></dd> -->
+      <!-- <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd> -->
       <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
         <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
         <%= link_to "发布课程大纲", new_post_path %>
@@ -22,9 +22,6 @@
       <dd class="<%= current_page?(new_section_path)? 'active' : '' %>">
         <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
         <%= link_to "发布课程", new_section_path %>
-      </dd>
-      <dd class="<%= current_page?(wishes_path)? 'active' : '' %>">
-        <%= link_to '心愿单', wishes_path, id: "nav-wish-list" %>
       </dd>
 
       <% if current_page?(wishes_path) || current_page?(new_wish_path) %>

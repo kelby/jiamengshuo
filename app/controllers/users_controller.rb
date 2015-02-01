@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page] || 1).per(32)
+    @users = User.all.page(params[:page] || 1).per(24)
     @catalogs = Catalog.roots
   end
 

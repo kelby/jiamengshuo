@@ -5,7 +5,7 @@ class SectionsController < ApplicationController
   respond_to :html
 
   def index
-    @sections = Section.all
+    @sections = Section.present_heading_sections
     respond_with(@sections)
   end
 
