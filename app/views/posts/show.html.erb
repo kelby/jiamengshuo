@@ -4,17 +4,19 @@
   <h1><%= @post.title %></h1>
 </p>
 
-<% @sections.each do |section| %>
-  <p>
-    <strong>Heading:</strong>
-    <%= section.heading %>
-  </p>
+<div class="row step-by-step-style-one">
+  <div class="small-12 columns">
+    <% @sections.each_with_index do |section, index| %>
+      <!-- <div class="path-item"> -->
+        <!-- <div class="circlenumber"> -->
+          <!-- <h3><%#= index %></h3> -->
+        <!-- </div> -->
 
-  <p>
-    <strong>Session Description:</strong>
-    <%= section.description %>
-  </p>
-  <hr>
-<% end %>
+        <p class="panel"><%= section.heading %></p>
+        <p><%= raw(markdown_for section.description) %></p>
+      <!-- </div> -->
+    <% end %>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_post_path(@post) %>

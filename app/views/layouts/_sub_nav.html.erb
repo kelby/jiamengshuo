@@ -33,9 +33,9 @@
         </dd>
       <% end %>
     <!-- </div> -->
-      <% if current_page?(questions_path) || current_page?(new_question_path) %>
-        <dd class="<%= current_page?(new_question_path)? 'active' : '' %>">
-          <%= link_to '新建问题', new_question_path, id: "nav-wish-list" %>
+      <% if current_page?(topics_path) || current_page?(new_topic_path) %>
+        <dd class="<%= current_page?(new_topic_path)? 'active' : '' %>">
+          <%= link_to '新建话题、提问', new_topic_path, id: "nav-wish-list" %>
         </dd>
       <% end %>
 

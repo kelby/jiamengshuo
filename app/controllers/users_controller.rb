@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.page(params[:page] || 1).per(32)
+    @catalogs = Catalog.roots
   end
 
   def edit_avatar

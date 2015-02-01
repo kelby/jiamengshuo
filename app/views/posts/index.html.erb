@@ -1,29 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<h4>课程大纲</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% if can? :update, post %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+      <% end %>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+      <% if can? :delete, post %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
