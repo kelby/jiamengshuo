@@ -72,3 +72,6 @@ group :development, :test do
   gem 'faker'
 end
 
+group :development do
+  gem 'quiet_assets'
+end
