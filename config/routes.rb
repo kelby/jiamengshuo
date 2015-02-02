@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
     put :approve_apply, to: "applies#approve_apply"
     put :refuse_apply, to: "applies#refuse_apply"
+    post :follow
+    delete :stop_following
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

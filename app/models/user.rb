@@ -32,6 +32,9 @@ class User < ActiveRecord::Base
   has_many :follower_topics, class_name: 'Topic', through: :followers
   has_many :keeper_topics, class_name: 'Topic', through: :keepers
 
+  acts_as_followable
+  acts_as_follower
+
   mount_uploader :avatar, AvatarUploader
 
   def sticking? topic
