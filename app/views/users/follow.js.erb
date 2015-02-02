@@ -1,1 +1,1 @@
-$("#follow_user_<%= params[:user_id] %>").text("已关注");
+$("#follow_user_<%= params[:user_id] %>").replaceWith("<%= j render(partial: 'users/stop_following', locals: {user: @user}) %>");
