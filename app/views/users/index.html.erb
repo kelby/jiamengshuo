@@ -1,48 +1,24 @@
-<aside class="large-3 columns">
-
-  <h5>分类导航</h5>
-  <ul class="side-nav">
-    <% @catalogs.each do |catalog| %>
-      <li>
-        <%= link_to catalog.name, catalog %>
-      </li>
-    <% end %>
-<!-- <div class="divider"></div> -->
-
-    <li><%= link_to "查看所有 ...", catalogs_path %></li>
-  </ul>
-
-  <div class="panel">
-    <h5>Featured</h5>
-    <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
-    <a href="#">Read More →</a>
-  </div>
-
-</aside>
-
-<aside class="large-9 columns" role="content">
-  <% @users.each_slice(3) do |users| %>
-    <div class="row" data-equalizer>
-      <% users.each do |user| %>
-        <div class="large-4 columns" data-equalizer-watch>
-          <div class="item-wrapper">
-            <div class="img-wrapper">
-              <% if current_user.following?(user) %>
-                <%= render 'users/stop_following', user: user %>
-              <% else %>
-                <%= render 'users/follow', user: user %>
-              <% end %>
-              <%= image_tag user.avatar_url(:thumb) %>
-            </div>  
-            <%= link_to user do %>
-              <h4><%= user.username %></h4>
+<% @users.each_slice(4) do |users| %>
+  <div class="row" data-equalizer>
+    <% users.each do |user| %>
+      <div class="large-3 columns" data-equalizer-watch>
+        <div class="item-wrapper">
+          <div class="img-wrapper">
+            <% if current_user.following?(user) %>
+              <%= render 'users/stop_following', user: user %>
+            <% else %>
+              <%= render 'users/follow', user: user %>
             <% end %>
-            <p><%= user.info %></p>
+            <%= image_tag user.avatar_url(:thumb) %>
           </div>  
+          <%= link_to user do %>
+            <h4><%= user.username %></h4>
+          <% end %>
+          <p><%= user.info %></p>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
-  <%= paginate @users %>
-</aside>
+<%= paginate @users %>

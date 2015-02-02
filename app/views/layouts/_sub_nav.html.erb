@@ -36,6 +36,12 @@
         </dd>
       <% end %>
 
+      <% if current_page?(posts_path) || current_page?(catalogs_path) %>
+        <dd class="<%= current_page?(catalogs_path)? 'active' : '' %>">
+          <%= link_to '分类导航', catalogs_path, id: "nav-wish-list" %>
+        </dd>
+      <% end %>
+
       <% if user_signed_in? %>
         <dd class="<%= current_page?(pending_apply_students_user_path(current_user))? 'active' : '' %>">
           <%= link_to "申请学生", pending_apply_students_user_path(current_user), id: "nav-students" %>
