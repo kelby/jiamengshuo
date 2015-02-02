@@ -123,6 +123,11 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pr_geohash (1.0.0)
+    public_activity (1.4.1)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
@@ -235,6 +240,7 @@ DEPENDENCIES
   md_emoji
   mini_magick
   mysql2
+  public_activity
   quiet_assets
   rack-utf8_sanitizer
   rails (= 4.2.0)

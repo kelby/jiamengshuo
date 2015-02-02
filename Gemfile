@@ -31,6 +31,8 @@ gem 'acts_as_tree'
 gem 'rack-utf8_sanitizer'
 
 gem "acts_as_follower"
+
+gem 'public_activity'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record

@@ -40,6 +40,10 @@
         <dd class="<%= current_page?(pending_apply_students_user_path(current_user))? 'active' : '' %>">
           <%= link_to "申请学生", pending_apply_students_user_path(current_user), id: "nav-students" %>
         </dd>
+
+        <dd class="<%= current_page?(pending_apply_students_user_path(current_user))? 'active' : '' %>">
+          <%= link_to "消息墙", pending_apply_students_user_path(current_user), id: "nav-students" %>
+        </dd>
       <% end %>
   </dl>
 </div>

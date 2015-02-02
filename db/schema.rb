@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202115051) do
+ActiveRecord::Schema.define(version: 20150202130520) do
 
   create_table "admin_catalogs", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -64,6 +64,12 @@ ActiveRecord::Schema.define(version: 20150202115051) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.boolean  "checked",    limit: 1, default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
 
   create_table "pages", force: :cascade do |t|
     t.string   "name",       limit: 255
