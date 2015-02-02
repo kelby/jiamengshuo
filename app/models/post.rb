@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include PublicActivity::Common
+
   has_many :sections, dependent: :destroy
   has_many :subjects, through: :sections
   belongs_to :user

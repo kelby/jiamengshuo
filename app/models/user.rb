@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include PublicActivity::Common
+
   attr_accessor :login
 
   validates :username, :presence => true, :uniqueness => {:case_sensitive => false }

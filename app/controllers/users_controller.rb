@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   def follow
     @user = User.find params[:user_id]
     current_user.follow @user
+    current_user.create_activity :follow, owner: current_user, recipient: @user
 
     respond_to do |format|
       format.js
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
   def stop_following
     @user = User.find params[:user_id]
     current_user.stop_following @user
+    current_user.create_activity :stop_following, owner: current_user, recipient: @user
 
     respond_to do |format|
       format.js
