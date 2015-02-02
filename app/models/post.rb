@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   has_many :sections, dependent: :destroy
+  has_many :subjects, through: :sections
   belongs_to :user
 
   validates_presence_of :title, :description, :user_id
