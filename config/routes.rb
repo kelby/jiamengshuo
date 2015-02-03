@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :subjects
 
-  resources :replies
 
   resources :catalogs
 
@@ -26,6 +25,12 @@ Rails.application.routes.draw do
      end
     resources :comments
   end
+
+  resources :comments do
+    resources :replies
+  end
+
+  resources :replies
 
   get 'page/:name' => "pages#show", as: :page
 

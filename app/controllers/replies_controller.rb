@@ -14,14 +14,19 @@ class RepliesController < ApplicationController
 
   def new
     @reply = Reply.new
-    respond_with(@reply)
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.js
+    end
   end
 
   def edit
   end
 
   def create
-    @reply = Reply.new(reply_params)
+    @reply = current_user.replies.build(reply_params)
     @reply.save
     respond_with(@reply)
   end
