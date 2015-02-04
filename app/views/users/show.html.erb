@@ -1,7 +1,11 @@
 <div class="row">
   <!-- Sidebar -->
   <div class="large-3 columns">
-    <h5>Map</h5>
+    <h5>
+      <%= link_to edit_avatar_user_path(current_user) do %>
+        <i class="fi-widget"></i>
+      <% end %>
+    </h5>
     <!-- Clicking this placeholder fires the mapModal Reveal modal -->
     <p>
       <a href="" data-reveal-id="mapModal">

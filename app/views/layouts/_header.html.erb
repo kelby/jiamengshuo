@@ -46,9 +46,8 @@
           <% end %>
         </li>
         <li class="has-dropdown">
-          <%= link_to current_user.username, user_path(current_user) %>
+          <%= link_to current_user.username, "javascript:void(0);" %>
           <ul class="dropdown">
-            <li><%= link_to '修改头像', edit_avatar_user_path(current_user) %></li>
             <li><%= link_to '设置', edit_user_registration_path %></li>
             <li class="divider"></li>
             <li><%= link_to '注销', destroy_user_session_path, method: :delete %></li>
