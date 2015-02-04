@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :got_it]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :got_it, :spurn_it]
   before_action :set_wish, only: [:show, :edit, :update, :destroy, :got_it, :followers_by_user]
 
   respond_to :html
@@ -45,6 +45,14 @@ class WishesController < ApplicationController
 
   def got_it
     current_user.follow(@wish)
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def spurn_it
+    current_user.stop_following(@wish)
 
     respond_to do |format|
       format.js

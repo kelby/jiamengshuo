@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :wishes do
     member do
       post :got_it
+      delete :spurn_it
       get  :followers_by_user
     end
   end
