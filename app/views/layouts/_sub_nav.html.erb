@@ -1,20 +1,5 @@
 <div class="row">
   <dl class="sub-nav vertical">
-    <!-- <div class="small-3 columns">
-      <dt class="logo">
-        <%#= link_to root_path do %>
-          <%#= image_tag 'logo.png' %>
-        <%# end %>
-      </dt>
-    </div> -->
-
-    <!-- <div class="small-9 columns"> -->
-      <!-- <dd class="<%#= current_page?(root_path)? 'active' : '' %>"><a href="javascript:void(0)">All</a></dd> -->
-      <!-- <dd class="<%#= current_page?(page_path(:hots))? 'active' : '' %>"><a id="nav-hots" href="/page/hots">热门课程</a></dd> -->
-      <!-- <dd class="<%#= current_page?(page_path(:recommend))? 'active' : '' %>"><a id="nav-recommend" href="/page/recommend">导师推荐</a></dd> -->
-      <!-- <dd class="<%#= current_page?(page_path(:tags))? 'active' : '' %>"><a id="nav-tags" href="/page/tags">标签</a></dd> -->
-      <!-- <dd class="<%#= current_page?(page_path(:badges))? 'active' : '' %>"><a id="nav-badges" href="/page/badges">成就榜</a></dd> -->
-      <!-- <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd> -->
       <% if current_page?(posts_path) || current_page?(new_post_path) %>
         <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
           <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
@@ -46,11 +31,13 @@
         </dd>
       <% end %>
 
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_page?(user_path(current_user)) %>
         <dd class="<%= current_page?(pending_apply_students_user_path(current_user))? 'active' : '' %>">
           <%= link_to "申请学生", pending_apply_students_user_path(current_user), id: "nav-students" %>
         </dd>
+      <% end %>
 
+      <% if user_signed_in? && (current_page?(controller: :users) || current_page?(activities_index_path)) %>
         <dd class="<%= current_page?(activities_index_path)? 'active' : '' %>">
           <%= link_to "消息墙", activities_index_path, id: "nav-students" %>
         </dd>
