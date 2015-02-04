@@ -1,6 +1,6 @@
 class WishesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_wish, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :got_it]
+  before_action :set_wish, only: [:show, :edit, :update, :destroy, :got_it, :followers_by_user]
 
   respond_to :html
 
@@ -41,6 +41,18 @@ class WishesController < ApplicationController
   def destroy
     @wish.destroy
     respond_with(@wish)
+  end
+
+  def got_it
+    current_user.follow(@wish)
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def followers_by_user
+    @users = @wish.followers_by_type 'User'
   end
 
   private

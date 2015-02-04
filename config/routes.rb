@@ -14,7 +14,12 @@ Rails.application.routes.draw do
 
   resources :sections
 
-  resources :wishes
+  resources :wishes do
+    member do
+      post :got_it
+      get  :followers_by_user
+    end
+  end
 
   post 'topic_and_user/sticking/:id' => 'topic_and_user#sticking', as: :sticking_topic
   post 'topic_and_user/followering/:id' => 'topic_and_user#followering', as: :followering_topic

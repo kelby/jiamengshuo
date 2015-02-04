@@ -1,4 +1,6 @@
 class Wish < ActiveRecord::Base
+  acts_as_followable
+
   scope :active_wish, -> { last }
 
   belongs_to :user, required: true

@@ -4,13 +4,9 @@
 
 <div>
   <h4 id="joyride"><%= @active_wish.username %></h4>
-  <!-- <h5 class="so-awesome" id="numero1">Build Joyride with HTML</h5> -->
-
-  <p class="so-awesome" id="numero2">Wed, 28 Jan 2015 12:10:23</p><!--stops-->
-
+  <p class="so-awesome" id="numero2">Wed, 28 Jan 2015 12:10:23</p>
   <a class="secondary button" id="start-jr" name="start-jr">添加到心愿卡</a>
 </div>
-
 
 <hr>
 
@@ -20,24 +16,35 @@
       <% wishes.each do |wish| %>
         <div class="large-6 columns testimonial" data-equalizer-watch>
           <div class="quote">
-            <p>
-              <%= sanitize wish.content, tags: %w(br p) %>
-            </p>
+            <p><%= sanitize wish.content, tags: %w(br p) %></p>
           </div>
+
           <div class="student">
             <div class="photo"> </div>
-            <p><%= wish.username %></p>
-        <a href="#" class="fancy radius button">关注</a>
-            <p>Important person, some Company</p>
-    <%= time_ago_in_words wish.updated_at %>
+            <p><%= wish.username %>
+            <a href="#" class="fancy radius button tiny">关注</a></p>
+            <p> <i class="fi-clock"></i> <%= time_ago_in_words wish.updated_at %></p>
 
-          添加到心愿卡<br>
-      帮他实现
+            <%= form_tag got_it_wish_path(wish), remote: true, class: "js-toggler-form unstarred js-star-button" do %>
+              <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish) do %>
+                <i class="fi-star"></i><span>添加到心愿卡</span>
+              <% end %>
+
+              <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+            <% end %>
+
+            <%= form_tag "check_it_wish_path(wish)", remote: true, class: "js-toggler-form unstarred js-star-button" do %>
+              <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish) do %>
+                <i class="fi-check"></i><span>帮他实现</span>
+              <% end %>
+
+              <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
   <% end %>
-</div>              
+</div>
 
 <%= paginate @wishes %>
