@@ -1,4 +1,6 @@
 class Wish < ActiveRecord::Base
+  include PublicActivity::Common
+
   acts_as_followable
 
   scope :active_wish, -> { last }

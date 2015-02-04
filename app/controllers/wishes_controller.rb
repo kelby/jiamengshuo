@@ -27,6 +27,7 @@ class WishesController < ApplicationController
     @wish = current_user.wishes.build(wish_params)
 
     if @wish.save
+      @wish.create_activity :create, owner: current_user
       redirect_to wishes_path
     else
       render :new
@@ -45,6 +46,7 @@ class WishesController < ApplicationController
 
   def got_it
     current_user.follow(@wish)
+    @wish.create_activity :got_it, owner: current_user, recipient: @wish.user
 
     respond_to do |format|
       format.js
@@ -53,6 +55,7 @@ class WishesController < ApplicationController
 
   def spurn_it
     current_user.stop_following(@wish)
+    @wish.create_activity :spurn_it, owner: current_user, recipient: @wish.user
 
     respond_to do |format|
       format.js

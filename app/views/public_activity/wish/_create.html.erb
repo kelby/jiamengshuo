@@ -1,0 +1,7 @@
+create wish
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.content, activity.trackable %>
+<% else %>
+  which has since been removed
+<% end %>
