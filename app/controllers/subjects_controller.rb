@@ -9,6 +9,9 @@ class SubjectsController < ApplicationController
   end
 
   def show
+    @comment = @subject.comments.build
+    @comments = @subject.comments.reload
+
     respond_with(@subject)
   end
 

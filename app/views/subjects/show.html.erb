@@ -1,14 +1,59 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @subject.title %>
+  <h1><%= @subject.title %></h1>
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @subject.body %>
+  <%= raw(markdown_for @subject.body) %>
 </p>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+<% if can? :update, @subject %>
+  <%= link_to 'Edit', edit_subject_path(@subject) %>
+<% end %>
+
+<hr>
+
+<div class="row">
+  <div class="large-8  small-12 columns">
+    <% @comments.each do |comment| %>
+      <div class="comment" id="<%= dom_id comment %>">
+        <section class="top">
+          <h6 class="byline">
+            <a href="#"><i class="icon"></i><%= comment.user.username %><% if comment.user == @subject.user %>
+                  <span class="label"> Post Author</span>
+                <% end %></a>
+            <small>said 
+              <span class="data">
+                <%= time_ago_in_words comment.created_at %>
+              </span>
+            </small>
+          </h6>
+        </section>
+        <section class="content">
+          <%= sanitize markdown_for(comment.content), tags: %w(br p) %>
+        </section>
+        <section class="actions">
+
+          <ul class="inline-list">
+            <li><a href="#">Like (3)</a></li>
+            <li><a href="#">Share</a></li>
+            <li>
+              <%= link_to "Reply", new_comment_reply_path(comment), remote: true %>
+            </li>
+          </ul>
+
+        </section>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+<%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
+  <%= f.text_area :content, rows: 10 %>
+  <%= f.submit %>
+<% end %>
+

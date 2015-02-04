@@ -1,32 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Topics</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @topics.each do |topic| %>
-      <tr>
-        <td>
-          <%= link_to topic do %>
-            <%= topic.title %>
-          <% end %>
-        </td>
-        <td><%= topic.body %></td>
+      <article class="guide-listing js-guide-listing">
+
+        <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern topic.title %>;">
+          <a href="/introduction/flow">
+            <div class="icon-container">
+              <span class="mega-octicon octicon-git-branch"></span>
+            </div>
+            <h3 class="guide-cover-title js-guide-cover-title panel-white">
+              <%= link_to topic do %>
+                <%= topic.title %>
+              <% end %>
+            </h3>
+          </a>
+        </div>
+
+        <p class="guide-summary">
+          <%= raw(markdown_for topic.body) %>
+        </p>
+
+        <p class="guide-read-time">
+          <span class="octicon octicon-clock"></span> 5 minute read
+        </p>
 
         <% if can? :update, topic %>
           <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
         <% end %>
-      </tr>
+      </article>
     <% end %>
-  </tbody>
-</table>
+
 
 <%= paginate @topics %>

@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :replies, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :sections, dependent: :destroy
+  has_many :subjects, dependent: :destroy
 
   # join table
   has_many :applies

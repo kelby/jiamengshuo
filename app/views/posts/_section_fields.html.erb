@@ -4,7 +4,21 @@
     <i class="fi-x medium"></i>
   <% end %>
     <br>
-  <%= f.text_field :heading %>
+  <div class="row collapse">
+    <div class="small-9 columns">
+      <%= f.text_field :heading %>
+      <!-- <input type="text" placeholder="Hex Value"> -->
+    </div>
+    <div class="small-3 columns">
+      <!-- <a href="#" class="button postfix">Go</a> -->
+      <a href="#" class="small secondary postfix radius button split">Split Button <span data-dropdown="drop2" aria-expanded="true"></span></a>
+      <ul id="drop2" class="f-dropdown" data-dropdown-content="" style="position: absolute; left: -99999px; top: 346.765625px;" aria-hidden="true">
+        <li><a href="#">This is a link</a></li>
+        <li><a href="#">This is another</a></li>
+        <li><a href="#">Yet another</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="field">
   <%= f.label :description, "课程简述" %><br>

@@ -15,14 +15,18 @@
       <!-- <dd class="<%#= current_page?(page_path(:tags))? 'active' : '' %>"><a id="nav-tags" href="/page/tags">标签</a></dd> -->
       <!-- <dd class="<%#= current_page?(page_path(:badges))? 'active' : '' %>"><a id="nav-badges" href="/page/badges">成就榜</a></dd> -->
       <!-- <dd><a id="nav-divider" href="javascript:void(0)">  |  </a></dd> -->
-      <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+      <% if current_page?(posts_path) || current_page?(new_post_path) %>
+        <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+          <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
+          <%= link_to "发布课程大纲", new_post_path %>
+        </dd>
+      <% end %>
+      <% if current_page?(subjects_path) || current_page?(new_post_path) %>
+      <dd class="<%= current_page?(new_subject_path)? 'active' : '' %>">
         <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
-        <%= link_to "发布课程大纲", new_post_path %>
+        <%= link_to "发布课程", new_subject_path %>
       </dd>
-      <dd class="<%= current_page?(new_section_path)? 'active' : '' %>">
-        <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
-        <%= link_to "发布课程", new_section_path %>
-      </dd>
+      <% end %>
 
       <% if current_page?(wishes_path) || current_page?(new_wish_path) %>
         <dd class="<%= current_page?(new_wish_path)? 'active' : '' %>">
@@ -32,7 +36,7 @@
     <!-- </div> -->
       <% if current_page?(topics_path) || current_page?(new_topic_path) %>
         <dd class="<%= current_page?(new_topic_path)? 'active' : '' %>">
-          <%= link_to '新建话题、提问', new_topic_path, id: "nav-wish-list" %>
+          <%= link_to '新建话题', new_topic_path, id: "nav-wish-list" %>
         </dd>
       <% end %>
 

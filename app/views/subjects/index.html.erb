@@ -1,29 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Subjects</h1>
+<% @subjects.each do |subject| %>
+  <section>
+    <div class="large-12 columns centered-text">
+      <h2><%= link_to subject.title, subject %></h2>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="small-1 large-1 columns testimonial">
+      <div class="quote-marks">“</div>
+    </div>
 
-  <tbody>
-    <% @subjects.each do |subject| %>
-      <tr>
-        <td><%= subject.title %></td>
-        <td><%= subject.body %></td>
-        <td><%= link_to 'Show', subject %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Subject', new_subject_path %>
+    <div class="small-11 large-11 columns testimonial">
+      <div class="quote">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices, elit sed faucibus pharetra, diam mauris bibendum orci, sit amet ullamcorper purus dui sit amet augue. Donec aliquet diam ut neque mattis, eu tristique sem rutrum.</p>
+      </div>
+      <div class="student">
+        <div class="photo"> </div>
+        <p>John Doe</p>
+        <p>Important person, some Company</p>
+      </div>
+    </div>
+  </section>
+<% end %>

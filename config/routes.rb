@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   get 'activities/index'
 
-  resources :subjects
-
+  resources :subjects do
+    resources :comments
+  end
 
   resources :catalogs
 

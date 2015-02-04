@@ -22,11 +22,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @topic = Topic.find(params[:topic_id])
-    @comment = @topic.comments.build(comment_params.merge(user_id: current_user.id))
+    @topic = Topic.find(params[:topic_id]) if params[:topic_id]
+    @subject = Subject.find(params[:subject_id]) if params[:subject_id]
+    commentable = @topic || @subject
+
+    @comment = commentable.comments.build(comment_params.merge(user_id: current_user.id))
     @comment.save
 
-    redirect_to @topic
+    redirect_to commentable
   end
 
   def update

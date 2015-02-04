@@ -1,10 +1,10 @@
 <% @users.each_slice(4) do |users| %>
   <div class="row" data-equalizer>
     <% users.each do |user| %>
-      <div class="large-3 columns" data-equalizer-watch>
+      <div class="large-3 columns end" data-equalizer-watch>
         <div class="item-wrapper">
           <div class="img-wrapper">
-            <% if current_user.following?(user) %>
+            <% if user_signed_in? && current_user.following?(user) %>
               <%= render 'users/stop_following', user: user %>
             <% else %>
               <%= render 'users/follow', user: user %>
