@@ -75,6 +75,8 @@ class MarkdownConverter
 end
 
 class MarkdownTopicConverter < MarkdownConverter
+  attr_reader :emoji
+
   def self.format(raw)
     self.instance.format(raw)
   end
@@ -87,11 +89,13 @@ class MarkdownTopicConverter < MarkdownConverter
     # users = normalize_user_mentions(text) # kelby
 
     # 如果 ``` 在刚刚换行的时候 Redcapter 无法生成正确，需要两个换行
-    text.gsub!("\n```","\n\n```")
+    # text.gsub!("\n```","\n\n```")
 
     result = convert(text)
 
+    result = emoji.replace_emoji(result) # kelby
     doc = Nokogiri::HTML.fragment(result)
+
     # link_mention_floor(doc) # kelby
     # link_mention_user(doc, users) # kelby
     # replace_emoji(doc) # kelby
