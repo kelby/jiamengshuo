@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @teachers = @user.teachers.includes(:recipient)
+    @students = @user.students.includes(:recipient)
+    @classmates = @user.classmates.includes(:recipient)
+    @followers = @user.followers
   end
 
   def index

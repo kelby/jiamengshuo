@@ -46,7 +46,7 @@
         <h5 class="title">我的老师们:</h5> 对所有老师说~
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <% current_user.teachers.includes(:recipient).each do |ur| %>
+            <% @teachers.includes(:recipient).each do |ur| %>
               <li>
                 <a href="mailto:mal@serenity.bc.reb">
                 <%= link_to ur.recipient do %>
@@ -63,7 +63,7 @@
         <h5 class="title">我的学生们:</h5> 对所有学生说~
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <% current_user.students.includes(:recipient).each do |ur| %>
+            <% @students.includes(:recipient).each do |ur| %>
               <li>
                 <%= link_to ur.recipient do %>
                   <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
@@ -79,14 +79,14 @@
         <h5 class="title">同学、朋友:</h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <% current_user.classmates.includes(:recipient).each do |ur| %>
+            <% @classmates.includes(:recipient).each do |ur| %>
               <li>
                 <%= link_to ur.recipient do %>
                   <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
                 <% end %>
               </li>
             <% end %>
-            <% current_user.followers.each do |user| %>
+            <% @followers.each do |user| %>
               <li>
                 <%= link_to user do %>
                   <%= image_tag user.avatar_url(:thumb) %><%= user.username %>
