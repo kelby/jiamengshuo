@@ -50,7 +50,7 @@
               <li>
                 <a href="mailto:mal@serenity.bc.reb">
                 <%= link_to ur.recipient do %>
-                  <%= image_tag ur.recipient.avatar_url(:thumb) %><%= ur.recipient.username %>
+                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
                 <% end %>
               </li>
             <% end %>
@@ -66,7 +66,7 @@
             <% current_user.students.includes(:recipient).each do |ur| %>
               <li>
                 <%= link_to ur.recipient do %>
-                  <%= image_tag ur.recipient.avatar_url(:thumb) %><%= ur.recipient.username %>
+                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
                 <% end %>
               </li>
             <% end %>
@@ -82,7 +82,7 @@
             <% current_user.classmates.includes(:recipient).each do |ur| %>
               <li>
                 <%= link_to ur.recipient do %>
-                  <%= image_tag ur.recipient.avatar_url(:thumb) %><%= ur.recipient.username %>
+                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
                 <% end %>
               </li>
             <% end %>
