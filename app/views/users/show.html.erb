@@ -41,80 +41,62 @@
           </form>
         </div>
       </section>
+
       <section class="section">
         <h5 class="title">我的老师们:</h5> 对所有老师说~
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <li><a href="mailto:mal@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Mal Reynolds</a></li>
-            <li><a href="mailto:zoe@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Zoe Washburne</a></li>
-            <li><a href="mailto:jayne@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Jayne Cobb</a></li>
-            <li><a href="mailto:doc@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Simon Tam</a></li>
-            <li><a href="mailto:killyouwithmymind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">River Tam</a></li>
-            <li><a href="mailto:leafonthewind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Hoban Washburne</a></li>
-            <li><a href="mailto:book@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Shepherd Book</a></li>
-            <li><a href="mailto:klee@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Kaywinnet Lee Fry</a></li>
-            <li><a href="mailto:inara@guild.comp.all"><img src="http://placehold.it/200x200&amp;text=[person]">Inarra Serra</a></li>
+            <% current_user.teachers.includes(:recipient).each do |ur| %>
+              <li>
+                <a href="mailto:mal@serenity.bc.reb">
+                <%= link_to ur.recipient do %>
+                  <%= image_tag ur.recipient.avatar_url(:thumb) %><%= ur.recipient.username %>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </section>
+      <hr>
 
       <section class="section">
         <h5 class="title">我的学生们:</h5> 对所有学生说~
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <li><a href="mailto:mal@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Mal Reynolds</a></li>
-            <li><a href="mailto:zoe@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Zoe Washburne</a></li>
-            <li><a href="mailto:jayne@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Jayne Cobb</a></li>
-            <li><a href="mailto:doc@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Simon Tam</a></li>
-            <li><a href="mailto:killyouwithmymind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">River Tam</a></li>
-            <li><a href="mailto:leafonthewind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Hoban Washburne</a></li>
-            <li><a href="mailto:book@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Shepherd Book</a></li>
-            <li><a href="mailto:klee@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Kaywinnet Lee Fry</a></li>
-            <li><a href="mailto:inara@guild.comp.all"><img src="http://placehold.it/200x200&amp;text=[person]">Inarra Serra</a></li>
+            <% current_user.students.includes(:recipient).each do |ur| %>
+              <li>
+                <%= link_to ur.recipient do %>
+                  <%= image_tag ur.recipient.avatar_url(:thumb) %><%= ur.recipient.username %>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </section>
+      <hr>
 
       <section class="section">
         <h5 class="title">同学、朋友:</h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <li><a href="mailto:mal@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Mal Reynolds</a></li>
-            <li><a href="mailto:zoe@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Zoe Washburne</a></li>
-            <li><a href="mailto:jayne@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Jayne Cobb</a></li>
-            <li><a href="mailto:doc@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Simon Tam</a></li>
-            <li><a href="mailto:killyouwithmymind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">River Tam</a></li>
-            <li><a href="mailto:leafonthewind@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Hoban Washburne</a></li>
-            <li><a href="mailto:book@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Shepherd Book</a></li>
-            <li><a href="mailto:klee@serenity.bc.reb"><img src="http://placehold.it/200x200&amp;text=[person]">Kaywinnet Lee Fry</a></li>
-            <li><a href="mailto:inara@guild.comp.all"><img src="http://placehold.it/200x200&amp;text=[person]">Inarra Serra</a></li>
+            <% current_user.classmates.includes(:recipient).each do |ur| %>
+              <li>
+                <%= link_to ur.recipient do %>
+                  <%= image_tag ur.recipient.avatar_url(:thumb) %><%= ur.recipient.username %>
+                <% end %>
+              </li>
+            <% end %>
+            <% current_user.followers.each do |user| %>
+              <li>
+                <%= link_to user do %>
+                  <%= image_tag user.avatar_url(:thumb) %><%= user.username %>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </section>
     </div>
   </div>
   <!-- End Contact Details -->
-
-  <!-- Tab Begin -->
-  <ul class="tabs vertical large-3 columns" data-tab>
-    <li class="tab-title active"><a href="#panel11">交流小组</a></li>
-    <li class="tab-title"><a href="#panel21">我的心愿单</a></li>
-    <li class="tab-title"><a href="#panel31">小组教学计划</a></li>
-  </ul>
-
-  <div class="tabs-content large-9 columns">
-    <div class="content active" id="panel11">
-      <p>This is the first panel of the basic tab example. You can place all sorts of content here including a grid.</p>
-    </div>
-    <div class="content" id="panel21">
-      <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
-    </div>
-    <div class="content" id="panel31">
-      <h3>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</h3>
-      <p>如果你也是0基础，咱们互帮督促，互相学习交流，
-             互相分享好的资料，一起从0开始学习如何做产品，
-             共同进步！我这样的导师会不会收到徒弟？</p>
-    </div>
-  </div>
-  <!-- Tab End -->
 </div>

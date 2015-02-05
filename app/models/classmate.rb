@@ -1,0 +1,2 @@
+class Classmate < UserRelationship
+end

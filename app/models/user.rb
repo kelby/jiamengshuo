@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :mentor_pending_applies, ->{ pending }, class_name: 'Apply', foreign_key: :mentor_id
   has_many :pending_apply_students, class_name: 'User', through: :mentor_pending_applies, foreign_key: :mentor_id
 
-  # join tables
+  # join tables, for topics.
   has_many :sticks, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'
   has_many :followers, ->{ where related_by: 'follower'}, class_name: 'TopicAndUser'
   has_many :keepers, ->{ where related_by: 'keeper'}, class_name: 'TopicAndUser'
@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
   has_many :stick_topics, class_name: 'Topic', through: :sticks
   has_many :follower_topics, class_name: 'Topic', through: :followers
   has_many :keeper_topics, class_name: 'Topic', through: :keepers
+
+  has_many :teachers, foreign_key: :owner_id
+  has_many :students, foreign_key: :owner_id
+  has_many :classmates, foreign_key: :owner_id
 
   acts_as_followable
   acts_as_follower

@@ -149,3 +149,9 @@ User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，�
 User.where(id: user_ids.sample(10)).update_all info: "互联网爱好者，努力充电，寻找机遇。"
 User.where(id: user_ids.sample(10)).update_all info: "Dreams will keep me young."
 User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。有想法去实现~shixian.com"
+
+100.times do
+  Teacher.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
+  Student.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
+  Classmate.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
+end
