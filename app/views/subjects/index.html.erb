@@ -16,10 +16,10 @@
       <div class="quote">
         <p>
         <% if subject.desc_long_comment.present? %>
-          <%= subject.desc_long_comment.content %>
+          <%= raw markdown_for(subject.desc_long_comment.content) %>
           <i class="fi-comment-quotes large"></i>
         <% else %>
-          <%= truncate subject.body, length: 140 %>
+          <%= raw markdown_for(truncate subject.body, length: 140) %>
         <% end %>
         </p>
       </div>
