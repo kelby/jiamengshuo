@@ -37,7 +37,7 @@
         </dd>
       <% end %>
 
-      <% if user_signed_in? && (current_page?(controller: :users) || current_page?(activities_index_path)) %>
+      <% if user_signed_in? && (current_page?(user_path(current_user)) || current_page?(activities_index_path)) %>
         <dd class="<%= current_page?(activities_index_path)? 'active' : '' %>">
           <%= link_to "消息墙", activities_index_path, id: "nav-students" %>
         </dd>
