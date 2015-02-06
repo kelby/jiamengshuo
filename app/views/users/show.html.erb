@@ -52,7 +52,7 @@
       </section>
 
       <section class="section">
-        <h5 class="title">我的导师们:</h5> 对所有导师说~
+        <h5 class="title">我的导师们:<span class="right">对所有导师说~</span></h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
             <% @teachers.includes(:recipient).each do |ur| %>
@@ -69,7 +69,7 @@
       <hr>
 
       <section class="section">
-        <h5 class="title">我的学生们:</h5> 对所有学生说~
+        <h5 class="title">我的学生们:<span class="right">对所有学生说~</span></h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
             <% @students.includes(:recipient).each do |ur| %>
