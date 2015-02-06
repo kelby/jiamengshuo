@@ -1,34 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-    <% @topics.each do |topic| %>
-      <article class="guide-listing js-guide-listing">
-
-        <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern topic.title %>;">
-          <a href="/introduction/flow">
-            <div class="icon-container">
-              <span class="mega-octicon octicon-git-branch"></span>
-            </div>
-            <h3 class="guide-cover-title js-guide-cover-title panel-white">
-              <%= link_to topic do %>
-                <%= topic.title %>
-              <% end %>
-            </h3>
-          </a>
+<% @topics.each do |topic| %>
+  <article class="guide-listing js-guide-listing">
+    <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern topic.title %>;">
+      <%= link_to topic do %>
+        <div class="icon-container panel-white">
+          <span class="fi-page large"></span>
         </div>
+        <h3 class="guide-cover-title js-guide-cover-title panel-white">
+          <%= topic.title %>
+        </h3>
+      <% end %>
+    </div>
 
-        <p class="guide-summary">
-          <%= raw(markdown_for topic.body) %>
-        </p>
+    <p class="guide-summary">
+      <%= raw(markdown_for topic.body) %>
+    </p>
 
-        <p class="guide-read-time">
-          <span class="octicon octicon-clock"></span> 5 minute read
-        </p>
+    <p class="guide-read-time">
+      <span class="octicon octicon-clock"></span> 5 minute read
+    </p>
 
-        <% if can? :update, topic %>
-          <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <% end %>
-      </article>
+    <% if can? :update, topic %>
+      <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
     <% end %>
-
+  </article>
+<% end %>
 
 <%= paginate @topics %>

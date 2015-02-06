@@ -16,11 +16,6 @@
 
  */
 
-.vertical {
-  height: 100px;
-  line-height: 100px;/*值等于元素高度的值*/
-}
-
 a.no_background{
   background: #333333;
 }
@@ -76,3 +71,6 @@ border-top-right-radius: 3px;
 border-bottom-right-radius: 3px;
 }
 /* End From Github */
+
+/* For code end */
+pre { margin-bottom: 15px; }

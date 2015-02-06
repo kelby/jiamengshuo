@@ -1,11 +1,13 @@
-<h1 style="background-image: <%= pattern @post.title %>;">
-  <% if @post.icon %>
-    <span class="fi-<%= @post.icon %> large"></span>
-  <% else %>
-    <span class="fi-page large"></span>
-  <% end %>
-
+<h1 class='panel-white' style="background-image: <%= pattern @post.title %>;">
+  <div class="icon-container panel-white show_title">
+    <% if @post.icon %>
+      <span class="fi-<%= @post.icon %> large"></span>
+    <% else %>
+      <span class="fi-page large"></span>
+    <% end %>
+  </div>
   <%= @post.title %>
+
 </h1>
 
 
