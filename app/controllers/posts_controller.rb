@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      _params = params.require(:post).permit(:title, :description, {:sections_attributes => [:id, :heading, :description]})
+      _params = params.require(:post).permit(:title, :icon, :description, {:sections_attributes => [:id, :heading, :description]})
       _params[:sections_attributes].each{ |_, value| value.merge!(user_id: current_user.id) if value } if _params[:sections_attributes]
       _params
     end

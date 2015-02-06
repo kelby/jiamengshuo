@@ -1,5 +1,10 @@
 <h1 style="background-image: <%= pattern @post.title %>;">
-  <span class="fi-page large"></span>
+  <% if @post.icon %>
+    <span class="fi-<%= @post.icon %> large"></span>
+  <% else %>
+    <span class="fi-page large"></span>
+  <% end %>
+
   <%= @post.title %>
 </h1>
 

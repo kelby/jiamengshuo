@@ -7,7 +7,11 @@
         <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern post.title %>;">
           <%= link_to post do %>
             <div class="icon-container">
-              <span class="fi-page large"></span>
+              <% if post.icon %>
+                <span class="fi-<%= post.icon %> large"></span>
+              <% else %>
+                <span class="fi-page large"></span>
+              <% end %>
             </div>
             <h3 class="guide-cover-title js-guide-cover-title"><%= post.title %></h3>
           <% end %>

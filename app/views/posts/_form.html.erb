@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <div class="row collapse">
+    <%= f.label :icon %><br>
+
+    <div class="small-3 large-2 columns">
+      <span class="prefix">fi-</span>
+    </div>
+
+    <div class="small-9 large-10 columns">
+      <%= f.text_field :icon %>
+    </div>
+  </div>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -24,16 +36,6 @@
   <%= f.fields_for :sections do |builder| %>
      <%= render "section_fields", :f => builder %>
   <% end %>
-
-
-  <!-- <div class="field"> -->
-    <%#= f.label :position %>
-    <%#= f.number_field :position %>
-  <!-- </div> -->
-  <!-- <div class="field"> -->
-    <%#= f.label :post_id %>
-    <%#= f.number_field :post_id %>
-  <!-- </div> -->
 
   <section id="add_section">
     <%= link_to "添加课程及简述", add_section_path, remote: true, method: :post, disable_with: '...' %>
