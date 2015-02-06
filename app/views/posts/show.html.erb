@@ -1,31 +1,38 @@
-<p id="notice"><%= notice %></p>
+<h1 style="background-image: <%= pattern @post.title %>;">
+  <span class="fi-page large"></span>
+  <%= @post.title %>
+</h1>
 
-采用设计，可以参考：https://guides.github.com/features/pages/#intro
 
-<p>
-  <h1><%= @post.title %></h1>
-</p>
+<div class="row">
+  <div class="large-9 columns" role="content">
+    <p>
+      <%= raw(markdown_for @post.description) %>
+    </p>
 
-<p>
-  <%= raw(markdown_for @post.description) %>
-</p>
-
-<div class="row step-by-step-style-one">
-  <div class="small-12 columns">
     <% @sections.each_with_index do |section, index| %>
-      <!-- <div class="path-item"> -->
-        <!-- <div class="circlenumber"> -->
-          <!-- <h3><%#= index %></h3> -->
-        <!-- </div> -->
-
         <% if section.heading.present? %>
-          <h2 class="panel"><%= section.heading %></h2>
+          <h2 class="panel"><%= link_to section.heading, "##{dom_id section}" %><%=  %></h2>
         <% end %>
 
         <p><%= raw(markdown_for section.description) %></p>
       <!-- </div> -->
     <% end %>
   </div>
+
+  <aside class="large-3 columns">
+    <h5>Toc</h5>
+
+    <div data-magellan-expedition="fixed">
+      <ul class="sub-nav">
+        <% @sections.each_with_index do |section, index| %>
+          <li data-magellan-arrival="build">
+            <%= link_to section.heading, "##{dom_id section}" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </aside>
 </div>
 
 <% if can? :update, @post %>
