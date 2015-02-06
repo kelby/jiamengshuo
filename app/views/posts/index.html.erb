@@ -4,10 +4,10 @@
   <article class="row circle-list">
     <% posts.each do |post| %>
       <div class="medium-4 columns">
-        <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern post.title %>;">
+        <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern post.title %>;text-align: center;">
           <%= link_to post do %>
-            <div class="icon-container panel-white">
-              <% if post.icon %>
+            <div class="icon-container panel-white" style="display: inline-block;">
+              <% if post.icon.present? %>
                 <span class="fi-<%= post.icon %> large mega-octicon"></span>
               <% else %>
                 <span class="fi-page-multiple large mega-octicon"></span>
@@ -18,7 +18,7 @@
         </div>
 
         <p class="subheader"><%= image_tag post.user.avatar_url(:tiny), class: 'super_tiny_avatar' %>&nbsp;<%= post.user.username %></p>
-        <p><%= post.description %></p>
+        <p><%= truncate post.description, length: 450 %></p>
         <p><i class="fi-clock"></i>&nbsp;<%= post.updated_at %></p>
       </div>
       <hr class="dashed hide-for-medium-up">
