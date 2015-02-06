@@ -1,4 +1,6 @@
 class Topic < ActiveRecord::Base
+  include PublicActivity::Common
+
   acts_as_taggable
   belongs_to :user
   has_many   :comments, as: :commentable, dependent: :destroy

@@ -1,0 +1,15 @@
+create comment to
+
+<% if activity.recipient %>
+  <%= link_to activity.recipient.title, activity.recipient %>
+<% else %>
+  which has since been removed
+<% end %>
+
+which created by
+
+<% if activity.recipient.user %>
+  <%= link_to activity.recipient.user.username, activity.recipient.user %>
+<% else %>
+  which has since been removed
+<% end %>

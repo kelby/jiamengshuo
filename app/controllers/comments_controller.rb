@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
 
     @comment = commentable.comments.build(comment_params.merge(user_id: current_user.id))
     @comment.save
+    @comment.create_activity :create, owner: current_user, recipient: commentable
 
     redirect_to commentable
   end

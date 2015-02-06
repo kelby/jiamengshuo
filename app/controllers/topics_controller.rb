@@ -28,6 +28,7 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.build(topic_params)
     @topic.save!
+    @topic.create_activity :create, owner: current_user
     respond_with(@topic)
   end
 
