@@ -13,8 +13,11 @@
       <a href="" data-reveal-id="mapModal">
         <%= image_tag @user.avatar_url(:thumb), class: 'thumb_avatar' %>
       </a>
+      <br>
       <%= @user.username %>
+      <br>
       男
+      <br>
       Programmer
     </p>
     <p>
@@ -23,6 +26,9 @@
       粉丝：<%= @user.count_user_followers %>
       <br>
       标签：程度员 Ruby Rails
+    </p>
+    <p>
+      个性签名：<%= @user.info %>
     </p>
   </div>
   <!-- End Sidebar -->
