@@ -1,4 +1,8 @@
-<h2>Sign up</h2>
+<h2>Sign up
+  <%= link_to "https://github.com/plataformatec/devise", target: "_blank" do %>
+    <%= image_tag 'devise.png', class: 'right devise_logo' %>
+  <% end %>
+</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
