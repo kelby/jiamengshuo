@@ -4,6 +4,7 @@ class Wish < ActiveRecord::Base
   acts_as_followable
 
   scope :active_wish, -> { last }
+  scope :index_wishs, -> { where.not(id: active_wish.id).order('id DESC') }
 
   belongs_to :user, required: true
 

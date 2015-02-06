@@ -5,8 +5,8 @@ class WishesController < ApplicationController
   respond_to :html
 
   def index
-    @wishes = Wish.page(params[:page] || 1).per(24)
     @active_wish = Wish.active_wish
+    @wishes = Wish.index_wishs.page(params[:page] || 1).per(24)
 
     respond_with(@wishes)
   end
