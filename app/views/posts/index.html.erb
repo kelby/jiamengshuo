@@ -1,44 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <% @posts.each_slice(3) do |posts| %>
-  <div class="row circle-list skill-list">
+  <article class="row circle-list skill-list">
     <% posts.each do |post| %>
       <div class="medium-4 columns">
-        <!-- <img src="assets/img/images/css.svg"> -->
-        <h4><%= link_to post.title, post %></h4>
-        <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i></p>
+        <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern post.title %>;">
+          <%= link_to post do %>
+            <div class="icon-container">
+              <span class="fi-page large"></span>
+            </div>
+            <h3 class="guide-cover-title js-guide-cover-title"><%= post.title %></h3>
+          <% end %>
+        </div>
+
+        <p class="skill-level subheader"><%= image_tag post.user.avatar_url(:tiny), class: 'super_tiny_avatar' %>&nbsp;<%= post.user.username %></p>
         <p>The straight CSS version is perfect if you want to just start writing code, rapid prototype, or building a simple, static site. We'll give you all the pieces you need, no setup required.</p>
-        <p><a href="css.html">CSS Install →</a></p>
+        <p><i class="fi-clock"></i>&nbsp;<%= post.updated_at %></p>
       </div>
 
       <hr class="dashed hide-for-medium-up">
     <% end %>
-  </div>
+  </article>
 <% end %>
-
-
-<h4>课程集合</h4>
-
-<ul class="panel-white">
-  <% @posts.each do |post| %>
-    <li style="background-image: <%= pattern post.title %>;">
-      <%= link_to post.title, post %>
-
-      <% if can? :update, post %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-      <% end %>
-
-      <% if can? :delete, post %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<div class="row">
-<div class="large-12 columns centered-text">
-<h2>Let Us Help You</h2>
-<h4 class="subheader">Where ever you are, count on us</h4>
-<p>We've made Foundation the lightest responsive framework so that it's fast and easy to use. But we understand that sometimes folks get stuck. That's why we're available to answer your questions and you can hit us up on any of these channels.</p>
-</div>
-</div>
