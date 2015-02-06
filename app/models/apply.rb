@@ -1,4 +1,6 @@
 class Apply < ActiveRecord::Base
+  include PublicActivity::Common
+
   belongs_to :apply_student, class_name: 'User', foreign_key: :user_id
   belongs_to :applied_mentor, class_name: 'User', foreign_key: :mentor_id
 

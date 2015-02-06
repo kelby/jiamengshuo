@@ -1,0 +1,7 @@
+approve apply, which created by
+
+<% if activity.recipient %>
+  <%= link_to activity.recipient.username, activity.recipient %>
+<% else %>
+  which has since been removed
+<% end %>
