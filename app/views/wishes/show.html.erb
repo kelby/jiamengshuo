@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Content:</strong>
   <%= @wish.content %>
 </p>
 
-<%= link_to 'Edit', edit_wish_path(@wish) %> |
-<%= link_to 'Back', wishes_path %>
+<% if can? :update, @wish %>
+  <%= link_to 'Edit', edit_wish_path(@wish) %>
+<% end %>
