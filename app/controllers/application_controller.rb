@@ -18,4 +18,21 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
+
+  helper_method :can_comment?
+  def can_comment?(subject)
+    user = subject.user
+
+    # 没登录
+    return false unless user_signed_in?
+    # 作者本人
+    return true if subject.user_id == current_user.id
+
+    return true if user.teachers.ids.include? current_user.id
+    return true if user.students.ids.include? current_user.id
+    return true if user.classmates.ids.include? current_user.id
+    return true if (user.following_users.include? current_user.id) && (current_user.following_users.include? user.id)
+
+    return false
+  end
 end

@@ -26,6 +26,8 @@ class CommentsController < ApplicationController
     @subject = Subject.find(params[:subject_id]) if params[:subject_id]
     commentable = @topic || @subject
 
+    redirect_to(commentable, alert: "只有已登录用户，及导师、学生、同学、朋友可以评论哦 ~") and return if @subject && !can_comment?(@subject)
+
     @comment = commentable.comments.build(comment_params.merge(user_id: current_user.id))
     @comment.save
     @comment.create_activity :create, owner: current_user, recipient: commentable

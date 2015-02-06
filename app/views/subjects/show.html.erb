@@ -12,9 +12,21 @@
   <%= link_to 'Edit', edit_subject_path(@subject) %>
 <% end %>
 
-<hr>
+<hr class="dashed">
 
 <div class="row">
+
+  <%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
+    <% if can_comment?(@subject) %>
+      <%= f.text_area :content, rows: 10 %>
+    <% else %>
+      <%= f.text_area :content, rows: 10, disabled: true, placeholder: "只有已登录用户，及导师、学生、同学、朋友可以评论哦 ~" %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+
+  <hr class="dashed">
+
   <% @comments.each do |comment| %>
     <div class="comment" id="<%= dom_id comment %>">
       <section class="top">
@@ -48,10 +60,5 @@
   <% end %>
 </div>
 
-<hr>
 
-<%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
-  <%= f.text_area :content, rows: 10 %>
-  <%= f.submit %>
-<% end %>
 
