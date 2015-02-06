@@ -18,13 +18,12 @@
   <%= raw(markdown_for @topic.body) %>
 </p>
 
-<p>
-  <strong>Tag List:</strong>
+<p class="tags">
+  <strong>Tag List:&nbsp;</strong>
   <% @topic.tags.each do |tag| %>
-    <%= tag.name %>
+    <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
   <% end %>
 </p>
-
 
 <br>
 
