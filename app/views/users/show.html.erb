@@ -2,8 +2,10 @@
   <!-- Sidebar -->
   <div class="large-3 columns">
     <h5>
-      <%= link_to edit_avatar_user_path(current_user) do %>
-        <i class="fi-widget"></i>
+      <% if can? :update, @user %>
+        <%= link_to edit_avatar_user_path(@user) do %>
+          <i class="fi-widget"></i>
+        <% end %>
       <% end %>
     </h5>
     <!-- Clicking this placeholder fires the mapModal Reveal modal -->
@@ -16,8 +18,9 @@
       Programmer
     </p>
     <p>
-      关注 25
-      粉丝 30
+      关注：<%= @user.following_users_count %>
+      <br>
+      粉丝：<%= @user.count_user_followers %>
       <br>
       标签：程度员 Ruby Rails
     </p>
