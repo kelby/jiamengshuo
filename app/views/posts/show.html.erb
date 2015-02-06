@@ -6,6 +6,10 @@
   <h1><%= @post.title %></h1>
 </p>
 
+<p>
+  <%= raw(markdown_for @post.description) %>
+</p>
+
 <div class="row step-by-step-style-one">
   <div class="small-12 columns">
     <% @sections.each_with_index do |section, index| %>
@@ -15,7 +19,7 @@
         <!-- </div> -->
 
         <% if section.heading.present? %>
-          <p class="panel"><%= section.heading %></p>
+          <h2 class="panel"><%= section.heading %></h2>
         <% end %>
 
         <p><%= raw(markdown_for section.description) %></p>

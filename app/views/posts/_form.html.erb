@@ -16,6 +16,10 @@
     <%= f.text_field :title %>
   </div>
 
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, rows: 5 %>
+  </div>
 
   <%= f.fields_for :sections do |builder| %>
      <%= render "section_fields", :f => builder %>
