@@ -155,3 +155,8 @@ User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，�
   Student.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
   Classmate.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
 end
+
+Post.where(description: nil).each do |post|
+  post.description = Faker::Lorem.paragraph(2)
+  post.save
+end

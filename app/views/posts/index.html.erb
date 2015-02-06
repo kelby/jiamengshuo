@@ -14,7 +14,7 @@
         </div>
 
         <p class="skill-level subheader"><%= image_tag post.user.avatar_url(:tiny), class: 'super_tiny_avatar' %>&nbsp;<%= post.user.username %></p>
-        <p>The straight CSS version is perfect if you want to just start writing code, rapid prototype, or building a simple, static site. We'll give you all the pieces you need, no setup required.</p>
+        <p><%= post.description %></p>
         <p><i class="fi-clock"></i>&nbsp;<%= post.updated_at %></p>
       </div>
 
