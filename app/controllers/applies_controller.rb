@@ -6,9 +6,11 @@ class AppliesController < ApplicationController
   end
 
   def approve_apply
+    user = User.find params[:user_id]
     apply = Apply.pending.where(mentor_id: current_user.id, user_id: params[:user_id]).last
 
     if apply
+      UserRelationship.create(owner: current_user, recipient: user)
       apply.approved!
       apply.create_activity :approve_apply, owner: current_user, recipient: apply.apply_student
     end

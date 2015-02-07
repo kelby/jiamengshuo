@@ -4,4 +4,6 @@ class UserRelationship < ActiveRecord::Base
 
   validates_presence_of :owner_id, :recipient_id
   validates_uniqueness_of :recipient_id, scope: :owner_id
+
+  ### owner is teacher ###
 end

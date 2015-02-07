@@ -65,7 +65,7 @@
         <h5 class="title">我的学生们:<span class="right">对所有学生说~</span></h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <% @students.includes(:recipient).each do |ur| %>
+            <% @students.each do |ur| %>
               <li>
                 <%= link_to ur.recipient do %>
                   <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>

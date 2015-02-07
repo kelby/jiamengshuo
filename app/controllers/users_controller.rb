@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
     @teachers = current_user.teachers.includes(:recipient)
-    @students = current_user.students.includes(:recipient)
+    @students = UserRelationship.where(owner_id: current_user.id).includes(:recipient)
     @followers = current_user.followers
   end
 

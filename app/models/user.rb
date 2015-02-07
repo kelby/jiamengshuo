@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :follower_topics, class_name: 'Topic', through: :followers
   has_many :keeper_topics, class_name: 'Topic', through: :keepers
 
+  # join tables, for user relationship.
   has_many :teachers, foreign_key: :owner_id
   has_many :students, foreign_key: :owner_id
   has_many :classmates, foreign_key: :owner_id
