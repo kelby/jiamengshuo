@@ -31,7 +31,7 @@
         </dd>
       <% end %>
 
-      <% if user_signed_in? && current_page?(user_path(current_user)) %>
+      <% if user_signed_in? && current_page?(users_profile_path) %>
         <dd class="<%= current_page?(pending_apply_students_user_path(current_user))? 'active' : '' %>">
           <%= link_to "申请学生", pending_apply_students_user_path(current_user), id: "nav-students" %>
         </dd>
