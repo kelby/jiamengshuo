@@ -9,8 +9,27 @@
       <a href="" data-reveal-id="mapModal">
         <%= image_tag @user.avatar_url(:thumb), class: 'thumb_avatar' %>
       </a>
-      <% unless current_user.teachers_ids.include? @user.id %>
-        <a href="#" class="fancy radius button tiny">拜师</a></p>
+
+      <% apply = Apply.where(mentor_id: @user.id, user_id: current_user.id).last %>
+
+      <% if current_user.teachers_ids.include? @user.id %>
+        <a href="javascript:void(0);" class="fancy radius button tiny">我的导师</a>
+      <% elsif apply && apply.pending? %>
+        <a href="javascript:void(0);" class="fancy radius button tiny">已经拜师</a>
+      <% elsif apply && apply.refused? %>
+        <a href="javascript:void(0);" class="fancy radius button tiny">已被拒绝</a>
+      <% else %>
+        <a href="javascript:void(0);" data-reveal-id="create_apply" class="fancy radius button tiny" id="new_apply">我要拜师</a>
+
+        <div id="create_apply" class="reveal-modal" data-reveal>
+          <%= form_for :apply, url: user_applies_path(@user), remote: true do |f| %>
+            <%= f.label :info, "申请信息: (不能为空)" %>
+            <%= f.text_field :info %>
+            <%= f.submit %>
+          <% end %>
+
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
       <% end %>
       <br>
       <%= @user.username %>

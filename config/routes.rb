@@ -56,6 +56,8 @@ Rails.application.routes.draw do
     put :refuse_apply, to: "applies#refuse_apply"
     post :follow
     delete :stop_following
+
+    resources :applies
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
