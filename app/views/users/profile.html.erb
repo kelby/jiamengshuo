@@ -32,15 +32,12 @@
   <div class="large-9 columns">
     <div class="section-container tabs" data-section="">
       <section class="section">
-        <h5 class="title">想说点什么?</h5>
+        <h5 class="title">心愿卡片?</h5>
         <div class="content" data-slug="panel1">
-          <form>
-            <textarea rows="4"></textarea>
-            <ul class="button-group">
-              <li><a href="#" class="button">发布</a></li>
-              <li><a href="#" class="button">取消</a></li>
-            </ul>
-          </form>
+          <%= form_for :wish, url: wishes_path do |f| %>
+            <%= f.text_area :content, rows: 4, required: true %>
+            <%= f.submit %>
+          <% end %>
         </div>
       </section>
 

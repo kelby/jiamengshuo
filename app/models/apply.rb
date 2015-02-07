@@ -9,4 +9,5 @@ class Apply < ActiveRecord::Base
   enum status: {pending: 0, approved: 1, refused: 2}
 
   validates_uniqueness_of :user_id, scope: :mentor_id
+  validates_presence_of :user_id, :mentor_id, :info
 end

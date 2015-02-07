@@ -1,4 +1,4 @@
-<%= form_for @topic, html: {:"data-abide" => true} do |f| %>
+<%= form_for @topic do |f| %>
   <% if @topic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
@@ -13,16 +13,15 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true %>
   </div>
   <div class="field">
     <%= f.label :body %><br>
-    <%= f.text_area :body, rows: 25 %>
+    <%= f.text_area :body, rows: 25, required: true %>
   </div>
   <div class="field">
     <%= f.label :tag_list %><br>
     <%= f.text_field :tag_list, required: true %>
-    <small class="error">请输入一下标签，行吗？</small>
   </div>
   <div class="actions">
     <%= f.submit %>

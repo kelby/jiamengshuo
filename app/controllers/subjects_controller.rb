@@ -16,7 +16,7 @@ class SubjectsController < ApplicationController
   end
 
   def new
-    @subject = Subject.new
+    @subject = current_user.subjects.build
     respond_with(@subject)
   end
 
@@ -24,7 +24,7 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    @subject = Subject.new(subject_params)
+    @subject = current_user.subjects.build(subject_params)
     @subject.save
     respond_with(@subject)
   end

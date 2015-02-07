@@ -21,7 +21,7 @@
       <li class="has-form">
         <%= form_tag search_topics_path, method: :get, class: "row collapse" do |f| %>
           <div class="large-8 small-9 columns">
-            <%= text_field_tag 'q', params[:q], placeholder: 'Find Stuff' %>
+            <%= text_field_tag 'q', params[:q], placeholder: 'Find Stuff', required: true %>
           </div>
 
           <div class="large-4 small-3 columns">
