@@ -44,12 +44,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'users/profile' => "users#profile"
+  get 'users/pending_apply_students', to: "applies#pending_apply_students"
   resources :users, :only => [:show, :index] do
     member do
       get :edit_avatar
       put :update_avatar
 
-      get :pending_apply_students, to: "applies#pending_apply_students"
     end
 
     put :approve_apply, to: "applies#approve_apply"
