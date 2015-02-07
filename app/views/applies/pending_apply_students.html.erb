@@ -2,7 +2,7 @@
   <div class="large-12 columns ">
     <div class="row">
       <div class="large-9 columns">
-        <p> 以下用户希望您能成为他们的导师。当前申请总人数: <span class="label info" id="pending_apply_students_size"><%= @pending_apply_students.size %></span></p>
+        <p> 以下用户希望您能成为他们的导师。当前申请总人数: <span class="label info" id="pending_apply_students_size"><%= @applies.size %></span></p>
       </div>
       <div class=" large-3 columns ">
         <select name="sortOptions">
@@ -15,26 +15,25 @@
       </div>
     </div>
     <div class="search-results">
-      <% @pending_apply_students.each do |user| %>
-        <div class="row", id="<%= dom_id user %>">
+      <% @applies.each do |apply| %>
+        <div class="row", id="<%= dom_id apply.apply_student %>">
           <div class="large-2 columns">
             <a href="#">
               <span> </span>
-              <!-- <img src="http://placehold.it/150x200&text=book cover" alt="book cover" class=" thumbnail"> -->
-              <%= image_tag user.avatar_url(:medium), alt: user.username %>
+              <%= image_tag apply.apply_student.avatar_url(:medium), alt: apply.apply_student.username %>
             </a>
           </div>
           <div class="large-10 columns">
             <div class="row">
               <div class=" large-9 columns">
-                <h5><a href="#">Do cats hear with their feet? : where cats come from, what we know about them, and what they think about us </a></h5>
+                <h5><%= apply.info %></h5>
                 <p><a href="#"> Info</a> | <a href="#">Buy this book</a></p>
               </div>
               <div class=" large-3 columns">
-                <%= link_to user_approve_apply_path(user), remote: true, method: :put, class: "button expand medium" do %>
+                <%= link_to user_approve_apply_path(apply.apply_student), remote: true, method: :put, class: "button expand medium" do %>
                   <span>同意</span>
                 <% end %>
-                <%= link_to user_refuse_apply_path(user), remote: true, method: :put, class: "button expand medium" do %>
+                <%= link_to user_refuse_apply_path(apply.apply_student), remote: true, method: :put, class: "button expand medium" do %>
                   <span>拒绝</span>
                 <% end %>
               </div>
@@ -43,7 +42,7 @@
                   <ul class="large-block-grid-2">
                     <li>
                       <ul>
-                        <li><strong>Author: </strong>John Doe</li>
+                        <li><strong>Name: </strong><%= apply.apply_student.username %></li>
                         <li><strong>Published:</strong> 2008</li>
                         <li><strong>More info:</strong> Lorem ipsum</li>
                         <li><strong>More cat stuff: </strong> cats cats cats</li>
