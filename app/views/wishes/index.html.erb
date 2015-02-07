@@ -25,11 +25,15 @@
           </div>
 
           <div class="student">
-            <div class="photo"><%= image_tag wish.user.avatar_url(:thumb) %></div>
+            <div class="photo">
+              <%= link_to wish.user do %>
+                <%= image_tag wish.user.avatar_url(:thumb) %>
+              <% end %>
+            </div>
             <p><%= wish.username %>
-            <!-- <a href="#" class="fancy radius button tiny">关注</a></p> -->
+
             <%= button_tag class: "minibutton js-toggler-target star-button", id: dom_id(wish) do %>
-              关注<!-- <i class="fi-star"></i><span>&nbsp;已加到心愿卡</span> -->
+              关注
             <% end %>
 
             <p> <i class="fi-clock"></i> <%= time_ago_in_words wish.updated_at %></p>
