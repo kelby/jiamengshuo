@@ -11,7 +11,11 @@ class Ability
     can :manage, Section, :user_id => user.id
     can :manage, Wish, :user_id => user.id
     can :manage, Subject, :user_id => user.id
+    can :manage, Reply, :user_id => user.id
+    can :manage, Comment, :user_id => user.id
+
     can :update, User, :id => user.id
+
     can [:approve_apply, :refuse_apply], Apply, :mentor_id => user.id
     # can :manage, Question, :user_id => user.id
 

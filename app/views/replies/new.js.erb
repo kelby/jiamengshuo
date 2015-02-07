@@ -1,1 +1,8 @@
-$("#comment_<%= params[:comment_id] %>").after("<%= j render(partial: 'replies/form') %>");
+var comment = $("#comment_<%= params[:comment_id] %>");
+var new_reply_form = $(comment).find('#new_reply');
+
+if( $(new_reply_form).length ){
+  $(new_reply_form).find('textarea').focus();
+}else{
+  $(comment).append("<%= j render(partial: 'replies/form') %>");
+}

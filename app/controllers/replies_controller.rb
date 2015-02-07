@@ -1,19 +1,11 @@
 class RepliesController < ApplicationController
-  before_action :set_reply, only: [:show, :edit, :update, :destroy]
+  before_action :set_reply, only: [:edit, :update, :destroy]
 
   respond_to :html
 
-  def index
-    @replies = Reply.all
-    respond_with(@replies)
-  end
-
-  def show
-    respond_with(@reply)
-  end
-
   def new
-    @reply = Reply.new
+    @comment = Comment.find params[:comment_id]
+    @reply = @comment.replies.build
 
     respond_to do |format|
       format.html
@@ -26,9 +18,12 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @reply = current_user.replies.build(reply_params)
-    @reply.save
-    respond_with(@reply)
+    @comment = Comment.find params[:comment_id]
+    reply = @comment.replies.build(reply_params.merge(user_id: current_user.id))
+    reply.save
+    reply.create_activity :create, owner: current_user, recipient: @comment
+
+    redirect_to @comment.commentable
   end
 
   def update

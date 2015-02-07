@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     resources :replies
   end
 
-  resources :replies
+  resources :replies, only: [:new, :create, :edit, :update, :destroy]
 
   get 'page/:name' => "pages#show", as: :page
 

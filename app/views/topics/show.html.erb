@@ -29,7 +29,7 @@
   <section class="panel social-share-section" style="padding: 0">
     <%= social_share_button_tag @topic.title %>
 
-    <span>
+    <span class="right">
       <%# unless current_user.sticking? @topic %>
         <%= link_to sticking_topic_path(@topic), method: :post, remote: true, title: '加入' do %>
           <i class="fi-arrows-compress"></i>
