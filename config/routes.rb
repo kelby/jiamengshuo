@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :direct_messages, only: [:index, :create, :update, :destroy]
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'activities/index'
 

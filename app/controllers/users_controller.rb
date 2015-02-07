@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @teachers = @user.teachers.includes(:recipient)
     @students = @user.students.includes(:recipient)
     @followers = @user.followers
+
+    @direct_message = DirectMessage.new
   end
 
   def profile

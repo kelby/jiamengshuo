@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Direct Messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @direct_messages.each do |direct_message| %>
+      <tr>
+        <td><%= direct_message.content %></td>
+        <td><%= link_to 'Show', direct_message %></td>
+        <td><%= link_to 'Edit', edit_direct_message_path(direct_message) %></td>
+        <td><%= link_to 'Destroy', direct_message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Direct message', new_direct_message_path %>
