@@ -18,10 +18,10 @@
       <% @applies.each do |apply| %>
         <div class="row", id="<%= dom_id apply.apply_student %>">
           <div class="large-2 columns">
-            <a href="#">
+            <%= link_to apply.apply_student do %>
               <span> </span>
               <%= image_tag apply.apply_student.avatar_url(:medium), alt: apply.apply_student.username %>
-            </a>
+            <% end %>
           </div>
           <div class="large-10 columns">
             <div class="row">

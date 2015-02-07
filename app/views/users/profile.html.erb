@@ -48,11 +48,11 @@
         <h5 class="title">我的导师们:<span class="right">对所有导师说~</span></h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
-            <% @teachers.includes(:recipient).each do |ur| %>
+            <% @teachers.each do |ur| %>
               <li>
                 <a href="mailto:mal@serenity.bc.reb">
-                <%= link_to ur.recipient do %>
-                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
+                <%= link_to ur.owner do %>
+                  <%= image_tag ur.owner.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.owner.username %>
                 <% end %>
               </li>
             <% end %>
