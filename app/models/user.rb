@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     self.keeper_topics.exists? topic.id
   end
 
+  def teachers_ids
+    self.teachers.pluck(:recipient_id)
+  end
+
   def login=(login)
     @login = login
   end

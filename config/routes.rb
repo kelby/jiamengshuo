@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get 'page/:name' => "pages#show", as: :page
 
   devise_for :users
+  get 'users/profile' => "users#profile"
   resources :users, :only => [:show, :index] do
     member do
       get :edit_avatar

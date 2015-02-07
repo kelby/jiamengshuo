@@ -30,7 +30,6 @@ class ApplicationController < ActionController::Base
 
     return true if user.teachers.ids.include? current_user.id
     return true if user.students.ids.include? current_user.id
-    return true if user.classmates.ids.include? current_user.id
     return true if (user.following_users.include? current_user.id) && (current_user.following_users.include? user.id)
 
     return false

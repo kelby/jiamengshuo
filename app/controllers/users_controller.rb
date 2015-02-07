@@ -3,10 +3,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    redirect_to users_profile_path and return if current_user == @user
+
     @teachers = @user.teachers.includes(:recipient)
     @students = @user.students.includes(:recipient)
-    @classmates = @user.classmates.includes(:recipient)
     @followers = @user.followers
+  end
+
+  def profile
+    @user = current_user
+    @teachers = current_user.teachers.includes(:recipient)
+    @students = current_user.students.includes(:recipient)
+    @followers = current_user.followers
   end
 
   def index

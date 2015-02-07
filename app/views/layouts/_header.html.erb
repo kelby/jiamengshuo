@@ -41,7 +41,7 @@
 
       <% if user_signed_in? %>
         <li class="active">
-          <%= link_to user_path(current_user), style: 'background: #333333;' do %>
+          <%= link_to users_profile_path, style: 'background: #333333;' do %>
             <%= image_tag current_user.avatar_url(:tiny), class: 'tiny_avatar' %>
           <% end %>
         </li>

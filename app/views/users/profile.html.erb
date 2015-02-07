@@ -1,10 +1,11 @@
 <div class="row">
-  <!-- Sidebar -->
   <div class="large-3 columns">
     <h5>
-
+      <%= link_to edit_avatar_user_path(@user) do %>
+        <i class="fi-widget"></i>
+      <% end %>
     </h5>
-    <!-- Clicking this placeholder fires the mapModal Reveal modal -->
+
     <p>
       <a href="" data-reveal-id="mapModal">
         <%= image_tag @user.avatar_url(:thumb), class: 'thumb_avatar' %>
@@ -30,9 +31,7 @@
       个性签名：<%= @user.info %>
     </p>
   </div>
-  <!-- End Sidebar -->
 
-  <!-- Contact Details -->
   <div class="large-9 columns">
     <div class="section-container tabs" data-section="">
       <section class="section">
@@ -40,8 +39,6 @@
         <div class="content" data-slug="panel1">
           <form>
             <textarea rows="4"></textarea>
-            <!-- <button type="submit" class="radius button">Submit</button> -->
-
             <ul class="button-group">
               <li><a href="#" class="button">发布</a></li>
               <li><a href="#" class="button">取消</a></li>
@@ -51,7 +48,7 @@
       </section>
 
       <section class="section">
-        <h5 class="title">Ta 的导师们:</h5>
+        <h5 class="title">我的导师们:<span class="right">对所有导师说~</span></h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
             <% @teachers.includes(:recipient).each do |ur| %>
@@ -68,7 +65,7 @@
       <hr>
 
       <section class="section">
-        <h5 class="title">Ta 的学生们:</h5>
+        <h5 class="title">我的学生们:<span class="right">对所有学生说~</span></h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
             <% @students.includes(:recipient).each do |ur| %>
@@ -84,7 +81,7 @@
       <hr>
 
       <section class="section">
-        <h5 class="title">Ta 的朋友们:</h5>
+        <h5 class="title">我的朋友们:</h5>
         <div class="content" data-slug="panel2">
           <ul class="large-block-grid-5">
             <% @followers.each do |user| %>
@@ -99,5 +96,4 @@
       </section>
     </div>
   </div>
-  <!-- End Contact Details -->
 </div>
