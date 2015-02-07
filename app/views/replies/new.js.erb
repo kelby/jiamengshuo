@@ -5,4 +5,5 @@ if( $(new_reply_form).length ){
   $(new_reply_form).find('textarea').focus();
 }else{
   $(comment).append("<%= j render(partial: 'replies/form') %>");
+  $(comment).find('#new_reply textarea').focus();
 }

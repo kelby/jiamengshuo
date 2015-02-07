@@ -1,68 +1,67 @@
-<div class="row">
-  <div class="large-8  small-12 columns">
-    <% @comments.each do |comment| %>  
-      <!-- COMMENT -->
-      <div class="comment" id="<%= dom_id comment %>">
-        <section class="top">
-          <h6 class="byline">
-          <%# debugger %>
-            <a href="#"><i class="icon"></i><%= comment.user.username %><% if comment.user == @topic.user %>
-                  <span class="label"> Post Author</span>
-                <% end %></a>
-            <small>said 
-              <span class="data">
-                <%= time_ago_in_words comment.created_at %>
-              </span>
-            </small>
-          </h6>
-        </section>
-        <section class="content">
-          <%= sanitize markdown_for(comment.content), tags: %w(br p) %>
-        </section>
-        <section class="actions">
+<div class="row" id="comments">
+  <% @comments.each do |comment| %>
+    <div class="comment" id="<%= dom_id comment %>">
+      <section class="top">
+        <h6 class="byline">
+          <a href="#">
+            <i class="icon"></i>
+            <%= comment.user.username %>
+            <% if comment.user == @topic.user %>
+              <span class="label"> Post Author</span>
+            <% end %>
+          </a>
 
-          <ul class="inline-list">
-            <li><a href="#">Like (3)</a></li>
-            <li><a href="#">Share</a></li>
-            <li>
-              <%= link_to "Reply", new_comment_reply_path(comment), remote: true %>
-            </li>
-          </ul>
+          <small>said 
+            <span class="data">
+              <%= time_ago_in_words comment.created_at %>
+            </span>
+          </small>
+        </h6>
+      </section>
 
-        </section>
+      <section class="content">
+        <%= sanitize markdown_for(comment.content), tags: %w(br p) %>
+      </section>
 
-      </div>
+      <section class="actions">
+        <ul class="inline-list">
+          <li><a href="#">Like (3)</a></li>
+          <li><a href="#">Share</a></li>
+          <li>
+            <%= link_to "Reply", new_comment_reply_path(comment), remote: true %>
+          </li>
+        </ul>
+      </section>
 
       <% comment.replies.each do |reply| %>
-        <!-- INDENTED COMMENT -->
         <div class="indented comment push" id="<%= dom_id reply %>">
           <section class="top">
             <h6 class="byline">
-              <a href="#"><i class="icon"></i><%= reply.user.username %><% if reply.user == @topic.user %>
+              <a href="#">
+                <i class="icon"></i>
+                <%= reply.user.username %>
+                <% if reply.user == @topic.user %>
                   <span class="label"> Post Author</span>
                 <% end %>
-              </a> 
-              <small>said 
+              </a>
+
+              <small>said&nbsp;
                 <span class="data">
                   <%= time_ago_in_words reply.created_at %>
                 </span>
               </small>
+              <span class="reply">
+                <%= link_to "Reply", new_comment_reply_path(comment), remote: true %>
+              </span>
             </h6>
           </section>
 
           <section class="content">
             <p><%= reply.content %></p>
           </section>
-
-          <section class="actions">
-            <ul class="inline-list">
-              <li><a href="#">Like (2)</a></li>
-              <li><a href="#">Share</a></li>
-              <li><%= link_to "Reply", new_comment_reply_path(comment), remote: true %></li>
-            </ul>
-          </section>
         </div>
       <% end %>
-    <% end %>
-  </div>
-</div>    
+    </div>
+    <hr class="dashed">
+  <% end %>
+</div>

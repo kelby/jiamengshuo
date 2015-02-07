@@ -27,6 +27,7 @@
 
 <%# cache @topic do %>
   <section class="panel social-share-section" style="padding: 0">
+        &nbsp;
     <%= social_share_button_tag @topic.title %>
 
     <span class="right">
@@ -34,18 +35,21 @@
         <%= link_to sticking_topic_path(@topic), method: :post, remote: true, title: '加入' do %>
           <i class="fi-arrows-compress"></i>
         <% end %>
+        &nbsp;
       <%# end %>
 
       <%# unless current_user.followering? @topic %>
         <%= link_to followering_topic_path(@topic), method: :post, remote: true, title: '关注' do %>
           <i class="fi-eye"></i>
         <% end %>
+        &nbsp;
       <%# end %>
 
       <%# unless current_user.keepering? @topic %>
         <%= link_to keepering_topic_path(@topic), method: :post, remote: true, title: '收藏' do %>
           <i class="fi-bookmark"></i>
         <% end %>
+        &nbsp;
       <%# end %>
     </span>
   </section>
