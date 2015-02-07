@@ -27,7 +27,7 @@
             <div class="row">
               <div class=" large-9 columns">
                 <h5><%= apply.info %></h5>
-                <p><a href="#"> Info</a> | <a href="#">Buy this book</a></p>
+                <p><a href="#">回复</a></p>
               </div>
               <div class=" large-3 columns">
                 <%= link_to user_approve_apply_path(apply.apply_student), remote: true, method: :put, class: "button expand medium" do %>
@@ -42,17 +42,22 @@
                   <ul class="large-block-grid-2">
                     <li>
                       <ul>
-                        <li><strong>Name: </strong><%= apply.apply_student.username %></li>
-                        <li><strong>Published:</strong> 2008</li>
-                        <li><strong>More info:</strong> Lorem ipsum</li>
-                        <li><strong>More cat stuff: </strong> cats cats cats</li>
+                        <li><strong>名字: </strong><%= apply.apply_student.username %></li>
+                        <li><strong>加入时间:</strong> 2008</li>
+                        <li><strong>课程数目:</strong> Lorem ipsum</li>
+                        <li><strong>课程集合数目: </strong> cats cats cats</li>
+                        <li><strong>话题讨论数目: </strong> cats cats cats</li>
+                        <li><strong>心愿卡片数目: </strong> cats cats cats</li>
+                        <li><strong>关注数目: </strong> cats cats cats</li>
+                        <li><strong>粉丝数目: </strong> cats cats cats</li>
                       </ul>
                     </li>
                     <li>
                       <ul>
-                        <li><strong>Wow cats:</strong> so wow</li>
-                        <li><strong>Lorem cats:</strong> ipsum kitty</li>
-                        <li><strong>Series:</strong> all the cats</li>
+                        <li><strong>导师数目:</strong> so wow</li>
+                        <li><strong>学生数目:</strong> ipsum kitty</li>
+                        <li><strong>请求被同意次数:</strong> all the cats</li>
+                        <li><strong>请求被拒绝次数:</strong> all the cats</li>
                       </ul>
                     </li>
                   </ul>
