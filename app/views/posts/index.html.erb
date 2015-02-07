@@ -17,7 +17,12 @@
           <% end %>
         </div>
 
-        <p class="subheader"><%= image_tag post.user.avatar_url(:tiny), class: 'super_tiny_avatar' %>&nbsp;<%= post.user.username %></p>
+        <p class="subheader">
+          <%= link_to post.user do %>
+            <%= image_tag post.user.avatar_url(:tiny), class: 'super_tiny_avatar' %>&nbsp;
+          <% end %>
+          <%= post.user.username %>
+        </p>
         <p><%= truncate post.description, length: 450 %></p>
         <p><i class="fi-clock"></i>&nbsp;<%= post.updated_at %></p>
       </div>
