@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def update_avatar
     @user = current_user
 
-    @user.update_attribute(:avatar, params[:user][:avatar])
+    @user.update_attribute(:avatar, params[:user][:avatar]) if params[:user] && params[:user][:avatar]
 
     redirect_to @user
   end

@@ -10,9 +10,6 @@
       <a href="" data-reveal-id="mapModal">
         <%= image_tag @user.avatar_url(:thumb), class: 'thumb_avatar' %>
       </a>
-      <% unless current_user.teachers_ids.include? @user.id %>
-        <a href="#" class="fancy radius button tiny">拜师</a></p>
-      <% end %>
       <br>
       <%= @user.username %>
       <br>
