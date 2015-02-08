@@ -12,7 +12,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body data-controller-name='<%= controller_name %>' data-action-name='<%= action_name %>'>
     <%= render 'layouts/header' %>
 
     <%= render 'layouts/sub_nav' %>
