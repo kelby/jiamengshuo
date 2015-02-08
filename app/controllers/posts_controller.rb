@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   respond_to :html
 

@@ -1,6 +1,7 @@
 class TopicAndUserController < ApplicationController
   before_action :authenticate_user!, only: [:sticking, :followering, :keepering]
   before_action :set_topic, only: [:sticking, :followering, :keepering]
+  authorize_resource
 
   def sticking
     stick = current_user.sticks.build topic_id: @topic.id

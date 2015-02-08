@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :sticking, :followering, :keepering]
   before_action :set_topic, only: [:show, :edit, :update, :destroy, :sticking, :followering, :keepering]
+  authorize_resource
 
   authorize_resource
 

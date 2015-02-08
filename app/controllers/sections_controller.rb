@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :add, :remove]
   before_action :set_section, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   respond_to :html
 

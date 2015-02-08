@@ -1,5 +1,6 @@
 class AppliesController < ApplicationController
   before_action :authenticate_user!, only: [:pending_apply_students, :approve_apply, :refuse_apply, :create]
+  authorize_resource
 
   def pending_apply_students
     @applies = Apply.pending.where(mentor_id: current_user.id).includes(:apply_student)

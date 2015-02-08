@@ -1,6 +1,7 @@
 class WishesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :got_it, :spurn_it]
   before_action :set_wish, only: [:show, :edit, :update, :destroy, :got_it, :followers_by_user]
+  authorize_resource
 
   respond_to :html
 

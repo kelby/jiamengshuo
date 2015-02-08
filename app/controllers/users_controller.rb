@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit_avatar, :update_avatar, :follow, :stop_following]
+  authorize_resource
 
   def show
     @user = User.find(params[:id])
