@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208013053) do
+ActiveRecord::Schema.define(version: 20150208015522) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150208013053) do
     t.integer  "parent_id",  limit: 4
     t.string   "info",       limit: 255
     t.string   "icon",       limit: 255
+    t.integer  "icon_from",  limit: 4
   end
 
   create_table "comments", force: :cascade do |t|
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150208013053) do
     t.integer  "user_id",     limit: 4
     t.text     "description", limit: 65535
     t.string   "icon",        limit: 255
+    t.integer  "icon_from",   limit: 4
   end
 
   create_table "questions", force: :cascade do |t|
