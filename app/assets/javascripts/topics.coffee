@@ -1,7 +1,6 @@
 $(document).ready ->
   if Application.isRunWithin ['topics']
     $('.indented.comment .reply').hide()
-    return
 
     $(document).on 'mouseover', '.indented.comment', ->
       $(this).find('.reply').show()
