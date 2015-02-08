@@ -65,19 +65,19 @@
                 </h4>
                 <p class="author-name">
                 By <span class="author">
-                  <strong><a href="/forum/1319-luca-span"><%= topic.user.username %></a></strong>
+                  <%= link_to topic.user do %><%= topic.user.username %><% end %>
                 </span><span class="by">, last Reply by</span>
                 <span class="when">
                   <span class="author">
-                    <strong><a href="/forum/10310-bob-sawyer"><%= topic.comments.last.try(:user).try(:username) %></a></strong>
+                    <%= link_to topic.comments.last.try(:user) do %>
+                      <%= topic.comments.last.try(:user).try(:username) %>
+                    <% end %>
                   </span>
                   <%= time_ago_in_words topic.created_at %>
                 </span>
                 </p>
                 <div class="post-description copy">
-                  <p>
-                  <%#= raw truncate((markdown_for topic.body), length: 250, omission: '... (continued)') %>
-                  </p>
+            
 
                   <p class="tags">
                   <% topic.tags.each do |tag| %>
