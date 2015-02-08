@@ -12,14 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, "标题" %><br>
     <%= f.text_field :title, required: true %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description, "简介" %><br>
     <%= f.text_area :description, rows: 10 %>
   </div>
+
+  <hr class="dashed"></hr>
+  <div class="centered-text">各个课程的内容概述</div>
+  <hr class="dashed"></hr>
 
   <%= f.fields_for :sections do |builder| %>
      <%= render "section_fields", :f => builder %>
@@ -52,6 +56,6 @@
   </section>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "提交", class: "blue tiny button radius" %>
   </div>
 <% end %>
