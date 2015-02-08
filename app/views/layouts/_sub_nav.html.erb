@@ -3,7 +3,7 @@
       <% if current_page?(posts_path) || current_page?(new_post_path) %>
         <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
           <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
-          <%= link_to "发布课程大纲", new_post_path %>
+          <%= link_to "发布课程集合", new_post_path %>
         </dd>
       <% end %>
       <% if current_page?(subjects_path) || current_page?(new_post_path) %>
