@@ -14,6 +14,9 @@ class Ability
     can :manage, Reply, :user_id => user.id
     can :manage, Comment, :user_id => user.id
 
+    can :manage, Apply, :user_id => user.id
+    can :manage, Apply, :mentor_id => user.id
+
     can :update, User, :id => user.id
 
     can [:approve_apply, :refuse_apply], Apply, :mentor_id => user.id

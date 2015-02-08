@@ -1,8 +1,13 @@
-got wish
+将
+
+<%= link_to activity.recipient.username, activity.recipient %>
+
+的心愿
 
 <% if activity.trackable %>
   <%= link_to activity.trackable.content, activity.trackable %>
-  which created by <%= link_to activity.recipient.username, activity.recipient %>
 <% else %>
   which has since been removed
 <% end %>
+
+加入了心愿卡片。

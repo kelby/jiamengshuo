@@ -160,3 +160,11 @@ Post.where(description: nil).each do |post|
   post.description = Faker::Lorem.paragraph(2)
   post.save
 end
+
+icons = %w(check marker cloud thumbnails laptop usb music lightbulb asterisk puzzle ticket shield crown trophy clipboard  clipboard-pencil)
+
+Catalog.where(icon: nil).each do |catalog|
+  catalog.icon = icons.sample
+  catalog.icon_from = 'fi'
+  catalog.save
+end

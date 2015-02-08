@@ -1,15 +1,15 @@
-create comment to
+评论了
 
-<% if activity.recipient %>
-  <%= link_to activity.recipient.title, activity.recipient %>
+<% if activity.recipient.user %>
+  <%= link_to activity.recipient.user.username, activity.recipient.user %>
 <% else %>
   which has since been removed
 <% end %>
 
-which created by
+创建的课程集合
 
-<% if activity.recipient.user %>
-  <%= link_to activity.recipient.user.username, activity.recipient.user %>
+<% if activity.recipient %>
+  <%= link_to activity.recipient.title, activity.recipient %>
 <% else %>
   which has since been removed
 <% end %>

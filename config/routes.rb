@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :catalogs
+  resources :catalogs, only: [:index, :show]
 
   resources :posts
 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :sections
 
-  resources :wishes do
+  resources :wishes, only: [:show, :new, :create, :index] do
     member do
       post :got_it
       delete :spurn_it

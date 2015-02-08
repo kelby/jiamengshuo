@@ -1,7 +1,9 @@
-reply to Comment, which created_by
+回复了
 
 <% if activity.recipient %>
   <%= link_to activity.recipient.user.username, activity.recipient.user %>
 <% else %>
   which has since been removed
 <% end %>
+
+的评论。
