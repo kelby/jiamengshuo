@@ -18,9 +18,9 @@
 
   <%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
     <% if can_comment?(@subject) %>
-      <%= f.text_area :content, rows: 10 %>
+      <%= f.text_area :content, rows: 10, required: true %>
     <% else %>
-      <%= f.text_area :content, rows: 10, disabled: true, placeholder: "只有已登录用户，及导师、学生、同学、朋友可以评论哦 ~" %>
+      <%= f.text_area :content, rows: 10, disabled: true, required: true, placeholder: "只有已登录用户，及导师、学生、同学、朋友可以评论哦 ~" %>
     <% end %>
     <%= f.submit %>
   <% end %>
