@@ -35,3 +35,23 @@ $(document).ready ->
       $("#more_content").slideToggle "slow", ->
 
       return
+
+
+$(document).ready ->
+  $(document).on 'scroll', ->
+    if $(window).scrollTop() > 500
+      $('.scroll-top-wrapper').addClass 'show'
+    else
+      $('.scroll-top-wrapper').removeClass 'show'
+    return
+
+  scrollToTop = ->
+    `var scrollToTop`
+    verticalOffset = if typeof verticalOffset != 'undefined' then verticalOffset else 0
+    element = $('body')
+    offset = element.offset()
+    offsetTop = offset.top
+
+    $('html, body').animate { scrollTop: offsetTop }, 500, 'linear'
+
+  $('.scroll-top-wrapper').on 'click', scrollToTop
