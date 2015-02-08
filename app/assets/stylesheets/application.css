@@ -125,3 +125,8 @@ p.tags {
   font-size: 40px;
   color: #ccc;
 }
+
+/* pagination */
+.pagination-centered {
+  margin-top: 1.25rem;
+}
