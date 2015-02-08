@@ -39,6 +39,8 @@ gem 'geo_pattern'
 gem 'exception_notification'
 
 gem 'rails_admin'
+
+gem "font-awesome-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record

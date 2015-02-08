@@ -265,6 +265,7 @@ DEPENDENCIES
   devise!
   exception_notification
   faker
+  font-awesome-rails
   foundation-icons-sass-rails
   foundation-rails
   geo_pattern
