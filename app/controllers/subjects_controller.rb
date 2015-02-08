@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
   respond_to :html
 
   def index
-    @subjects = Subject.all
+    @subjects = Subject.page(params[:page]).per(15)
     respond_with(@subjects)
   end
 

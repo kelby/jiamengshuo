@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <% @subjects.each do |subject| %>
   <section>
     <div class="large-12 columns centered-text">
@@ -25,9 +23,16 @@
       </div>
       <div class="student">
         <div class="photo"><%= image_tag subject.user.avatar_url(:thumb) %></div>
-        <p>John Doe</p>
-        <p>Important person, some Company</p>
+        <% if subject.desc_long_comment.present? %>
+          <p><%= subject.desc_long_comment.user.username %></p>
+          <p><%= subject.desc_long_comment.user.info %></p>
+        <% else %>
+          <p><%= subject.user.username %></p>
+          <p><%= subject.user.info %></p>
+        <% end %>
       </div>
     </div>
   </section>
 <% end %>
+
+<%= paginate @subjects %>

@@ -47,14 +47,15 @@
             <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
               <li>
               <div class="post-count new-general with-replies">
-                <a href="/forum/posts/1863-foundation-cdn">
+                <%= link_to topic.user do %>
                   <div class="post-count-container new-general with-replies">
-                    <span class="reply-count new-general with-replies">NEW</span>
+                    <%= image_tag topic.user.avatar_url(:tiny) %>
                   </div>
-                  <div class="total-post-count new total-replies">
-                    <%= topic.comments.count %> Replies
-                  </div>
-              </a> </div>
+                <% end %>
+                <div class="total-post-count new total-replies">
+                  <%= topic.comments.count %> Replies
+                </div>
+              </div>
               </li>
               <li>
               <div class="post-description">
@@ -80,9 +81,9 @@
             
 
                   <p class="tags">
-                  <% topic.tags.each do |tag| %>
-                    <a class="tag-container" href="/forum/tags/top-bar"><%= tag.name %></a>
-                  <% end %>
+                    <% topic.tags.each do |tag| %>
+                      <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
+                    <% end %>
                   </p>
                 </div>
               </div>

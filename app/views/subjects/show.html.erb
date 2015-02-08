@@ -1,64 +1,131 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @subject.title %></h1>
 
 <p>
-  <h1><%= @subject.title %></h1>
-</p>
-
-<p>
-  <%= raw(markdown_for @subject.body) %>
+<%= raw(markdown_for @subject.body) %>
 </p>
 
 <% if can? :update, @subject %>
   <%= link_to 'Edit', edit_subject_path(@subject) %>
 <% end %>
 
-<hr class="dashed">
+<% if @subject.comments.size > 2 %>
+  <div class="page-count">
+    <hr>
+    <ul class="large-block-grid-2 small-block-grid-2">
+      <li>
+      &nbsp;
+        <a href="#add-reply">
+          <i class="fi-plus"></i>&nbsp;
+          <span>Add a reply</span>
+        </a>
+      </li>
+    </ul>
+    <hr>
+  </div>
+<% end %>
 
-<div class="row">
+<style type="text/css">
+  .add-comment-tabs ul.large-block-grid-2.small-block-grid-1 li:first-child {
+    width: 14%;
+  }
 
-  <%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
-    <% if can_comment?(@subject) %>
-      <%= f.text_area :content, rows: 10, required: true %>
-    <% else %>
-      <%= f.text_area :content, rows: 10, disabled: true, required: true, placeholder: "只有已登录用户，及导师、学生、同学、朋友可以评论哦 ~" %>
-    <% end %>
-    <%= f.submit %>
-  <% end %>
+  .add-comment-tabs ul.large-block-grid-2.small-block-grid-1 li:last-child {
+    margin-left: 2%;
+    width: 84%;
+  }
+</style>
 
-  <hr class="dashed">
+<% @comments.each do |comment| %>
+  <div class="row comment old">
+    <div class="large-12 small-12 columns">
+      <div class="panel comment-wrapper">
+        <h5 class="content-title">
+          <%= link_to comment.user do %>
+            <i class="fi-plus"></i>
+            <%= comment.user.username %>
+            <% if comment.user == @subject.user %>
+              <span class="label"> 作者</span>
+            <% end %>
+          <% end %>
+          <span class="date"><%= time_ago_in_words comment.created_at %></span>
+        </h5>
 
-  <% @comments.each do |comment| %>
-    <div class="comment" id="<%= dom_id comment %>">
-      <section class="top">
-        <h6 class="byline">
-          <a href="#"><i class="icon"></i><%= comment.user.username %><% if comment.user == @subject.user %>
-                <span class="label"> Post Author</span>
-              <% end %></a>
-          <small>said
-            <span class="data">
-              <%= time_ago_in_words comment.created_at %>
-            </span>
-          </small>
-        </h6>
-      </section>
-      <section class="content">
-        <%= raw markdown_for(comment.content) %>
-      </section>
-      <section class="actions">
+        <div class="row comment-body">
+          <div class="large-12 small-12 columns">
+            <p></p><p>
+            <%= raw markdown_for(comment.content) %>
+            </p>
+            <p></p>
+          </div>
+        </div>
 
-        <ul class="inline-list">
-          <li><a href="#">喜欢 (3)</a></li>
-          <li><a href="#">分享</a></li>
-          <li>
-            <%= link_to "回复", new_comment_reply_path(comment), remote: true %>
-          </li>
-        </ul>
+        <form accept-charset="UTF-8" action="/forum/posts/5503/comments/5502/approve" class="edit_comment" data-remote="true" id="edit_comment_5502" method="post">
+          <div style="margin:0;padding:0;display:inline">
+            <input name="utf8" type="hidden" value="✓">
+            <input name="_method" type="hidden" value="put">
+          </div>
 
-      </section>
-
+          <div class="helpful-button">
+            <button class="button forum helpful clicked" type="submit">
+              <i class="general foundicon-checkmark"></i>
+              <span class="helpful">Helpful</span>
+              <span id="comment-5502" class="helpful-count clicked">1</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
+
+<div class="row add-comment">
+  <div class="large-12 columns">
+    <a name="add-reply"></a>
+    <div class="add-comment-tabs section-container tabs" data-section="tabs" data-section-resized="true" style="min-height: 42px;">
+      <section class="write active" style="padding-top: 42px;">
+        <p class="title" data-section-title="" style="left: 0px; height: 42px;">
+          <% apply = Apply.where(mentor_id: @subject.user.id, user_id: current_user.id).last %>
+
+          <% if current_user.teachers_ids.include? @subject.user.id %>
+            <a href="javascript:void(0);" class="fancy radius button tiny">我的导师</a>
+          <% elsif apply && apply.pending? %>
+            <a href="javascript:void(0);" class="fancy radius button tiny">已经拜师</a>
+          <% elsif apply && apply.refused? %>
+            <a href="javascript:void(0);" class="fancy radius button tiny">已被拒绝</a>
+          <% else %>
+            <a href="javascript:void(0);" data-reveal-id="create_apply" class="fancy radius button tiny" id="new_apply">我要拜师</a>
+
+            <div id="create_apply" class="reveal-modal" data-reveal>
+              <%= form_for :apply, url: user_applies_path(@subject.user), remote: true do |f| %>
+                <%= f.label :info, "申请信息: (不能为空)" %>
+                <%= f.text_field :info, required: true %>
+                <%= f.submit %>
+              <% end %>
+
+              <a class="close-reveal-modal">&#215;</a>
+            </div>
+          <% end %>
+        </p>
+
+        <div class="content" data-section-content="">
+          <ul class="large-block-grid-2 small-block-grid-1 write">
+            <li class="hide-for-small">
+              <%= image_tag current_user.avatar_url(:thumb) %>
+            </li>
+
+            <li>
+              <%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
+                <% if can_comment?(@subject) %>
+                  <%= f.text_area :content, rows: 10, required: true %>
+                <% else %>
+                  <%= f.text_area :content, rows: 10, disabled: true, required: true, placeholder: "只有导师、学生和朋友可以评论哦 ~" %>
+                <% end %>
+                <%= f.submit %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
-
-
-
