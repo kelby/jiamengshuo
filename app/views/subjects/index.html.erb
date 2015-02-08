@@ -24,10 +24,14 @@
       <div class="student">
         <div class="photo"><%= image_tag subject.user.avatar_url(:thumb) %></div>
         <% if subject.desc_long_comment.present? %>
-          <p><%= subject.desc_long_comment.user.username %></p>
+          <p>
+            <%= link_to subject.desc_long_comment.user do %>
+              <%= subject.desc_long_comment.user.username %>
+            <% end %>
+            </p>
           <p><%= subject.desc_long_comment.user.info %></p>
         <% else %>
-          <p><%= subject.user.username %></p>
+          <p><%= link_to subject.user do %><%= subject.user.username %><% end %></p>
           <p><%= subject.user.info %></p>
         <% end %>
       </div>
