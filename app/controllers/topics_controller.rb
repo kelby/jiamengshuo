@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   respond_to :html
 
   def index
-    @topics = Topic.page(params[:page]).per(5)
+    @topics = Topic.page(params[:page]).per(15)
     respond_with(@topics)
   end
 

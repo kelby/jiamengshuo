@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   respond_to :html
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(15)
     respond_with(@posts)
   end
 

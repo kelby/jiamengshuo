@@ -1,30 +1,178 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="large-9 columns">
+    <ul class="toolbar">
+      <li><span>查看 &nbsp; |</span></li>
+      <li value="recent_comment">Recent Activity</li>
+      <li value="helpful_count">默认</li>
+      <li value="following_count">优质</li>
+      <li value="created_at">无人问津</li>
+    </ul>
+  </div>
 
-<% @topics.each do |topic| %>
-  <article class="guide-listing js-guide-listing">
-    <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern topic.title %>;">
-      <%= link_to topic do %>
-        <div class="icon-container panel-white" style="display: inline-block;">
-          <span class="fi-page-multiple large mega-octicon"></span>
+  <div class="large-3 columns">
+    <div class="row collapse">
+      <div class="large-10 small-9 columns">
+        <form accept-charset="UTF-8" action="/forum/posts" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+          <input class="search-bar" id="search" name="search" placeholder="Find an Answer" type="text">
+        </form>
+      </div>
+      <div class="large-2 small-3 columns">
+        <button class="postfix search button expand" name="button" type="submit"><i class="general foundicon-search"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .post-count-spacing>li:first-child {
+    width: 105px;
+  }
+
+  .post-count-spacing>li:last-child {
+    width: 80% !important;
+    padding-left: 0.9375em;
+  }
+
+  ul.toolbar > li {
+    display: inline;
+  }
+</style>
+
+<div class="row posts">
+  <div class="large-9 small-12 columns">
+    <ul>
+      <% @topics.each do |topic| %>
+        <div class="row post impressions new">
+          <div class="small-12 columns">
+            <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
+              <li>
+              <div class="post-count new-general with-replies">
+                <a href="/forum/posts/1863-foundation-cdn">
+                  <div class="post-count-container new-general with-replies">
+                    <span class="reply-count new-general with-replies">NEW</span>
+                  </div>
+                  <div class="total-post-count new total-replies">
+                    <%= topic.comments.count %> Replies
+                  </div>
+              </a> </div>
+              </li>
+              <li>
+              <div class="post-description">
+                <h4 class="content-title">
+                  <%= link_to topic do %>
+                    <%= topic.title %>
+                  <% end %>
+                </h4>
+                <p class="author-name">
+                By <span class="author">
+                  <strong><a href="/forum/1319-luca-span"><%= topic.user.username %></a></strong>
+                </span><span class="by">, last Reply by</span>
+                <span class="when">
+                  <span class="author">
+                    <strong><a href="/forum/10310-bob-sawyer"><%= topic.comments.last.try(:user).try(:username) %></a></strong>
+                  </span>
+                  <%= time_ago_in_words topic.created_at %>
+                </span>
+                </p>
+                <div class="post-description copy">
+                  <p>
+                  <%#= raw truncate((markdown_for topic.body), length: 250, omission: '... (continued)') %>
+                  </p>
+
+                  <p class="tags">
+                  <% topic.tags.each do |tag| %>
+                    <a class="tag-container" href="/forum/tags/top-bar"><%= tag.name %></a>
+                  <% end %>
+                  </p>
+                </div>
+              </div>
+              </li>
+            </ul>
+            <hr>
+          </div>
         </div>
-        <h3 class="guide-cover-title js-guide-cover-title panel-white" style="display: inline-block;">
-          <%= topic.title %>
-        </h3>
       <% end %>
+    </ul>
+
+    <%= paginate @topics %>
+  </div>
+
+  <div class="large-3 columns">
+    <div class="install-foundation">
+      <h5>推荐关注!</h5>
+      <p>
+      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
+      <p>
+      <p>
+      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
+      <p>
+      <p>
+      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
+      <p>
+      <p>
+      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
+      <p>
+      <p>
+      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
+      <p>
     </div>
 
-    <p class="guide-summary">
-      <%= raw(markdown_for topic.body) %>
-    </p>
+    <div class="row ads">
+      <div class="large-12 columns">
+        <div class="jobsPosting">
+          <h5>学生推荐！</h5>
+          <div class="zurbJobs">
+            <ul>
+              <li>
+              <a href="http://zurb.com/jobs/1933-idea-couture-intermediate-graphic-designer" target="_blank">
+                <span class="positionTitle">Intermediate Graphic Designer</span>
+                <span class="location">
+                  <span class="companyName">Idea Couture</span> in Toronto</span>
+              </a>
+              </li>
+              <li><a href="http://zurb.com/jobs/1869-xactly-corporation-senior-qa-engineer" target="_blank">
+                <span class="positionTitle">Senior QA Engineer</span>
+                <span class="location">
+                  <span class="companyName">Xactly Corporation</span> in San Jose, CA</span>
+              </a>
+              </li>
+              <li>
+                <a href="http://zurb.com/jobs/1922-eventbrite-senior-ui-designer" target="_blank">
+                <span class="positionTitle">Senior UI Designer</span>
+                <span class="location">
+                  <span class="companyName">Eventbrite</span> in San Francisco
+                </span>
+              </a>
+              </li>
+            </ul>
+          </div>
+          <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">Job Board from ZURB</span></a>
+        </div>
 
-    <p class="guide-read-time">
-      <span class="octicon octicon-clock"></span> 5 minute read
-    </p>
-
-    <% if can? :update, topic %>
-      <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <% end %>
-  </article>
-<% end %>
-
-<%= paginate @topics %>
+        <div id="zurbAd" class="">
+          <div id="sidebarAd" class="cleanslate">
+            <div class="row">
+              <div class="large-7 seven columns">
+                <a href="http://zurb.com/jobs" target="_blank">
+                  <img alt="Job-board" src="http://zurb.com/assets/ads/job-board-eb90771dc013e5e1eaad65a3ecd9713f.png" width="0" height="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;">
+                </a>
+              </div>
+              <div class="large-5 five columns">
+                <ul>
+                  <li>
+                    <a href="http://zurb.com/jobs" target="_blank">ZURB Job Board<br> Jobs for product designers and engineers.→</a>
+                  </li>
+                  <li>
+                    <a href="http://zurb.com/university/sponsor" target="_blank">
+                      <span class="ad-sponsor">ZURB University Sponsor</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
