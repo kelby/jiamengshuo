@@ -1,18 +1,20 @@
 $(document).ready ->
-  $(document).on 'focus', 'input#post_fi_icon', ->
-    $('input#post_fa_icon').prop("disabled", true)
-    $("input#post_icon_from").val('1')
+  if $('input#post_icon_fi').val().length > 0
+    $('input#post_icon_fa').prop("disabled", true)
 
-  $(document).on 'blur', 'input#post_fi_icon', ->
+  if $('input#post_icon_fa').val().length > 0
+    $('input#post_icon_fi').prop("disabled", true)
+
+  $(document).on 'focus', 'input#post_icon_fi', ->
+    $('input#post_icon_fa').prop("disabled", true)
+
+  $(document).on 'blur', 'input#post_icon_fi', ->
     if $(this).val().length == 0
-      $('input#post_fa_icon').prop("disabled", false)
-      $("input#post_icon_from").val('')
+      $('input#post_icon_fa').prop("disabled", false)
 
-  $(document).on 'focus', 'input#post_fa_icon', ->
-    $('input#post_fi_icon').prop("disabled", true)
-    $("input#post_icon_from").val('2')
+  $(document).on 'focus', 'input#post_icon_fa', ->
+    $('input#post_icon_fi').prop("disabled", true)
 
-  $(document).on 'blur', 'input#post_fa_icon', ->
+  $(document).on 'blur', 'input#post_icon_fa', ->
     if $(this).val().length == 0
-      $('input#post_fi_icon').prop("disabled", false)
-      $("input#post_icon_from").val('')
+      $('input#post_icon_fi').prop("disabled", false)

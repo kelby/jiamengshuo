@@ -50,8 +50,21 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      _params = params.require(:post).permit(:title, :icon, :description, {:sections_attributes => [:id, :heading, :description]})
+      _params = params.require(:post).permit(:title, :icon_fi, :icon_fa, :description, {:sections_attributes => [:id, :heading, :description]})
       _params[:sections_attributes].each{ |_, value| value.merge!(user_id: current_user.id) if value } if _params[:sections_attributes]
+
+      if _params[:icon_fa].present?
+        _params[:icon] = _params[:icon_fa]
+        _params[:icon_from] = 'fa'
+        _params.except!(:icon_fa)
+      end
+
+      if _params[:icon_fi].present?
+        _params[:icon] = _params[:icon_fi]
+        _params[:icon_from] = 'fi'
+        _params.except!(:icon_fi)
+      end
+
       _params
     end
 end

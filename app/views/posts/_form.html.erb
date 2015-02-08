@@ -18,22 +18,20 @@
       <span class="prefix">fi-</span>
     </div>
     <div class="small-6 large-5 columns">
-      <%= f.text_field :icon, id: 'post_fi_icon' %>
+      <%= f.text_field :icon_fi %>
     </div>
 
     <div class="small-3 large-1 columns">
       <span class="prefix">fa-</span>
     </div>
     <div class="small-6 large-5 columns">
-      <%= f.text_field :icon, id: 'post_fa_icon' %>
+      <%= f.text_field :icon_fa %>
     </div>
-
-    <%= hidden_field_tag 'post[icon_from]' %>
   </div>
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true %>
   </div>
 
   <div class="field">
