@@ -1,4 +1,5 @@
 class DirectMessagesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_direct_message, only: [:edit, :update, :destroy]
 
   respond_to :html

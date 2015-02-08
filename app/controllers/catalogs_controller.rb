@@ -1,4 +1,5 @@
 class CatalogsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_catalog, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
