@@ -119,3 +119,9 @@ p.tags {
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
 }
+
+/* For catalog index icon */
+.catalog_icon{
+  font-size: 40px;
+  color: #ccc;
+}

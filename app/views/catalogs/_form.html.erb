@@ -13,8 +13,14 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, required: true %>
   </div>
+
+  <div class="field">
+    <%= f.label :info %><br>
+    <%= f.text_area :info, rows: 5, required: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
