@@ -25,7 +25,7 @@
           <%= form_for :apply, url: user_applies_path(@user), remote: true do |f| %>
             <%= f.label :info, "申请信息: (不能为空)" %>
             <%= f.text_field :info, required: true %>
-            <%= f.submit %>
+            <%= f.submit "提交", class: "blue tiny button radius" %>
           <% end %>
 
           <a class="close-reveal-modal">&#215;</a>
@@ -60,7 +60,7 @@
           <%= form_for :direct_message, url: direct_messages_path, remote: true, html: { id: 'direct_message' } do |f| %>
             <%= f.text_area :content, required: true %><br />
             <%= hidden_field_tag 'direct_message[to_user_id]', @user.id %>
-            <%= f.submit %>
+            <%= f.submit "提交", class: "blue tiny button radius" %>
           <% end %>
         </div>
       </section>
