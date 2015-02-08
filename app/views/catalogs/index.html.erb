@@ -2,7 +2,11 @@
   <div class="row" data-equalizer>
     <% catalogs.each do |catalog| %>
       <div class="small-12 large-4 columns" data-equalizer-watch>
-        <i class="fi-credit-card icon"></i>
+        <% if catalog.icon.present? %>
+          <i class="fi-<%= catalog.icon %>"></i>
+        <% else %>
+          <i class="fi-credit-card"></i>
+        <% end %>
         <h5>
           <%= link_to catalog.name, catalog %>
         </h5>
