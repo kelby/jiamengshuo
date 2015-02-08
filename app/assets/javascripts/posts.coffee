@@ -18,3 +18,9 @@ $(document).ready ->
   $(document).on 'blur', 'input#post_icon_fa', ->
     if $(this).val().length == 0
       $('input#post_icon_fi').prop("disabled", false)
+
+  $("#more_content").hide()
+  $("#more_opt").click ->
+    $("#more_content").slideToggle "slow", ->
+
+    return

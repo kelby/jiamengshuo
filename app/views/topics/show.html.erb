@@ -66,7 +66,7 @@
 <hr>
 
 <%= form_for :comment, url: topic_comments_path(@topic) do |f| %>
-  <%= f.text_area :content, rows: 10 %>
+  <%= f.text_area :content, rows: 10, required: true %>
   <%= f.submit %>
 <% end %>
 

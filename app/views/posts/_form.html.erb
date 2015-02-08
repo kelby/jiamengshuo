@@ -11,7 +11,29 @@
     </div>
   <% end %>
 
-  <div class="row collapse">
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, rows: 10 %>
+  </div>
+
+  <%= f.fields_for :sections do |builder| %>
+     <%= render "section_fields", :f => builder %>
+  <% end %>
+
+  <div>
+    <%= link_to "添加课程及简述", add_section_path, remote: true, method: :post, disable_with: '...', id: "add_section" %>
+
+    <%= link_to "更多选项 ...", "javascript:void(0);", id: "more_opt" %>
+  </div>
+
+  <hr class="dashed">
+
+  <section id="more_content" class="row collapse">
     <%= f.label :icon, "设置显示在首页的图标 (从 fi 或 fa 里选择一个即可)" %><br>
 
     <div class="small-3 large-1 columns">
@@ -27,24 +49,6 @@
     <div class="small-6 large-5 columns">
       <%= f.text_field :icon_fa %>
     </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, required: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 5 %>
-  </div>
-
-  <%= f.fields_for :sections do |builder| %>
-     <%= render "section_fields", :f => builder %>
-  <% end %>
-
-  <section id="add_section">
-    <%= link_to "添加课程及简述", add_section_path, remote: true, method: :post, disable_with: '...' %>
   </section>
 
   <div class="actions">
