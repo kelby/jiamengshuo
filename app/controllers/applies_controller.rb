@@ -26,9 +26,9 @@ class AppliesController < ApplicationController
   end
 
   def create
-    apply = Apply.new apply_params.merge(user_id: current_user.id, mentor_id: params[:user_id])
-    apply.save
-    apply.create_activity :create, owner: current_user, recipient_id: params[:user_id]
+    @apply = Apply.new apply_params.merge(user_id: current_user.id, mentor_id: params[:user_id])
+    @apply.save
+    @apply.create_activity :create, owner: current_user, recipient_id: params[:user_id] if @apply.persisted?
 
     respond_to do |format|
       format.js

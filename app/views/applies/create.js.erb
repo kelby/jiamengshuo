@@ -1,2 +1,5 @@
 $("#create_apply").foundation('reveal', 'close');
-$("#new_apply").replaceWith("<a href=\"javascript:void(0);\" class=\"fancy radius button tiny\">已经拜师</a>");
+
+<% if @apply.persisted? %>
+  $("#new_apply").replaceWith("<a href=\"javascript:void(0);\" class=\"fancy radius button tiny\">已经拜师</a>");
+<% end %>

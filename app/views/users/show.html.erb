@@ -24,7 +24,7 @@
         <div id="create_apply" class="reveal-modal" data-reveal>
           <%= form_for :apply, url: user_applies_path(@user), remote: true do |f| %>
             <%= f.label :info, "申请信息: (不能为空)" %>
-            <%= f.text_field :info %>
+            <%= f.text_field :info, required: true %>
             <%= f.submit %>
           <% end %>
 
