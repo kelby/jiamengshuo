@@ -10,9 +10,13 @@
         <%= image_tag @user.avatar_url(:thumb), class: 'thumb_avatar' %>
       </a>
 
-      <% apply = Apply.where(mentor_id: @user.id, user_id: current_user.id).last %>
+      <% if user_signed_in? %>
+        <% apply = Apply.where(mentor_id: @subject.user.id, user_id: current_user.id).last %>
+      <% else %>
+        <% apply = nil %>
+      <% end %>
 
-      <% if current_user.teachers_ids.include? @user.id %>
+      <% if user_signed_in? && (current_user.teachers_ids.include? @subject.user.id) %>
         <a href="javascript:void(0);" class="fancy radius button tiny">我的导师</a>
       <% elsif apply && apply.pending? %>
         <a href="javascript:void(0);" class="fancy radius button tiny">已经拜师</a>
