@@ -84,9 +84,13 @@
     <div class="add-comment-tabs section-container tabs" data-section="tabs" data-section-resized="true" style="min-height: 42px;">
       <section class="write active" style="padding-top: 42px;">
         <p class="title" data-section-title="" style="left: 0px; height: 42px;">
-          <% apply = Apply.where(mentor_id: @subject.user.id, user_id: current_user.id).last %>
+          <% if user_signed_in? %>
+            <% apply = Apply.where(mentor_id: @subject.user.id, user_id: current_user.id).last %>
+          <% else %>
+            <% apply = nil %>
+          <% end %>
 
-          <% if current_user.teachers_ids.include? @subject.user.id %>
+          <% if user_signed_in? && (current_user.teachers_ids.include? @subject.user.id) %>
             <a href="javascript:void(0);" class="fancy radius button tiny">我的导师</a>
           <% elsif apply && apply.pending? %>
             <a href="javascript:void(0);" class="fancy radius button tiny">已经拜师</a>
@@ -110,7 +114,9 @@
         <div class="content" data-section-content="">
           <ul class="large-block-grid-2 small-block-grid-1 write">
             <li class="hide-for-small">
-              <%= image_tag current_user.avatar_url(:thumb) %>
+              <% if user_signed_in? %>
+                <%= image_tag current_user.avatar_url(:thumb) %>
+              <% end %>
             </li>
 
             <li>
