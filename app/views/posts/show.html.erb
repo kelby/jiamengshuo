@@ -10,7 +10,6 @@
 
 </h1>
 
-
 <div class="row">
   <div class="large-9 columns" role="content">
     <p>
@@ -27,13 +26,13 @@
     <% end %>
   </div>
 
-  <aside class="large-3 columns hide-for-small">
+  <aside class="large-3 columns hide-for-small" id="when_top_fixed_me">
     <h5>Toc</h5>
 
-    <div data-magellan-expedition="fixed">
+    <div>
       <ul class="sub-nav">
         <% @sections.each_with_index do |section, index| %>
-          <li data-magellan-arrival="build">
+          <li>
             <%= link_to section.heading, "##{dom_id section}" %>
           </li>
         <% end %>

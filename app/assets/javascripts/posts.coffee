@@ -9,7 +9,7 @@ window.Application =
     controllers.indexOf(Application.currentController()) >= 0
 
 $(document).ready ->
-  if Application.isRunWithin ['posts']
+  if Application.isRunWithin(['posts']) && (Application.currentAction == "new")
     if $('input#post_icon_fi').val().length > 0
       $('input#post_icon_fa').prop("disabled", true)
 
@@ -36,7 +36,6 @@ $(document).ready ->
 
       return
 
-
 $(document).ready ->
   $(document).on 'scroll', ->
     if $(window).scrollTop() > 500
@@ -55,3 +54,6 @@ $(document).ready ->
     $('html, body').animate { scrollTop: offsetTop }, 500, 'linear'
 
   $('.scroll-top-wrapper').on 'click', scrollToTop
+
+  # post show page
+  $('#when_top_fixed_me').scrollToFixed();
