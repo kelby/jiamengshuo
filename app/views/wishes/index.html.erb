@@ -20,7 +20,7 @@
     <div class="row"  data-equalizer>
       <% wishes.each do |wish| %>
         <div class="large-6 columns testimonial" data-equalizer-watch>
-          <div class="quote">
+          <div class="quote panel callout radius">
             <p><%= sanitize wish.content, tags: %w(br p) %></p>
           </div>
 
