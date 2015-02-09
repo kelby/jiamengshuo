@@ -24,7 +24,7 @@
               <div class="post-count new-general with-replies">
                 <%= link_to topic.user do %>
                   <div class="post-count-container new-general with-replies">
-                    <%= image_tag topic.user.avatar_url(:tiny) %>
+                    <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
                   </div>
                 <% end %>
                 <div class="total-post-count new total-replies">

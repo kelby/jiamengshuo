@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit_avatar, :update_avatar, :follow, :stop_following]
+  before_action :authenticate_user!, only: [:edit_avatar, :update_avatar, :follow, :stop_following, :profile]
   authorize_resource
 
   def show
