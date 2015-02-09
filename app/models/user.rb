@@ -52,6 +52,13 @@ class User < ActiveRecord::Base
     self.teachers.pluck(:recipient_id)
   end
 
+  def recomment_users
+    my_owner_ids = UserRelationship.where(recipient_id: self.id).pluck(:owner_id)
+    my_owner_s_owner_ids = UserRelationship.where(recipient_id: my_owner_ids).pluck(:owner_id)
+
+    User.where.not(avatar: nil).where(id: (my_owner_s_owner_ids - my_owner_ids).sample(5))
+  end
+
   def login=(login)
     @login = login
   end

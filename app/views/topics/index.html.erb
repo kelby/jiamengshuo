@@ -1,28 +1,3 @@
-<div class="row">
-  <div class="large-9 columns">
-    <ul class="toolbar">
-      <li><span>查看 &nbsp; |</span></li>
-      <li value="recent_comment">Recent Activity</li>
-      <li value="helpful_count">默认</li>
-      <li value="following_count">优质</li>
-      <li value="created_at">无人问津</li>
-    </ul>
-  </div>
-
-  <div class="large-3 columns">
-    <div class="row collapse">
-      <div class="large-10 small-9 columns">
-        <form accept-charset="UTF-8" action="/forum/posts" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
-          <input class="search-bar" id="search" name="search" placeholder="Find an Answer" type="text">
-        </form>
-      </div>
-      <div class="large-2 small-3 columns">
-        <button class="postfix search button expand" name="button" type="submit"><i class="general foundicon-search"></i></button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <style type="text/css">
   .post-count-spacing>li:first-child {
     width: 105px;
@@ -101,79 +76,15 @@
   <div class="large-3 columns">
     <div class="install-foundation">
       <h5>推荐关注!</h5>
-      <p>
-      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
-      <p>
-      <p>
-      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
-      <p>
-      <p>
-      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
-      <p>
-      <p>
-      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
-      <p>
-      <p>
-      <strong>Get Hired Faster</strong>- Earning certification from ZURB demonstrates that you have the skills necessary to take full advantage of Foundation.</p>
-      <p>
-    </div>
-
-    <div class="row ads">
-      <div class="large-12 columns">
-        <div class="jobsPosting">
-          <h5>学生推荐！</h5>
-          <div class="zurbJobs">
-            <ul>
-              <li>
-              <a href="http://zurb.com/jobs/1933-idea-couture-intermediate-graphic-designer" target="_blank">
-                <span class="positionTitle">Intermediate Graphic Designer</span>
-                <span class="location">
-                  <span class="companyName">Idea Couture</span> in Toronto</span>
-              </a>
-              </li>
-              <li><a href="http://zurb.com/jobs/1869-xactly-corporation-senior-qa-engineer" target="_blank">
-                <span class="positionTitle">Senior QA Engineer</span>
-                <span class="location">
-                  <span class="companyName">Xactly Corporation</span> in San Jose, CA</span>
-              </a>
-              </li>
-              <li>
-                <a href="http://zurb.com/jobs/1922-eventbrite-senior-ui-designer" target="_blank">
-                <span class="positionTitle">Senior UI Designer</span>
-                <span class="location">
-                  <span class="companyName">Eventbrite</span> in San Francisco
-                </span>
-              </a>
-              </li>
-            </ul>
-          </div>
-          <a id="via" href="http://zurbjobs.com">via&nbsp;<span class="jobs-link">Job Board from ZURB</span></a>
-        </div>
-
-        <div id="zurbAd" class="">
-          <div id="sidebarAd" class="cleanslate">
-            <div class="row">
-              <div class="large-7 seven columns">
-                <a href="http://zurb.com/jobs" target="_blank">
-                  <img alt="Job-board" src="http://zurb.com/assets/ads/job-board-eb90771dc013e5e1eaad65a3ecd9713f.png" width="0" height="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;">
-                </a>
-              </div>
-              <div class="large-5 five columns">
-                <ul>
-                  <li>
-                    <a href="http://zurb.com/jobs" target="_blank">ZURB Job Board<br> Jobs for product designers and engineers.→</a>
-                  </li>
-                  <li>
-                    <a href="http://zurb.com/university/sponsor" target="_blank">
-                      <span class="ad-sponsor">ZURB University Sponsor</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% @users.each do |user| %>
+        <p>
+        <%= link_to user do %><%= image_tag user.avatar_url(:mini), class: "mini_avatar" %><% end %>
+        <strong><%= link_to user do %><%= user.username %><% end %></strong>
+        <br>
+        <%= user.info %>
+        </p>
+        <hr class="dashed"></hr>
+      <% end %>
     </div>
   </div>
 </div>

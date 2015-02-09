@@ -9,6 +9,12 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.page(params[:page]).per(15)
+    if user_signed_in?
+      @users = current_user.recomment_users
+    else
+      @users = User.where(id: User.where.not(avatar: nil).ids.sample(5))
+    end
+
     respond_with(@topics)
   end
 
