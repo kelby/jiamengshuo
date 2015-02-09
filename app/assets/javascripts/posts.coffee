@@ -38,7 +38,7 @@ $(document).ready ->
 
 $(document).ready ->
   $(document).on 'scroll', ->
-    if $(window).scrollTop() > 500
+    if $(window).scrollTop() > 1000
       $('.scroll-top-wrapper').addClass 'show'
     else
       $('.scroll-top-wrapper').removeClass 'show'
@@ -56,4 +56,4 @@ $(document).ready ->
   $('.scroll-top-wrapper').on 'click', scrollToTop
 
   # post show page
-  $('#when_top_fixed_me').scrollToFixed();
+  $('#when_top_fixed_me').scrollToFixed({marginTop: 20});
