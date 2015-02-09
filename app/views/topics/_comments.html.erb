@@ -7,7 +7,7 @@
             <i class="icon"></i>
             <%= comment.user.username %>
             <% if comment.user == @topic.user %>
-              <span class="label"> Post Author</span>
+              <span class="label"> 作者</span>
             <% end %>
           </a>
 
@@ -41,7 +41,7 @@
                 <i class="icon"></i>
                 <%= reply.user.username %>
                 <% if reply.user == @topic.user %>
-                  <span class="label"> Post Author</span>
+                  <span class="label"> 作者</span>
                 <% end %>
               </a>
 
