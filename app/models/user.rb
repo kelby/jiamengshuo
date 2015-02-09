@@ -41,11 +41,11 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def marking? topic_id
-    MarkerTopic.where(topic_id, self.id).exists? 
+    MarkerTopic.where(topic_id: topic_id, user_id: self.id).exists?
   end
 
   def keeping? topic_id
-    KeeperTopic.where(topic_id, self.id).exists? 
+    KeeperTopic.where(topic_id: topic_id, user_id: self.id).exists?
   end
 
   def teachers_ids

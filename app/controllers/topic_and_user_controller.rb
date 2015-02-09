@@ -6,6 +6,7 @@ class TopicAndUserController < ApplicationController
   def mark
     mt = MarkerTopic.new topic_id: @topic.id, user_id: current_user.id
     mt.save
+    mt.create_activity :mark, owner: current_user, recipient: @topic if user_signed_in? && mt.persisted?
 
     respond_to do |format|
       format.js
@@ -15,6 +16,7 @@ class TopicAndUserController < ApplicationController
   def keep
     kt = KeeperTopic.new topic_id: @topic.id, user_id: current_user.id
     kt.save
+    kt.create_activity :keep, owner: current_user, recipient: @topic if user_signed_in? && kt.persisted?
 
     respond_to do |format|
       format.js

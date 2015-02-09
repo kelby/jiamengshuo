@@ -1,0 +1,7 @@
+收藏了话题讨论
+
+<% if activity.recipient %>
+  <%= link_to activity.recipient.title, activity.recipient %>
+<% else %>
+  which has since been removed
+<% end %>

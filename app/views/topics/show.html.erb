@@ -34,11 +34,11 @@
 
 
       <%# unless current_user.followering? @topic %>
-        <%= link_to keep_topic_path(@topic), method: :post, remote: true, title: '保持观注', id: "follow_topic" do %>
+        <%= link_to keep_topic_path(@topic), method: :post, remote: true, title: '保持关注', id: "follow_topic" do %>
           <% if user_signed_in? && current_user.keeping?(@topic.id) %>
-            <i class="fi-eye red"></i>&nbsp;观注
+            <i class="fi-eye red"></i>&nbsp;关注
           <% else %>
-            <i class="fi-eye"></i>&nbsp;观注
+            <i class="fi-eye"></i>&nbsp;关注
           <% end %>
         <% end %>
         &nbsp;
