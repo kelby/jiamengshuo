@@ -1,0 +1,2 @@
+class MarkerTopic < TopicAndUser
+end

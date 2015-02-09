@@ -1,21 +1,24 @@
 class TopicAndUserController < ApplicationController
-  before_action :authenticate_user!, only: [:sticking, :followering, :keepering]
-  before_action :set_topic, only: [:sticking, :followering, :keepering]
-  authorize_resource
+  before_action :authenticate_user!, only: [:keep, :mark]
+  before_action :set_topic, only: [:keep, :mark]
+  # authorize_resource
 
-  def sticking
-    stick = current_user.sticks.build topic_id: @topic.id
-    stick.save
+  def mark
+    mt = MarkerTopic.new topic_id: @topic.id, user_id: current_user.id
+    mt.save
+
+    respond_to do |format|
+      format.js
+    end
   end
 
-  def followering
-    follower = current_user.followers.build topic_id: @topic.id
-    follower.save
-  end
+  def keep
+    kt = KeeperTopic.new topic_id: @topic.id, user_id: current_user.id
+    kt.save
 
-  def keepering
-    keeper = current_user.keepers.build topic_id: @topic.id
-    keeper.save
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

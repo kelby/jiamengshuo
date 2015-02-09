@@ -26,14 +26,9 @@ class User < ActiveRecord::Base
   has_many :mentor_pending_applies, ->{ pending }, class_name: 'Apply', foreign_key: :mentor_id
   has_many :pending_apply_students, class_name: 'User', through: :mentor_pending_applies, foreign_key: :mentor_id
 
-  # join tables, for topics.
-  has_many :sticks, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'
-  has_many :followers, ->{ where related_by: 'follower'}, class_name: 'TopicAndUser'
-  has_many :keepers, ->{ where related_by: 'keeper'}, class_name: 'TopicAndUser'
-
-  has_many :stick_topics, class_name: 'Topic', through: :sticks
-  has_many :follower_topics, class_name: 'Topic', through: :followers
-  has_many :keeper_topics, class_name: 'Topic', through: :keepers
+  # join table
+  has_many :marker_topics
+  has_many :keeper_topics
 
   # join tables, for user relationship.
   has_many :teachers, foreign_key: :owner_id
@@ -45,16 +40,12 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  def sticking? topic
-    self.stick_topics.exists? topic.id
+  def marking? topic_id
+    MarkerTopic.where(topic_id, self.id).exists? 
   end
 
-  def followering? topic
-    self.follower_topics.exists? topic.id
-  end
-
-  def keepering? topic
-    self.keeper_topics.exists? topic.id
+  def keeping? topic_id
+    KeeperTopic.where(topic_id, self.id).exists? 
   end
 
   def teachers_ids

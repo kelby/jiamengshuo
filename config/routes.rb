@@ -25,11 +25,12 @@ Rails.application.routes.draw do
     end
   end
 
-  post 'topic_and_user/sticking/:id' => 'topic_and_user#sticking', as: :sticking_topic
-  post 'topic_and_user/followering/:id' => 'topic_and_user#followering', as: :followering_topic
-  post 'topic_and_user/keepering/:id' => 'topic_and_user#keepering', as: :keepering_topic
-
   resources :topics do
+    member do
+      post :mark, to: 'topic_and_user#mark'
+      post :keep, to: 'topic_and_user#keep'
+    end
+
     collection do
        get :search
      end

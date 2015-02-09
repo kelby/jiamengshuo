@@ -1,0 +1,2 @@
+class KeeperTopic < TopicAndUser
+end
