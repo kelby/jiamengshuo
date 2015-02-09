@@ -103,7 +103,7 @@
               <%= form_for :apply, url: user_applies_path(@subject.user), remote: true do |f| %>
                 <%= f.label :info, "申请信息: (不能为空)" %>
                 <%= f.text_field :info, required: true %>
-                <%= f.submit %>
+                <%= f.submit "提交", class: "blue tiny button radius" %>
               <% end %>
 
               <a class="close-reveal-modal">&#215;</a>
@@ -126,7 +126,7 @@
                 <% else %>
                   <%= f.text_area :content, rows: 10, disabled: true, required: true, placeholder: "只有导师、学生和朋友可以评论哦 ~" %>
                 <% end %>
-                <%= f.submit %>
+                <%= f.submit "提交", class: "blue tiny button radius" %>
               <% end %>
             </li>
           </ul>
