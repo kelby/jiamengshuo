@@ -41,7 +41,7 @@
       <div class="panel comment-wrapper">
         <h5 class="content-title">
           <%= link_to comment.user do %>
-            <i class="fi-plus"></i>
+            <%= image_tag comment.user.avatar_url(:mini) %>
             <%= comment.user.username %>
             <% if comment.user == @subject.user %>
               <span class="label"> 作者</span>
@@ -58,21 +58,6 @@
             <p></p>
           </div>
         </div>
-
-        <form accept-charset="UTF-8" action="/forum/posts/5503/comments/5502/approve" class="edit_comment" data-remote="true" id="edit_comment_5502" method="post">
-          <div style="margin:0;padding:0;display:inline">
-            <input name="utf8" type="hidden" value="✓">
-            <input name="_method" type="hidden" value="put">
-          </div>
-
-          <div class="helpful-button">
-            <button class="button forum helpful clicked" type="submit">
-              <i class="general foundicon-checkmark"></i>
-              <span class="helpful">Helpful</span>
-              <span id="comment-5502" class="helpful-count clicked">1</span>
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   </div>
@@ -114,9 +99,9 @@
         <div class="content" data-section-content="">
           <ul class="large-block-grid-2 small-block-grid-1 write">
             <li class="hide-for-small">
-              <% if user_signed_in? %>
-                <%= image_tag current_user.avatar_url(:thumb) %>
-              <% end %>
+              <%= image_tag @subject.user.avatar_url(:thumb) %>
+              <br>
+              <span class="centered-text">(作者)</span>
             </li>
 
             <li>
