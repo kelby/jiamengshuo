@@ -70,7 +70,7 @@
 
 <%= form_for :comment, url: topic_comments_path(@topic) do |f| %>
   <%= f.text_area :content, rows: 10, required: true %>
-  <%= f.submit %>
+  <%= f.submit "提交", class: "blue tiny button radius" %>
 <% end %>
 
 <hr>
