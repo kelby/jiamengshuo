@@ -37,7 +37,7 @@ $(document).ready ->
       return
 
   $(document).on 'scroll', ->
-    if $(window).scrollTop() > 2000
+    if $(window).scrollTop() > 1800
       $('.scroll-top-wrapper').addClass 'show'
     else
       $('.scroll-top-wrapper').removeClass 'show'
