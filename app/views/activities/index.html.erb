@@ -16,11 +16,11 @@
     </div>
     <hr class="dashed"></hr>
   <% end %>
+
+  <%= paginate @direct_messages, :param_name => 'dm_page' %>
+
+  <hr>
 <% end %>
-
-<%= paginate @direct_messages, :param_name => 'dm_page' %>
-
-<hr>
 
 公共消息：
 
