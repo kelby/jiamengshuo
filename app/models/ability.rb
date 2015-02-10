@@ -10,6 +10,7 @@ class Ability
     can :manage, Post, :user_id => user.id
     can :manage, Section, :user_id => user.id
     can :manage, Wish, :user_id => user.id
+    can [:got_it, :spurn_it, :followers_by_user], Wish
     can :manage, Subject, :user_id => user.id
     can :manage, Reply, :user_id => user.id
     can :manage, Comment, :user_id => user.id

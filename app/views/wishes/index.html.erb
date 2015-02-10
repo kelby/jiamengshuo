@@ -1,4 +1,8 @@
-<h2>心愿还是要有的，万一实现了呢？！</h2>
+<h2>想法还是要有的，万一实现了呢？！
+  <span>&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;
+    <i class="fa fa-paper-plane"></i>
+  </span>
+</h2>
 
 <h3 class="subheader"><%= sanitize @active_wish.content, tags: %w(br p) %></h3>
 
@@ -40,7 +44,7 @@
 
             <% if user_signed_in? && current_user.following?(wish) %>
               <%= form_tag spurn_it_wish_path(wish), remote: true, method: :delete, class: "js-toggler-form unstarred js-star-button" do %>
-                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish) do %>
+                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish, 'got_or_spurn') do %>
                   <i class="fi-star"></i><span>&nbsp;已加到心愿卡</span>
                 <% end %>
 
@@ -48,7 +52,7 @@
               <% end %>
             <% else %>
               <%= form_tag got_it_wish_path(wish), remote: true, class: "js-toggler-form unstarred js-star-button" do %>
-                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish) do %>
+                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish, 'got_or_spurn') do %>
                   <i class="fi-star"></i><span>&nbsp;添加到心愿卡</span>
                 <% end %>
 
