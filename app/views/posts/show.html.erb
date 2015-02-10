@@ -30,7 +30,7 @@
     <h5>Toc</h5>
 
     <div>
-      <ul class="sub-nav">
+      <ul class="side-nav">
         <% @sections.each_with_index do |section, index| %>
           <li>
             <%= link_to section.heading, "##{dom_id section}" %>
@@ -39,7 +39,9 @@
       </ul>
     </div>
 
-    <%= render 'shared/want_mentor_button', user: @post.user %>
+    <div style="margin-left: 1rem;">
+      <%= render 'shared/want_mentor_button', user: @post.user %>
+    </div>
   </aside>
 </div>
 
