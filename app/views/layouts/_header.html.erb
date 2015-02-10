@@ -35,7 +35,11 @@
     <ul class="right">
       <li>
         <%= link_to activities_index_path do %>
-          <%= image_tag 'u24.png', size: "42x42" %>
+          <% if user_signed_in? && DirectMessage.not_read.where(to_user_id: current_user.id).exists? %>
+            <i class="fa fa-bell fa-2x"></i>
+          <% else %>
+            <i class="fa fa-bell fa-2x" style="opacity: 0.4;"></i>
+          <% end %>
         <% end %>
       </li>
 

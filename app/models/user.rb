@@ -59,6 +59,11 @@ class User < ActiveRecord::Base
     User.where.not(avatar: nil).where(id: (my_owner_s_owner_ids - my_owner_ids).sample(5))
   end
 
+  def read_direct_messages(direct_messages)
+    dm_ids = direct_messages.map(&:id)
+    DirectMessage.not_read.where(id: dm_ids).update_all(read: true)
+  end
+
   def login=(login)
     @login = login
   end

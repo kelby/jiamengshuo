@@ -35,7 +35,7 @@
         <h5 class="title">心愿卡片?</h5>
         <div class="content" data-slug="panel1">
           <%= form_for :wish, url: wishes_path do |f| %>
-            <%= f.text_area :content, rows: 4, required: true %>
+            <%= f.text_area :content, rows: 4, required: true, autofocus: true %>
             <%= f.submit "提交", class: "blue tiny button radius" %>
           <% end %>
         </div>

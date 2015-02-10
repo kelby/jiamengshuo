@@ -62,7 +62,7 @@
         <h5 class="title">私信 Ta ?</h5>
         <div class="content" data-slug="panel1">
           <%= form_for :direct_message, url: direct_messages_path, remote: true, html: { id: 'direct_message' } do |f| %>
-            <%= f.text_area :content, required: true %><br />
+            <%= f.text_area :content, required: true, autofocus: true %><br />
             <%= hidden_field_tag 'direct_message[to_user_id]', @user.id %>
             <%= f.submit "提交", class: "blue tiny button radius" %>
           <% end %>
