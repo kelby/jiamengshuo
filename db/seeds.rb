@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 50.times do
-  User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: 'password')
+  User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: 'password', faker: true)
 end
 
 %w(hots recommend tags badges divider course wish_list).each do |page|
@@ -64,7 +64,7 @@ Catalog.update_all(info: "Cupcake ipsum dolor sit. Amet I love liquorice jujubes
   Section.create!(heading: Faker::Name.name, body: Faker::Lorem.paragraph(2))
 end
 
-user = User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com")
+user = User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com", faker: true)
 topic = Topic.create!(title: Faker::Name.name, user: user, body: Faker::Lorem.paragraph)
 
 comment = Comment.create!(user: user, content: "
@@ -72,7 +72,7 @@ comment = Comment.create!(user: user, content: "
 
           <p>Simplify your color palette.</p>", topic: topic)
 
-user = User.create!(username: 'Kyle Schmidt Post Author', password: 'password', email: "Kyle_Schmidt@gmail.com")
+user = User.create!(username: 'Kyle Schmidt Post Author', password: 'password', email: "Kyle_Schmidt@gmail.com", faker: true)
 
 50.times do
   Comment.create!(content: "Wow, guys. Lots of great feedback.
