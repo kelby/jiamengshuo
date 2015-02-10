@@ -11,7 +11,11 @@
   <% end %>
   <div class='string required' id='contact_us_contact_email_input'>
     <%= f.label :email, (t('.email') + content_tag(:abbr, '*', :class => 'required')).html_safe %>
-    <%= f.text_field :email %>
+    <% if user_signed_in? %>
+      <%= f.text_field :email, value: current_user.email, required: true %>
+    <% else %>
+      <%= f.text_field :email, required: true %>
+    <% end %>
     <% if f.object.errors[:email].present? %>
       <p class='inline-error'><%= f.object.errors[:email].join(' and ') %></p>
     <% end %>
@@ -19,7 +23,7 @@
   <% if ContactUs.require_subject %>
     <div class='string required' id='contact_us_contact_subject_input'>
       <%= f.label :subject, (t('.subject') + content_tag(:abbr, '*', :class => 'required')).html_safe %>
-      <%= f.text_field :subject %>
+      <%= f.text_field :subject, required: true %>
       <% if f.object.errors[:subject].present? %>
         <p class='inline-error'><%= f.object.errors[:subject].join(' and ') %></p>
       <% end %>
@@ -27,7 +31,7 @@
   <% end %>
   <div class='text required' id='contact_us_contact_message_input'>
     <%= f.label :message, (t('.message') + content_tag(:abbr, '*', :class => 'required')).html_safe %>
-    <%= f.text_area :message, rows: 10 %>
+    <%= f.text_area :message, rows: 10, required: true %>
     <% if f.object.errors[:message].present? %>
       <p class='inline-error'><%= f.object.errors[:message].join(' and ') %></p>
     <% end %>
@@ -39,8 +43,8 @@
 
 <div class="row">
   <div class="large-12 columns centered-text">
-    <h2>感谢您的反馈</h2>
-    <h4 class="subheader">Where ever you are, count on us</h4>
-    <p>We've made Foundation the lightest responsive framework so that it's fast and easy to use. But we understand that sometimes folks get stuck. That's why we're available to answer your questions and you can hit us up on any of these channels.</p>
+    <!-- <h2>感谢您的反馈</h2> -->
+    <h4 class="subheader">无论您发现什么问题，或者对网站有什么建议，请一定联系我。</h4>
+    <p>感谢您的反馈！网站还在开发过程中，如果您发现问题，或者对产品有什么好的建议，请直接向我提出。我会认真研究您所提供的反馈，并以实际行动来回复您。再次表示谢谢。</p>
   </div>
 </div>
