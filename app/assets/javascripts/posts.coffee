@@ -9,7 +9,7 @@ window.Application =
     controllers.indexOf(Application.currentController()) >= 0
 
 $(document).ready ->
-  if Application.isRunWithin(['posts']) && (Application.currentAction == "new")
+  if Application.isRunWithin(['posts']) && (Application.currentAction() == "new")
     if $('input#post_icon_fi').val().length > 0
       $('input#post_icon_fa').prop("disabled", true)
 
@@ -36,7 +36,6 @@ $(document).ready ->
 
       return
 
-$(document).ready ->
   $(document).on 'scroll', ->
     if $(window).scrollTop() > 2000
       $('.scroll-top-wrapper').addClass 'show'
