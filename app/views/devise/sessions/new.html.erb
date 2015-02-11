@@ -2,9 +2,9 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div><%= f.label :login %><br />
-  <%= f.text_field :login, required: true, autofocus: true, placeholder: 'Email or Username' %></div>
+  <%= f.text_field :login, required: true, autofocus: true, placeholder: '邮箱 或 用户名' %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password, t("devise.password") %><br />
     <%= f.password_field :password, required: true, autocomplete: "off" %></div>
 
   <% if devise_mapping.rememberable? -%>

@@ -22,7 +22,7 @@
           <%= post.user.username %>
         </p>
         <p><%= truncate post.description, length: 450 %></p>
-        <p><i class="fi-clock"></i>&nbsp;<%= post.updated_at %></p>
+        <p><i class="fi-clock"></i>&nbsp;<%= time_ago_in_words post.updated_at %> 前</p>
       </div>
       <hr class="dashed hide-for-medium-up">
     <% end %>

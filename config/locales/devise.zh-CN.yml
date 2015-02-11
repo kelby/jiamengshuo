@@ -2,13 +2,16 @@
 # by Kenrick-Zhou (https://github.com/Kenrick-Zhou)
 # https://gist.github.com/Kenrick-Zhou/7909822
 
-zh-CN:
+"zh-CN":
   devise:
     username: "用户名"
     email: "邮箱"
     password: "密码"
     password_confirmation: "再次确认密码"
     current_password: "当前密码"
+    login: "登录"
+    signup: "注册"
+    forgot_your_password: "忘记密码？"
     confirmations:
       confirmed: 您的帐号已经确认，请登录.
       send_instructions: 几分钟后，您将收到确认帐号的电子邮件.

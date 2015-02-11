@@ -40,7 +40,7 @@
               关注
             <% end %>
 
-            <p> <i class="fi-clock"></i> <%= time_ago_in_words wish.updated_at %></p>
+            <p> <i class="fi-clock"></i> <%= time_ago_in_words wish.updated_at %> 前</p>
 
             <% if user_signed_in? && current_user.following?(wish) %>
               <%= form_tag spurn_it_wish_path(wish), remote: true, method: :delete, class: "js-toggler-form unstarred js-star-button" do %>
