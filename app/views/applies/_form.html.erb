@@ -1,5 +1,5 @@
 <%= form_for :apply, url: user_applies_path(user), remote: true do |f| %>
   <%= f.label :info, "申请信息: (不能为空)" %>
-  <%= f.text_field :info, required: true %>
+  <%= f.text_area :info, required: true %>
   <%= f.submit "提交", class: "blue tiny button radius" %>
 <% end %>
