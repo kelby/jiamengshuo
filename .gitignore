@@ -20,3 +20,4 @@ solr/development
 solr/pids
 solr/test
 public/uploads
+config/initializers/devise.rb
