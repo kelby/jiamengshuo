@@ -19,5 +19,6 @@ solr/default/data
 solr/development
 solr/pids
 solr/test
+solr/production
 public/uploads
 config/initializers/devise.rb

@@ -15,8 +15,8 @@ end
 end
 
 10.times do
-  Wish.create!(content: Faker::Lorem.paragraph, user_id: User.ids.sample)
-  Wish.create!(content: Faker::Lorem.paragraph(2), user_id: User.ids.sample, updated_at: Faker::Time.between(100.days.ago, Time.now))
+  Wish.create(content: Faker::Lorem.paragraph, user_id: User.ids.sample)
+  Wish.create(content: Faker::Lorem.paragraph(2), user_id: User.ids.sample, updated_at: Faker::Time.between(100.days.ago, Time.now))
 end
 
 Wish.create!(content: "我老爸不断提醒我：“干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。”<br>
@@ -59,18 +59,18 @@ end
 Catalog.update_all(info: "Cupcake ipsum dolor sit. Amet I love liquorice jujubes pudding croissant I love pudding. Apple pie macaroon toffee jujubes pie tart.")
 
 50.times do
-  Section.create!(heading: Faker::Name.name, body: Faker::Lorem.sentence)
-  Section.create!(heading: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
-  Section.create!(heading: Faker::Name.name, body: Faker::Lorem.paragraph(2))
+  Section.create!(user_id: User.ids.sample, heading: Faker::Name.name, body: Faker::Lorem.sentence)
+  Section.create!(user_id: User.ids.sample, heading: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
+  Section.create!(user_id: User.ids.sample, heading: Faker::Name.name, body: Faker::Lorem.paragraph(2))
 end
 
-user = User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com", faker: true)
+user = User.all.sample # User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com", faker: true)
 topic = Topic.create!(title: Faker::Name.name, user: user, body: Faker::Lorem.paragraph)
 
 comment = Comment.create!(user: user, content: "
           <p>Nice start, Becky. I really like some of the elements you have going so far. The header and footer tie in nicely and the ribbon on tiles works well. The font is great also and looks readable. Here are a few areas you can keep iterating on:</p>
 
-          <p>Simplify your color palette.</p>", topic: topic)
+          <p>Simplify your color palette.</p>", commentable: topic)
 
 user = User.create!(username: 'Kyle Schmidt Post Author', password: 'password', email: "Kyle_Schmidt@gmail.com", faker: true)
 
@@ -86,7 +86,7 @@ First, @Milkmusket, I agree. I've struggled with that section and might take adv
 I'll try reducing the header, the active state was just conceptual at this point. For the one shown, I was considering a fixed header and wanted the user to see where they were at when scrolling. So the thick yellow bar would slide when you scroll.
 
 Again, thanks everyone. I really enjoy the feedback on Forrst. Much more in depth than over at Dribbble. :P",
-  topic_id: Topic.ids.sample, user_id: User.ids.sample)
+  commentable_id: Topic.ids.sample, user_id: User.ids.sample)
 end
 
 50.times do
@@ -106,7 +106,7 @@ readonly_attributes
 
 `attr_readonly` 和其它 attr_x 类似，只不过这里设置的是某属性为只读。注意，这里不是校验，所以保存出错的话，不会放到 record 对象的 errors 里。
 ",
-  topic_id: Topic.ids.sample, user_id: User.ids.sample)
+  commentable_id: Topic.ids.sample, user_id: User.ids.sample)
 end
 
 100.times do
