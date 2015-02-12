@@ -72,7 +72,7 @@ comment = Comment.create!(user: user, content: "
 
           <p>Simplify your color palette.</p>", commentable: topic)
 
-user = User.create!(username: 'Kyle Schmidt Post Author', password: 'password', email: "Kyle_Schmidt@gmail.com", faker: true)
+user = User.create(username: 'Kyle Schmidt Post Author', password: 'password', email: "Kyle_Schmidt@gmail.com", faker: true)
 
 50.times do
   Comment.create!(content: "Wow, guys. Lots of great feedback.
@@ -142,7 +142,7 @@ end
 
 user_ids = User.ids
 200.times do
-  Apply.create!(user_id: user_ids.sample, mentor_id: user_ids.sample, info: Faker::Lorem.paragraph)
+  Apply.create(user_id: user_ids.sample, mentor_id: user_ids.sample, info: Faker::Lorem.paragraph)
 end
 
 User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。 无限感激"
@@ -150,11 +150,13 @@ User.where(id: user_ids.sample(10)).update_all info: "互联网爱好者，努�
 User.where(id: user_ids.sample(10)).update_all info: "Dreams will keep me young."
 User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。有想法去实现~shixian.com"
 
+=begin
 100.times do
   Teacher.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
   Student.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
   Classmate.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
 end
+=end
 
 Post.where(description: nil).each do |post|
   post.description = Faker::Lorem.paragraph(2)

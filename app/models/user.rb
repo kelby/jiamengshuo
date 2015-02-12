@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   has_many :students, foreign_key: :owner_id
   has_many :classmates, foreign_key: :owner_id
 
+  scope :fakers, -> { where(faker: true)}
+
   acts_as_followable
   acts_as_follower
 
