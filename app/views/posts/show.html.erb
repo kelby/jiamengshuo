@@ -17,8 +17,10 @@
     </p>
 
     <% @sections.each_with_index do |section, index| %>
-        <% if section.heading.present? %>
+        <% if section.heading.present? && section.two? %>
           <h2 class="panel"><%= link_to section.heading, "##{dom_id section}" %><%=  %></h2>
+        <% elsif section.heading.present? && section.three? %>
+          <h3 class="panel"><%= link_to section.heading, "##{dom_id section}" %><%=  %></h3>
         <% end %>
 
         <p><%= raw(markdown_for section.description) %></p>
