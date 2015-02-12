@@ -22,3 +22,5 @@ solr/test
 solr/production
 public/uploads
 config/initializers/devise.rb
+
+public/assets/
