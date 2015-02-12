@@ -36,6 +36,14 @@ $(document).ready ->
 
       return
 
+    $(document).on "click", "span.prefix.head_two", ->
+      $(this).siblings("#section_head").val('three')
+      $(this).replaceWith("<span class=\"prefix head_three\">H3</span>")
+
+    $(document).on "click", "span.prefix.head_three", ->
+      $(this).siblings("#section_head").val('two')
+      $(this).replaceWith("<span class=\"prefix head_two\">H2</span>")
+
   $(document).on 'scroll', ->
     if $(window).scrollTop() > 1800
       $('.scroll-top-wrapper').addClass 'show'
