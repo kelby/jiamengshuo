@@ -1,6 +1,6 @@
 class WishesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :got_it, :spurn_it]
-  before_action :set_wish, only: [:show, :edit, :update, :destroy, :got_it, :followers_by_user, :checkout_it]
+  before_action :set_wish, only: [:show, :edit, :update, :destroy, :got_it, :followers_by_user, :checkout_it, :checkin_it]
   authorize_resource
 
   respond_to :html
@@ -64,8 +64,11 @@ class WishesController < ApplicationController
   end
 
   def checkout_it
-    # debugg
     @wish.create_activity :checkout_it, owner: current_user, recipient: @wish.user
+  end
+
+  def checkin_it
+    @wish.create_activity :checkin_it, owner: current_user, recipient: @wish.user
   end
 
   def followers_by_user

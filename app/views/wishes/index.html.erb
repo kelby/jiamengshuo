@@ -60,12 +60,22 @@
               <% end %>
             <% end %>
 
-            <%= form_tag checkout_it_wish_path(wish), remote: true, class: "js-toggler-form unstarred js-star-button" do %>
-              <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish, "checkout") do %>
-                <i class="fi-check"></i><span>&nbsp;帮 Ta 实现</span>
-              <% end %>
+            <% if user_signed_in? && current_user.following?(wish) %>
+              <%= form_tag checkin_it_wish_path(wish), remote: true, class: "js-toggler-form unstarred js-star-button" do %>
+                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish, "checkin_or_checkout") do %>
+                  <i class="fi-check"></i><span>&nbsp;帮 Ta 实现</span>
+                <% end %>
 
-              <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+                <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+              <% end %>
+            <% else %>
+              <%= form_tag checkout_it_wish_path(wish), method: :delete, remote: true, class: "js-toggler-form unstarred js-star-button" do %>
+                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish, "checkin_or_checkout") do %>
+                  <i class="fi-check"></i><span>&nbsp;取消帮 Ta 实现</span>
+                <% end %>
+
+                <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+              <% end %>
             <% end %>
           </div>
         </div>

@@ -22,7 +22,8 @@ Rails.application.routes.draw do
       post :got_it
       delete :spurn_it
       get  :followers_by_user
-      post :checkout_it
+      post :checkin_it
+      delete :checkout_it
     end
   end
 
