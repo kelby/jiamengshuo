@@ -24,3 +24,5 @@ public/uploads
 config/initializers/devise.rb
 
 public/assets/
+
+config/mailer.yml

@@ -31,3 +31,6 @@ module FoundMentor
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+MAILER_YML = Rails.root.join('config', 'mailer.yml')
+MAILER = YAML.load_file(MAILER_YML)[Rails.env]
