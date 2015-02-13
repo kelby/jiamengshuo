@@ -76,14 +76,16 @@
   <div class="large-3 columns">
     <div class="install-foundation">
       <h5>推荐关注!</h5>
-      <% @users.each do |user| %>
-        <p>
-        <%= link_to user do %><%= image_tag user.avatar_url(:mini), class: "mini_avatar" %><% end %>
-        <strong><%= link_to user do %><%= user.username %><% end %></strong>
-        <br>
-        <%= user.info %>
-        </p>
-        <hr class="dashed"></hr>
+      <% unless @users.blank? %>
+        <% @users.each do |user| %>
+          <p>
+          <%= link_to user do %><%= image_tag user.avatar_url(:mini), class: "mini_avatar" %><% end %>
+          <strong><%= link_to user do %><%= user.username %><% end %></strong>
+          <br>
+          <%= user.info %>
+          </p>
+          <hr class="dashed"></hr>
+        <% end %>
       <% end %>
     </div>
   </div>
