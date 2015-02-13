@@ -30,10 +30,10 @@
                 <p><a href="#">回复</a></p>
               </div>
               <div class=" large-3 columns">
-                <%= link_to user_approve_apply_path(apply.apply_student), remote: true, method: :put, class: "button expand medium" do %>
+                <%= link_to user_approve_apply_path(apply.apply_student), remote: true, method: :put, class: "google button blue expand medium" do %>
                   <span>同意</span>
                 <% end %>
-                <%= link_to user_refuse_apply_path(apply.apply_student), remote: true, method: :put, class: "button expand medium" do %>
+                <%= link_to user_refuse_apply_path(apply.apply_student), remote: true, method: :put, class: "google button expand medium" do %>
                   <span>拒绝</span>
                 <% end %>
               </div>
