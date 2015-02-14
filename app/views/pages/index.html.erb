@@ -1,11 +1,8 @@
-<!-- Main Blog Content -->
 <div class="large-9 columns" role="content">
   <article>
     <h1 class="panel-white">
-    <!-- <a href="#"><%=%></a> -->
-    <%= link_to @topic.title, @topic %>
+      <%= link_to @topic.title, @topic %>
     </h1>
-    <!-- <h2 class="panel-white"><a href="#">Found Mentor</a></h2> -->
 
     <div class="row">
       <%= raw markdown_for @topic.body %>
@@ -13,22 +10,12 @@
   </article>
 </div>
 
-<!-- End Main Content -->
-
-
-<!-- Sidebar -->
-
-<aside class="large-3 columns" style="margin-top: 4rem;">
+<aside class="large-3 columns h3_it" style="margin-top: 4rem; font-size: 2.05556rem;">
   <% if user_signed_in? %>
-    <ul class="disc">
+    <div class="disc">
   <% else %>
-    <ul class="disc panel-white">
+    <div class="disc panel-white">
   <% end %>
-    <li><h3>每个人都在建造自己的生活~~</h3></li>
-    <li><h3>很多前人成长的经历对于你应该很有借鉴价值~~</h3></li>
-    <li><h3>Mentor会给你他的经验~~他的建议~</h3></li>
-    <li><h3>是你人生中的贵人~~~</h3></li>
-   </ul>
+    <%= raw markdown_for @snippet.body %>
+   </div>
 </aside>
-
-<!-- End Sidebar -->

@@ -188,3 +188,7 @@ p.tags {
   line-height: inherit;
 }
 /* End scoll to top */
+
+.h3_it * {
+  font-size: 1.5rem;
+}

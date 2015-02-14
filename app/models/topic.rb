@@ -4,6 +4,7 @@ class Topic < ActiveRecord::Base
   acts_as_taggable
   belongs_to :user
   has_many   :comments, as: :commentable, dependent: :destroy
+  has_one    :snippet
 
   # join tables
   has_many :keeper_topics#, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'

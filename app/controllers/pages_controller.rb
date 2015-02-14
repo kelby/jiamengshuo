@@ -5,5 +5,6 @@ class PagesController < ApplicationController
 
   def index
     @topic = Topic.essences.order("updated_at DESC").last
+    @snippet = @topic.snippet
   end
 end
