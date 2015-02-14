@@ -25,4 +25,10 @@ class Topic < ActiveRecord::Base
 
     integer :user_id
   end
+
+  # Note: hacking tag_list
+  def tag_list_with_string
+    tag_list_without_string.to_s
+  end
+  alias_method_chain :tag_list, :string
 end

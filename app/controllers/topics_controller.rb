@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
   respond_to :html
 
   def index
-    @topics = Topic.page(params[:page]).per(15)
+    @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
     if user_signed_in?
       @users = current_user.recomment_users
     else
