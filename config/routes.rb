@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'contact/new'
+  post 'contact/create'
+
   resources :direct_messages, only: [:index, :create, :update, :destroy]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
