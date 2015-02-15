@@ -1,1 +1,1 @@
-$("#checkin_or_checkout_wish_<%= params[:id] %> span").text(" 帮 Ta 实现");
+$("#checkin_or_checkout_wish_<%= params[:id] %>").html("<%= j render(partial: 'wishes/checkin', locals: {wish: @wish}) %>");
