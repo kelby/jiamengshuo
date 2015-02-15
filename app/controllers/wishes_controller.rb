@@ -64,10 +64,13 @@ class WishesController < ApplicationController
   end
 
   def checkout_it
-    @wish.create_activity :checkout_it, owner: current_user, recipient: @wish.user
+    UserWish.find_by(user_id: current_user.id, wish_id: @wish.id).try(:destroy)
+    # debugger
+    @wish.create_activity :checkout_it, owner: current_user, recipient: @wish.user, parameters: {wish_content: @wish.content}
   end
 
   def checkin_it
+    UserWish.create(user_id: current_user.id, wish_id: @wish.id)
     @wish.create_activity :checkin_it, owner: current_user, recipient: @wish.user
   end
 

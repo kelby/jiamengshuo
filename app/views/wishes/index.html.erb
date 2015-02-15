@@ -51,10 +51,10 @@
             </section>
 
             <section id="<%= dom_id(wish, 'checkin_or_checkout') %>">
-              <% if user_signed_in? && current_user.following?(wish) %>
-                <%= render 'wishes/checkin', wish: wish %>
-              <% else %>
+              <% if user_signed_in? && UserWish.exists?(user_id: current_user.id, wish_id: wish.id) %>
                 <%= render 'wishes/checkout', wish: wish %>
+              <% else %>
+                <%= render 'wishes/checkin', wish: wish %>
               <% end %>
             </section>
           </div>
