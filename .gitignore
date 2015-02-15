@@ -26,3 +26,6 @@ config/initializers/devise.rb
 public/assets/
 
 config/mailer.yml
+
+config/sidekiq.yml
+config/redis.yml
