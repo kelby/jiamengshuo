@@ -1,0 +1,7 @@
+<%= form_tag got_it_wish_path(wish), remote: true, class: "js-toggler-form unstarred js-star-button" do %>
+  <%= button_tag class: "minibutton with-count js-toggler-target star-button" do %>
+    <i class="fi-star"></i><span>&nbsp;添加到心愿卡</span>
+  <% end %>
+
+  <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+<% end %>

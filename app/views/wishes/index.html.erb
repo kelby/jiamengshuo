@@ -11,9 +11,9 @@
   <p class="so-awesome" id="numero2">Wed, 28 Jan 2015 12:10:23</p>
 
   <% if user_signed_in? && current_user.following?(@active_wish) %>
-    <%= link_to '已加到心愿卡', spurn_it_wish_path(@active_wish), remote: true, method: :delete, class: "secondary button" %>
+    <%= render 'wishes/spurn_active', wish: @active_wish %>
   <% else %>
-    <%= link_to '添加到心愿卡', got_it_wish_path(@active_wish), remote: true, method: :post, class: "secondary button" %>
+    <%= render 'wishes/got_active', wish: @active_wish %>
   <% end %>
 </div>
 
@@ -42,23 +42,13 @@
 
             <p> <i class="fi-clock"></i> <%= time_ago_in_words wish.updated_at %> 前</p>
 
-            <% if user_signed_in? && current_user.following?(wish) %>
-              <%= form_tag spurn_it_wish_path(wish), remote: true, method: :delete, class: "js-toggler-form unstarred js-star-button" do %>
-                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish, 'got_or_spurn') do %>
-                  <i class="fi-star"></i><span>&nbsp;已加到心愿卡</span>
-                <% end %>
-
-                <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+            <section id="<%= dom_id(wish, 'got_or_spurn') %>">
+              <% if user_signed_in? && current_user.following?(wish) %>
+                <%= render 'wishes/spurn_it', wish: wish %>
+              <% else %>
+                <%= render 'wishes/got_it', wish: wish %>
               <% end %>
-            <% else %>
-              <%= form_tag got_it_wish_path(wish), remote: true, class: "js-toggler-form unstarred js-star-button" do %>
-                <%= button_tag class: "minibutton with-count js-toggler-target star-button", id: dom_id(wish, 'got_or_spurn') do %>
-                  <i class="fi-star"></i><span>&nbsp;添加到心愿卡</span>
-                <% end %>
-
-                <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
-              <% end %>
-            <% end %>
+            </section>
 
             <% if user_signed_in? && current_user.following?(wish) %>
               <%= form_tag checkin_it_wish_path(wish), remote: true, class: "js-toggler-form unstarred js-star-button" do %>
