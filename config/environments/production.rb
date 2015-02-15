@@ -62,17 +62,17 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'foundmentor.com',
+    address:              'smtp.163.com',
+    port:                 25,
+    # domain:               'foundmentor.com',
     user_name:            MAILER["user_name"],
     password:             MAILER["password"],
-    authentication:       'plain',
-    enable_starttls_auto: true  }
+    authentication:       :login,
+    enable_starttls_auto: false  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
