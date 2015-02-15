@@ -10,4 +10,10 @@ class Contact
   def self.deliver(contact)
     ContactMailer.contact_us(contact).deliver_now
   end
+
+  def initialize(attributes = {})
+    attributes.each do |key, value|
+      self.send("#{key}=", value)
+    end
+  end
 end
