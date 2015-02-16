@@ -1,5 +1,5 @@
 <%= form_tag checkout_it_wish_path(wish), method: :delete, remote: true, class: "js-toggler-form unstarred js-star-button" do %>
-  <%= button_tag class: "minibutton with-count js-toggler-target star-button" do %>
+  <%= button_tag class: "minibutton with-count js-toggler-target star-button", style: "margin-left: 1rem;" do %>
     <i class="fi-check green"></i>&nbsp;<span>愿意帮 Ta 实现</span>
   <% end %>
 
