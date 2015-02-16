@@ -1,100 +1,102 @@
-<% set_meta_tags :title => @subject.title %>
+<article class="small-9 large-9" style="margin: auto 12.5%;">
+  <% set_meta_tags :title => @subject.title %>
 
-<h1><%= @subject.title %></h1>
+  <h1><%= @subject.title %></h1>
 
-<p>
-<%= raw(markdown_for @subject.body) %>
-</p>
+  <p>
+  <%= raw(markdown_for @subject.body) %>
+  </p>
 
-<% if can? :update, @subject %>
-  <%= link_to 'Edit', edit_subject_path(@subject) %>
-<% end %>
+  <% if can? :update, @subject %>
+    <%= link_to 'Edit', edit_subject_path(@subject) %>
+  <% end %>
 
-<% if @subject.comments.size > 2 %>
-  <div class="page-count">
-    <hr>
-    <ul class="large-block-grid-2 small-block-grid-2">
-      <li>
-      &nbsp;
-        <a href="#add-reply">
-          <i class="fi-plus"></i>&nbsp;
-          <span>Add a reply</span>
-        </a>
-      </li>
-    </ul>
-    <hr>
-  </div>
-<% end %>
+  <% if @subject.comments.size > 2 %>
+    <div class="page-count">
+      <hr>
+      <ul class="large-block-grid-2 small-block-grid-2">
+        <li>
+        &nbsp;
+          <a href="#add-reply">
+            <i class="fi-plus"></i>&nbsp;
+            <span>Add a reply</span>
+          </a>
+        </li>
+      </ul>
+      <hr>
+    </div>
+  <% end %>
 
-<style type="text/css">
-  .add-comment-tabs ul.large-block-grid-2.small-block-grid-1 li:first-child {
-    width: 14%;
-  }
+  <style type="text/css">
+    .add-comment-tabs ul.large-block-grid-2.small-block-grid-1 li:first-child {
+      width: 14%;
+    }
 
-  .add-comment-tabs ul.large-block-grid-2.small-block-grid-1 li:last-child {
-    margin-left: 2%;
-    width: 84%;
-  }
-</style>
+    .add-comment-tabs ul.large-block-grid-2.small-block-grid-1 li:last-child {
+      margin-left: 2%;
+      width: 84%;
+    }
+  </style>
 
-<% @comments.each do |comment| %>
-  <div class="row comment old">
-    <div class="large-12 small-12 columns">
-      <div class="panel comment-wrapper">
-        <h5 class="content-title">
-          <%= link_to comment.user do %>
-            <%= image_tag comment.user.avatar_url(:mini) %>
-            <%= comment.user.username %>
-            <% if comment.user == @subject.user %>
-              <span class="label"> 作者</span>
+  <% @comments.each do |comment| %>
+    <div class="row comment old">
+      <div class="large-12 small-12 columns">
+        <div class="panel comment-wrapper">
+          <h5 class="content-title">
+            <%= link_to comment.user do %>
+              <%= image_tag comment.user.avatar_url(:mini) %>
+              <%= comment.user.username %>
+              <% if comment.user == @subject.user %>
+                <span class="label"> 作者</span>
+              <% end %>
             <% end %>
-          <% end %>
-          <span class="date"><%= time_ago_in_words comment.created_at %></span>
-        </h5>
+            <span class="date"><%= time_ago_in_words comment.created_at %></span>
+          </h5>
 
-        <div class="row comment-body">
-          <div class="large-12 small-12 columns">
-            <p></p><p>
-            <%= raw markdown_for(comment.content) %>
-            </p>
-            <p></p>
+          <div class="row comment-body">
+            <div class="large-12 small-12 columns">
+              <p></p><p>
+              <%= raw markdown_for(comment.content) %>
+              </p>
+              <p></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<div class="row add-comment">
-  <div class="large-12 columns">
-    <a name="add-reply"></a>
-    <div class="add-comment-tabs section-container tabs" data-section="tabs" data-section-resized="true" style="min-height: 42px;">
-      <section class="write active" style="padding-top: 42px;">
-        <p class="title" data-section-title="" style="left: 0px; height: 42px;">
-          <%= render 'shared/want_mentor_button', user: @subject.user %>
-        </p>
+  <div class="row add-comment">
+    <div class="large-12 columns">
+      <a name="add-reply"></a>
+      <div class="add-comment-tabs section-container tabs" data-section="tabs" data-section-resized="true" style="min-height: 42px;">
+        <section class="write active" style="padding-top: 42px;">
+          <p class="title" data-section-title="" style="left: 0px; height: 42px;">
+            <%= render 'shared/want_mentor_button', user: @subject.user %>
+          </p>
 
-        <div class="content" data-section-content="">
-          <ul class="large-block-grid-2 small-block-grid-1 write">
-            <li class="hide-for-small">
-              <%= image_tag @subject.user.avatar_url(:thumb) %>
-              <br>
-              <span class="centered-text">(作者)</span>
-            </li>
+          <div class="content" data-section-content="">
+            <ul class="large-block-grid-2 small-block-grid-1 write">
+              <li class="hide-for-small">
+                <%= image_tag @subject.user.avatar_url(:thumb) %>
+                <br>
+                <span class="centered-text">(作者)</span>
+              </li>
 
-            <li>
-              <%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
-                <% if can_comment?(@subject) %>
-                  <%= f.text_area :content, rows: 10, required: true %>
-                <% else %>
-                  <%= f.text_area :content, rows: 10, disabled: true, required: true, placeholder: "只有导师、学生和朋友可以评论哦 ~" %>
+              <li>
+                <%= form_for :comment, url: subject_comments_path(@subject) do |f| %>
+                  <% if can_comment?(@subject) %>
+                    <%= f.text_area :content, rows: 10, required: true %>
+                  <% else %>
+                    <%= f.text_area :content, rows: 10, disabled: true, required: true, placeholder: "只有导师、学生和朋友可以评论哦 ~" %>
+                  <% end %>
+                  <%= f.submit "提交", class: "blue tiny button radius" %>
                 <% end %>
-                <%= f.submit "提交", class: "blue tiny button radius" %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </section>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
-</div>
+</article>
