@@ -1,14 +1,19 @@
 ;
+// (function($){...})(jQuery) 实际上是匿名函数
 (function () {
-
+  // 函数就是包裹在花括号中的代码块，前面使用了关键词 function
 	WMDEditor = function (options) {
 		this.options = WMDEditor.util.extend({}, WMDEditor.defaults, options || {});
+    // var wmdBase = function (wmd, wmd_options) { ... }
 		wmdBase(this, this.options);
 
 		this.startEditor();
 	};
+  // JavaScript Window - 浏览器对象模型
 	window.WMDEditor = WMDEditor;
 
+  // 对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。
+  // 属性由逗号分隔
 	WMDEditor.defaults = { // {{{
 		version: 2.1,
 		output_format: "markdown",
@@ -70,7 +75,8 @@
 			patternImage: /^(<img\ssrc="https?:(\/\/[-A-Za-z0-9+&@#\/%?=~_|!:,.;\(\)]+)"(\swidth="\d{1,3}")?(\sheight="\d{1,3}")?(\salt="[^"<>]*")?(\stitle="[^"<>]*")?\s?\/?>)$/i
 		}
 	}; // }}}
-	WMDEditor.prototype = {
+  // prototype 属性使您有能力向对象添加属性和方法
+  WMDEditor.prototype = {
 		getPanels: function () {
 			return {
 				buttonBar: (typeof this.options.button_bar == 'string') ? document.getElementById(this.options.button_bar) : this.options.button_bar,
@@ -81,7 +87,9 @@
 		},
 
 		startEditor: function () {
+      // set layout View
 			this.panels = this.getPanels();
+     // set Preview Controller
 			this.previewMgr = new PreviewManager(this);
 			edit = new this.editor(this.previewMgr.refresh);
 			this.previewMgr.refresh(true);
@@ -89,6 +97,7 @@
 	};
 
 
+  // 我们使用 var 关键词来声明变量
 	var util = { // {{{
 		// Returns true if the DOM element is visible, false if it's hidden.
 		// Checks if display is anything other than none.
@@ -664,7 +673,7 @@
 	// Chunks {{{
 	// before: contains all the text in the input box BEFORE the selection.
 	// after: contains all the text in the input box AFTER the selection.
-	var Chunks = function () {};
+	var Chunks = function () {}; // 块
 
 	// startRegex: a regular expression to find the start tag
 	// endRegex: a regular expresssion to find the end tag
@@ -854,8 +863,8 @@
 	}; // }}}
 	var PreviewManager = function (wmd) { // {{{
 		var managerObj = this;
-		var converter;
-		var poller;
+		var converter; // 转换
+		var poller; // 轮询
 		var timeout;
 		var elapsedTime;
 		var oldInputText;
@@ -2311,5 +2320,8 @@
 // For backward compatibility
 
 function setup_wmd(options) {
+  // 创建新对象有两种不同的方法：
+  // 1. 定义并创建对象的实例
+  // 2. 使用函数来定义对象，然后创建新的对象实例
 	return new WMDEditor(options);
 }
