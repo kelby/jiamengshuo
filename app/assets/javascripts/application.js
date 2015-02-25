@@ -14,5 +14,13 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require 'wmd/wmd'
+//= require 'wmd/showdown'
 //= require_tree .
 $(function(){ $(document).foundation(); });
+
+$(function(){
+  new WMDEditor({
+    helpLink: "http://daringfireball.net/projects/markdown/syntax"
+  });
+})
