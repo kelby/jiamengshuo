@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   has_many :classmates, foreign_key: :owner_id
 
   scope :fakers, -> { where(faker: true)}
+  scope :desc, -> { order(updated_at: :desc)}
 
   acts_as_followable
   acts_as_follower
