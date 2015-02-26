@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
 //= require 'wmd/wmd'
 //= require 'wmd/showdown'
 //= require social-share-button
