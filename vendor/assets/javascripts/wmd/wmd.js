@@ -4,9 +4,10 @@
   // 函数就是包裹在花括号中的代码块，前面使用了关键词 function
 	WMDEditor = function (options) {
 		this.options = WMDEditor.util.extend({}, WMDEditor.defaults, options || {});
-    // var wmdBase = function (wmd, wmd_options) { ... }
+    // 调用 wmdBase 这个函数
 		wmdBase(this, this.options);
 
+    // 调用接口，显示 "wmd-button-bar" 这部分内容及其它！
 		this.startEditor();
 	};
   // JavaScript Window - 浏览器对象模型
@@ -14,11 +15,14 @@
 
   // 对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。
   // 属性由逗号分隔
+  // 6L 有调用，只是 wmd.options 里的一部分
 	WMDEditor.defaults = { // {{{
+    // 实际上，这几个配置没什么用
 		version: 2.1,
 		output_format: "markdown",
 		lineLength: 40,
 
+    // 默认使用到的 id
 		button_bar: "wmd-button-bar",
 		preview: "wmd-preview",
 		output: "wmd-output",
@@ -26,32 +30,37 @@
 
 		// The text that appears on the upper part of the dialog box when
 		// entering links.
+    // 图片和链接时显示的文字部分，不过，这样真的很不优雅
 		imageDialogText: "<p style='margin-top: 0px'><b>Enter the image URL.</b></p><p>You can also add a title, which will be displayed as a tool tip.</p><p>Example:<br />http://i.imgur.com/1cZl4.jpg</p>",
 		linkDialogText: "<p style='margin-top: 0px'><b>Enter the web address.</b></p><p>You can also add a title, which will be displayed as a tool tip.</p><p>Example:<br />http://www.google.com/</p>",
 
 		// The default text that appears in the dialog input box when entering
 		// links.
+    // 图片和链接时表单这部分里面的占位符
 		imageDefaultText: "http://",
 		linkDefaultText: "http://",
 		imageDirectory: "images/",
 
 		// The link and title for the help button
+    // 帮助链接到哪里，以及如何打开
 		helpLink: "/wmd/markdownhelp.html",
 		helpHoverTitle: "Markdown Syntax",
 		helpTarget: "_blank",
 
 		// Some intervals in ms.  These can be adjusted to reduce the control's load.
-		previewPollInterval: 500,
-		pastePollInterval: 100,
+		previewPollInterval: 500, // 预览轮询间隔
+		pastePollInterval: 100, // 粘贴轮询间隔
 
 		buttons: "bold italic  link blockquote code image  ol ul heading hr  undo redo help",
-		
+
+    // 下面这 3 种情况，要不要自动缩进？
 		autoFormatting: {
 			list: true,
 			quote: true,
 			code: true,
 		},
-		
+
+    // 绑定快捷键
 		modifierKeys: {  //replace this with null or false to disable key-combos
 			bold: "b",
 			italic: "i",
@@ -67,7 +76,7 @@
 			undo: "z"
 		},
 		
-		
+		// 过滤 HTML 标签，默认不使用此功能
 		tagFilter: {
 			enabled: false,
 			allowedTags: /^(<\/?(b|blockquote|code|del|dd|dl|dt|em|h1|h2|h3|i|kbd|li|ol|p|pre|s|sup|sub|strong|strike|ul)>|<(br|hr)\s?\/?>)$/i,
@@ -89,8 +98,9 @@
 		startEditor: function () {
       // set layout View
 			this.panels = this.getPanels();
-     // set Preview Controller
+      // set Preview Controller
 			this.previewMgr = new PreviewManager(this);
+
 			edit = new this.editor(this.previewMgr.refresh);
 			this.previewMgr.refresh(true);
 		}
@@ -98,6 +108,7 @@
 
 
   // 我们使用 var 关键词来声明变量
+  // 工具。调用时必须以 util 打头
 	var util = { // {{{
 		// Returns true if the DOM element is visible, false if it's hidden.
 		// Checks if display is anything other than none.
@@ -523,13 +534,16 @@
 			return [maxWidth, maxHeight, innerWidth, innerHeight];
 		}
 	}; // }}}
-	// The input textarea state/contents.
+
+	// The input textarea state/contents. 对应着 "wmd-input"
 	// This is used to implement undo/redo by the undo manager.
-	var TextareaState = function (textarea, wmd) { // {{{
+	// 上面两是普通变量，下面两个是函数对象
+  var TextareaState = function (textarea, wmd) { // {{{
 		// Aliases
 		var stateObj = this;
 		var inputArea = textarea;
 
+    // 这是定义
 		this.init = function () {
 
 			if (!util.isVisible(inputArea)) {
@@ -668,12 +682,13 @@
 			this.scrollTop = chunk.scrollTop;
 		};
 
+    // 这是调用
 		this.init();
 	}; // }}}
 	// Chunks {{{
 	// before: contains all the text in the input box BEFORE the selection.
 	// after: contains all the text in the input box AFTER the selection.
-	var Chunks = function () {}; // 块
+	var Chunks = function () {}; // 块。其实指的就是 "wmd-input"
 
 	// startRegex: a regular expression to find the start tag
 	// endRegex: a regular expresssion to find the end tag
@@ -800,6 +815,7 @@
 		}
 	};
 	// }}} - END CHUNKS
+
 	// Watches the input textarea, polling at an interval and runs
 	// a callback function if anything has changed.
 	var InputPoller = function (textarea, callback, interval) { // {{{
@@ -1031,6 +1047,7 @@
 				// and if not in whitelist, replace with blanks in preview to prevent XSS attacks
 				// when editing malicious markdown
 				// code courtesy of https://github.com/polestarsoft/wmd/commit/e7a09c9170ea23e7e806425f46d7423af2a74641
+        // 默认是 false，也就是不起作用
 				if (wmd.options.tagFilter.enabled) {
 					text = text.replace(/<[^<>]*>?/gi, function (tag) {
 						return (tag.match(wmd.options.tagFilter.allowedTags) || tag.match(wmd.options.tagFilter.patternLink) || tag.match(wmd.options.tagFilter.patternImage)) ? tag : "";
@@ -1322,8 +1339,13 @@
 
 		init();
 	}; //}}}
-	WMDEditor.util = util;
+
+  // 对象对应对象；
+  // 对象是数据（变量），拥有属性和方法。对象由花括号分隔。
+  WMDEditor.util = util;
 	WMDEditor.position = position;
+  // 函数对应函数
+  // 函数就是包裹在花括号中的代码块，前面使用了关键词 function
 	WMDEditor.TextareaState = TextareaState;
 	WMDEditor.InputPoller = InputPoller;
 	WMDEditor.PreviewManager = PreviewManager;
@@ -1347,11 +1369,12 @@
 	// Used to work around some browser bugs where we can't use feature testing.
 	var browser = get_browser();
 
+  // 相当于初始化 wmd （重中之重）
 	var wmdBase = function (wmd, wmd_options) { // {{{
 		// Some namespaces.
 		//wmd.Util = {};
 		//wmd.Position = {};
-		wmd.Command = {};
+		wmd.Command = {}; // 执行单条 command 会对应的改变 chuck 的内容
 		wmd.Global = {};
 		wmd.buttons = {};
 
@@ -1359,6 +1382,7 @@
 
 		var util = WMDEditor.util;
 		var position = WMDEditor.position;
+    // command 是绑定在 wmd 上的
 		var command = wmd.Command;
 
 		// Internet explorer has problems with CSS sprite buttons that use HTML
@@ -1396,7 +1420,8 @@
 
 			var undoMgr; // The undo manager
 			// Perform the button's action.
-			var doClick = function (button) {
+			// 包括：我们手动做的点击操作，和自动做的点击操作(如'回车')
+      var doClick = function (button) {
 
 				inputBox.focus();
 
@@ -1457,6 +1482,7 @@
 				}
 			};
 
+      // 设置 undo 按钮的状态
 			var setUndoRedoButtonStates = function () {
 				if (undoMgr) {
 					if (wmd.buttons["wmd-undo-button"]) setupButton(wmd.buttons["wmd-undo-button"], undoMgr.canUndo());
@@ -1495,6 +1521,7 @@
 				}
 			};
 
+      // 按各个功能按钮，把 "wmd-button-bar" 雪碧图切隔开来
 			var makeSpritedButtonRow = function () {
 
 				var buttonBar = (typeof wmd_options.button_bar == 'string') ? document.getElementById(wmd_options.button_bar || "wmd-button-bar") : wmd_options.button_bar;
@@ -1509,6 +1536,7 @@
 
 				var xoffset = 0;
 
+        // 创建对应的按钮
 				function createButton(name, title, textOp) {
 					var button = document.createElement("li");
 					wmd.buttons[name] = button;
@@ -1523,6 +1551,7 @@
 					return button;
 				}
 
+        // 添加按钮。上面仅是创建，还不够
 				function addButton(name, title, textOp) {
 					var button = createButton(name, title, textOp);
 
@@ -1531,6 +1560,7 @@
 					return button;
 				}
 
+        // 给不同按钮之间添加分隔线
 				function addSpacer() {
 					var spacer = document.createElement("li");
 					spacer.className = "wmd-spacer";
@@ -1538,6 +1568,7 @@
 					return spacer;
 				}
 
+        // 调用 addButton 和 addSpacer。实现 "wmd-button-bar"
 				var buttonlist = wmd_options.buttons.split(' ');
 				for (var i=0;i<buttonlist.length;i++) {
 					switch (buttonlist[i]) {
@@ -1616,9 +1647,14 @@
 					}
 				}
 
+        // 设置 undo 按钮的状态
 				setUndoRedoButtonStates();
 			};
 
+      // 包括但不限于：
+      // 调用 "切隔雪碧图"
+      // 手动绑定事件！
+      // 自动绑定事件！
 			var setupEditor = function () {
 
 				if (/\?noundo/.test(document.location.href)) {
@@ -1632,14 +1668,16 @@
 					});
 				}
 
+        // 调用 "切隔雪碧图"
 				makeSpritedButtonRow();
 
-
+        // keydown 事件会在键盘按下时触发
 				var keyEvent = "keydown";
 				if (browser.isOpera) {
 					keyEvent = "keypress";
 				}
 
+        // 手动绑定事件！
 				util.addEvent(inputBox, keyEvent, function (key) {
 
 					// Check to see if we have a button key and, if so execute the callback.
@@ -1719,6 +1757,8 @@
 
 				// Auto-continue lists, code blocks and block quotes when
 				// the enter key is pressed.
+        // 自动绑定事件！
+        // keyup 事件会在按键释放时触发
 				util.addEvent(inputBox, "keyup", function (key) {
 					if (!key.shiftKey && !key.ctrlKey && !key.metaKey) {
 						var keyCode = key.charCode || key.keyCode;
@@ -1726,6 +1766,7 @@
 						if (keyCode === 13) {
 							fakeButton = {};
 							fakeButton.textOp = command.doAutoindent;
+              // "回车" 会 "自动点击"
 							doClick(fakeButton);
 						}
 					}
@@ -1744,12 +1785,13 @@
 			};
 
 
+      // 调用 "undo/redo"
 			this.undo = function () {
 				if (undoMgr) {
 					undoMgr.undo();
 				}
 			};
-
+      // 调用 "undo/redo"
 			this.redo = function () {
 				if (undoMgr) {
 					undoMgr.redo();
@@ -1758,6 +1800,7 @@
 
 			// This is pretty useless.  The setupEditor function contents
 			// should just be copied here.
+      // 创建
 			var init = function () {
 				setupEditor();
 			};
@@ -1775,18 +1818,22 @@
 				window.clearInterval(creationHandle);
 			};
 
+      // 删除(几乎不会用到)
 			init();
 		}; // }}}
 		// command {{{
 		// The markdown symbols - 4 spaces = code, > = blockquote, etc.
 		command.prefixes = "(?:\\s{4,}|\\s*>|\\s*-\\s+|\\s*\\d+\\.|=|\\+|-|_|\\*|#|\\s*\\[[^\n]]+\\]:)";
 
+    /* 下面的和执行命令有关了 */
+
 		// Remove markdown symbols from the chunk selection.
+    // 移除所选文本包裹着的 mardkown ... 点击之后再次点击触发。
 		command.unwrap = function (chunk) {
 			var txt = new re("([^\\n])\\n(?!(\\n|" + command.prefixes + "))", "g");
 			chunk.selection = chunk.selection.replace(txt, "$1 $2");
 		};
-
+    // 给所选文本包裹一个 markdown ... 点击之后触发。
 		command.wrap = function (chunk, len) {
 			command.unwrap(chunk);
 			var regex = new re("(.{1," + len + "})( +|$\\n?)", "gm");
@@ -2318,10 +2365,13 @@
 })();
 
 // For backward compatibility
-
+// 为了向后兼容，其实没用了
 function setup_wmd(options) {
   // 创建新对象有两种不同的方法：
   // 1. 定义并创建对象的实例
   // 2. 使用函数来定义对象，然后创建新的对象实例
 	return new WMDEditor(options);
 }
+
+// 另：
+// 雪碧图分为 3 种状态：可用、不可用、hover ... 可参考 http://cdn.sstatic.net/stackoverflow/img/wmd-buttons.svg?v=eeae5e3efd60
