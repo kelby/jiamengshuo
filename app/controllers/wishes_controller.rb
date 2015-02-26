@@ -75,7 +75,8 @@ class WishesController < ApplicationController
   end
 
   def followers_by_user
-    @users = @wish.followers_by_type 'User'
+    @users = @wish.followers_by_type('User').page(params[:page] || 1).per(24)
+    render "users/index"
   end
 
   private
