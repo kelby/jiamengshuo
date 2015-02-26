@@ -37,23 +37,19 @@
 
 
       <%# unless current_user.followering? @topic %>
-        <%= link_to keep_topic_path(@topic), method: :post, remote: true, title: '保持关注', id: "follow_topic" do %>
-          <% if user_signed_in? && current_user.keeping?(@topic.id) %>
-            <i class="fi-eye red"></i>&nbsp;关注
-          <% else %>
-            <i class="fi-eye"></i>&nbsp;关注
-          <% end %>
+        <% if user_signed_in? && current_user.keeping?(@topic.id) %>
+          <%= render 'topic_and_user/unkeep', topic: @topic %>
+        <% else %>
+          <%= render 'topic_and_user/keep', topic: @topic %>
         <% end %>
         &nbsp;
       <%# end %>
 
       <%# unless current_user.keepering? @topic %>
-        <%= link_to mark_topic_path(@topic), method: :post, remote: true, title: '默默收藏', id: "keep_topic" do %>
-          <% if user_signed_in? && current_user.marking?(@topic.id) %>
-            <i class="fi-bookmark red"></i>&nbsp;收藏
-          <% else %>
-            <i class="fi-bookmark"></i>&nbsp;收藏
-          <% end %>
+        <% if user_signed_in? && current_user.marking?(@topic.id) %>
+          <%= render 'topic_and_user/unmark', topic: @topic %>
+        <% else %>
+          <%= render 'topic_and_user/mark', topic: @topic %>
         <% end %>
         &nbsp;
       <%# end %>

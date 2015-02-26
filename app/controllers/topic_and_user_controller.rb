@@ -1,6 +1,6 @@
 class TopicAndUserController < ApplicationController
-  before_action :authenticate_user!, only: [:keep, :mark]
-  before_action :set_topic, only: [:keep, :mark]
+  before_action :authenticate_user!, only: [:keep, :mark, :unkeep, :unmark]
+  before_action :set_topic, only: [:keep, :mark, :unkeep, :unmark]
   # authorize_resource
 
   def mark
@@ -13,10 +13,30 @@ class TopicAndUserController < ApplicationController
     end
   end
 
+  def unmark
+    mt = MarkerTopic.where(topic_id: @topic.id, user_id: current_user.id).first
+    mt.create_activity :unmark, owner: current_user, recipient: @topic if user_signed_in? && mt.persisted?
+    mt.destroy
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def keep
     kt = KeeperTopic.new topic_id: @topic.id, user_id: current_user.id
     kt.save
     kt.create_activity :keep, owner: current_user, recipient: @topic if user_signed_in? && kt.persisted?
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def unkeep
+    kt = KeeperTopic.where(topic_id: @topic.id, user_id: current_user.id).first
+    kt.create_activity :unkeep, owner: current_user, recipient: @topic if user_signed_in? && kt.persisted?
+    kt.destroy
 
     respond_to do |format|
       format.js

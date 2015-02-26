@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   resources :topics do
     member do
       post :mark, to: 'topic_and_user#mark'
+      delete :unmark, to: 'topic_and_user#unmark'
       post :keep, to: 'topic_and_user#keep'
+      delete :unkeep, to: 'topic_and_user#unkeep'
     end
 
     collection do
