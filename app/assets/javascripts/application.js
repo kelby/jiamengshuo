@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require 'wmd/wmd'
 //= require 'wmd/showdown'
+//= require social-share-button
 //= require_tree .
 $(function(){ $(document).foundation(); });

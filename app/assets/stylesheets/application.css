@@ -12,6 +12,7 @@
  *
  *= require foundation_and_overrides
  *= require 'wmd/wmd'
+ *= require social-share-button
  *= require_tree .
  *= require_self
 
