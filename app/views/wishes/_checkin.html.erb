@@ -3,5 +3,5 @@
     <span>?&nbsp;愿意帮 Ta 实现</span>
   <% end %>
 
-  <%= link_to wish.followers_by_type_count(:User), followers_by_user_wish_path(wish), class: "social-count js-social-count" %>
+  <%= link_to UserWish.where(wish_id: wish.id).count, checkin_by_users_wish_path(wish), class: "social-count js-social-count" %>
 <% end %>

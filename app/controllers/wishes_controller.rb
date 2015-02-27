@@ -1,6 +1,7 @@
 class WishesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :got_it, :spurn_it]
-  before_action :set_wish, only: [:show, :edit, :update, :destroy, :got_it, :followers_by_user, :checkout_it, :checkin_it, :spurn_it]
+  before_action :set_wish, only: [:show, :edit, :update, :destroy, :got_it, :followers_by_user, :checkout_it,
+                                  :checkin_it, :spurn_it, :checkin_by_users]
   authorize_resource
 
   respond_to :html
@@ -76,6 +77,12 @@ class WishesController < ApplicationController
 
   def followers_by_user
     @users = @wish.followers_by_type('User').page(params[:page] || 1).per(24)
+    render "users/index"
+  end
+
+  def checkin_by_users
+    user_ids = UserWish.where(wish_id: @wish.id).pluck(:user_id)
+    @users = User.where(id: user_ids).page(params[:page] || 1).per(24)
     render "users/index"
   end
 
