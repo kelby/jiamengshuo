@@ -1,3 +1,10 @@
 var textarea = $("#direct_message textarea");
 
 textarea.val('').focus().attr("placeholder", "发送成功，请耐心等待回复 ~");
+
+var subject = "/direct_message/<%= @user.id %>"
+var client = new Faye.Client('http://localhost:9292/faye');
+
+client.publish(subject, {
+  count: 1
+});

@@ -11,6 +11,7 @@ class DirectMessagesController < ApplicationController
   end
 
   def create
+    @user = User.find_by(id: direct_message_params[:to_user_id])
     @direct_message = DirectMessage.new(direct_message_params.merge(from_user_id: current_user.id))
     @direct_message.save
 
