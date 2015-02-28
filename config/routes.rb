@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'chats/room'
+
   get 'contact/new'
   post 'contact/create'
 
