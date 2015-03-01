@@ -33,7 +33,8 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = current_user.topics.build(topic_params)
+    @topic = current_user.topics.build(topic_params.merge(catalog_id: params[:catalog_id]))
+    debugger
     @topic.save!
     @topic.create_activity :create, owner: current_user
     respond_with(@topic)
@@ -67,6 +68,6 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :body, :tag_list)
+      params.require(:topic).permit(:title, :body, :tag_list, :catalog_id)
     end
 end

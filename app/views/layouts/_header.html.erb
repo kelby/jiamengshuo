@@ -16,12 +16,12 @@
     <!-- Left Nav Section -->
     <ul class="left">
       <!-- <li><%#= link_to "首页", root_path %></li> -->
-      <li><%= link_to "寻找导师", users_path %></li>
-      <li><%= link_to '课程', subjects_path %></li>
-      <li><%= link_to '课程集合', posts_path %></li>
-      <li><%= link_to '话题讨论', topics_path %></li>
-      <li><%= link_to '心愿卡片', wishes_path %></li>
-      <li><%= link_to '分类导航', catalogs_path %></li>
+      <!-- <li><%#= link_to "寻找导师", users_path %></li> -->
+      <!-- <li><%#= link_to '课程', subjects_path %></li> -->
+      <li><%= link_to '拜师收徒', topics_path %></li>
+      <li><%= link_to '功课', posts_path %></li>
+      <li><%= link_to '心愿', wishes_path %></li>
+      <!-- <li><%#= link_to '分类导航', catalogs_path %></li> -->
 
       <li class="has-form">
         <%= form_tag search_topics_path, method: :get, class: "row collapse" do |f| %>

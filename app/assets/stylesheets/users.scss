@@ -92,9 +92,48 @@
   line-height: 1;
 }
 
-.google.button.blue {
-  border-color: rgb(98,202,227);
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), to(rgb(98,202,227)));
+.blue.google.button, .blue.google.button:hover, .blue.google.button:active {
+  background-image: -webkit-linear-gradient(top,#fff,#62CAE3);
+  background-image: -moz-linear-gradient(top,#fff,#62CAE3);
+  background-image: -o-linear-gradient(top,#fff,#62CAE3);
+  background-image: linear-gradient(to bottom,#fff,#62CAE3);
+  border-color: #62CAE3;
+}
+
+.orange.google.button, .orange.google.button:hover, .orange.google.button:active {
+  background-image: -webkit-linear-gradient(top,#fff,#F58426);
+  background-image: -moz-linear-gradient(top,#fff,#F58426);
+  background-image: -o-linear-gradient(top,#fff,#F58426);
+  background-image: linear-gradient(to bottom,#fff,#F58426);
+  border-color: #F58426;
+}
+
+.red.google.button, .red.google.button:hover, .red.google.button:active {
+  background-image: -webkit-linear-gradient(top,#F15D22,#923C06);
+  background-image: -moz-linear-gradient(top,#F15D22,#923C06);
+  background-image: -o-linear-gradient(top,#F15D22,#923C06);
+  background-image: linear-gradient(to bottom,#F15D22,#923C06);
+  border-color: #923C06;
+  color: #fff;
+  text-shadow: none;
+}
+
+.green.google.button, .green.google.button:hover, .green.google.button:active {
+  background-image: -webkit-linear-gradient(top,#fff,#D5E04D);
+  background-image: -moz-linear-gradient(top,#fff,#D5E04D);
+  background-image: -o-linear-gradient(top,#fff,#D5E04D);
+  background-image: linear-gradient(to bottom,#fff,#D5E04D);
+  border-color: #D5E04D;
+}
+
+.purple.google.button, .purple.google.button:hover, .purple.google.button:active {
+  background-image: -webkit-linear-gradient(top,#CA006C,#7C0040);
+  background-image: -moz-linear-gradient(top,#CA006C,#7C0040);
+  background-image: -o-linear-gradient(top,#CA006C,#7C0040);
+  background-image: linear-gradient(to bottom,#CA006C,#7C0040);
+  border-color: #CA006C;
+  color: #fff;
+  text-shadow: none;
 }
 // End pending_apply_students page
 

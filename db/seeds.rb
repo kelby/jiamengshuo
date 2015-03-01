@@ -170,3 +170,8 @@ Catalog.where(icon: nil).each do |catalog|
   catalog.icon_from = 'fi'
   catalog.save
 end
+
+Catalog.create name: "拜师", id: 1000
+Catalog.create name: "收徒", id: 1001
+Catalog.create name: "拜师兼收徒", id: 1002
+Catalog.create name: "其它", id: 1003

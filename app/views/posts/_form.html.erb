@@ -21,16 +21,16 @@
     <%= f.text_area :description, rows: 10 %>
   </div>
 
-  <hr class="dashed"></hr>
-  <div class="centered-text">各个课程的内容概述</div>
+  <!-- <hr class="dashed"></hr> -->
+  <!-- <div class="centered-text">各个课程的内容概述</div> -->
   <hr class="dashed"></hr>
 
-  <%= f.fields_for :sections do |builder| %>
-     <%= render "section_fields", :f => builder %>
-  <% end %>
+  <%#= f.fields_for :sections do |builder| %>
+     <%#= render "section_fields", :f => builder %>
+  <%# end %>
 
   <div>
-    <%= link_to "添加课程及简述", add_section_path, remote: true, method: :post, disable_with: '...', id: "add_section" %>
+    <%#= link_to "添加课程及简述", add_section_path, remote: true, method: :post, disable_with: '...', id: "add_section" %>
 
     <%= link_to "更多选项 ...", "javascript:void(0);", id: "more_opt" %>
   </div>

@@ -1,3 +1,44 @@
-<h4>新建话题</h4>
+<h4 style="display: inline-block;">
+  类型为：
+  <% case params[:catalog_id].to_i %>
+  <% when 1000 %>
+    拜师
+  <% when 1001 %>
+    收徒
+  <% when 1002 %>
+    拜师兼收徒
+  <% else %>
+    其它
+  <% end %>
 
-<%= render 'form' %>
+  <h5 style="display: inline-block; margin-left: 1rem;">可以在右侧切换</h5>
+</h4>
+
+<div class="large-9 columns">
+  <%= render 'form' %>
+</div>
+
+<div class="large-3 columns">
+  <div>
+    <h5>请选择：</h5>
+
+    <%= link_to new_topic_path(catalog_id: 1000), class: "blue google button" do %>
+      <%= content_tag(:strong, '拜师!') %>
+    <% end %>
+    <br>
+
+    <%= link_to new_topic_path(catalog_id: 1001), class: "orange google button" do %>
+      <%= content_tag(:strong, '收徒!') %>
+    <% end %>
+    <br>
+
+    <%= link_to new_topic_path(catalog_id: 1002), class: "green google button" do %>
+      <%= content_tag(:strong, '拜师兼收徒!') %>
+    <% end %>
+    <br>
+
+    <%= link_to new_topic_path(catalog_id: 1003), class: "purple google button" do %>
+      <%= content_tag(:strong, '其它!') %>
+    <% end %>
+  </div>
+</div>

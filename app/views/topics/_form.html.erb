@@ -24,6 +24,9 @@
     <%= f.label :tag_list, "标签：(多个标签之间用逗号分隔)" %><br>
     <%= f.text_field :tag_list, required: true %>
   </div>
+
+  <%= hidden_field_tag 'catalog_id', (params[:catalog_id] || @topic.catalog_id) %>
+
   <div class="actions">
     <%= f.submit "提交", class: "blue tiny button radius" %>
   </div>

@@ -12,6 +12,9 @@ class PostsController < ApplicationController
 
   def show
     @sections = @post.sections
+    @comment = @post.comments.build
+    @comments = @post.comments.reload
+
     respond_with(@post)
   end
 

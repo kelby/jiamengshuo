@@ -5,6 +5,7 @@ class Topic < ActiveRecord::Base
   belongs_to :user
   has_many   :comments, as: :commentable, dependent: :destroy
   has_one    :snippet
+  belongs_to :catalog
 
   # join tables
   has_many :keeper_topics#, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'
@@ -15,7 +16,7 @@ class Topic < ActiveRecord::Base
   # has_many :followered_users, class_name: 'User', through: :followers
   # has_many :keepered_users, class_name: 'User', through: :keepers
 
-  validates_presence_of :user_id, :title, :body
+  validates_presence_of :user_id, :title, :body, :catalog_id
 
   scope :essences, -> { where(essence: true) }
 
