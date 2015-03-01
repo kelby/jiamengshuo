@@ -51,7 +51,7 @@
 		previewPollInterval: 500, // 预览轮询间隔
 		pastePollInterval: 100, // 粘贴轮询间隔
 
-		buttons: "bold italic  link blockquote code image  ol ul heading hr  undo redo help",
+		buttons: "bold italic  link blockquote code image  ol ul heading hr  undo redo  edit preview help",
 
     // 下面这 3 种情况，要不要自动缩进？
 		autoFormatting: {
@@ -1573,51 +1573,51 @@
 				for (var i=0;i<buttonlist.length;i++) {
 					switch (buttonlist[i]) {
 					case "bold":
-						addButton("wmd-bold-button", "Strong <strong> Ctrl+B", command.doBold);
+						addButton("wmd-bold-button fi-bold medium", "Strong <strong> Ctrl+B", command.doBold);
 						break;
 					case "italic":
-						addButton("wmd-italic-button", "Emphasis <em> Ctrl+I", command.doItalic);
+						addButton("wmd-italic-button fi-italic medium", "Emphasis <em> Ctrl+I", command.doItalic);
 						break;
 					case 'link':
-						addButton("wmd-link-button", "Hyperlink <a> Ctrl+L", function (chunk, postProcessing, useDefaultText) {
+						addButton("wmd-link-button fi-link medium", "Hyperlink <a> Ctrl+L", function (chunk, postProcessing, useDefaultText) {
 							return command.doLinkOrImage(chunk, postProcessing, false);
 						});
 						break;
 					case 'blockquote':
-						addButton("wmd-quote-button", "Blockquote <blockquote> Ctrl+Q", command.doBlockquote);
+						addButton("wmd-quote-button fi-quote medium", "Blockquote <blockquote> Ctrl+Q", command.doBlockquote);
 						break;
 					case 'code':
-						addButton("wmd-code-button", "Code Sample <pre><code> Ctrl+K", command.doCode);
+						addButton("wmd-code-button fa fa-code medium", "Code Sample <pre><code> Ctrl+K", command.doCode);
 						break;
 					case 'image':
-						addButton("wmd-image-button", "Image <img> Ctrl+G", function (chunk, postProcessing, useDefaultText) {
+						addButton("wmd-image-button fi-photo medium", "Image <img> Ctrl+G", function (chunk, postProcessing, useDefaultText) {
 							return command.doLinkOrImage(chunk, postProcessing, true);
 						});
 						break;
 					case 'ol':
-						addButton("wmd-olist-button", "Numbered List <ol> Ctrl+O", function (chunk, postProcessing, useDefaultText) {
+						addButton("wmd-olist-button fa fa-list-ol medium", "Numbered List <ol> Ctrl+O", function (chunk, postProcessing, useDefaultText) {
 							command.doList(chunk, postProcessing, true, useDefaultText);
 						});
 						break;
 					case 'ul':
-						addButton("wmd-ulist-button", "Bulleted List <ul> Ctrl+U", function (chunk, postProcessing, useDefaultText) {
+						addButton("wmd-ulist-button fa fa-list-ul medium", "Bulleted List <ul> Ctrl+U", function (chunk, postProcessing, useDefaultText) {
 							command.doList(chunk, postProcessing, false, useDefaultText);
 						});
 						break;
 					case 'heading':
-						addButton("wmd-heading-button", "Heading <h1>/<h2> Ctrl+H", command.doHeading);
+						addButton("wmd-heading-button fa fa-header medium", "Heading <h1>/<h2> Ctrl+H", command.doHeading);
 						break;
 					case 'hr':
-						addButton("wmd-hr-button", "Horizontal Rule <hr> Ctrl+R", command.doHorizontalRule);
+						addButton("wmd-hr-button fi-minus medium", "Horizontal Rule <hr> Ctrl+R", command.doHorizontalRule);
 						break;
 					case 'undo':
-						var undoButton = addButton("wmd-undo-button", "Undo - Ctrl+Z");
+						var undoButton = addButton("wmd-undo-button fa fa-reply medium", "Undo - Ctrl+Z");
 						undoButton.execute = function (manager) {
 							manager.undo();
 						};
 						break;
 					case 'redo':
-						var redoButton = addButton("wmd-redo-button", "Redo - Ctrl+Y");
+						var redoButton = addButton("wmd-redo-button fa fa-share medium", "Redo - Ctrl+Y");
 						if (/win/.test(nav.platform.toLowerCase())) {
 							redoButton.title = "Redo - Ctrl+Y";
 						}
@@ -1629,8 +1629,14 @@
 							manager.redo();
 						};
 						break;
+          case 'edit':
+            addButton("wmd-edit-button fi-page-edit medium", "Edit Ctrl+E", command.doEdit);
+            break;
+          case 'preview':
+            addButton("wmd-preview-button fi-eye medium", "Preview", command.doPreview);
+            break;
 					case 'help':
-						var helpButton = createButton("wmd-help-button");
+						var helpButton = createButton("wmd-help-button fa fa-question medium");
 						helpButton.isHelp = true;
 						setupButton(helpButton, true);
 						buttonRow.appendChild(helpButton);
@@ -2360,6 +2366,20 @@
 			chunk.selection = "";
 			chunk.addBlankLines(2, 1, true);
 		};
+
+    command.doEdit = function (chunk, postProcessing, useDefaultText) {
+//      chunk.startTag = "----------\n";
+//      chunk.selection = "";
+//      chunk.addBlankLines(2, 1, true);
+      Topics.preview($(textarea).val())
+    };
+
+    command.doPreview = function (chunk, postProcessing, useDefaultText) {
+//      chunk.startTag = "----------\n";
+//      chunk.selection = "";
+//      chunk.addBlankLines(2, 1, true);
+      Topics.preview($(textarea).val())
+    };
 		// }}}
 	}; // }}}
 })();
