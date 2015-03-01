@@ -108,6 +108,14 @@
   border-color: #F58426;
 }
 
+.yellow.google.button, .yellow.google.button:hover, .yellow.google.button:active {
+  background-image: -webkit-linear-gradient(top,#fff,#D5E04D);
+  background-image: -moz-linear-gradient(top,#fff,#D5E04D);
+  background-image: -o-linear-gradient(top,#fff,#D5E04D);
+  background-image: linear-gradient(to bottom,#fff,#D5E04D);
+  border-color: #D5E04D;
+}
+
 .red.google.button, .red.google.button:hover, .red.google.button:active {
   background-image: -webkit-linear-gradient(top,#F15D22,#923C06);
   background-image: -moz-linear-gradient(top,#F15D22,#923C06);
@@ -119,11 +127,11 @@
 }
 
 .green.google.button, .green.google.button:hover, .green.google.button:active {
-  background-image: -webkit-linear-gradient(top,#fff,#D5E04D);
-  background-image: -moz-linear-gradient(top,#fff,#D5E04D);
-  background-image: -o-linear-gradient(top,#fff,#D5E04D);
-  background-image: linear-gradient(to bottom,#fff,#D5E04D);
-  border-color: #D5E04D;
+  background-image: -webkit-linear-gradient(top,#fff,#79CA6B);
+  background-image: -moz-linear-gradient(top,#fff,#79CA6B);
+  background-image: -o-linear-gradient(top,#fff,#79CA6B);
+  background-image: linear-gradient(to bottom,#fff,#79CA6B);
+  border-color: #79CA6B;
 }
 
 .purple.google.button, .purple.google.button:hover, .purple.google.button:active {

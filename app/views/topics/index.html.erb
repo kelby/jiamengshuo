@@ -41,7 +41,7 @@
                   <% when 1000 %>
                     <%= label_tag :catalog, "拜师", class: "blue google button", style: "display: inline-block;" %>
                   <% when 1001 %>
-                    <%= label_tag :catalog, "收徒", class: "red google button", style: "display: inline-block;" %>
+                    <%= label_tag :catalog, "收徒", class: "yellow google button", style: "display: inline-block;" %>
                   <% when 1002 %>
                     <%= label_tag :catalog, "拜师兼收徒", class: "green google button", style: "display: inline-block;" %>
                   <% else %>
@@ -95,7 +95,7 @@
       <% end %>
       <br>
 
-      <%= link_to new_topic_path(catalog_id: 1001), class: "orange google button" do %>
+      <%= link_to new_topic_path(catalog_id: 1001), class: "yellow google button" do %>
         <%= content_tag(:strong, '收徒!') %>
       <% end %>
       <br>

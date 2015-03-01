@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post "topics/preview" => "topics#preview"
   resources :topics do
     member do
       post :mark, to: 'topic_and_user#mark'

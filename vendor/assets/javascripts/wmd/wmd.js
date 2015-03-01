@@ -1573,13 +1573,13 @@
 				for (var i=0;i<buttonlist.length;i++) {
 					switch (buttonlist[i]) {
 					case "bold":
-						addButton("wmd-bold-button fi-bold medium", "Strong <strong> Ctrl+B", command.doBold);
+						addButton("wmd-bold-button fa fa-bold medium", "Strong <strong> Ctrl+B", command.doBold);
 						break;
 					case "italic":
-						addButton("wmd-italic-button fi-italic medium", "Emphasis <em> Ctrl+I", command.doItalic);
+						addButton("wmd-italic-button fa fa-italic medium", "Emphasis <em> Ctrl+I", command.doItalic);
 						break;
 					case 'link':
-						addButton("wmd-link-button fi-link medium", "Hyperlink <a> Ctrl+L", function (chunk, postProcessing, useDefaultText) {
+						addButton("wmd-link-button fa fa-chain medium", "Hyperlink <a> Ctrl+L", function (chunk, postProcessing, useDefaultText) {
 							return command.doLinkOrImage(chunk, postProcessing, false);
 						});
 						break;
@@ -1590,7 +1590,7 @@
 						addButton("wmd-code-button fa fa-code medium", "Code Sample <pre><code> Ctrl+K", command.doCode);
 						break;
 					case 'image':
-						addButton("wmd-image-button fi-photo medium", "Image <img> Ctrl+G", function (chunk, postProcessing, useDefaultText) {
+						addButton("wmd-image-button fa fa-photo medium", "Image <img> Ctrl+G", function (chunk, postProcessing, useDefaultText) {
 							return command.doLinkOrImage(chunk, postProcessing, true);
 						});
 						break;
@@ -1630,10 +1630,10 @@
 						};
 						break;
           case 'edit':
-            addButton("wmd-edit-button fi-page-edit medium", "Edit Ctrl+E", command.doEdit);
+            addButton("wmd-edit-button fa fa-edit medium", "Edit Ctrl+E");
             break;
           case 'preview':
-            addButton("wmd-preview-button fi-eye medium", "Preview", command.doPreview);
+            addButton("wmd-preview-button fa fa-eye medium", "Preview");
             break;
 					case 'help':
 						var helpButton = createButton("wmd-help-button fa fa-question medium");
@@ -2368,17 +2368,11 @@
 		};
 
     command.doEdit = function (chunk, postProcessing, useDefaultText) {
-//      chunk.startTag = "----------\n";
-//      chunk.selection = "";
-//      chunk.addBlankLines(2, 1, true);
-      Topics.preview($(textarea).val())
+//      Topics.preview($("textarea").val())
     };
 
     command.doPreview = function (chunk, postProcessing, useDefaultText) {
-//      chunk.startTag = "----------\n";
-//      chunk.selection = "";
-//      chunk.addBlankLines(2, 1, true);
-      Topics.preview($(textarea).val())
+//      Topics.preview($("textarea").val())
     };
 		// }}}
 	}; // }}}
