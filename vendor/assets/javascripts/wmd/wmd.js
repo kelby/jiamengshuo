@@ -209,6 +209,7 @@
 		// text: The html for the input box.
 		// defaultInputText: The default value that appears in the input box.
 		// makeLinkMarkdown: The function which is executed when the prompt is dismissed, either via OK or Cancel
+    // 弹出对话框相关
 		prompt: function (text, defaultInputText, makeLinkMarkdown, promptType) {
 
 			// These variables need to be declared at this level since they are used
@@ -225,16 +226,19 @@
 			// Used as a keydown event handler. Esc dismisses the prompt.
 			// Key code 27 is ESC.
 			var checkEscape = function (key) {
+        console.log("begin checkEscape");
 				var code = (key.charCode || key.keyCode);
 				if (code === 27) {
 					close(true);
 				}
+        console.log("end checkEscape");
 			};
 
 			// Dismisses the hyperlink input box.
 			// isCancel is true if we don't care about the input text.
 			// isCancel is false if we are going to keep the text.
 			var close = function (isCancel) {
+        console.log("begin prompt close");
 				util.removeEvent(document.body, "keydown", checkEscape);
 				var text = input.value+ (titleInput.value?' "'+titleInput.value+'"':'');
 
@@ -252,6 +256,8 @@
 				dialog.parentNode.removeChild(dialog);
 				background.parentNode.removeChild(background);
 				makeLinkMarkdown(text);
+
+        console.log("end prompt close");
 				return false;
 			};
 
@@ -259,6 +265,7 @@
 			// Most of this has been moved to CSS but the div creation and
 			// browser-specific hacks remain here.
 			var createBackground = function () {
+        console.log("begin createBackground");
 				background = document.createElement("div");
 				background.className = "wmd-prompt-background";
 				style = background.style;
@@ -294,11 +301,12 @@
 				}
 
 				document.body.appendChild(background);
+        console.log("end createBackground");
 			};
 
 			// Create the text input box form/window.
 			var createDialog = function () {
-
+        console.log("begin createDialog");
 				// The main dialog box.
 				dialog = document.createElement("div");
 				dialog.className = "wmd-prompt-dialog";
@@ -432,6 +440,7 @@
 				// want it to be centered.
 				dialog.style.marginTop = -(position.getHeight(dialog) / 2) + "px";
 				dialog.style.marginLeft = -(position.getWidth(dialog) / 2) + "px";
+        console.log("end createDialog");
 			};
 
 			createBackground();
@@ -439,6 +448,7 @@
 			// Why is this in a zero-length timeout?
 			// Is it working around a browser bug?
 			window.setTimeout(function () {
+        console.log("begin window setTimeout");
 				createDialog();
 
 				var defTextLen = defaultInputText.length;
@@ -454,6 +464,7 @@
 					range.select();
 				}
 				input.focus();
+        console.log("end window setTimeout");
 			}, 0);
 		},
 
@@ -652,6 +663,7 @@
 		// Gets a collection of HTML chunks from the inptut textarea.
 		this.getChunks = function () {
 
+      // 输入框的 6 种状态！！！
 			var chunk = new Chunks();
 
 			chunk.before = util.fixEolChars(stateObj.text.substring(0, stateObj.start));
@@ -665,8 +677,9 @@
 		};
 
 		// Sets the TextareaState properties given a chunk of markdown.
+    // 设置输入框里面的内容！！！
 		this.setChunks = function (chunk) {
-
+      console.log("begin setChunks");
 			chunk.before = chunk.before + chunk.startTag;
 			chunk.after = chunk.endTag + chunk.after;
 
@@ -680,6 +693,7 @@
 			this.end = chunk.before.length + chunk.selection.length;
 			this.text = chunk.before + chunk.selection + chunk.after;
 			this.scrollTop = chunk.scrollTop;
+      console.log("end setChunks");
 		};
 
     // 这是调用
@@ -753,6 +767,7 @@
 	};
 
 
+  // 参数举例：(2, 1, true)
 	Chunks.prototype.addBlankLines = function (nLinesBefore, nLinesAfter, findExtraNewlines) {
 
 		if (nLinesBefore === undefined) {
@@ -1372,6 +1387,7 @@
 
   // 相当于初始化 wmd （重中之重）
 	var wmdBase = function (wmd, wmd_options) { // {{{
+    console.log("begin wmdBase");
 		// Some namespaces.
 		//wmd.Util = {};
 		//wmd.Position = {};
@@ -1487,17 +1503,21 @@
       // 设置 undo/redo 按钮的状态 (注意：判断逻辑由 undoMgr 做，这里只是根据结果，做出反应)
       // 当然了，首先得判断有没有这两个元素
 			var setUndoRedoButtonStates = function () {
+        console.log("begin setUndoRedoButtonStates");
 				if (undoMgr) {
+          console.log("do if undoMgr")
 					if (wmd.buttons["wmd-undo-button"]) setupButton(wmd.buttons["wmd-undo-button"], undoMgr.canUndo());
 					if (wmd.buttons["wmd-redo-button"]) setupButton(wmd.buttons["wmd-redo-button"], undoMgr.canRedo());
 				}
+        console.log("end setUndoRedoButtonStates");
 			};
 
       // 是不是可点击状态
       // 是的话，点击后，做什么反应
 			var setupButton = function (button, isEnabled) {
-
+        console.log("begin setupButton");
 				if (isEnabled) {
+          console("do if isEnabled");
 					button.className = button.className.replace(new RegExp("(^|\\s+)disabled(\\s+|$)"), ' ');
 				
 					// IE tries to select the background image "button" text (it's
@@ -1521,13 +1541,17 @@
 					}
 				}
 				else {
+          console("do else isEnabled");
 					button.className += (button.className ? ' ' : '') + 'disabled';
+          // disabled 状态的按钮，在 onmouseover 和 onmouseout 和 onclick 事件下都不做事。
 					button.onmouseover = button.onmouseout = button.onclick = function () {};
 				}
+        console.log("end setupButton");
 			};
 
       // 按各个功能按钮，把 "wmd-button-bar" 雪碧图切隔开来
 			var makeSpritedButtonRow = function () {
+        console.log("begin makeSpritedButtonRow");
         // 针对自定义的 "wmd-button-bar"
 				var buttonBar = (typeof wmd_options.button_bar == 'string') ? document.getElementById(wmd_options.button_bar || "wmd-button-bar") : wmd_options.button_bar;
 
@@ -1545,6 +1569,7 @@
 
         // 创建对应的按钮，好吧，其实是 "li.wmd-button" (下面的 for 循环调用到)
 				function createButton(name, title, textOp) {
+          console.log("begin createButton");
 					var button = document.createElement("li");
 					wmd.buttons[name] = button;
 					button.className = "wmd-button " + name;
@@ -1555,30 +1580,38 @@
 
 					if (textOp) button.textOp = textOp;
 
+          console.log("end createButton");
 					return button;
 				}
 
         // 上面仅是创建，还不够，还要加上状态！
 				function addButton(name, title, textOp) {
+          console.log("begin addButton");
 					var button = createButton(name, title, textOp);
 
           // 可点击状态
 					setupButton(button, true);
 					buttonRow.appendChild(button);
+
+          console.log("end addButton");
 					return button;
 				}
 
         // 给不同按钮之间添加分隔线
 				function addSpacer() {
+          console.log("begin addSpacer");
 					var spacer = document.createElement("li");
 					spacer.className = "wmd-spacer";
 					buttonRow.appendChild(spacer);
+
+          console.log("end addSpacer");
 					return spacer;
 				}
 
         // 调用 addButton 和 addSpacer。实现 "wmd-button-bar"
 				var buttonlist = wmd_options.buttons.split(' ');
 				for (var i=0;i<buttonlist.length;i++) {
+          console.log("begin for buttonlist");
 					switch (buttonlist[i]) {
 					case "bold":
 						addButton("wmd-bold-button fa fa-bold medium", "Strong <strong> Ctrl+B", command.doBold);
@@ -1659,10 +1692,12 @@
 						addSpacer();
 						break;
 					}
+          console.log("end for buttonlist");
 				}
 
         // 设置 undo 按钮的状态
 				setUndoRedoButtonStates();
+        console.log("end makeSpritedButtonRow");
 			};
 
       // 包括但不限于：
@@ -1670,7 +1705,7 @@
       // 手动绑定事件！
       // 自动绑定事件！
 			var setupEditor = function () {
-
+        console.log("begin setupEditor");
 				if (/\?noundo/.test(document.location.href)) {
 					wmd.nativeUndo = true;
 				}
@@ -1691,7 +1726,7 @@
 					keyEvent = "keypress";
 				}
 
-        // 手动绑定事件！
+        // 手动绑定“快捷键”事件！
 				util.addEvent(inputBox, keyEvent, function (key) {
 
 					// Check to see if we have a button key and, if so execute the callback.
@@ -1700,6 +1735,7 @@
 						var keyCode = key.charCode || key.keyCode;
 						var keyCodeStr = String.fromCharCode(keyCode).toLowerCase();
 
+            // 按快捷键和直接点击效果一样。
 						switch (keyCodeStr) {
 						case wmd.options.modifierKeys.bold:
 							if (wmd.buttons["wmd-bold-button"]) doClick(wmd.buttons["wmd-bold-button"]);
@@ -1796,27 +1832,34 @@
 						}
 					});
 				}
+        console.log("end setupEditor");
 			};
 
 
       // 调用 "undo/redo"
 			this.undo = function () {
+        console.log("begin undo");
 				if (undoMgr) {
 					undoMgr.undo();
 				}
+        console.log("end undo");
 			};
       // 调用 "undo/redo"
 			this.redo = function () {
+        console.log("begin redo");
 				if (undoMgr) {
 					undoMgr.redo();
 				}
+        console.log("end redo");
 			};
 
 			// This is pretty useless.  The setupEditor function contents
 			// should just be copied here.
       // 创建
 			var init = function () {
+        console.log("begin wmdBase init");
 				setupEditor();
+        console.log("end wmdBase init");
 			};
 
 			this.destroy = function () {
@@ -1834,6 +1877,7 @@
 
       // 删除(几乎不会用到)
 			init();
+      console.log("end wmdBase");
 		}; // }}}
 
 		// command {{{
@@ -2313,7 +2357,7 @@
 		};
 
 		command.doHeading = function (chunk, postProcessing, useDefaultText) {
-
+      console.log("begin command doHeading")
 			// Remove leading/trailing whitespace and reduce internal spaces to single spaces.
 			chunk.selection = chunk.selection.replace(/\s+/g, " ");
 			chunk.selection = chunk.selection.replace(/(^\s+|\s+$)/g, "");
@@ -2355,7 +2399,7 @@
 			var headerLevelToCreate = headerLevel == 0 ? 2 : headerLevel - 1;
 
 			if (headerLevelToCreate > 0) {
-
+        console.log("do if headerLevelToCreate")
 				// The button only creates level 1 and 2 underline headers.
 				// Why not have it iterate over hash header levels?  Wouldn't that be easier and cleaner?
 				var headerChar = headerLevelToCreate >= 2 ? "-" : "=";
@@ -2368,12 +2412,15 @@
 					chunk.endTag += headerChar;
 				}
 			}
+      console.log("end command doHeading")
 		};
 
 		command.doHorizontalRule = function (chunk, postProcessing, useDefaultText) {
+      console.log("begin command doHorizontalRule")
 			chunk.startTag = "----------\n";
 			chunk.selection = "";
 			chunk.addBlankLines(2, 1, true);
+      console.log("end command doHorizontalRule")
 		};
 
     command.doEdit = function (chunk, postProcessing, useDefaultText) {
