@@ -1517,7 +1517,7 @@
 			var setupButton = function (button, isEnabled) {
         console.log("begin setupButton");
 				if (isEnabled) {
-          console("do if isEnabled");
+          console.log("do if isEnabled");
 					button.className = button.className.replace(new RegExp("(^|\\s+)disabled(\\s+|$)"), ' ');
 				
 					// IE tries to select the background image "button" text (it's
@@ -1541,7 +1541,7 @@
 					}
 				}
 				else {
-          console("do else isEnabled");
+          console.log("do else isEnabled");
 					button.className += (button.className ? ' ' : '') + 'disabled';
           // disabled 状态的按钮，在 onmouseover 和 onmouseout 和 onclick 事件下都不做事。
 					button.onmouseover = button.onmouseout = button.onclick = function () {};
