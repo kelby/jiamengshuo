@@ -736,6 +736,7 @@
 	// to the before/after regions.
 	//
 	// If remove is true, the whitespace disappears.
+  // 移除空白符
 	Chunks.prototype.trimWhitespace = function (remove) {
 
 		this.selection = this.selection.replace(/^(\s*)/, "");
@@ -1425,6 +1426,7 @@
 
 				inputBox.focus();
 
+        // boolean 类型，表：要不要自动缩进？
 				if (button.textOp) {
 
 					if (undoMgr) {
@@ -1482,7 +1484,8 @@
 				}
 			};
 
-      // 设置 undo 按钮的状态
+      // 设置 undo/redo 按钮的状态 (注意：判断逻辑由 undoMgr 做，这里只是根据结果，做出反应)
+      // 当然了，首先得判断有没有这两个元素
 			var setUndoRedoButtonStates = function () {
 				if (undoMgr) {
 					if (wmd.buttons["wmd-undo-button"]) setupButton(wmd.buttons["wmd-undo-button"], undoMgr.canUndo());
@@ -1490,6 +1493,8 @@
 				}
 			};
 
+      // 是不是可点击状态
+      // 是的话，点击后，做什么反应
 			var setupButton = function (button, isEnabled) {
 
 				if (isEnabled) {
@@ -1523,20 +1528,22 @@
 
       // 按各个功能按钮，把 "wmd-button-bar" 雪碧图切隔开来
 			var makeSpritedButtonRow = function () {
-
+        // 针对自定义的 "wmd-button-bar"
 				var buttonBar = (typeof wmd_options.button_bar == 'string') ? document.getElementById(wmd_options.button_bar || "wmd-button-bar") : wmd_options.button_bar;
 
+        // 按钮处于不同状态，使用不同"高度"的图片（我们有 3 张图片哦 ~）
 				var normalYShift = "0px";
 				var disabledYShift = "-20px";
 				var highlightYShift = "-40px";
 
+        // "wmd-button-bar" 的第一个孩子 "ul.wmd-button-row"
 				var buttonRow = document.createElement("ul");
 				buttonRow.className = "wmd-button-row";
 				buttonRow = buttonBar.appendChild(buttonRow);
 
 				var xoffset = 0;
 
-        // 创建对应的按钮
+        // 创建对应的按钮，好吧，其实是 "li.wmd-button" (下面的 for 循环调用到)
 				function createButton(name, title, textOp) {
 					var button = document.createElement("li");
 					wmd.buttons[name] = button;
@@ -1551,10 +1558,11 @@
 					return button;
 				}
 
-        // 添加按钮。上面仅是创建，还不够
+        // 上面仅是创建，还不够，还要加上状态！
 				function addButton(name, title, textOp) {
 					var button = createButton(name, title, textOp);
 
+          // 可点击状态
 					setupButton(button, true);
 					buttonRow.appendChild(button);
 					return button;
@@ -1827,6 +1835,7 @@
       // 删除(几乎不会用到)
 			init();
 		}; // }}}
+
 		// command {{{
 		// The markdown symbols - 4 spaces = code, > = blockquote, etc.
 		command.prefixes = "(?:\\s{4,}|\\s*>|\\s*-\\s+|\\s*\\d+\\.|=|\\+|-|_|\\*|#|\\s*\\[[^\n]]+\\]:)";
@@ -2000,7 +2009,7 @@
 				// The function to be executed when you enter a link and press OK or Cancel.
 				// Marks up the link and adds the ref.
 				var makeLinkMarkdown = function (link) {
-					console.log(link);
+					// console.log(link);
 					if (link !== null) {
 
 						chunk.startTag = chunk.endTag = "";
