@@ -3,7 +3,7 @@
 <% if activity.recipient %>
   <%= link_to activity.recipient.user.username, activity.recipient.user %>
 <% else %>
-  which has since been removed
+  <%= raw markdown_for "~已经删除~" %>
 <% end %>
 
 的评论。

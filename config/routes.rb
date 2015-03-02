@@ -32,6 +32,11 @@ Rails.application.routes.draw do
   end
 
   post "topics/preview" => "topics#preview"
+  get "topics/qi_ta/new" => "topics#new", category: 0
+  get "topics/bai_shi/new" => "topics#new", category: 1
+  get "topics/shou_tu/new" => "topics#new", category: 2
+  get "topics/bai_shi_he_shou_tu/new" => "topics#new", category: 3
+
   resources :topics do
     member do
       post :mark, to: 'topic_and_user#mark'

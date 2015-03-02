@@ -1,9 +1,14 @@
-同意了
+<div class="activity">
+  <%= image_tag activity.owner.avatar_url(:mini), class: "super_tiny_avatar" %>
+  <%= link_to activity.owner.username, activity.owner if activity.owner %>
 
-<% if activity.recipient %>
-  <%= link_to activity.recipient.username, activity.recipient %>
-<% else %>
-  which has since been removed
-<% end %>
+  同意了
 
-的导师申请。
+  <% if activity.recipient %>
+    <%= link_to activity.recipient.username, activity.recipient %>
+  <% else %>
+    which has since been removed
+  <% end %>
+
+  的导师申请。
+</div>

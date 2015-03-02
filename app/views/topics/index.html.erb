@@ -23,58 +23,64 @@
           <div class="small-12 columns">
             <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
               <li>
-              <div class="post-count new-general with-replies">
-                <%= link_to topic.user do %>
-                  <div class="post-count-container new-general with-replies">
-                    <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+                <div class="post-count new-general with-replies">
+                  <%= link_to topic.user do %>
+                    <div class="post-count-container new-general with-replies">
+                      <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+                    </div>
+                  <% end %>
+                  <div class="total-post-count new total-replies">
+                    <%= topic.comments.count %> 评论
                   </div>
-                <% end %>
-                <div class="total-post-count new total-replies">
-                  <%= topic.comments.count %> 回复
                 </div>
-              </div>
               </li>
+
               <li>
-              <div class="post-description">
-                <h4 class="content-title">
-                  <% case topic.catalog_id %>
-                  <% when 1000 %>
-                    <%= label_tag :catalog, "拜师", class: "blue google button", style: "display: inline-block;" %>
-                  <% when 1001 %>
-                    <%= label_tag :catalog, "收徒", class: "yellow google button", style: "display: inline-block;" %>
-                  <% when 1002 %>
-                    <%= label_tag :catalog, "拜师兼收徒", class: "green google button", style: "display: inline-block;" %>
-                  <% else %>
-                    <%= label_tag :catalog, "其它", class: "purple google button", style: "display: inline-block;" %>
-                  <% end %>
+                <div class="post-description">
+                  <h4 class="content-title">
+                    <% case topic.catalog_id %>
+                    <% when 1000 %>
+                      <%= label_tag :catalog, "拜师", class: "blue google button", style: "display: inline-block;" %>
+                    <% when 1001 %>
+                      <%= label_tag :catalog, "收徒", class: "yellow google button", style: "display: inline-block;" %>
+                    <% when 1002 %>
+                      <%= label_tag :catalog, "拜师兼收徒", class: "green google button", style: "display: inline-block;" %>
+                    <% else %>
+                      <%= label_tag :catalog, "其它", class: "purple google button", style: "display: inline-block;" %>
+                    <% end %>
 
-                  <%= link_to topic do %>
-                    <%= topic.title %>
-                  <% end %>
-                </h4>
-                <p class="author-name">
-                By <span class="author">
-                  <%= link_to topic.user do %><%= topic.user.username %><% end %>
-                </span><span class="by">, last Reply by</span>
-                <span class="when">
+                    <%= link_to topic do %>
+                      <%= topic.title %>
+                    <% end %>
+                  </h4>
+                  <p class="author-name">
                   <span class="author">
-                    <%= link_to topic.comments.last.try(:user) do %>
-                      <%= topic.comments.last.try(:user).try(:username) %>
-                    <% end %>
+                    <%= link_to topic.user do %><%= topic.user.username %><% end %>
+                    创建于 <%= time_ago_in_words topic.created_at %> 前
                   </span>
-                  <%= time_ago_in_words topic.created_at %> 前
-                </span>
-                </p>
-                <div class="post-description copy">
-
-                  <p class="tags">
-                  标签：
-                    <% topic.tags.each do |tag| %>
-                      <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
-                    <% end %>
+                  <% if topic.comments.any? %>
+                  <!-- <span class="by">, last Reply by</span> -->
+                  <span class="when">
+                    <span class="author">
+                      ，最后由
+                      <%= link_to topic.comments.last.try(:user) do %>
+                        <%= topic.comments.last.try(:user).try(:username) %>
+                      <% end %>
+                    </span>
+                    评论于 <%= time_ago_in_words topic.created_at %> 前
+                  </span>
+                  <% end %>
                   </p>
+                  <div class="post-description copy">
+
+                    <p class="tags">
+                    标签：
+                      <% topic.tags.each do |tag| %>
+                        <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
+                      <% end %>
+                    </p>
+                  </div>
                 </div>
-              </div>
               </li>
             </ul>
             <hr>
@@ -90,22 +96,22 @@
     <div>
       <h5>新建帖子，并选择类型：</h5>
 
-      <%= link_to new_topic_path(catalog_id: 1000), class: "blue google button" do %>
+      <%= link_to topics_bai_shi_new_path, class: "blue google button" do %>
         <%= content_tag(:strong, '拜师!') %>
       <% end %>
       <br>
 
-      <%= link_to new_topic_path(catalog_id: 1001), class: "yellow google button" do %>
+      <%= link_to topics_shou_tu_new_path, class: "yellow google button" do %>
         <%= content_tag(:strong, '收徒!') %>
       <% end %>
       <br>
 
-      <%= link_to new_topic_path(catalog_id: 1002), class: "green google button" do %>
+      <%= link_to topics_bai_shi_he_shou_tu_new_path, class: "green google button" do %>
         <%= content_tag(:strong, '拜师兼收徒!') %>
       <% end %>
       <br>
 
-      <%= link_to new_topic_path(catalog_id: 1003), class: "purple google button" do %>
+      <%= link_to topics_qi_ta_new_path, class: "purple google button" do %>
         <%= content_tag(:strong, '其它!') %>
       <% end %>
     </div>

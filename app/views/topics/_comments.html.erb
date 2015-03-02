@@ -11,9 +11,9 @@
             <% end %>
           </a>
 
-          <small>said 
+          <small>评论于&nbsp;
             <span class="data">
-              <%= time_ago_in_words comment.created_at %>
+              <%= time_ago_in_words comment.created_at %> 前
             </span>
           </small>
         </h6>
@@ -25,10 +25,10 @@
 
       <section class="actions">
         <ul class="inline-list">
-          <li><a href="#">Like (3)</a></li>
-          <li><a href="#">Share</a></li>
+          <li><a href="#">喜欢 (3)</a></li>
+          <li><a href="#">分享</a></li>
           <li>
-            <%= link_to "Reply", new_comment_reply_path(comment), remote: true %>
+            <%= link_to "回复", new_comment_reply_path(comment), remote: true %>
           </li>
         </ul>
       </section>
@@ -45,13 +45,13 @@
                 <% end %>
               </a>
 
-              <small>said&nbsp;
+              <small>回复于&nbsp;
                 <span class="data">
-                  <%= time_ago_in_words reply.created_at %>
+                  <%= time_ago_in_words reply.created_at %> 前
                 </span>
               </small>
               <span class="reply">
-                <%= link_to "Reply", new_comment_reply_path(comment), remote: true %>
+                <%= link_to "回复", new_comment_reply_path(comment), remote: true %>
               </span>
             </h6>
           </section>
