@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
       when 3
         @topics = Topic.bai_shi_he_shou_tu.page(params[:page]).per(15).order("updated_at DESC")
       else
-        @topics = Topic.qi_ta.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.qi_ta.merge(Topic.where(category: nil)).page(params[:page]).per(15).order("updated_at DESC")
       end
     else
       @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
