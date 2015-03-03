@@ -10,8 +10,6 @@ class TopicsController < ApplicationController
   def index
     if params["category"].present?
       case params["category"]
-      when 0
-        @topics = Topic.qi_ta.page(params[:page]).per(15).order("updated_at DESC")
       when 1
         @topics = Topic.bai_shi.page(params[:page]).per(15).order("updated_at DESC")
       when 2
@@ -19,7 +17,7 @@ class TopicsController < ApplicationController
       when 3
         @topics = Topic.bai_shi_he_shou_tu.page(params[:page]).per(15).order("updated_at DESC")
       else
-        @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.qi_ta.page(params[:page]).per(15).order("updated_at DESC")
       end
     else
       @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
