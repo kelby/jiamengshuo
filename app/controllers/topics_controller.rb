@@ -8,7 +8,23 @@ class TopicsController < ApplicationController
   respond_to :html
 
   def index
-    @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
+    if params["category"].present?
+      case params["category"]
+      when 0
+        @topics = Topic.qi_ta.page(params[:page]).per(15).order("updated_at DESC")
+      when 1
+        @topics = Topic.bai_shi.page(params[:page]).per(15).order("updated_at DESC")
+      when 2
+        @topics = Topic.shou_tu.page(params[:page]).per(15).order("updated_at DESC")
+      when 3
+        @topics = Topic.bai_shi_he_shou_tu.page(params[:page]).per(15).order("updated_at DESC")
+      else
+        @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
+      end
+    else
+      @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
+    end
+
     if user_signed_in?
       @users = current_user.recomment_users
     else
@@ -25,7 +41,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    @topic = Topic.new category: params[:category]
     respond_with(@topic)
   end
 
@@ -33,10 +49,11 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = current_user.topics.build(topic_params.merge(catalog_id: params[:catalog_id]))
-    debugger
-    @topic.save!
-    @topic.create_activity :create, owner: current_user
+    @topic = current_user.topics.build(topic_params)
+
+    @topic.create_activity :create, owner: current_user if @topic.save
+    @topic.qi_ta! unless @topic.category
+
     respond_with(@topic)
   end
 
@@ -74,6 +91,6 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :body, :tag_list, :catalog_id)
+      params.require(:topic).permit(:title, :body, :category, :tag_list, :catalog_id)
     end
 end

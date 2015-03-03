@@ -38,15 +38,15 @@
               <li>
                 <div class="post-description">
                   <h4 class="content-title">
-                    <% case topic.catalog_id %>
-                    <% when 1000 %>
-                      <%= label_tag :catalog, "拜师", class: "blue google button", style: "display: inline-block;" %>
-                    <% when 1001 %>
-                      <%= label_tag :catalog, "收徒", class: "yellow google button", style: "display: inline-block;" %>
-                    <% when 1002 %>
-                      <%= label_tag :catalog, "拜师兼收徒", class: "green google button", style: "display: inline-block;" %>
+                    <% case topic.category %>
+                    <% when "bai_shi" %>
+                      <%= link_to "拜师", topics_bai_shi_path, class: "blue google button", style: "display: inline-block;" %>
+                    <% when "shou_tu" %>
+                      <%= link_to "收徒", topics_shou_tu_path, class: "yellow google button", style: "display: inline-block;" %>
+                    <% when "bai_shi_he_shou_tu" %>
+                      <%= link_to "拜师兼收徒", topics_bai_shi_he_shou_tu_path, class: "green google button", style: "display: inline-block;" %>
                     <% else %>
-                      <%= label_tag :catalog, "其它", class: "purple google button", style: "display: inline-block;" %>
+                      <%= link_to "其它", topics_qi_ta_path, class: "purple google button", style: "display: inline-block;" %>
                     <% end %>
 
                     <%= link_to topic do %>
@@ -95,25 +95,7 @@
   <div class="large-3 columns">
     <div>
       <h5>新建帖子，并选择类型：</h5>
-
-      <%= link_to topics_bai_shi_new_path, class: "blue google button" do %>
-        <%= content_tag(:strong, '拜师!') %>
-      <% end %>
-      <br>
-
-      <%= link_to topics_shou_tu_new_path, class: "yellow google button" do %>
-        <%= content_tag(:strong, '收徒!') %>
-      <% end %>
-      <br>
-
-      <%= link_to topics_bai_shi_he_shou_tu_new_path, class: "green google button" do %>
-        <%= content_tag(:strong, '拜师兼收徒!') %>
-      <% end %>
-      <br>
-
-      <%= link_to topics_qi_ta_new_path, class: "purple google button" do %>
-        <%= content_tag(:strong, '其它!') %>
-      <% end %>
+      <%= render 'select_category' %>
     </div>
 
     <hr class="dashed"></hr>

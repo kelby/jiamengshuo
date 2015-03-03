@@ -28,7 +28,7 @@
     <%= f.text_field :tag_list, required: true %>
   </div>
 
-  <%= hidden_field_tag 'catalog_id', (params[:catalog_id] || @topic.catalog_id) %>
+  <%= f.hidden_field :category %>
 
   <div class="actions">
     <%= f.submit "提交", class: "blue tiny button radius" %>

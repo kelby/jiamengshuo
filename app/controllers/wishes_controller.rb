@@ -66,7 +66,7 @@ class WishesController < ApplicationController
 
   def checkout_it
     UserWish.find_by(user_id: current_user.id, wish_id: @wish.id).try(:destroy)
-    # debugger
+
     @wish.create_activity :checkout_it, owner: current_user, recipient: @wish.user, parameters: {wish_content: @wish.content}
   end
 
