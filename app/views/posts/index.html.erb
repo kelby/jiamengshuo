@@ -4,9 +4,9 @@
   <article class="row circle-list">
     <% posts.each do |post| %>
       <div class="medium-4 columns">
-        <div class="guide-cover js-guide-cover js-geopattern" style="background-image: <%= pattern post.title %>;text-align: center;">
+        <div class="guide-cover js-guide-cover js-geopattern" style="padding-bottom: 0.5rem; background-image: <%= pattern post.title %>;text-align: center;">
           <%= link_to post do %>
-            <div class="icon-container panel-white" style="display: inline-block;">
+            <div class="icon-container panel-white" style="display: inline-block; margin-top: 1rem;">
               <% if post.icon.present? %>
                 <span class="fi-<%= post.icon %> large mega-octicon"></span>
               <% else %>

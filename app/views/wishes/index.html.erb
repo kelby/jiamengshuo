@@ -1,5 +1,6 @@
 <% set_meta_tags :title => "心愿卡片" %>
 
+<div class="large-12 columns">
 <h2>有什么心愿，我们一起来实现！
   <span class="span_callout">&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;
     ..<i class="fa fa-paper-plane"></i>
@@ -18,8 +19,9 @@
     <%= render 'wishes/got_active', wish: @active_wish %>
   <% end %>
 </div>
+</div>
 
-<hr>
+<hr class="dashed"></hr>
 
 <div class="testimonial-wrap">
   <% @wishes.each_slice(2) do |wishes| %>

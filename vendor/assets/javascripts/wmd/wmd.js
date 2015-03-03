@@ -1682,6 +1682,8 @@
 						setupButton(helpButton, true);
 						buttonRow.appendChild(helpButton);
 
+            // 两部分：button 自身，和 button 上面的链接
+
 						var helpAnchor = document.createElement("a");
 						helpAnchor.href = wmd_options.helpLink;
 						helpAnchor.target = wmd_options.helpTarget;
@@ -2196,12 +2198,14 @@
 		};
 
 		command.doCode = function (chunk, postProcessing, useDefaultText) {
-
+      // 光标是不是在行首？忽略空格
 			var hasTextBefore = /\S[ ]*$/.test(chunk.before);
+      // 光标是不是在行首？忽略空格
 			var hasTextAfter = /^[ ]*\S/.test(chunk.after);
 
 			// Use 'four space' markdown if the selection is on its own
 			// line or is multiline.
+      // 空白行 或者 光杆内容有回车（场景：我们选中大段文本内容）
 			if ((!hasTextAfter && !hasTextBefore) || /\n/.test(chunk.selection)) {
 
 				chunk.before = chunk.before.replace(/[ ]{4}$/, function (totalMatch) {
@@ -2222,9 +2226,13 @@
 
 				chunk.addBlankLines(nLinesBefore, nLinesAfter);
 
+        // 在光标上、下各新增一行
+        // ``` 环绕又各占一行，但这里不会自动换行，所以要用到 \n
 				if (!chunk.selection) {
-					chunk.startTag = "    ";
-					chunk.selection = useDefaultText ? "enter code here" : "";
+					chunk.startTag = "```\n";
+					chunk.selection = useDefaultText ? "puts \"Hello Word\"" : "";
+          chunk.addBlankLines(1, 1, true);
+          chunk.endTag = "\n```"
 				}
 				else {
 					if (/^[ ]{0,3}\S/m.test(chunk.selection)) {

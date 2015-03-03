@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="large-3 columns">
+<div class="large-12 columns">
+  <div class="large-3 columns" style="position: fixed;">
     <h5>
       <%= link_to edit_avatar_user_path(@user) do %>
         <i class="fi-widget"></i>
@@ -30,10 +30,10 @@
   </div>
 
   <div class="large-9 columns">
-    <div class="section-container tabs" data-section="">
+    <div>
       <section class="section">
         <h5 class="title">心愿卡片?</h5>
-        <div class="content" data-slug="panel1">
+        <div class="content">
           <%= form_for :wish, url: wishes_path do |f| %>
             <%= f.text_area :content, rows: 4, required: true, autofocus: true %>
             <%= f.submit "提交", class: "blue tiny button radius" %>
@@ -42,34 +42,47 @@
       </section>
 
       <section class="section">
-        <h5 class="title">我的导师们:<span class="right">对所有导师说~</span></h5>
-        <div class="content" data-slug="panel2">
-          <ul class="large-block-grid-5">
-            <% @teachers.each do |ur| %>
-              <li>
-                <a href="mailto:mal@serenity.bc.reb">
-                <%= link_to ur.owner do %>
-                  <%= image_tag ur.owner.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.owner.username %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+        <h5 class="title">我的导师们:
+          <!-- <span class="right">对所有导师说 ~</span> -->
+        </h5>
+        <div class="content">
+          <% @teachers.each_slice(4) do |urs| %>
+            <div class="large-block-grid-5">
+              <% urs.each do |ur| %>
+                <div class="large-3 columns end">
+                  <%= link_to ur.owner do %>
+                    <%= image_tag ur.owner.avatar_url(:thumb), class: 'thumb_avatar' %>
+                    <br>
+                    <%= ur.owner.username %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </section>
       <hr>
 
       <section class="section">
-        <h5 class="title">我的学生们:<span class="right">对所有学生说~</span></h5>
+        <h5 class="title">我的学生们:
+          <!-- <span class="right">对所有学生说 ~</span> -->
+        </h5>
         <div class="content" data-slug="panel2">
-          <ul class="large-block-grid-5">
-            <% @students.each do |ur| %>
-              <li>
+          <div class="large-block-grid-5">
+            <% @students.each_slice(4) do |urs| %>
+            <div class="large-12 columns">
+              <% urs.each do |ur| %>
+              <div class="large-3 columns end">
                 <%= link_to ur.recipient do %>
-                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
+                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %>
+                  <br>
+                  <%= ur.recipient.username %>
                 <% end %>
-              </li>
+              </div>
+              <% end %>
+              </div>
             <% end %>
-          </ul>
+          </div>
         </div>
       </section>
       <hr>
@@ -77,15 +90,19 @@
       <section class="section">
         <h5 class="title">我的朋友们:</h5>
         <div class="content" data-slug="panel2">
-          <ul class="large-block-grid-5">
-            <% @followers.each do |user| %>
-              <li>
+          <div class="large-block-grid-5">
+            <% @followers.each_slice(4) do |users| %>
+              <% users.each do |user| %>
+              <div class="large-3 columns end">
                 <%= link_to user do %>
-                  <%= image_tag user.avatar_url(:thumb) %><%= user.username %>
+                  <%= image_tag user.avatar_url(:thumb) %>
+                  <br>
+                  <%= user.username %>
                 <% end %>
-              </li>
+              </div>
+              <% end %>
             <% end %>
-          </ul>
+          </div>
         </div>
       </section>
     </div>
