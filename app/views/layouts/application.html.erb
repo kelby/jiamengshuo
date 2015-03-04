@@ -15,13 +15,15 @@
   <body data-controller-name='<%= controller_name %>' data-action-name='<%= action_name %>'>
     <%= render 'layouts/header' %>
 
-    <%= render 'layouts/sub_nav' %>
+    <% unless current_page?(root_path) || user_signed_in? %>
+      <%= render 'layouts/sub_nav' %>
+    <% end %>
 
     <%= render 'layouts/flash_messages' %>
 
     <% if current_page?(root_path) && !user_signed_in? %>
       <div class="index-background">
-        <div class="row">
+        <div class="row full-width">
           <%= yield %>
         </div>
       </div>
