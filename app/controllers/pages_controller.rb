@@ -13,5 +13,6 @@ class PagesController < ApplicationController
       ]}
     @activities = PublicActivity::Activity.order("created_at desc").page(params[:pub_page] || 1).per(15).where.not(condition)
     @snippet = @topic.snippet
+    @four_users = User.where.not(avatar: nil).order("updated_at desc").limit(4)
   end
 end

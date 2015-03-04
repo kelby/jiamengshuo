@@ -1,0 +1,11 @@
+<div class="tutor-portrait">
+  <%= link_to user, target: "_blank", title: user.username do %>
+    <div class="portrait-cover"></div>
+    <%= image_tag user.avatar_url, alt: user.username %>
+  <% end %>
+
+  <div class="portraid-caida"></div>
+  <p class="portraid-uname">
+    <%= link_to user.username, user, target: "_blank" %>
+  </p>
+</div>

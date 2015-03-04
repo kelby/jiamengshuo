@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
 
   has_many :sections, dependent: :destroy
   has_many :subjects, through: :sections
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :comments, as: :commentable
 
   validates_presence_of :title, :user_id

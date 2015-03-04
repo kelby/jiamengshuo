@@ -175,3 +175,9 @@ Catalog.create name: "拜师", id: 1000
 Catalog.create name: "收徒", id: 1001
 Catalog.create name: "拜师兼收徒", id: 1002
 Catalog.create name: "其它", id: 1003
+
+user_ids = User.ids
+user_ids.each do |i|
+  User.reset_counters(i, :posts)
+end
+

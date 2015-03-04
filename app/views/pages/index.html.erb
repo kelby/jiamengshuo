@@ -1,14 +1,226 @@
-<div class="large-9 columns" role="content">
-  <% if user_signed_in? %>
+<% unless user_signed_in? %>
+  <section class="body-wrapper">
+    <section class="body" id="body">
+      <!-- 欢迎你的加入 -->
+      <section class="top-img-bar">
+        <div class="top-img-con">
+          <div class="big-title"></div>
+          <div class="des-step">
+            <div class="step-blk step-1"></div>
+            <div class="step-blk step-2"></div>
+            <div class="step-blk step-3"></div>
+            <div class="step-blk step-4"></div>
+          </div>
+          <%= link_to new_user_session_path, id: "sign-in-btn", class: "apply-btn" do %>
+            登录
+          <% end %>
+        </div>
+      </section>
+
+      <% first_user = @four_users.first %>
+      <% second_user = @four_users.second %>
+      <% third_user = @four_users.third %>
+      <% fourth_user = @four_users.fourth %>
+      <% user_ids = User.ids %>
+
+      <!-- 35名导师全程指导 -->
+      <section class="mid-con-par">
+        <div class="mid-con-wrp">
+          <p class="mid-desc"><%= User.count %> 名导师全程指导，让你从入门小白变身为行业大神！</p>
+
+          <div class="tutor-block clearfix">
+            <div class="tutor tutor-1">
+              <%= render 'users/tutor_portrait', user: first_user %>
+
+              <div class="robe-arrow robe-arrow-l"></div>
+              <div class="robe-arrow robe-arrow-r"></div>
+
+              <div class="tutor-desc">
+                <p><span>所属分类：</span>游戏/数码</p>
+
+                <p><span>成功指导学员：</span>354</p>
+              </div>
+
+              <div class="trainee-portrait trainee-portrait-1">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+
+              <div class="trainee-portrait trainee-portrait-2">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+            </div>
+
+            <div class="tutor tutor-2">
+              <%= render 'users/tutor_portrait', user: second_user %>
+
+              <div class="robe-arrow robe-arrow-l"></div>
+              <div class="robe-arrow robe-arrow-r"></div>
+              <div class="tutor-desc">
+                <p><span>所属分类：</span>游戏/数码</p>
+
+                <p><span>成功指导学员：</span>363</p></div>
+              <div class="trainee-portrait trainee-portrait-1">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+              <div class="trainee-portrait trainee-portrait-2">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+            </div>
+
+            <div class="tutor tutor-3">
+              <%= render 'users/tutor_portrait', user: third_user %>
+
+              <div class="robe-arrow robe-arrow-l"></div>
+              <div class="robe-arrow robe-arrow-r"></div>
+              <div class="tutor-desc">
+                <p><span>所属分类：</span>职场/理财</p>
+
+                <p><span>成功指导学员：</span>154</p></div>
+              <div class="trainee-portrait trainee-portrait-1">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+              <div class="trainee-portrait trainee-portrait-2">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+            </div>
+
+            <div class="tutor tutor-4">
+              <%= render 'users/tutor_portrait', user: fourth_user %>
+
+              <div class="robe-arrow robe-arrow-l"></div>
+              <div class="robe-arrow robe-arrow-r"></div>
+              <div class="tutor-desc">
+                <p><span>所属分类：</span>美食/营养</p>
+
+                <p><span>成功指导学员：</span>204</p></div>
+              <div class="trainee-portrait trainee-portrait-1">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+              <div class="trainee-portrait trainee-portrait-2">
+                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
+              </div>
+            </div>
+          </div>
+
+          <p class="tutor-more">
+            <%= link_to users_path, target: "_blank" do %>
+              查看完整导师名单&nbsp;<span>&gt;&gt;</span>
+            <% end %>
+          </p>
+        </div>
+      </section>
+
+      <!-- 本期预备班进行中 -->
+      <section class="fot-con-par clearfix">
+        <div class="fot-con">
+          <h3>本周活跃用户排行（<%= Date.today.beginning_of_week.strftime("%-d 日") %> 至 <%= Date.today.end_of_week.strftime("%-d 日") %>）</h3>
+
+          <div class="doing-wrap">
+            <div class="joing">
+              <div class="s-title"><h4>最新帖子</h4></div>
+              <div class="joing-list-wrap">
+                <% joing_list = Topic.limit(5).order(id: :desc) %>
+                <ul id="joing-list" class="joing-list" style="top: 0px; left: 0px;">
+                  <% joing_list.each do |topic| %>
+                    <li>
+                      <!-- <span class="join-uname"> -->
+                      <%= truncate topic.title, length: 18 %>
+                      <!-- </span> -->
+                        <%#= link_to topic.user do %>
+                          <%#= image_tag topic.user.avatar_url(:mini), class: "super_tiny" %>
+                        <%# end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+
+            <div class="curcha">
+              <div class="s-title"><h4>功课排名</h4></div>
+              <% curcha_list = User.order("posts_count desc").limit(5) %>
+              <div class="curcha-list">
+                <!-- <p class="tit">原创经验</p> -->
+                <p class="tit"></p>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="num num1">NO&nbsp;1</span>&nbsp;
+                        <span class="rankuanme" title="<%= curcha_list.first.username %>">
+                          <%= truncate curcha_list.first.username, length: 10 %>
+                        </span>
+                      </td>
+                      <td class="exp-num"><%= curcha_list.first.posts_count %>篇</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="num num2">NO&nbsp;2</span>&nbsp;
+                        <span class="rankuanme" title="<%= curcha_list.second.username %>">
+                          <%= truncate curcha_list.second.username, length: 10 %>
+                        </span>
+                      </td>
+                      <td class="exp-num"><%= curcha_list.second.posts_count %>篇</td>
+                    </tr>
+                    <tr>
+                      <td><span class="num num3">NO&nbsp;3</span>&nbsp;
+                      <span class="rankuanme" title="<%= curcha_list.third.username %>">
+                        <%= truncate curcha_list.third.username, length: 10 %></span>
+                      </td>
+                      <td class="exp-num"><%= curcha_list.third.posts_count %>篇</td>
+                    </tr>
+                    <tr>
+                      <td><span class="num num4">NO&nbsp;4</span>&nbsp;
+                      <span class="rankuanme" title="<%= curcha_list.fourth.username %>">
+                        <%= truncate curcha_list.fourth.username, length: 10 %></span>
+                      </td>
+                      <td class="exp-num"><%= curcha_list.fourth.posts_count %>篇</td>
+                    </tr>
+                    <tr>
+                      <td><span class="num num5">NO&nbsp;5</span>&nbsp;
+                      <span class="rankuanme" title="<%= curcha_list.fifth.username %>">
+                        <%= truncate curcha_list.fifth.username, length: 10 %></span>
+                      </td>
+                      <td class="exp-num"><%= curcha_list.fifth.posts_count %>篇</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="prizes">
+              <div class="s-title"><h4>本功能待定</h4></div>
+              <div class="prizes-wrp">
+                <span class="ico-rk ico-rk1"></span>
+                <span class="ico-rk ico-rk2"></span>
+                <span class="ico-rk ico-rk3"></span>
+
+                <div class="pri-img pri-img1">
+                  <!-- <a target="_blank" href="/assets/huizhuanshousiDT.jpg"> -->
+                    <img src="/assets/huizhuanshousiDT.jpg" title="游卡桌游回转寿司">
+                  <!-- </a> -->
+                </div>
+                <div class="pri-img pri-img2">
+                  <!-- <a target="_blank" href="/assets/qinghuaci-418.jpg"> -->
+                    <img src="/assets/qinghuaci-418.jpg" title="青花瓷钥匙扣套装">
+                  <!-- </a> -->
+                </div>
+                <div class="pri-img pri-img3">
+                  <!-- <a target="_blank" href="/assets/xiaoduwufi-419.jpg"> -->
+                    <img src="/assets/xiaoduwufi-419.jpg" title="小度WIFI">
+                  <!-- </a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </section>
+<% end %>
+
+<% if user_signed_in? %>
+  <div class="large-9 columns" role="content">
     <article>
-      <!-- <h1 class="panel-white"> -->
-        <%#= link_to @topic.title, @topic %>
-      <!-- </h1> -->
-
-      <!-- <div class="row"> -->
-        <%#= raw markdown_for @topic.body %>
-      <!-- </div> -->
-
       <%# @activities.each_slice(5) do |activities| %>
         <!-- <div> -->
           <% @activities.each do |activity| %>
@@ -17,23 +229,21 @@
               <%#= link_to activity.owner.username, activity.owner if activity.owner %>
               <%= render_activity activity %>
             <!-- </div> -->
-          <% end %>
           <hr class="dashed"></hr>
         <!-- </div> -->
-      <%# end %>
+      <% end %>
 
       <%= paginate @activities, :param_name => 'pub_page' %>
 
     </article>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
-<aside class="large-3 columns h3_it" style="margin-top: 4rem; font-size: 2.05556rem;">
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <aside class="large-3 columns h3_it" style="margin-top: 4rem; font-size: 2.05556rem;">
     <div class="disc">
-  <% else %>
-    <div class="disc panel-white">
-  <% end %>
+
     <%= raw markdown_for @snippet.body %>
    </div>
-</aside>
+  </aside>
+<% end %>

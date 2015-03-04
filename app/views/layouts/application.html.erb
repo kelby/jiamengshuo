@@ -22,19 +22,21 @@
     <%= render 'layouts/flash_messages' %>
 
     <% if current_page?(root_path) && !user_signed_in? %>
-      <div class="index-background">
-        <div class="row full-width">
+      <!-- <div class="index-background"> -->
+        <!-- <div class="row full-width"> -->
           <%= yield %>
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div> -->
     <% else %>
       <div class="row">
         <%= yield %>
       </div>
     <% end %>
 
-    <%= render 'layouts/scroll_top' %>
+    <%# unless current_page?(root_path) || user_signed_in? %>
+      <%= render 'layouts/scroll_top' %>
 
-    <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer' %>
+    <%# end %>
   </body>
 </html>

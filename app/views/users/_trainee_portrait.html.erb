@@ -1,0 +1,10 @@
+<%= link_to user, target: "_blank", title: user.username do %>
+  <div class="portrait-cover"></div>
+  <%= image_tag user.avatar_url, alt: user.username %>
+<% end %>
+
+<p class="portraid-desc">往届毕业学员</p>
+
+<p class="portraid-uname">
+  <%= link_to user.username, user, target: "_blank" %>
+</p>
