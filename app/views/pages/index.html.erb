@@ -1,6 +1,6 @@
 <% unless user_signed_in? %>
   <section class="body-wrapper">
-    <section class="body" id="body">
+    <section class="body">
       <!-- 欢迎你的加入 -->
       <section class="top-img-bar">
         <div class="top-img-con">
@@ -11,7 +11,7 @@
             <div class="step-blk step-3"></div>
             <div class="step-blk step-4"></div>
           </div>
-          <%= link_to new_user_session_path, id: "sign-in-btn", class: "apply-btn" do %>
+          <%= link_to new_user_session_path, class: "apply-btn button success round" do %>
             登录
           <% end %>
         </div>
@@ -26,7 +26,8 @@
       <!-- 35名导师全程指导 -->
       <section class="mid-con-par">
         <div class="mid-con-wrp">
-          <p class="mid-desc"><%= User.count %> 名导师全程指导，让你从入门小白变身为行业大神！</p>
+          <!-- <p class="mid-desc"><%#= User.count %> 名导师全程指导，让你从入门小白变身为行业大神！</p> -->
+          <p class="mid-desc">柏拉图有苏格拉底作为导师，你也应该找到某人并为之保护 ...</p>
 
           <div class="tutor-block clearfix">
             <div class="tutor tutor-1">
@@ -115,8 +116,8 @@
         <div class="fot-con">
           <h3>本周活跃用户排行（<%= Date.today.beginning_of_week.strftime("%-d 日") %> 至 <%= Date.today.end_of_week.strftime("%-d 日") %>）</h3>
 
-          <div class="doing-wrap">
-            <div class="joing">
+          <div class="doing-wrap columns large-12">
+            <div class="joing columns large-4">
               <div class="s-title"><h4>最新帖子</h4></div>
               <div class="joing-list-wrap">
                 <% joing_list = Topic.limit(5).order(id: :desc) %>
@@ -124,7 +125,9 @@
                   <% joing_list.each do |topic| %>
                     <li>
                       <!-- <span class="join-uname"> -->
+                      <%= link_to topic do %>
                       <%= truncate topic.title, length: 18 %>
+                      <% end %>
                       <!-- </span> -->
                         <%#= link_to topic.user do %>
                           <%#= image_tag topic.user.avatar_url(:mini), class: "super_tiny" %>
@@ -135,7 +138,7 @@
               </div>
             </div>
 
-            <div class="curcha">
+            <div class="curcha columns large-4">
               <div class="s-title"><h4>功课排名</h4></div>
               <% curcha_list = User.order("posts_count desc").limit(5) %>
               <div class="curcha-list">
@@ -187,8 +190,8 @@
               </div>
             </div>
 
-            <div class="prizes">
-              <div class="s-title"><h4>本功能待定</h4></div>
+            <div class="prizes columns large-4">
+              <div class="s-title"><h4>本项功能待定</h4></div>
               <div class="prizes-wrp">
                 <span class="ico-rk ico-rk1"></span>
                 <span class="ico-rk ico-rk2"></span>

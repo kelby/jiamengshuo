@@ -15,7 +15,7 @@
 }
 
 .top-img-bar .top-img-con {
-    width: 980px;
+    width: 1208px;
     margin: 0 auto;
     padding-top: 10px;
     position: relative;
@@ -23,16 +23,18 @@
 }
 
 .top-img-bar .big-title {
-    background: url(/assets/big-title.png) no-repeat;
+    background: url(/assets/big-title-sucess-2.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/big-title.png");
     _background: 0 0;
     height: 322px;
-    width: 952px
+    width: 952px;
+    margin: auto;
 }
 
 .top-img-bar .des-step {
     position: absolute;
-    top: 430px
+    top: 430px;
+    margin-left: 114px;
 }
 
 .top-img-bar .des-step .step-blk {
@@ -43,25 +45,25 @@
 }
 
 .top-img-bar .des-step .step-1 {
-    background: url(/assets/step-1.png) no-repeat;
+    background: url(/assets/step-11.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-1.png");
     _background: 0 0
 }
 
 .top-img-bar .des-step .step-2 {
-    background: url(/assets/step-2.png) no-repeat;
+    background: url(/assets/step-22.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-2.png");
     _background: 0 0
 }
 
 .top-img-bar .des-step .step-3 {
-    background: url(/assets/step-3.png) no-repeat;
+    background: url(/assets/step-33.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-2.png");
     _background: 0 0
 }
 
 .top-img-bar .des-step .step-4 {
-    background: url(/assets/step-4.png) no-repeat;
+    background: url(/assets/step-44.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-4.png");
     _background: 0 0;
     margin-right: 0
@@ -71,18 +73,19 @@
     position: absolute;
     left: 50%;
     margin-left: -100px;
-    bottom: -80px;
+    bottom: -100px;
     width: 201px;
     height: 64px;
     font-size: 22px;
-    line-height: 64px;
+    /*line-height: 64px;*/
     text-align: center;
     color: #fff !important;
-    background: url(/assets/apply-btn.png) no-repeat
+    /*background: url(/assets/apply-btn.png) no-repeat*/
+    /*background-color: #2FA63E;*/
 }
 
 .top-img-bar .apply-btn:hover {
-    background: url(/assets/apply-btn-hover.png) no-repeat;
+    /*background: url(/assets/apply-btn-hover.png) no-repeat;*/
     text-decoration: none
 }
 
@@ -281,7 +284,7 @@
 }
 
 .fot-con-par .fot-con {
-    width: 980px;
+    width: 1208px;
     margin: 0 auto
 }
 
@@ -323,20 +326,21 @@
 }
 
 .fot-con-par .doing-wrap .joing {
-    width: 200px;
+    /*width: 260px;*/
+    /*width: 250px;*/
     height: 400px;
     float: left;
-    margin-right: 85px
+    /*margin-right: 85px*/
 }
 
 .fot-con-par .doing-wrap .curcha {
-    width: 235px;
-    margin-right: 85px;
+    /*width: 285px;*/
+    /*margin-right: 85px;*/
     float: left
 }
 
 .fot-con-par .doing-wrap .prizes {
-    width: 375px;
+    /*width: 425px;*/
     float: left
 }
 
