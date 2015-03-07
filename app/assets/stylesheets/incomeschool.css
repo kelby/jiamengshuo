@@ -248,7 +248,7 @@
 .mid-con-par .trainee-portrait .portrait-cover {
     position: absolute;
     overflow: hidden;
-    width: 120px; important!;
+    width: 120px !important;
     height: 120px;
     background: url(/assets/avatar_masker_120.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/avatar_masker_120.png");
