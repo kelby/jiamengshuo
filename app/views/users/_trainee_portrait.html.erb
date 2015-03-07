@@ -6,5 +6,5 @@
 <p class="portraid-desc">往届毕业学员</p>
 
 <p class="portraid-uname">
-  <%= link_to user.username, user, target: "_blank" %>
+  <%= link_to truncate(user.username, length: 15), user, target: "_blank" %>
 </p>

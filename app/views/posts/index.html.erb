@@ -23,7 +23,13 @@
           <% end %>
           <%= post.user.username %>
         </p>
-        <p><%= truncate post.description, length: 450 %></p>
+        <style type="text/css">
+          p.post-description {
+            height: 425px;
+            border: 1px solid #ddd;
+          }
+        </style>
+        <p class="post-description"><%= truncate post.description, length: 425 %></p>
         <p><i class="fi-clock"></i>&nbsp;<%= time_ago_in_words post.updated_at %> 前</p>
       </div>
       <hr class="dashed hide-for-medium-up">

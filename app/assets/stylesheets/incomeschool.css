@@ -22,13 +22,20 @@
     *zoom: 1
 }
 
+.top-img-bar .top-desc {
+  margin: -4rem auto 2rem;
+  color: #A6DDAC;
+  font-family: "Microsoft YaHei";
+  font-size: 28px;
+}
+
 .top-img-bar .big-title {
-    background: url(/assets/big-title-sucess-2.png) no-repeat;
+    background: url(/assets/big-title-sucess-3.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/big-title.png");
     _background: 0 0;
     height: 322px;
     width: 952px;
-    margin: auto;
+    margin: 0.5rem auto auto;
 }
 
 .top-img-bar .des-step {
@@ -171,8 +178,8 @@
 }
 
 .mid-con-par .tutor-1, .mid-con-par .tutor-3 {
-    margin-right: 160px;
-    margin-left: 30px
+    /*margin-right: 160px;*/
+    /*margin-left: 30px*/
 }
 
 .mid-con-par .tutor-portrait {
@@ -240,7 +247,8 @@
 
 .mid-con-par .trainee-portrait .portrait-cover {
     position: absolute;
-    width: 120px;
+    overflow: hidden;
+    width: 120px; important!;
     height: 120px;
     background: url(/assets/avatar_masker_120.png) no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/avatar_masker_120.png");
@@ -260,7 +268,9 @@
 }
 
 .mid-con-par .trainee-portrait .portraid-uname {
-    text-align: center
+    text-align: center;
+    width: 120px;
+    overflow: hidden;
 }
 
 .mid-con-par .trainee-portrait .portraid-uname a {
@@ -269,12 +279,42 @@
     color: #333
 }
 
-.mid-con-par .trainee-portrait-1 {
+.mid-con-par .trainee-portrait-11 {
     left: -50px;
     top: 300px
 }
 
-.mid-con-par .trainee-portrait-2 {
+.mid-con-par .trainee-portrait-12 {
+    right: -50px;
+    top: 300px
+}
+
+.mid-con-par .trainee-portrait-21 {
+    left: -50px;
+    top: 300px
+}
+
+.mid-con-par .trainee-portrait-22 {
+    right: -50px;
+    top: 300px
+}
+
+.mid-con-par .trainee-portrait-31 {
+    left: -50px;
+    top: 300px
+}
+
+.mid-con-par .trainee-portrait-32 {
+    right: -50px;
+    top: 300px
+}
+
+.mid-con-par .trainee-portrait-41 {
+    left: -50px;
+    top: 300px
+}
+
+.mid-con-par .trainee-portrait-42 {
     right: -50px;
     top: 300px
 }

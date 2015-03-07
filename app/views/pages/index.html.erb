@@ -5,15 +5,43 @@
       <section class="top-img-bar">
         <div class="top-img-con">
           <div class="big-title"></div>
+
+          <h3 class="top-desc text-center">干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。</h3>
+
           <div class="des-step">
             <div class="step-blk step-1"></div>
             <div class="step-blk step-2"></div>
             <div class="step-blk step-3"></div>
             <div class="step-blk step-4"></div>
           </div>
-          <%= link_to new_user_session_path, class: "apply-btn button success round" do %>
-            登录
-          <% end %>
+
+          <div>
+            <%= form_for :user, url: user_session_path do |f| %>
+              <div class="row columns large-8 collapse" id="signin-form">
+                <div class="small-1 columns" id="label-login">
+                  <%= f.label :login do %>
+                    <span class="prefix login"><i class="fi-torso large"></i></span>
+                  <% end %>
+                </div>
+                <div class="small-3 columns">
+                  <%= f.text_field :login, required: true, autofocus: true, placeholder: t("devise.email_or_username") %>
+                </div>
+
+                <div class="small-1 columns" id="label-password">
+                  <%= f.label :password do %>
+                    <span class="prefix password"><i class="fi-lock large"></i></span>
+                  <% end %>
+                </div>
+                <div class="small-3 columns end">
+                  <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
+                </div>
+                
+                <div class="right">
+                <%= f.submit  "提交", class: "success tiny button radius" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </section>
 
@@ -24,13 +52,13 @@
       <% user_ids = User.ids %>
 
       <!-- 35名导师全程指导 -->
-      <section class="mid-con-par">
+      <section class="mid-con-par row full-width show-for-large-up">
         <div class="mid-con-wrp">
           <!-- <p class="mid-desc"><%#= User.count %> 名导师全程指导，让你从入门小白变身为行业大神！</p> -->
           <p class="mid-desc">柏拉图有苏格拉底作为导师，你也应该找到某人并为之保护 ...</p>
 
-          <div class="tutor-block clearfix">
-            <div class="tutor tutor-1">
+          <div class="tutor-block clearfix small-block-grid-2">
+            <div class="tutor columns large-6 small-12 tutor-1 left">
               <%= render 'users/tutor_portrait', user: first_user %>
 
               <div class="robe-arrow robe-arrow-l"></div>
@@ -42,16 +70,16 @@
                 <p><span>成功指导学员：</span>354</p>
               </div>
 
-              <div class="trainee-portrait trainee-portrait-1">
+              <div class="trainee-portrait trainee-portrait-11">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
 
-              <div class="trainee-portrait trainee-portrait-2">
+              <div class="trainee-portrait trainee-portrait-12">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
             </div>
 
-            <div class="tutor tutor-2">
+            <div class="tutor columns large-6 small-12 tutor-2 right">
               <%= render 'users/tutor_portrait', user: second_user %>
 
               <div class="robe-arrow robe-arrow-l"></div>
@@ -60,15 +88,17 @@
                 <p><span>所属分类：</span>游戏/数码</p>
 
                 <p><span>成功指导学员：</span>363</p></div>
-              <div class="trainee-portrait trainee-portrait-1">
+              <div class="trainee-portrait trainee-portrait-21">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
-              <div class="trainee-portrait trainee-portrait-2">
+              <div class="trainee-portrait trainee-portrait-22">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
             </div>
+          </div>
 
-            <div class="tutor tutor-3">
+          <div class="tutor-block clearfix small-block-grid-2">
+            <div class="tutor columns large-6 small-12 tutor-3 left">
               <%= render 'users/tutor_portrait', user: third_user %>
 
               <div class="robe-arrow robe-arrow-l"></div>
@@ -77,15 +107,15 @@
                 <p><span>所属分类：</span>职场/理财</p>
 
                 <p><span>成功指导学员：</span>154</p></div>
-              <div class="trainee-portrait trainee-portrait-1">
+              <div class="trainee-portrait trainee-portrait-31">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
-              <div class="trainee-portrait trainee-portrait-2">
+              <div class="trainee-portrait trainee-portrait-32">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
             </div>
 
-            <div class="tutor tutor-4">
+            <div class="tutor columns large-6 small-12 tutor-4 right">
               <%= render 'users/tutor_portrait', user: fourth_user %>
 
               <div class="robe-arrow robe-arrow-l"></div>
@@ -94,10 +124,10 @@
                 <p><span>所属分类：</span>美食/营养</p>
 
                 <p><span>成功指导学员：</span>204</p></div>
-              <div class="trainee-portrait trainee-portrait-1">
+              <div class="trainee-portrait trainee-portrait-41">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
-              <div class="trainee-portrait trainee-portrait-2">
+              <div class="trainee-portrait trainee-portrait-42">
                 <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
               </div>
             </div>
@@ -219,9 +249,7 @@
       </section>
     </section>
   </section>
-<% end %>
-
-<% if user_signed_in? %>
+<% else %>
   <div class="large-9 columns" role="content">
     <article>
       <%# @activities.each_slice(5) do |activities| %>
@@ -240,9 +268,7 @@
 
     </article>
   </div>
-<% end %>
 
-<% if user_signed_in? %>
   <aside class="large-3 columns h3_it" style="margin-top: 4rem; font-size: 2.05556rem;">
     <div class="disc">
 

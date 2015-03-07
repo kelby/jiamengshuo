@@ -2,34 +2,15 @@
   <dl class="sub-nav vertical">
       <% if current_page?(posts_path) || current_page?(new_post_path) %>
         <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-          <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
           <%= link_to "发布课程", new_post_path %>
         </dd>
       <% end %>
-      <%# if current_page?(subjects_path) || current_page?(new_post_path) %>
-      <!-- <dd class="<%#= current_page?(new_subject_path)? 'active' : '' %>"> -->
-        <!-- <a id="nav-course" href="/page/course">发布课程</a> -->
-        <%#= link_to "发布课程", new_subject_path %>
-      <!-- </dd> -->
-      <%# end %>
 
       <% if current_page?(wishes_path) || current_page?(new_wish_path) %>
         <dd class="<%= current_page?(new_wish_path)? 'active' : '' %>">
           <%= link_to '新建心愿', new_wish_path, id: "nav-wish-list" %>
         </dd>
       <% end %>
-    <!-- </div> -->
-      <%# if current_page?(topics_path) || current_page?(new_topic_path) %>
-        <!-- <dd class="<%#= current_page?(new_topic_path)? 'active' : '' %>"> -->
-          <%#= link_to '新建话题', new_topic_path(catalog_id: 1003), id: "nav-wish-list" %>
-        <!-- </dd> -->
-      <%# end %>
-
-      <%# if current_page?(posts_path) || current_page?(catalogs_path) %>
-        <!-- <dd class="<%#= current_page?(catalogs_path)? 'active' : '' %>"> -->
-          <%#= link_to '分类导航', catalogs_path, id: "nav-wish-list" %>
-        <!-- </dd> -->
-      <%# end %>
 
       <% if user_signed_in? && current_page?(users_profile_path) %>
         <dd class="<%= current_page?(users_pending_apply_students_path)? 'active' : '' %>">
