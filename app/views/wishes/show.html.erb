@@ -1,7 +1,3 @@
 <p>
   <%= @wish.content %>
 </p>
-
-<% if can? :update, @wish %>
-  <%= link_to 'Edit', edit_wish_path(@wish) %>
-<% end %>
