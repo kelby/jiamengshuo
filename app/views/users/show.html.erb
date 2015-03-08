@@ -48,50 +48,22 @@
 
       <section class="section">
         <h5 class="title">Ta 的导师们:</h5>
-        <div class="content" data-slug="panel2">
-          <ul class="large-block-grid-5">
-            <% @teachers.includes(:recipient).each do |ur| %>
-              <li>
-                <a href="mailto:mal@serenity.bc.reb">
-                <%= link_to ur.recipient do %>
-                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+
+        <%= render "users/polaroids", locals: {collection: @teachers, relation: :recipient} %>
       </section>
       <hr>
 
       <section class="section">
         <h5 class="title">Ta 的学生们:</h5>
-        <div class="content" data-slug="panel2">
-          <ul class="large-block-grid-5">
-            <% @students.includes(:recipient).each do |ur| %>
-              <li>
-                <%= link_to ur.recipient do %>
-                  <%= image_tag ur.recipient.avatar_url(:thumb), class: 'thumb_avatar' %><%= ur.recipient.username %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+
+        <%= render "users/polaroids", locals: {collection: @students, relation: :recipient} %>
       </section>
       <hr>
 
       <section class="section">
         <h5 class="title">Ta 的朋友们:</h5>
-        <div class="content" data-slug="panel2">
-          <ul class="large-block-grid-5">
-            <% @followers.each do |user| %>
-              <li>
-                <%= link_to user do %>
-                  <%= image_tag user.avatar_url(:thumb) %><%= user.username %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+
+        <%= render "users/polaroids", locals: {collection: @followers, relation: nil} %>
       </section>
     </div>
   </div>
