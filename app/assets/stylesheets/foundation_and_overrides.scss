@@ -1448,3 +1448,9 @@ $include-html-global-classes: $include-html-classes;
 .contain-to-grid .top-bar {
   max-width: 75.5rem;
 }
+
+.alert-box {
+  background-color: #fff;
+  border: 1px dotted #ccc;
+  color: #000000;
+}

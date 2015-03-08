@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include PublicActivity::Common
+  acts_as_taggable
 
   attr_accessor :login
 
@@ -42,6 +43,18 @@ class User < ActiveRecord::Base
   acts_as_follower
 
   mount_uploader :avatar, AvatarUploader
+
+  has_one :user_body, dependent: :destroy
+  accepts_nested_attributes_for :user_body
+
+  delegate :gender, :male?, :female?, :birth_date, :website, :phone, :weibo, :tqq_weibo, to: :user_body, allow_nil: true, prefix: nil
+
+  after_create :ensure_create_user_body
+
+  def chinese_gender
+    return "男" if self.male?
+    return "女" if self.female?
+  end
 
   def marking? topic_id
     MarkerTopic.where(topic_id: topic_id, user_id: self.id).exists?
@@ -86,5 +99,10 @@ class User < ActiveRecord::Base
         where(username: conditions[:username]).first
       end
     end
+  end
+
+  private
+  def ensure_create_user_body
+    self.create_user_body if self.user_body.blank?
   end
 end

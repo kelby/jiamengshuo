@@ -19,6 +19,7 @@ class Ability
     can :manage, Apply, :mentor_id => user.id
 
     can :manage, User, :id => user.id
+    can :manage, UserBody, :user_id => user.id
 
     can [:approve_apply, :refuse_apply], Apply, :mentor_id => user.id
     # can :manage, Question, :user_id => user.id

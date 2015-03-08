@@ -1,220 +1,180 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>(本页面除"密码重置"可用外，其它功能还在开发中 ... 待完善 ~)
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<div class="row">
-  <div class="tabbable">
-    <ul class="tabs" data-tab>
-      <li class="active tab-title">
-        <a data-toggle="tab" href="#edit-basic">
-          <i class="green icon-edit bigger-125"></i>
-          基本信息
-        </a>
-      </li>
+<div class="tabbable">
+  <ul class="tabs" data-tab>
+    <li class="active tab-title">
+      <a data-toggle="tab" href="#edit-basic">
+        <i class="green icon-edit bigger-125"></i>
+        基本信息
+      </a>
+    </li>
 
-      <li class="tab-title">
-        <a data-toggle="tab" href="#edit-settings">
-          <i class="purple icon-cog bigger-125"></i>
-          隐私管理
-        </a>
-      </li>
+    <li class="tab-title">
+      <a data-toggle="tab" href="#edit-password">
+        <i class="blue icon-key bigger-125"></i>
+        密码重置
+      </a>
+    </li>
+  </ul>
 
-      <li class="tab-title">
-        <a data-toggle="tab" href="#edit-password">
-          <i class="blue icon-key bigger-125"></i>
-          密码重置
-        </a>
-      </li>
-    </ul>
-
-    <div class="tabs-content profile-edit-tab-content">
-      <div id="edit-basic" class="content in active">
+  <div class="tabs-content profile-edit-tab-content">
+    <div id="edit-basic" class="content in active">
+      <%= form_for @user, url: update_basic_user_path(@user), method: :put do |f| %>
         <h4 class="header blue bolder smaller">General</h4>
 
-        <div class="row-fluid">
-          <div class="span4">
-            <input type="file" />
+        <div class="columns large-12">
+          <div class="columns large-4">
+            <%= f.file_field :avatar %>
           </div>
 
           <div class="vspace"></div>
 
-          <div class="span8">
+          <div class="columns large-8">
             <div class="control-group">
-              <label class="control-label" for="form-field-username">Username</label>
+              <%= f.label :username, "用户名" %>
 
               <div class="controls">
-                <input type="text" id="form-field-username" placeholder="Username" value="alexdoe" />
+                <%= f.text_field :username, placeholder: "Username" %>
               </div>
             </div>
           </div>
-        </div>
 
+          <div class="control-group columns">
+            <%= f.label :tag_list, "个人标签（多个标签之间用逗号分隔）" %>
+
+            <div class="controls">
+              <%= f.text_area :tag_list %>
+            </div>
+          </div>
+
+          <div class="control-group columns">
+            <%= f.label :info, "个人简介" %>
+
+            <div class="controls">
+              <%= f.text_area :info %>
+            </div>
+          </div>
+        </div>
         <hr />
-        <div class="control-group">
-          <label class="control-label" for="form-field-date">Birth Date</label>
 
-          <div class="controls">
-            <div class="input-append">
-              <input class="input-small date-picker" id="form-field-date" type="text" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy" />
-              <span class="add-on">
-                <i class="icon-calendar"></i>
-              </span>
+        <% @user.build_user_body unless @user.user_body.present? %>
+
+        <div class="columns large-12">
+          <%= f.fields_for :user_body do |ff| %>
+            <div class="control-group">
+              <%= ff.label :birth_date, "生日" %>
+
+              <div class="controls">
+                <div class="input-append">
+                  <%= ff.datetime_field :birth_date %>
+                  <span class="add-on">
+                    <i class="icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="control-group">
-          <label class="control-label">Gender</label>
+            <div class="control-group">
+              <label class="control-label">性别</label>
 
-          <div class="controls">
-            <div class="space-2"></div>
+              <div class="controls">
+                <div class="space-2"></div>
 
-            <label class="inline">
-              <input name="form-field-radio" type="radio" class="ace" />
-              <span class="lbl"> Male</span>
-            </label>
+                <label class="inline">
+                  <%= ff.radio_button :gender, "male" %>
+                  <span class="lbl"> 男</span>
+                </label>
 
-            &nbsp; &nbsp; &nbsp;
-            <label class="inline">
-              <input name="form-field-radio" type="radio" class="ace" />
-              <span class="lbl"> Female</span>
-            </label>
-          </div>
-        </div>
+                &nbsp; &nbsp; &nbsp;
+                <label class="inline">
+                  <%= ff.radio_button :gender, "female" %>
+                  <span class="lbl"> 女</span>
+                </label>
+              </div>
+            </div>
 
-        <div class="control-group">
-          <label class="control-label" for="form-field-comment">Comment</label>
+            <div class="space"></div>
+            <h4 class="header blue bolder smaller">Contact</h4>
 
-          <div class="controls">
-            <textarea id="form-field-comment"></textarea>
-          </div>
-        </div>
+            <div class="control-group">
+              <%= ff.label :website, "个人网站" %>
 
-        <div class="space"></div>
-        <h4 class="header blue bolder smaller">Contact</h4>
+              <div class="controls">
+                <span class="input-icon input-icon-right">
+                  <%= ff.text_field :website %>
+                  <i class="icon-globe"></i>
+                </span>
+              </div>
+            </div>
 
-        <div class="control-group">
-          <label class="control-label" for="form-field-email">Email</label>
+            <div class="control-group">
+              <%= ff.label :phone, "电话号码" %>
 
-          <div class="controls">
-            <span class="input-icon input-icon-right">
-              <input type="email" id="form-field-email" value="alexdoe@gmail.com" />
-              <i class="icon-envelope"></i>
-            </span>
-          </div>
-        </div>
+              <div class="controls">
+                <span class="input-icon input-icon-right">
+                  <%= ff.text_field :phone %>
+                  <i class="fa fa-phone icon-flip-horizontal"></i>
+                </span>
+              </div>
+            </div>
 
-        <div class="control-group">
-          <label class="control-label" for="form-field-website">Website</label>
+            <div class="space"></div>
+            <h4 class="header blue bolder smaller">Social</h4>
 
-          <div class="controls">
-            <span class="input-icon input-icon-right">
-              <input type="url" id="form-field-website" value="http://www.alexdoe.com/" />
-              <i class="icon-globe"></i>
-            </span>
-          </div>
-        </div>
+            <div class="control-group">
+              <%= ff.label :weibo, "微博" %>
 
-        <div class="control-group">
-          <label class="control-label" for="form-field-phone">Phone</label>
+              <div class="controls">
+                <span class="input-icon">
+                  <%= ff.text_field :weibo %>
+                  <i class="icon-facebook"></i>
+                </span>
+              </div>
+            </div>
 
-          <div class="controls">
-            <span class="input-icon input-icon-right">
-              <input class="input-medium input-mask-phone" type="text" id="form-field-phone" />
-              <i class="icon-phone icon-flip-horizontal"></i>
-            </span>
-          </div>
-        </div>
+            <div class="control-group">
+              <%= ff.label :tqq_weibo, "腾讯微博" %>
 
-        <div class="space"></div>
-        <h4 class="header blue bolder smaller">Social</h4>
-
-        <div class="control-group">
-          <label class="control-label" for="form-field-facebook">Facebook</label>
-
-          <div class="controls">
-            <span class="input-icon">
-              <input type="text" value="facebook_alexdoe" id="form-field-facebook" />
-              <i class="icon-facebook"></i>
-            </span>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="form-field-twitter">Twitter</label>
-
-          <div class="controls">
-            <span class="input-icon">
-              <input type="text" value="twitter_alexdoe" id="form-field-twitter" />
-              <i class="icon-twitter"></i>
-            </span>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label" for="form-field-gplus">Google+</label>
-
-          <div class="controls">
-            <span class="input-icon">
-              <input type="text" value="google_alexdoe" id="form-field-gplus" />
-              <i class="icon-google-plus"></i>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div id="edit-settings" class="content">
-        <div class="space-10"></div>
-
-        <div>
-          <label class="inline">
-            <input type="checkbox" name="form-field-checkbox" class="ace" />
-            <span class="lbl"> Make my profile public</span>
-          </label>
-        </div>
-
-        <div class="space-8"></div>
-
-        <div>
-          <label class="inline">
-            <input type="checkbox" name="form-field-checkbox" class="ace" />
-            <span class="lbl"> Email me new updates</span>
-          </label>
-        </div>
-      </div>
-
-      <div id="edit-password" class="content">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= devise_error_messages! %>
-
-          <!-- <div><%#= f.label :email, t("devise.email") %><br /> -->
-          <!-- <%#= f.email_field :email, autofocus: true %></div> -->
-
-          <!-- <div><%#= f.label :username, t("devise.username") %><br /> -->
-          <!-- <%#= f.text_field :username %></div> -->
-
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <div class="controls">
+                <span class="input-icon">
+                  <%= ff.text_field :tqq_weibo %>
+                  <i class="icon-twitter"></i>
+                </span>
+              </div>
+            </div>
           <% end %>
+        </div>
 
-          <div>
-          <%= f.label :current_password, t("devise.current_password") %> <i>(we need your current password to confirm your changes)</i><br />
-            <%= f.password_field :current_password, autocomplete: "off" %>
-            </div>
+        <div><%= f.submit "提交", class: "blue tiny button radius" %></div>
+      <% end %>
+    </div>
 
-          <div>
-          <%= f.label :password, "新密码" %> <i>(leave blank if you don't want to change it)</i><br />
-            <%= f.password_field :password, autocomplete: "off" %>
-            </div>
+    <div id="edit-password" class="content">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
 
-          <div>
-          <%= f.label :password_confirmation, t("devise.password_confirmation") %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
-            </div>
-
-
-          <div><%= f.submit "提交", class: "blue tiny button radius" %></div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
-      </div>
+
+        <div>
+        <%= f.label :current_password, t("devise.current_password") %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+          </div>
+
+        <div>
+        <%= f.label :password, "新密码" %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+        <div>
+        <%= f.label :password_confirmation, t("devise.password_confirmation") %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+
+
+        <div><%= f.submit "提交", class: "blue tiny button radius" %></div>
+      <% end %>
     </div>
   </div>
 </div>
-

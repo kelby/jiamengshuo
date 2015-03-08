@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304143903) do
+ActiveRecord::Schema.define(version: 20150308050405) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -190,6 +190,18 @@ ActiveRecord::Schema.define(version: 20150304143903) do
     t.boolean  "essence",    limit: 1,     default: false
     t.integer  "catalog_id", limit: 4,     default: 1003
     t.integer  "category",   limit: 4
+  end
+
+  create_table "user_bodies", force: :cascade do |t|
+    t.integer  "gender",     limit: 4,   default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.datetime "birth_date"
+    t.string   "website",    limit: 255
+    t.string   "phone",      limit: 255
+    t.string   "weibo",      limit: 255
+    t.string   "tqq_weibo",  limit: 255
+    t.integer  "user_id",    limit: 4
   end
 
   create_table "user_relationships", force: :cascade do |t|

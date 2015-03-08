@@ -71,7 +71,8 @@ Rails.application.routes.draw do
     member do
       get :edit_avatar
       put :update_avatar
-
+      put :update_basic
+      put :update_settings
     end
 
     put :approve_apply, to: "applies#approve_apply"
