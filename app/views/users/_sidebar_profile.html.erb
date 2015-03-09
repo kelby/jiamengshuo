@@ -2,12 +2,7 @@
   关注：<%= user.following_users_count %>
   <br>
   粉丝：<%= user.count_user_followers %>
-  <p class="tags">
-  标签：
-    <% user.tags.each do |tag| %>
-      <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
-    <% end %>
-  </p>
+  <%= render "users/user_tag_list", user: user %>
 </p>
 <p>
   个性签名：<%= user.info %>

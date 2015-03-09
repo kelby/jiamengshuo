@@ -4,9 +4,9 @@
   <div class="large-12 columns ">
     <div class="row">
       <div class="large-9 columns">
-        <p> 以下用户希望您能成为他们的导师。当前申请总人数: <span class="label info" id="pending_apply_students_size"><%= @applies.size %></span></p>
+        <p> 以下用户希望您能成为他们的导师。已经批准总人数：<span class="label" id="approve_apply_students_size"><%= Apply.approved.where(mentor_id: current_user.id).size %></span>&nbsp;当前申请人数: <span class="label info" id="pending_apply_students_size"><%= @applies.size %></span> </p>
       </div>
-      <div class=" large-3 columns ">
+      <!-- <div class=" large-3 columns ">
         <select name="sortOptions">
           <option value="sortby">Sort By</option>
           <option value="cats">Cats</option>
@@ -14,7 +14,7 @@
           <option value="author">Author</option>
           <option value="mrecats">More Cats</option>
         </select>
-      </div>
+      </div> -->
     </div>
     <div class="search-results">
       <% @applies.each do |apply| %>
@@ -31,17 +31,14 @@
               <br>
               <%= apply.apply_student.username %>
               <br>
-              男
-              <br>
-              Programmer
+              <%= apply.apply_student.chinese_gender %>
             </p>
 
             <p>
               关注：<%= apply.apply_student.following_users_count %>
               <br>
               粉丝：<%= apply.apply_student.count_user_followers %>
-              <br>
-              标签：程度员 Ruby Rails
+              <%= render "users/user_tag_list", user: apply.apply_student %>
             </p>
 
             <!-- <p> -->
@@ -52,7 +49,7 @@
             <div class="row">
               <div class=" large-9 columns">
                 <h5><%= apply.info %></h5>
-                <p><a href="#">回复</a></p>
+                <!-- <p><a href="#">回复</a></p> -->
               </div>
               <div class=" large-3 columns">
                 <%= link_to user_approve_apply_path(apply.apply_student), remote: true, method: :put, class: "google button blue expand medium" do %>

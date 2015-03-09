@@ -41,7 +41,7 @@
 
           <%= render "users/polaroids", locals: {collection: @teachers, relation: :recipient} %>
         </section>
-        <hr>
+        <hr class="dashed"></hr>
       <% end %>
 
       <% if @students.any? %>
@@ -50,7 +50,7 @@
 
           <%= render "users/polaroids", locals: {collection: @students, relation: :recipient} %>
         </section>
-        <hr>
+        <hr class="dashed"></hr>
       <% end %>
 
       <% if @followers.any? %>

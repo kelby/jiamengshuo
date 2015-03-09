@@ -1,0 +1,6 @@
+<p class="tags">
+标签：
+  <% user.tags.each do |tag| %>
+    <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
+  <% end %>
+</p>

@@ -1,7 +1,8 @@
 <% unless user_signed_in? %>
+  <!-- 感谢百度经验！ -->
+  <!-- http://jingyan.baidu.com/user/income/school -->
   <section class="body-wrapper">
     <section class="body">
-      <!-- 欢迎你的加入 -->
       <section class="top-img-bar">
         <div class="top-img-con">
           <div class="big-title"></div>
@@ -51,10 +52,8 @@
       <% fourth_user = @four_users.fourth %>
       <% user_ids = User.ids %>
 
-      <!-- 35名导师全程指导 -->
       <section class="mid-con-par row full-width show-for-large-up">
         <div class="mid-con-wrp">
-          <!-- <p class="mid-desc"><%#= User.count %> 名导师全程指导，让你从入门小白变身为行业大神！</p> -->
           <p class="mid-desc">柏拉图有苏格拉底作为导师，你也应该找到某人并为之保护 ...</p>
 
           <div class="tutor-block clearfix small-block-grid-2">
@@ -134,14 +133,13 @@
           </div>
 
           <p class="tutor-more">
-            <%= link_to users_path, target: "_blank" do %>
-              查看完整导师名单&nbsp;<span>&gt;&gt;</span>
-            <% end %>
+            <%#= link_to users_path, target: "_blank" do %>
+              <!-- 查看完整导师名单&nbsp;<span>&gt;&gt;</span> -->
+            <%# end %>
           </p>
         </div>
       </section>
 
-      <!-- 本期预备班进行中 -->
       <section class="fot-con-par clearfix">
         <div class="fot-con">
           <h3>本周活跃用户排行（<%= Date.today.beginning_of_week.strftime("%-d 日") %> 至 <%= Date.today.end_of_week.strftime("%-d 日") %>）</h3>

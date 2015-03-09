@@ -40,13 +40,15 @@
                   <h4 class="content-title">
                     <% case topic.category %>
                     <% when "bai_shi" %>
-                      <%= link_to "拜师", topics_bai_shi_path, class: "blue google button", style: "display: inline-block;" %>
+                      <%= link_to "拜师!", topics_bai_shi_path, class: "blue google button", style: "display: inline-block;" %>
                     <% when "shou_tu" %>
-                      <%= link_to "收徒", topics_shou_tu_path, class: "yellow google button", style: "display: inline-block;" %>
-                    <% when "bai_shi_he_shou_tu" %>
-                      <%= link_to "拜师兼收徒", topics_bai_shi_he_shou_tu_path, class: "green google button", style: "display: inline-block;" %>
-                    <% else %>
-                      <%= link_to "其它", topics_qi_ta_path, class: "purple google button", style: "display: inline-block;" %>
+                      <%= link_to "收徒!", topics_shou_tu_path, class: "yellow google button", style: "display: inline-block;" %>
+                    <%# when "bai_shi_he_shou_tu" %>
+                      <%#= link_to "拜师兼收徒", topics_bai_shi_he_shou_tu_path, class: "green google button", style: "display: inline-block;" %>
+                    <%# else %>
+                      <%#= link_to "其它", topics_qi_ta_path, class: "purple google button", style: "display: inline-block;" %>
+                    <% when "jiao_huan_ji_neng" %>
+                      <%= link_to "交换技能", topics_jiao_huan_ji_neng_path, class: "purple google button", style: "display: inline-block;" %>
                     <% end %>
 
                     <%= link_to topic do %>

@@ -36,11 +36,13 @@ Rails.application.routes.draw do
   get "topics/bai_shi/new" => "topics#new", category: 1
   get "topics/shou_tu/new" => "topics#new", category: 2
   get "topics/bai_shi_he_shou_tu/new" => "topics#new", category: 3
+  get "topics/jiao_huan_ji_neng/new" => "topics#new", category: 4
 
   get "topics/qi_ta" => "topics#index", category: 0
   get "topics/bai_shi" => "topics#index", category: 1
   get "topics/shou_tu" => "topics#index", category: 2
   get "topics/bai_shi_he_shou_tu" => "topics#index", category: 3
+  get "topics/jiao_huan_ji_neng" => "topics#index", category: 4
 
   resources :topics do
     member do

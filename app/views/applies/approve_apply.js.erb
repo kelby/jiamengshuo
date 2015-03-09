@@ -1,5 +1,7 @@
 id = "#user_" + "<%= params[:user_id] %>"
-count = $('#pending_apply_students_size').text();
+count = parseInt($('#pending_apply_students_size').text());
+approve_count = parseInt($('#approve_apply_students_size').text());
 
 $(id).remove();
 $('#pending_apply_students_size').text(count - 1)
+$('#approve_apply_students_size').text(approve_count + 1)
