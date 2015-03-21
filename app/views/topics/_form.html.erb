@@ -17,8 +17,10 @@
   </div>
   <div class="field">
     <%= f.label :body, t("topics.body") %><br>
-    <div id="wmd-button-bar"></div>
-    <%= f.text_area :body, rows: 15, required: true, id: "wmd-input" %>
+    <!-- <div id="wmd-button-bar"></div> -->
+    <%#= f.text_area :body, rows: 15, required: true, id: "wmd-input" %>
+
+    <textarea name="content" data-provide="markdown" rows="10"></textarea>
   </div>
 
   <div id="preview"></div>
@@ -36,10 +38,10 @@
 <% end %>
 
 <script type="text/javascript">
-  $(function(){
-    new WMDEditor({
+  // $(function(){
+    // new WMDEditor({
       // NOTE：偏移了，所以在界面上显示不是那么明显
-      helpLink: "http://daringfireball.net/projects/markdown/syntax"
-    });
-  })
+      // helpLink: "http://daringfireball.net/projects/markdown/syntax"
+    // });
+  // })
 </script>

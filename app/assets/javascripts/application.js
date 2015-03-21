@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require bootstrap-markdown
 //= require 'wmd/wmd'
 //= require 'wmd/showdown'
 //= require social-share-button
