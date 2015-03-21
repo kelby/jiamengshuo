@@ -19,8 +19,11 @@
     <%= f.label :body, t("topics.body") %><br>
     <!-- <div id="wmd-button-bar"></div> -->
     <%#= f.text_area :body, rows: 15, required: true, id: "wmd-input" %>
-
     <textarea name="content" data-provide="markdown" rows="10"></textarea>
+
+    <style type="text/css">
+      div.btn-group {display: inline-block;}
+    </style>
   </div>
 
   <div id="preview"></div>
