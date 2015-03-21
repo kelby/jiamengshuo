@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require foundation_and_overrides
+ *= require 'bootstrap-markdown.min'
  *= require 'wmd/wmd'
  *= require social-share-button
  *= require_tree .
