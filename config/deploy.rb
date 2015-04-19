@@ -27,6 +27,9 @@ set :rails_env, "production"
 
 set :keep_releases,   10
 
+# set unicorn_config_path
+set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
+
 # ssh_options[:forward_agent] = true
 # ssh_options[:port] = 1000
 set :ssh_options, {:forward_agent => true}
@@ -34,7 +37,7 @@ set :ssh_options, {:forward_agent => true}
 after "deploy", "deploy:cleanup"
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, '/var/www/found_mentor'
 
 # Default value for :scm is :git
 # set :scm, :git
