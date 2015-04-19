@@ -104,6 +104,7 @@ group :development do
   gem 'capistrano-rvm'
 
   gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq'
 
   gem 'net-ssh', '2.7.0'
 end
