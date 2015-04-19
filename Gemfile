@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
 
@@ -75,7 +75,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -95,4 +95,15 @@ gem 'faker'
 
 group :development do
   gem 'quiet_assets'
+
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  # gem 'capistrano-rbenv'
+  # Add this if you're using rvm
+  gem 'capistrano-rvm'
+
+  gem 'capistrano3-unicorn'
+
+  gem 'net-ssh', '2.7.0'
 end
