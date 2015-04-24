@@ -2,7 +2,7 @@
   <dl class="sub-nav vertical">
       <% if current_page?(posts_path) || current_page?(new_post_path) %>
         <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-          <%= link_to "新建杂文", new_post_path %>
+          <%= link_to "新建文章", new_post_path %>
         </dd>
       <% end %>
 
