@@ -11,7 +11,7 @@ require 'capistrano/rails/migrations'
 
 require 'capistrano3/unicorn'
 
-require 'capistrano/sidekiq'
+# require 'capistrano/sidekiq'
 
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
