@@ -63,7 +63,7 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 set :linked_files, %w{config/database.yml config/mailer.yml config/redis.yml config/secrets.yml config/sidekiq.yml config/initializers/devise.rb}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/images public/uploads}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/images public/uploads solr/data solr/pids}
 
 namespace :deploy do
 
@@ -106,7 +106,8 @@ namespace :solr do
         if command == "start" or (test "[ -f #{solr_pid} ]" and test "kill -0 $( cat #{solr_pid} )")
           within current_path do
             with rails_env: fetch(:rails_env, 'production') do
-              execute :bundle, 'exec', 'sunspot-solr', command, "--port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+              # execute :bundle, 'exec', 'rake', "sunspot:solr:#{command}", "--port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+              execute :bundle, 'exec', 'rake', "sunspot:solr:#{command}"
             end
           end
         end
