@@ -63,7 +63,7 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 set :linked_files, %w{config/database.yml config/mailer.yml config/redis.yml config/secrets.yml config/sidekiq.yml config/initializers/devise.rb}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/images public/uploads}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/images public/uploads}
 
 namespace :deploy do
 
