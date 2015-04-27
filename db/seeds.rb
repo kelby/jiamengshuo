@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Rails.configuration.i18n.default_locale = :en
+Rails.configuration.i18n.available_locales = ["zh-CN", :en]
+
+I18n.locale = :en
+
 50.times do
   User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: 'password', faker: true)
 end
@@ -180,4 +185,8 @@ user_ids = User.ids
 user_ids.each do |i|
   User.reset_counters(i, :posts)
 end
+
+t = Topic.last
+t.essence = true
+t.save
 
