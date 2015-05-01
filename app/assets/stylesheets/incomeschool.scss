@@ -10,7 +10,7 @@
   position: relative;
   height: 545px;
   margin-top: 1px;
-  background: url(/assets/top-img-bar.png);
+  background: image-url('top-img-bar.png');
   border-bottom: 1px solid #82A972
 }
 
@@ -30,7 +30,7 @@
 }
 
 .top-img-bar .big-title {
-    background: url(/assets/big-title-sucess-3.png) no-repeat;
+    background: image-url('big-title-sucess-3.png') no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/big-title.png");
     _background: 0 0;
     height: 322px;
@@ -52,25 +52,25 @@
 }
 
 .top-img-bar .des-step .step-1 {
-    background: url(/assets/step-11.png) no-repeat;
+    background: image-url('step-11.png') no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-1.png");
     _background: 0 0
 }
 
 .top-img-bar .des-step .step-2 {
-    background: url(/assets/step-22.png) no-repeat;
+    background: image-url('step-22.png') no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-2.png");
     _background: 0 0
 }
 
 .top-img-bar .des-step .step-3 {
-    background: url(/assets/step-33.png) no-repeat;
+    background: image-url('step-33.png') no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-2.png");
     _background: 0 0
 }
 
 .top-img-bar .des-step .step-4 {
-    background: url(/assets/step-44.png) no-repeat;
+    background: image-url('step-44.png') no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/step-4.png");
     _background: 0 0;
     margin-right: 0
@@ -97,7 +97,7 @@
 }
 
 .mid-con-par {
-    background: url(/assets/mid-con-par.png)
+    background: image-url('mid-con-par.png')
 }
 
 .mid-con-par .mid-con-wrp {
@@ -162,7 +162,7 @@
 }
 
 .mid-con-par .tutor .robe-arrow-l {
-    background: url(/assets/robe-arrow-l.png);
+    background: image-url('robe-arrow-l.png');
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/robe-arrow-l.png");
     _background: 0 0;
     top: 142px;
@@ -170,7 +170,7 @@
 }
 
 .mid-con-par .tutor .robe-arrow-r {
-    background: url(/assets/robe-arrow-r.png);
+    background: image-url('robe-arrow-r.png');
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/robe-arrow-r.png");
     _background: 0 0;
     top: 142px;
@@ -191,7 +191,7 @@
     position: absolute;
     width: 160px;
     height: 160px;
-    background: url(/assets/avatar_masker_160.png) no-repeat;
+    background: image-url('avatar_masker_160.png') no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/avatar_masker_160.png");
     _background: 0 0
 }
@@ -202,7 +202,7 @@
     left: -6px;
     width: 172px;
     height: 37px;
-    background: url(/assets/portraid-caida.png);
+    background: image-url('portraid-caida.png');
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/portraid-caida.png");
     _background: 0 0
 }
@@ -250,7 +250,7 @@
     overflow: hidden;
     width: 120px !important;
     height: 120px;
-    background: url(/assets/avatar_masker_120.png) no-repeat;
+    background: image-url('avatar_masker_120.png') no-repeat;
     _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="/assets/avatar_masker_120.png");
     _background: 0 0
 }
@@ -402,19 +402,19 @@
 }
 
 .fot-con-par .doing-wrap .prizes .prizes-wrp .ico-rk1 {
-    background: url(/assets/ico-rk1.png);
+    background: image-url('ico-rk1.png');
     left: 170px;
     top: 0
 }
 
 .fot-con-par .doing-wrap .prizes .prizes-wrp .ico-rk2 {
-    background: url(/assets/ico-rk2.png);
+    background: image-url('ico-rk2.png');
     left: 40px;
     top: 35px
 }
 
 .fot-con-par .doing-wrap .prizes .prizes-wrp .ico-rk3 {
-    background: url(/assets/ico-rk3.png);
+    background: image-url('ico-rk3.png');
     left: 295px;
     top: 35px
 }
@@ -517,7 +517,7 @@ table .exp-num {
 
 .income-school-main .income-school-title-inner {
     padding-left: 25px;
-    background: url(/assets/plus.png) no-repeat 10px center
+    background: image-url('plus.png') no-repeat 10px center
 }
 
 .income-school-main .pop-confirm-info {
@@ -578,7 +578,7 @@ table .exp-num {
 .tutor-dialog .tutor-dialog-close {
     width: 13px;
     height: 13px;
-    background: url(img/x.png?__sprite) no-repeat
+    background: image-url('img/x.png?__sprite') no-repeat
 }
 
 .tutor-dialog .g-btn-com {
