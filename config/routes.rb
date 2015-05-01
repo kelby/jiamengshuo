@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post '/add_section', to: "sections#add", as: :add_section
   delete '/remove_section', to: "sections#remove", as: :remove_section
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+
   resources :sections
 
   resources :wishes, only: [:show, :new, :create, :index] do
