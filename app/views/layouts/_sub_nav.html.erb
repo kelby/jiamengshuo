@@ -1,5 +1,22 @@
 <div class="row">
   <dl class="sub-nav vertical">
+  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+    <%= link_to "首页", new_post_path %>
+  </dd>
+  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+    <%= link_to "批发拼单", new_post_path %>
+  </dd>
+  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+    <%= link_to "定做拼单", new_post_path %>
+  </dd>
+
+  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+    <%= link_to "海淘拼单", new_post_path %>
+  </dd>
+  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+    <%= link_to "拼单帮助", new_post_path %>
+  </dd>
+
       <% if current_page?(posts_path) || current_page?(new_post_path) %>
         <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
           <%= link_to "新建文章", new_post_path %>

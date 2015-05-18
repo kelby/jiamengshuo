@@ -21,9 +21,9 @@
       <% if user_signed_in? %>
         <%= render 'layouts/sub_nav' %>
       <% else %>
-        <% unless current_page?(root_path) %>
+        <%# unless current_page?(root_path) %>
           <%= render 'layouts/sub_nav' %>
-        <% end %>
+        <%# end %>
       <% end %>
     <%# end %>
 

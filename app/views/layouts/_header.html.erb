@@ -1,11 +1,11 @@
-<div class="contain-to-grid fixed">
+<div class="contain-to-grid">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
         <h1>
           <%= link_to root_path do %>
-            <span>Found</span>
-            <span style="color: rgb(240, 65, 36);">Mentor</span>
+            <!-- <span>Found</span> -->
+            <span style="color: rgb(240, 65, 36);">加盟说</span>
           <% end %>
         </h1>
       </li>
@@ -17,25 +17,26 @@
       <!-- Left Nav Section -->
       <ul class="left">
         <li class="divider"></li>
-        <li><%= link_to '拜师收徒', topics_path %></li>
+        <li><%= link_to '微博登录', topics_path %></li>
               <li class="divider"></li>
-        <li><%= link_to '文章', posts_path %></li>
+        <li><%= link_to 'QQ登录', posts_path %></li>
         <li class="divider"></li>
-        <li><%= link_to '心愿', wishes_path %></li>
+        <li><%= link_to '登录', wishes_path %></li>
+        <li><%= link_to '注册', wishes_path %></li>
         <!-- <li><%#= link_to '分类导航', catalogs_path %></li> -->
 
         <li class="divider"></li>
-        <li class="has-form">
-          <%= form_tag search_topics_path, method: :get, class: "row collapse" do |f| %>
+        <!-- <li class="has-form">
+          <%#= form_tag search_topics_path, method: :get, class: "row collapse" do |f| %>
             <div class="large-8 small-9 columns">
-              <%= text_field_tag 'q', params[:q], placeholder: 'Find Stuff', required: true %>
+              <%#= text_field_tag 'q', params[:q], placeholder: 'Find Stuff', required: true %>
             </div>
 
             <div class="large-4 small-3 columns">
-              <%= submit_tag '搜索', class: "alert button expand" %>
+              <%#= submit_tag '搜索', class: "alert button expand" %>
             </div>
-          <% end %>
-        </li>
+          <%# end %>
+        </li> -->
 
         <li>
           <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Dropdown Button</button><br>
@@ -46,33 +47,33 @@
           </ul>
         </li>
 
-        <li class="has-dropdown">
-          <%= link_to "写点什么", "javascript:void(0);" %>
-          <ul class="dropdown">
-            <li><%= link_to '拜师贴', topics_bai_shi_new_path %></li>
-            <li><%= link_to '收徒贴', topics_shou_tu_new_path %></li>
+        <!-- <li class="has-dropdown"> -->
+          <%#= link_to "写点什么", "javascript:void(0);" %>
+          <!-- <ul class="dropdown"> -->
+            <!-- <li><%#= link_to '拜师贴', topics_bai_shi_new_path %></li> -->
+            <!-- <li><%#= link_to '收徒贴', topics_shou_tu_new_path %></li> -->
             <!-- <li><%#= link_to '拜师兼收徒', topics_bai_shi_he_shou_tu_new_path %></li> -->
-            <li><%= link_to '交换技能贴', topics_jiao_huan_ji_neng_new_path %></li>
-            <li class="divider"></li>
-            <li><%= link_to '文章', new_post_path %></li>
-            <li class="divider"></li>
-            <li><%= link_to '心愿', new_wish_path %></li>
-          </ul>
+            <!-- <li><%#= link_to '交换技能贴', topics_jiao_huan_ji_neng_new_path %></li> -->
+            <!-- <li class="divider"></li> -->
+            <!-- <li><%#= link_to '文章', new_post_path %></li> -->
+            <!-- <li class="divider"></li> -->
+            <!-- <li><%#= link_to '心愿', new_wish_path %></li> -->
+          <!-- </ul> -->
         </li>
       </ul>
 
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="divider"></li>
-        <li>
-          <%= link_to activities_index_path do %>
-            <% if user_signed_in? && DirectMessage.not_read.where(to_user_id: current_user.id).exists? %>
-              <i class="fa fa-bell fa-2x"></i>
-            <% else %>
-              <i class="fa fa-bell fa-2x" style="opacity: 0.4;"></i>
-            <% end %>
-          <% end %>
-        </li>
+        <!-- <li> -->
+          <%#= link_to activities_index_path do %>
+            <%# if user_signed_in? && DirectMessage.not_read.where(to_user_id: current_user.id).exists? %>
+              <!-- <i class="fa fa-bell fa-2x"></i> -->
+            <%# else %>
+              <!-- <i class="fa fa-bell fa-2x" style="opacity: 0.4;"></i> -->
+            <%# end %>
+          <%# end %>
+        <!-- </li> -->
 
         <% if user_signed_in? %>
           <li class="active">
@@ -93,11 +94,11 @@
           <li class="divider"></li>
         
           <li class="has-form">
-            <%= link_to '注册', new_user_registration_path, class: "small button" %>
+            <%= link_to '发布拼单', new_user_registration_path, class: "small button" %>
           </li>
 
           <li class="divider"></li>
-          <li><%= link_to '登录', new_user_session_path %></li>
+          <li><%= link_to '参与拼单', new_user_session_path %></li>
         <% end %>
       </ul>
     </section>
