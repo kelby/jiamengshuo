@@ -1,44 +1,20 @@
 <div class="row">
   <dl class="sub-nav vertical">
-  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-    <%= link_to "首页", new_post_path %>
-  </dd>
-  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-    <%= link_to "批发拼单", new_post_path %>
-  </dd>
-  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-    <%= link_to "定做拼单", new_post_path %>
-  </dd>
+    <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+      <%= link_to "首页", new_post_path %>
+    </dd>
+    <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+      <%= link_to "批发拼单", new_post_path %>
+    </dd>
+    <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+      <%= link_to "定做拼单", new_post_path %>
+    </dd>
 
-  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-    <%= link_to "海淘拼单", new_post_path %>
-  </dd>
-  <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-    <%= link_to "拼单帮助", new_post_path %>
-  </dd>
-
-      <% if current_page?(posts_path) || current_page?(new_post_path) %>
-        <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
-          <%= link_to "新建文章", new_post_path %>
-        </dd>
-      <% end %>
-
-      <% if current_page?(wishes_path) || current_page?(new_wish_path) %>
-        <dd class="<%= current_page?(new_wish_path)? 'active' : '' %>">
-          <%= link_to '新建心愿', new_wish_path, id: "nav-wish-list" %>
-        </dd>
-      <% end %>
-
-      <% if user_signed_in? && current_page?(users_profile_path) %>
-        <dd class="<%= current_page?(users_pending_apply_students_path)? 'active' : '' %>">
-          <%= link_to "申请学生", users_pending_apply_students_path, id: "nav-students" %>
-        </dd>
-      <% end %>
-
-      <% if user_signed_in? && (current_page?(user_path(current_user)) || current_page?(activities_index_path)) %>
-        <dd class="<%= current_page?(activities_index_path)? 'active' : '' %>">
-          <%= link_to "消息墙", activities_index_path, id: "nav-students" %>
-        </dd>
-      <% end %>
+    <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+      <%= link_to "海淘拼单", new_post_path %>
+    </dd>
+    <dd class="<%= current_page?(new_post_path)? 'active' : '' %>">
+      <%= link_to "拼单帮助", new_post_path %>
+    </dd>
   </dl>
 </div>

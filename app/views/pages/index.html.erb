@@ -3,146 +3,49 @@
   <!-- http://jingyan.baidu.com/user/income/school -->
   <section class="body-wrapper">
     <section class="body">
-      <section class="top-img-bar">
-        <div class="top-img-con">
-          <div class="big-title"></div>
-
-          <h3 class="top-desc text-center">干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。</h3>
-
-          <div class="des-step">
-            <div class="step-blk step-1"></div>
-            <div class="step-blk step-2"></div>
-            <div class="step-blk step-3"></div>
-            <div class="step-blk step-4"></div>
-          </div>
-
-          <div>
-            <%= form_for :user, url: user_session_path do |f| %>
-              <div class="row columns large-8 collapse" id="signin-form">
-                <div class="small-1 columns" id="label-login">
-                  <%= f.label :login do %>
-                    <span class="prefix login"><i class="fi-torso large"></i></span>
-                  <% end %>
-                </div>
-                <div class="small-3 columns">
-                  <%= f.text_field :login, required: true, autofocus: true, placeholder: t("devise.email_or_username") %>
-                </div>
-
-                <div class="small-1 columns" id="label-password">
-                  <%= f.label :password do %>
-                    <span class="prefix password"><i class="fi-lock large"></i></span>
-                  <% end %>
-                </div>
-                <div class="small-3 columns end">
-                  <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
-                </div>
-                
-                <div class="right">
-                <%= f.submit  "登录", class: "success tiny button radius" %>
-                </div>
-              </div>
-            <% end %>
-          </div>
+      <div class="row circle-list skill-list">
+        <div class="medium-3 columns">
+          <img src="assets/img/images/css.svg">
+          <h4>盟主发起拼单</h4>
+          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i></p>
+          <p>The straight CSS version is perfect if you want to just start writing code, rapid prototype, or building a simple, static site. We'll give you all the pieces you need, no setup required.</p>
+          <p><a href="css.html">CSS Install →</a></p>
         </div>
-      </section>
 
-      <% first_user = @four_users.first %>
-      <% second_user = @four_users.second %>
-      <% third_user = @four_users.third %>
-      <% fourth_user = @four_users.fourth %>
-      <% user_ids = User.ids %>
+        <hr class="dashed hide-for-medium-up">
 
-      <section class="mid-con-par row full-width show-for-large-up">
-        <div class="mid-con-wrp">
-          <p class="mid-desc">柏拉图有苏格拉底作为导师，你也应该找到某人并为之保护 ...</p>
-
-          <div class="tutor-block clearfix small-block-grid-2">
-            <div class="tutor columns large-6 small-12 tutor-1 left">
-              <%= render 'users/tutor_portrait', user: first_user %>
-
-              <div class="robe-arrow robe-arrow-l"></div>
-              <div class="robe-arrow robe-arrow-r"></div>
-
-              <div class="tutor-desc">
-                <p><span>所属分类：</span>游戏/数码</p>
-
-                <p><span>成功指导学员：</span>354</p>
-              </div>
-
-              <div class="trainee-portrait trainee-portrait-11">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-
-              <div class="trainee-portrait trainee-portrait-12">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-            </div>
-
-            <div class="tutor columns large-6 small-12 tutor-2 right">
-              <%= render 'users/tutor_portrait', user: second_user %>
-
-              <div class="robe-arrow robe-arrow-l"></div>
-              <div class="robe-arrow robe-arrow-r"></div>
-              <div class="tutor-desc">
-                <p><span>所属分类：</span>游戏/数码</p>
-
-                <p><span>成功指导学员：</span>363</p></div>
-              <div class="trainee-portrait trainee-portrait-21">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-              <div class="trainee-portrait trainee-portrait-22">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-            </div>
-          </div>
-
-          <div class="tutor-block clearfix small-block-grid-2">
-            <div class="tutor columns large-6 small-12 tutor-3 left">
-              <%= render 'users/tutor_portrait', user: third_user %>
-
-              <div class="robe-arrow robe-arrow-l"></div>
-              <div class="robe-arrow robe-arrow-r"></div>
-              <div class="tutor-desc">
-                <p><span>所属分类：</span>职场/理财</p>
-
-                <p><span>成功指导学员：</span>154</p></div>
-              <div class="trainee-portrait trainee-portrait-31">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-              <div class="trainee-portrait trainee-portrait-32">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-            </div>
-
-            <div class="tutor columns large-6 small-12 tutor-4 right">
-              <%= render 'users/tutor_portrait', user: fourth_user %>
-
-              <div class="robe-arrow robe-arrow-l"></div>
-              <div class="robe-arrow robe-arrow-r"></div>
-              <div class="tutor-desc">
-                <p><span>所属分类：</span>美食/营养</p>
-
-                <p><span>成功指导学员：</span>204</p></div>
-              <div class="trainee-portrait trainee-portrait-41">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-              <div class="trainee-portrait trainee-portrait-42">
-                <%= render "users/trainee_portrait", user: User.find(user_ids.sample) %>
-              </div>
-            </div>
-          </div>
-
-          <p class="tutor-more">
-            <%#= link_to users_path, target: "_blank" do %>
-              <!-- 查看完整导师名单&nbsp;<span>&gt;&gt;</span> -->
-            <%# end %>
-          </p>
+        <div class="medium-3 columns">
+          <img src="assets/img/images/scss.svg">
+          <h4>盟员跟单</h4>
+          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
+          <p>Check out to get started with Sass (SCSS) to let you customize... well, everything. Setup is straight forward and if you haven't used Sass before, once you do, you'll never look back.</p>
+          <p><a href="sass.html">Sass Install →</a></p>
         </div>
-      </section>
+
+        <hr class="dashed hide-for-medium-up">
+
+        <div class="medium-3 columns">
+          <img src="assets/img/images/rails.svg">
+          <h4>盟主下单付款</h4>
+          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
+          <p>We use Rails to build our apps (Notable, Verify, Solidify, ZURB University, and the Foundation Forum) and you can too. We'll show you how to use the Foundation gem and get set up.</p>
+          <p><a href="applications.html">App Install →</a></p>
+        </div>
+
+        <hr class="dashed hide-for-medium-up">
+
+        <div class="medium-3 columns">
+          <img src="assets/img/images/rails.svg">
+          <h4>付款收货</h4>
+          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
+          <p>We use Rails to build our apps (Notable, Verify, Solidify, ZURB University, and the Foundation Forum) and you can too. We'll show you how to use the Foundation gem and get set up.</p>
+          <p><a href="applications.html">App Install →</a></p>
+        </div>
+      </div>
 
       <section class="fot-con-par clearfix">
         <div class="fot-con">
-          <h3>本周活跃用户排行（<%= Date.today.beginning_of_week.strftime("%-d 日") %> 至 <%= Date.today.end_of_week.strftime("%-d 日") %>）</h3>
+          <h3>最新拼单信息</h3>
 
           <div class="doing-wrap columns large-12">
             <div class="joing columns large-4">
