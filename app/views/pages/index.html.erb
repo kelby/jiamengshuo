@@ -47,103 +47,114 @@
         <div class="fot-con">
           <h3>最新拼单信息</h3>
 
-          <div class="doing-wrap columns large-12">
-            <div class="joing columns large-4">
-              <div class="s-title"><h4>最新帖子</h4></div>
-              <div class="joing-list-wrap">
-                <% joing_list = Topic.limit(5).order(id: :desc) %>
-                <ul id="joing-list" class="joing-list" style="top: 0px; left: 0px;">
-                  <% joing_list.each do |topic| %>
-                    <li>
-                      <!-- <span class="join-uname"> -->
-                      <%= link_to topic do %>
-                      <%= truncate topic.title, length: 18 %>
-                      <% end %>
-                      <!-- </span> -->
-                        <%#= link_to topic.user do %>
-                          <%#= image_tag topic.user.avatar_url(:mini), class: "super_tiny" %>
-                        <%# end %>
-                    </li>
-                  <% end %>
-                </ul>
+          <div class="row">
+            <aside class="large-3 columns">
+              <h5>线上支付</h5>
+              <ul class="side-nav">
+                <li><a href="#">News</a></li>
+                <li><a href="#">Code</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Fun</a></li>
+                <li><a href="#">Weasels</a></li>
+              </ul>
+              <div class="panel">
+                <h5>Featured</h5>
+                <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
+                <a href="#">Read More →</a>
               </div>
-            </div>
+            </aside>
+            <div class="large-9 columns" role="content">
+              <ul>
+                <% @topics.each do |topic| %>
+                  <div class="row post impressions new">
+                    <div class="small-12 columns">
+                      <!-- <ul class="post-count-spacing small-block-grid-2 large-block-grid-2"> -->
+                        <!-- <li> -->
+                          <div class="post-count new-general with-replies small-1 columns">
+                            <%= link_to topic.user do %>
+                              <div class="post-count-container new-general with-replies">
+                                <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+                              </div>
+                            <% end %>
+                            <div class="total-post-count new total-replies">
+                              <%= topic.comments.count %> 评论
+                            </div>
+                          </div>
+                        <!-- </li> -->
 
-            <div class="curcha columns large-4">
-              <div class="s-title"><h4>功课排名</h4></div>
-              <% curcha_list = User.order("posts_count desc").limit(5) %>
-              <div class="curcha-list">
-                <!-- <p class="tit">原创经验</p> -->
-                <p class="tit"></p>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="num num1">NO&nbsp;1</span>&nbsp;
-                        <span class="rankuanme" title="<%= curcha_list.first.username %>">
-                          <%= truncate curcha_list.first.username, length: 10 %>
-                        </span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.first.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="num num2">NO&nbsp;2</span>&nbsp;
-                        <span class="rankuanme" title="<%= curcha_list.second.username %>">
-                          <%= truncate curcha_list.second.username, length: 10 %>
-                        </span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.second.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td><span class="num num3">NO&nbsp;3</span>&nbsp;
-                      <span class="rankuanme" title="<%= curcha_list.third.username %>">
-                        <%= truncate curcha_list.third.username, length: 10 %></span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.third.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td><span class="num num4">NO&nbsp;4</span>&nbsp;
-                      <span class="rankuanme" title="<%= curcha_list.fourth.username %>">
-                        <%= truncate curcha_list.fourth.username, length: 10 %></span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.fourth.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td><span class="num num5">NO&nbsp;5</span>&nbsp;
-                      <span class="rankuanme" title="<%= curcha_list.fifth.username %>">
-                        <%= truncate curcha_list.fifth.username, length: 10 %></span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.fifth.posts_count %>篇</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                        <!-- <li> -->
+                          <div class="post-description small-11 columns">
+                            <h4 class="content-title">
+                              <% case topic.category %>
+                              <% when "bai_shi" %>
+                                <%= link_to "拜师!", topics_bai_shi_path, class: "blue google button", style: "display: inline-block;" %>
+                              <% when "shou_tu" %>
+                                <%= link_to "收徒!", topics_shou_tu_path, class: "yellow google button", style: "display: inline-block;" %>
+                              <%# when "bai_shi_he_shou_tu" %>
+                                <%#= link_to "拜师兼收徒", topics_bai_shi_he_shou_tu_path, class: "green google button", style: "display: inline-block;" %>
+                              <%# else %>
+                                <%#= link_to "其它", topics_qi_ta_path, class: "purple google button", style: "display: inline-block;" %>
+                              <% when "jiao_huan_ji_neng" %>
+                                <%= link_to "交换技能", topics_jiao_huan_ji_neng_path, class: "purple google button", style: "display: inline-block;" %>
+                              <% end %>
 
-            <div class="prizes columns large-4">
-              <div class="s-title"><h4>本项功能待定</h4></div>
-              <div class="prizes-wrp">
-                <span class="ico-rk ico-rk1"></span>
-                <span class="ico-rk ico-rk2"></span>
-                <span class="ico-rk ico-rk3"></span>
+                              <%= link_to topic do %>
+                                <%= topic.title %>
+                              <% end %>
+                            </h4>
+                            <p class="author-name">
+                            <span class="author">
+                              <%= link_to topic.user do %><%= topic.user.username %><% end %>
+                              创建于 <%= time_ago_in_words topic.created_at %> 前
+                            </span>
+                            <% if topic.comments.any? %>
+                            <!-- <span class="by">, last Reply by</span> -->
+                            <span class="when">
+                              <span class="author">
+                                ，最后由
+                                <%= link_to topic.comments.last.try(:user) do %>
+                                  <%= topic.comments.last.try(:user).try(:username) %>
+                                <% end %>
+                              </span>
+                              评论于 <%= time_ago_in_words topic.created_at %> 前
+                            </span>
+                            <% end %>
+                            </p>
+                            <div class="post-description copy">
 
-                <div class="pri-img pri-img1">
-                  <!-- <a target="_blank" href="/assets/huizhuanshousiDT.jpg"> -->
-                    <%= image_tag "huizhuanshousiDT.jpg" %>
-                  <!-- </a> -->
+                              <p class="tags">
+                              标签：
+                                <% topic.tags.each do |tag| %>
+                                  <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
+                                <% end %>
+                              </p>
+                            </div>
+                          </div>
+                        <!-- </li> -->
+                      <!-- </ul> -->
+                      <hr>
+                    </div>
+                  </div>
+                <% end %>
+              </ul>
+
+              <%= paginate @topics %>
+              <!-- <article>
+                <h3><a href="#">Blog Post Title</a></h3>
+                <h6>Written by <a href="#">John Smith</a> on August 12, 2012.</h6>
+                <div class="row">
+                  <div class="large-6 columns">
+                    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.</p>
+                    <p>Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
+                  </div>
+                  <div class="large-6 columns">
+                    <img src="http://placehold.it/400x240&amp;text=[img]">
+                  </div>
                 </div>
-                <div class="pri-img pri-img2">
-                  <!-- <a target="_blank" href="/assets/qinghuaci-418.jpg"> -->
-                    <%= image_tag "qinghuaci-418.jpg" %>
-                  <!-- </a> -->
-                </div>
-                <div class="pri-img pri-img3">
-                  <!-- <a target="_blank" href="/assets/xiaoduwufi-419.jpg"> -->
-                    <%= image_tag "xiaoduwufi-419.jpg" %>
-                  <!-- </a> -->
-                </div>
-              </div>
+                <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
+                <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
+              </article> -->
+            <hr>
             </div>
           </div>
         </div>
