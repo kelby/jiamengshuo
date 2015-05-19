@@ -11,11 +11,11 @@ class TopicsController < ApplicationController
     if params["category"].present?
       case params["category"]
       when 1
-        @topics = Topic.bai_shi.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.pi_fa.page(params[:page]).per(15).order("updated_at DESC")
       when 2
-        @topics = Topic.shou_tu.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.ding_zhuo.page(params[:page]).per(15).order("updated_at DESC")
       when 3
-        @topics = Topic.bai_shi_he_shou_tu.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.hai_tao.page(params[:page]).per(15).order("updated_at DESC")
       else
         @topics = Topic.qi_ta.merge(Topic.where(category: nil)).page(params[:page]).per(15).order("updated_at DESC")
       end

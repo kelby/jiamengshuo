@@ -111,3 +111,4 @@ end
 
 gem 'omniauth-weibo-oauth2'
 gem 'omniauth'
+gem 'qq_client'

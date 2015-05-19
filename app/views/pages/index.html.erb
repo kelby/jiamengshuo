@@ -120,6 +120,99 @@
                   </li>
                 </ul>
               </div>
+            </aside>
+            <div class="large-9 columns" role="content">
+              <ul>
+                <% @topics.each do |topic| %>
+                  <div class="row post impressions new">
+                    <div class="small-12 columns">
+                      <!-- <ul class="post-count-spacing small-block-grid-2 large-block-grid-2"> -->
+                        <!-- <li> -->
+                          <div class="post-count new-general with-replies small-1 columns">
+                            <%= link_to topic.user do %>
+                              <div class="post-count-container new-general with-replies">
+                                <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+                              </div>
+                            <% end %>
+                            <div class="total-post-count new total-replies">
+                              <%= topic.comments.count %>
+                            </div>
+                          </div>
+                        <!-- </li> -->
+
+                        <!-- <li> -->
+                          <div class="post-description small-11 columns">
+                            <h4 class="content-title">
+                              <%# case topic.category %>
+                              <%# when "bai_shi" %>
+                                <%#= link_to "拜师!", topics_bai_shi_path, class: "blue google button", style: "display: inline-block;" %>
+                              <%# when "shou_tu" %>
+                                <%#= link_to "收徒!", topics_shou_tu_path, class: "yellow google button", style: "display: inline-block;" %>
+                              <%# when "bai_shi_he_shou_tu" %>
+                                <%#= link_to "拜师兼收徒", topics_bai_shi_he_shou_tu_path, class: "green google button", style: "display: inline-block;" %>
+                              <%# else %>
+                                <%#= link_to "其它", topics_qi_ta_path, class: "purple google button", style: "display: inline-block;" %>
+                              <%# when "jiao_huan_ji_neng" %>
+                                <%#= link_to "交换技能", topics_jiao_huan_ji_neng_path, class: "purple google button", style: "display: inline-block;" %>
+                              <%# end %>
+
+                              <%= link_to topic do %>
+                                <%= topic.title %>
+                              <% end %>
+                            </h4>
+                            <p class="author-name">
+                            <span class="author">
+                              <%= link_to topic.user do %><%= topic.user.username %><% end %>
+                              <!-- 创建于 <%#= time_ago_in_words topic.created_at %> 前 -->
+                            </span>
+                            <%# if topic.comments.any? %>
+                            <!-- <span class="by">, last Reply by</span> -->
+                            <!-- <span class="when"> -->
+                              <!-- <span class="author"> -->
+                                <!-- ，最后由 -->
+                                <%#= link_to topic.comments.last.try(:user) do %>
+                                  <%#= topic.comments.last.try(:user).try(:username) %>
+                                <%# end %>
+                              <!-- </span> -->
+                              <!-- 评论于 <%#= time_ago_in_words topic.created_at %> 前 -->
+                            <!-- </span> -->
+                            <%# end %>
+                            </p>
+                            <div class="post-description copy">
+
+                              <!-- <p class="tags"> -->
+                              <!-- 标签： -->
+                                <%# topic.tags.each do |tag| %>
+                                  <%#= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
+                                <%# end %>
+                              <!-- </p> -->
+                            </div>
+                          </div>
+                        <!-- </li> -->
+                      <!-- </ul> -->
+                      <hr>
+                    </div>
+                  </div>
+                <% end %>
+              </ul>
+
+              <%= paginate @topics %>
+              <!-- <article>
+                <h3><a href="#">Blog Post Title</a></h3>
+                <h6>Written by <a href="#">John Smith</a> on August 12, 2012.</h6>
+                <div class="row">
+                  <div class="large-6 columns">
+                    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.</p>
+                    <p>Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
+                  </div>
+                  <div class="large-6 columns">
+                    <img src="http://placehold.it/400x240&amp;text=[img]">
+                  </div>
+                </div>
+                <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
+                <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
+              </article> -->
+            <hr>
             </div>
           </div>
         </div>

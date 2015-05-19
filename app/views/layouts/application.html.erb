@@ -17,34 +17,16 @@
   <body data-controller-name='<%= controller_name %>' data-action-name='<%= action_name %>'>
     <%= render 'layouts/header' %>
 
-    <%# unless current_page?(root_path) %>
-      <%# if user_signed_in? %>
-        <%#= render 'layouts/sub_nav' %>
-      <%# else %>
-        <%# unless current_page?(root_path) %>
-          <%#= render 'layouts/sub_nav' %>
-        <%# end %>
-      <%# end %>
-    <%# end %>
+    <%= render 'layouts/sub_nav' %>
 
     <%= render 'layouts/flash_messages' %>
 
-    <% if current_page?(root_path) && !user_signed_in? %>
-      <!-- <div class="index-background"> -->
-        <!-- <div class="row full-width"> -->
-          <%= yield %>
-        <!-- </div> -->
-      <!-- </div> -->
-    <% else %>
-      <div class="row">
-        <%= yield %>
-      </div>
-    <% end %>
+    <div class="row">
+      <%= yield %>
+    </div>
 
-    <%# unless current_page?(root_path) || user_signed_in? %>
-      <%= render 'layouts/scroll_top' %>
+    <%= render 'layouts/scroll_top' %>
 
-      <%= render 'layouts/footer' %>
-    <%# end %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

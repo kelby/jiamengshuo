@@ -12,11 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title, t("topics.title") %><br>
+    <%= f.label :title, "拼单标题" %><br>
     <%= f.text_field :title, required: true %>
   </div>
+
   <div class="field">
-    <%= f.label :body, t("topics.body") %><br>
+    <%= f.label :mode, "拼单方式" %><br>
+    <%= f.text_field :mode, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :invoice, "购买发票" %><br>
+    <%= f.text_field :invoice, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :deadline, "截止日期" %><br>
+    <%= f.text_field :deadline, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rate, "手续费" %><br>
+    <%= f.text_field :rate, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body, "拼单说明" %><br>
     <!-- <div id="wmd-button-bar"></div> -->
     <%= f.text_area :body, rows: 15, required: true, id: "wmd-input" %>
     <!-- <textarea name="content" data-provide="markdown" rows="10"></textarea> -->
@@ -29,7 +50,7 @@
   <div id="preview"></div>
 
   <div class="field">
-    <%= f.label :tag_list, "标签：(多个标签之间用逗号分隔)" %><br>
+    <%= f.label :tag_list, "海拼关键词(标签)" %><br>
     <%= f.text_field :tag_list, required: true %>
   </div>
 
