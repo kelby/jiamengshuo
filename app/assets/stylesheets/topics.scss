@@ -71,3 +71,92 @@ h6.byline .label {
 i.red{
   color: rgb(243, 130, 96);
 }
+
+.topic-list {
+  margin-top: 50px;
+}
+
+.topic-body {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid gray;
+  padding: 10px;
+  box-shadow: 2px rgba(0,0,0,0.25);
+  -moz-box-shadow: 2px rgba(0,0,0,0.25);
+  -webkit-box-shadow: 2px rgba(0,0,0,0.25);
+}
+
+.topic-body .topic-status {
+  float: right;
+  border: 1px solid gray;
+  padding: 8px 30px;
+  background-color: rgb(235, 244, 249);
+  position: relative;
+  top: -10px;
+  right: -10px;
+}
+
+.topic-info {
+  height: 100%;
+}
+
+.topic-info .topic-info-detail {
+  position: relative;
+  top: -130px;
+  left: 90px;
+}
+
+.topic-info .topic-user {
+  width: 40%;
+  text-align: center;
+}
+
+.topic-info .topic-users-list {
+  position: relative;
+  top: -130px;
+}
+
+.topic-info img {
+  width: 80px;
+  height: 80px;
+}
+
+.topic-users-list-avatar {
+  margin-left: 15px;
+}
+
+.topic-users-list-avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+.topic-body .topic-detail {
+  position: relative;
+  left: 370px;
+  top: 110px;
+}
+
+.topic-kinds p {
+  font-size: 18px;
+}
+
+.topic-kinds a {
+  font-size: 13px;
+  margin-left: 5px;
+  line-height: 3px;
+}
+
+.topic-kinds a:hover {
+  color: red;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+

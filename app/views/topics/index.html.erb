@@ -1,120 +1,155 @@
 <% set_meta_tags :title => "话题讨论" %>
 
-<style type="text/css">
-  .post-count-spacing>li:first-child {
-    width: 105px;
-  }
 
-  .post-count-spacing>li:last-child {
-    width: 80% !important;
-    padding-left: 0.9375em;
-  }
-
-  ul.toolbar > li {
-    display: inline;
-  }
-</style>
-
-<div class="row posts">
-  <div class="large-9 small-12 columns">
+<div class="row">
+  <div class="large-8 small-12 columns topic-list">
     <ul>
-      <% @topics.each do |topic| %>
-        <div class="row post impressions new">
-          <div class="small-12 columns">
-            <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
-              <li>
-                <div class="post-count new-general with-replies">
-                  <%= link_to topic.user do %>
-                    <div class="post-count-container new-general with-replies">
-                      <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
-                    </div>
-                  <% end %>
-                  <div class="total-post-count new total-replies">
-                    <%= topic.comments.count %> 评论
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="post-description">
-                  <h4 class="content-title">
-                    <% case topic.category %>
-                    <% when "bai_shi" %>
-                      <%= link_to "拜师!", topics_bai_shi_path, class: "blue google button", style: "display: inline-block;" %>
-                    <% when "shou_tu" %>
-                      <%= link_to "收徒!", topics_shou_tu_path, class: "yellow google button", style: "display: inline-block;" %>
-                    <%# when "bai_shi_he_shou_tu" %>
-                      <%#= link_to "拜师兼收徒", topics_bai_shi_he_shou_tu_path, class: "green google button", style: "display: inline-block;" %>
-                    <%# else %>
-                      <%#= link_to "其它", topics_qi_ta_path, class: "purple google button", style: "display: inline-block;" %>
-                    <% when "jiao_huan_ji_neng" %>
-                      <%= link_to "交换技能", topics_jiao_huan_ji_neng_path, class: "purple google button", style: "display: inline-block;" %>
-                    <% end %>
-
-                    <%= link_to topic do %>
-                      <%= topic.title %>
-                    <% end %>
-                  </h4>
-                  <p class="author-name">
-                  <span class="author">
-                    <%= link_to topic.user do %><%= topic.user.username %><% end %>
-                    创建于 <%= time_ago_in_words topic.created_at %> 前
-                  </span>
-                  <% if topic.comments.any? %>
-                  <!-- <span class="by">, last Reply by</span> -->
-                  <span class="when">
-                    <span class="author">
-                      ，最后由
-                      <%= link_to topic.comments.last.try(:user) do %>
-                        <%= topic.comments.last.try(:user).try(:username) %>
-                      <% end %>
-                    </span>
-                    评论于 <%= time_ago_in_words topic.created_at %> 前
-                  </span>
-                  <% end %>
-                  </p>
-                  <div class="post-description copy">
-
-                    <p class="tags">
-                    标签：
-                      <% topic.tags.each do |tag| %>
-                        <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
-                      <% end %>
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <hr>
+      <li class="topic-body">
+        <div class="topic-status">
+          拼单中
+        </div>
+        <div class="topic-info large-4 small-8 columns">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+          <p class="topic-user">
+            free
+          </p>
+          <div class="topic-info-detail">            
+            <p>美国化妆品拼单</p>
+            <p>
+              <span>美国</span>
+              <span>化妆品</span>
+            </p>
+            <p>
+              截止日期: 
+              2015-01-01
+            </p>
+          </div>
+          <div class="topic-users-list">
+              <span>44人跟单</span>
+              <span class="topic-users-list-avatar">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+              </span>
           </div>
         </div>
-      <% end %>
-    </ul>
-
-    <%= paginate @topics %>
-  </div>
-
-  <div class="large-3 columns">
-    <div>
-      <h5>新建帖子，并选择类型：</h5>
-      <%= render 'select_category' %>
-    </div>
-
-    <hr class="dashed"></hr>
-
-    <div class="install-foundation">
-      <h5>推荐关注!</h5>
-      <% unless @users.blank? %>
-        <% @users.each do |user| %>
-          <p>
-          <%= link_to user do %><%= image_tag user.avatar_url(:mini), class: "mini_avatar" %><% end %>
-          <strong><%= link_to user do %><%= user.username %><% end %></strong>
-          <br>
-          <%= user.info %>
+        <div class="topic-detail">
+          <a href="#" class="small button">查看详情</a>
+        </div>
+      </li>
+      <li class="topic-body">
+        <div class="topic-status">
+          拼单中
+        </div>
+        <div class="topic-info large-4 small-8 columns">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+          <p class="topic-user">
+            free
           </p>
-          <hr class="dashed"></hr>
-        <% end %>
-      <% end %>
+          <div class="topic-info-detail">            
+            <p>美国化妆品拼单</p>
+            <p>
+              <span>美国</span>
+              <span>化妆品</span>
+            </p>
+            <p>
+              截止日期: 
+              2015-01-01
+            </p>
+          </div>
+          <div class="topic-users-list">
+              <span>44人跟单</span>
+              <span class="topic-users-list-avatar">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+              </span>
+          </div>
+        </div>
+        <div class="topic-detail">
+          <a href="#" class="small button">查看详情</a>
+        </div>
+      </li>
+      <li class="topic-body">
+        <div class="topic-status">
+          拼单中
+        </div>
+        <div class="topic-info large-4 small-8 columns">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+          <p class="topic-user">
+            free
+          </p>
+          <div class="topic-info-detail">            
+            <p>美国化妆品拼单</p>
+            <p>
+              <span>美国</span>
+              <span>化妆品</span>
+            </p>
+            <p>
+              截止日期: 
+              2015-01-01
+            </p>
+          </div>
+          <div class="topic-users-list">
+              <span>44人跟单</span>
+              <span class="topic-users-list-avatar">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+              </span>
+          </div>
+        </div>
+        <div class="topic-detail">
+          <a href="#" class="small button">查看详情</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="large-4 columns topic-list topic-kinds">
+    <div class="pindan-kinds">
+      <p>拼单类型</p>
+      <ul>
+        <li><a href="#">全部</a></li>
+        <li><a href="#">批发</a></li>
+        <li><a href="#">定做</a></li>
+        <li><a href="#">海淘</a></li>
+      </ul>
+    </div>
+    <div class="pindan-supply">
+      <p>拼单货源</p>
+      <ul>
+        <li><a href="#">全部</a></li>
+        <li><a href="#">国内</a></li>
+        <li><a href="#">美国</a></li>
+        <li><a href="#">香港</a></li>
+        <li><a href="#">韩国</a></li>
+        <li><a href="#">日本</a></li>
+        <li><a href="#">澳门</a></li>
+        <li><a href="#">澳大利亚</a></li>
+        <li><a href="#">欧洲</a></li>
+      </ul>
+    </div>
+    <div class="product-kind">
+      <p>商品种类</p>
+      <ul>
+        <li><a href="#">全部</a></li>
+        <li><a href="#">母婴</a></li>
+        <li><a href="#">化妆品</a></li>
+        <li><a href="#">鞋包</a></li>
+        <li><a href="#">手机数码</a></li>
+        <li><a href="#">酒类</a></li>
+        <li><a href="#">服饰</a></li>
+        <li><a href="#">儿童玩具</a></li>
+        <li><a href="#">美妆护肤</a></li>
+        <li><a href="#">食品饮料</a></li>
+        <li><a href="#">保健用品</a></li>
+        <li><a href="#">其他</a></li>
+      </ul>
     </div>
   </div>
+
 </div>
+
+
+
