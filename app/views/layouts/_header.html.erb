@@ -1,15 +1,17 @@
 <header>
   <div class="header-logo">
-    加盟说
+    <%= link_to "加盟说", root_path %>
   </div>
   <div class="header-nav text-right">
     <ul>
-      <li><a href="#" class="header-login">微博登录</a></li>
-      <li><a href="#" class="header-login">QQ登录</a></li>
-      <li><a href="#" class="header-login">登录</a></li>
-      <li><a href="#" class="header-login">注册</a></li>
-      <li><a href="#" class="post-pindan">发布拼单</a></li>
-      <li><a href="#" class="post-pindan">参与拼单</a></li>
+      <% unless user_signed_in? %>
+        <li><%= link_to '微博登录', user_omniauth_authorize_path(:weibo), class: "header-login" %></li>
+        <li><%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), class: "header-login" %></li>
+        <li><%= link_to '登录', new_user_session_path, class: "header-login" %></li>
+        <li><%= link_to '注册', new_user_registration_path, class: "header-login" %></li>
+      <% end %>
+      <li><%= link_to '发布拼单', new_topic_path, class: "post-pindan" %></li>
+      <li><%= link_to '参与拼单', topics_path, class: "post-pindan" %></li>
     </ul>
   </div>
 </header>
@@ -20,7 +22,7 @@
       <li class="name">
         <h1>
           <%= link_to root_path do %>
-            <span style="color: rgb(240, 65, 36);">加盟说</span>
+            <span style="color: rgb(240, 65, 36);">首页</span>
           <% end %>
         </h1>
       </li>
@@ -31,54 +33,22 @@
     <section class="top-bar-section">
       <!-- Left Nav Section -->
 
-      <% unless user_signed_in? %>
-        <ul class="left">
-          <li class="divider"></li>
-          <li><%= link_to '微博登录', user_omniauth_authorize_path(:weibo) %></li>
-                <li class="divider"></li>
-          <li><%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect) %></li>
-          <li class="divider"></li>
-          <li><%= link_to '登录', new_user_session_path %></li>
-          <li><%= link_to '注册', new_user_registration_path %></li>
-          <!-- <li><%#= link_to '分类导航', catalogs_path %></li> -->
-
-          <li class="divider"></li>
-          </li>
-        </ul>
-      <% end %>
+      <ul class="left">
+        <li class="divider"></li>
+        <li><%= link_to "批发拼单", topics_pi_fa_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to "定做拼单", topics_ding_zhuo_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to "海淘拼单", topics_hai_tao_path %></li>
+        <li class="divider"></li>
+        </li>
+      </ul>
 
       <!-- Right Nav Section -->
       <ul class="right">
         <li class="has-form">
-          <%= link_to '发布拼单', new_topic_path, class: "small button" %>
+          <%= link_to "拼单帮助", page_path(:help), class: "small button" %>
         </li>
-
-        <li class="divider"></li>
-        <li><%= link_to '参与拼单', topics_path %></li>
-        <li class="divider"></li>
-        <% if user_signed_in? %>
-          <li class="active">
-            <%= link_to users_profile_path, style: 'background: #333333;' do %>
-              <%= image_tag current_user.avatar_url(:tiny), class: 'tiny_avatar' %>
-            <% end %>
-          </li>
-          <li class="divider"></li>
-          <li class="has-dropdown">
-            <%= link_to current_user.username, "javascript:void(0);" %>
-            <ul class="dropdown">
-              <li><%= link_to '设置', edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li><%= link_to '注销', destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </li>
-
-        <% else %>
-          <li class="divider"></li>
-        
-          <li class="has-form">
-            <%= link_to '拼单帮助', new_user_registration_path, class: "small button" %>
-          </li>
-        <% end %>
       </ul>
     </section>
   </nav>

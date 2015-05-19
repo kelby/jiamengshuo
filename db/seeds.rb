@@ -27,6 +27,7 @@ end
 Wish.create!(content: "我老爸不断提醒我：“干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。”<br>
               我希望在这个网站里，能找到自己的导师；或者发现欣赏的人，成为他的导师。", user_id: User.first.id)
 
+=begin
 ['个人发展', '职场', '兴趣爱好', '生活', '设计师', '语言', 'IT技术', '投资理财', '演讲', '其它'].each do |name|
   Catalog.create!(name: name)
 end
@@ -62,6 +63,24 @@ end
 end
 
 Catalog.update_all(info: "Cupcake ipsum dolor sit. Amet I love liquorice jujubes pudding croissant I love pudding. Apple pie macaroon toffee jujubes pie tart.")
+=end
+
+Catalog.destroy_all
+
+%w(母婴用品
+化妆品
+商品
+鞋包
+手机数码
+服饰
+酒类
+儿童玩具
+美妆护肤
+保健用品
+其他
+食品饮料).each do |name|
+  Catalog.create!(name: name)
+end
 
 50.times do
   Section.create!(user_id: User.ids.sample, heading: Faker::Name.name, body: Faker::Lorem.sentence)
