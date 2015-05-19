@@ -67,19 +67,27 @@ Catalog.update_all(info: "Cupcake ipsum dolor sit. Amet I love liquorice jujubes
 
 Catalog.destroy_all
 
-%w(母婴用品
-化妆品
-商品
-鞋包
-手机数码
-服饰
-酒类
-儿童玩具
-美妆护肤
-保健用品
-其他
-食品饮料).each do |name|
-  Catalog.create!(name: name)
+[['母婴用品', "母婴用品是指为孕产期女性与0-3岁婴儿这两类特殊相关联群体提供的专业健康产品。"],
+['化妆品', "化妆品是指以涂抹、喷洒或者其他类似方法，散布于人体表面的任何部位，如皮肤、毛发、指趾甲、唇齿等，以达到清洁、保养、美容、修饰和改变外观，或者修正人体气味，保持良好状态为目的的化学工业品或精细化工产品。"],
+['商品', "会计学中商品的定义是商品流通企业外购或委托加工完成，验收入库用于销售的各种商品。商品的基本属性是价值和使用价值。价值是商品的本质属性，使用价值是商品的自然属性。"],
+['鞋包', "以皮、布、木、草、塑料丝等为材料制作的穿在脚上、走路时着地的东西；生活用包(休闲包、时装包、宴会晚装包、筒包、迪包、腰包、沙滩包、化妆包、银包)、公事和职业用包(女士包、男士包、公文包)、运动和旅行用包、专用包(学生包、电脑包、相机包、手机包、钥匙包)、创意包等。"],
+['手机数码', "手机分为智能手机（Smart phone）和非智能手机（Feature phone），一般智能手机的性能比非智能手机要好，但是非智能手机比智能手机性能稳定；数码（digital）系统，又称为数字系统，是使用离散（即不连续的）的0或1来进行信息的输入，处理，传输、存贮等处理的系统。"],
+['服饰', "包括服装、鞋、帽、袜子、手套、围巾、领带、提包、阳伞、发饰等。古人，则是用来遮羞，而今人对于新事物的认识不断进步，服饰的材质，样式也多种多样。"],
+['酒类', "人们经常消费的一种饮品。在逢年过节、亲朋聚会时，饮酒助兴更是不可或缺。"],
+['儿童玩具', "专供儿童游戏使用的物品。玩具是儿童把想象、思维等心理过程转向行为的支柱。儿童玩具能发展运动能力，训练知觉，激发想象，唤起好奇心，为儿童身心发展提供了物质条件。"],
+['美妆护肤', "化妆，能表现出人物独有自然美；能改善人物原有的”形“”色“”质“，增添美感和魅力；能作为一种艺术形式，呈现一场视觉盛宴，表达一种感受。"],
+['保健用品', "系指供人们生活中使用，表明具有调节人体机能和促进健康等特定功能的用品。"],
+['其他', "其余，不分人与物；其余的人；其余的男子"],
+['食品饮料', "各种供人食用或者饮用的成品和原料以及按照传统既是食品又是药品的物品，但是不包括以治疗为目的的物品。由不同的配方和制造工艺生产出来，供人或牲畜直接饮用的液体食品。"]].each do |list|
+  Catalog.create!(name: list.first, info: list.last)
+end
+
+icons = %w(check marker cloud thumbnails laptop usb music lightbulb asterisk puzzle ticket shield crown trophy clipboard  clipboard-pencil)
+
+Catalog.find_each do |catalog|
+  catalog.icon = icons.sample
+  catalog.icon_from = 'fi'
+  catalog.save
 end
 
 50.times do
@@ -174,31 +182,10 @@ User.where(id: user_ids.sample(10)).update_all info: "互联网爱好者，努�
 User.where(id: user_ids.sample(10)).update_all info: "Dreams will keep me young."
 User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。有想法去实现~shixian.com"
 
-=begin
-100.times do
-  Teacher.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
-  Student.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
-  Classmate.create(owner_id: User.ids.sample, recipient_id: User.ids.sample)
-end
-=end
-
 Post.where(description: nil).each do |post|
   post.description = Faker::Lorem.paragraph(2)
   post.save
 end
-
-icons = %w(check marker cloud thumbnails laptop usb music lightbulb asterisk puzzle ticket shield crown trophy clipboard  clipboard-pencil)
-
-Catalog.where(icon: nil).each do |catalog|
-  catalog.icon = icons.sample
-  catalog.icon_from = 'fi'
-  catalog.save
-end
-
-Catalog.create name: "拜师", id: 1000
-Catalog.create name: "收徒", id: 1001
-Catalog.create name: "拜师兼收徒", id: 1002
-Catalog.create name: "其它", id: 1003
 
 user_ids = User.ids
 user_ids.each do |i|
