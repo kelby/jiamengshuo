@@ -15,4 +15,25 @@ module TopicsHelper
       "其它类型的帖子"
     end
   end
+
+  def cn_for(freight_source)
+    case freight_source
+    when 'mainland'
+      "国内"
+    when 'america'
+      "美国"
+    when 'hongkong'
+      "香港"
+    when 'korea'
+      "韩国"
+    when 'japan'
+      "日本"
+    when 'macao'
+      "澳门"
+    when 'australia'
+      "澳大利亚"
+    when 'europe'
+      "欧洲"
+    end
+  end
 end

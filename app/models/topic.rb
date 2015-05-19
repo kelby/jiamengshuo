@@ -4,12 +4,17 @@ class Topic < ActiveRecord::Base
   acts_as_taggable
   belongs_to :user
   has_many   :comments, as: :commentable, dependent: :destroy
-  has_one    :snippet
+  has_many    :snippet
   belongs_to :catalog
 
   enum category: { pi_fa: 1, ding_zhuo: 2, hai_tao: 3 }
   enum mode: {online_shopping: 1, physical_store: 2}
   enum invoice: {not_sure: 0, yes: 1, no: 2}
+  enum freight_source: {mainland: 1, america: 2, hongkong: 3, korea: 4, japan: 5, macao: 6, australia: 7, europe: 8}
+
+  def freight_source_to_cn
+    ::ApplicationController.helpers.cn_for(freight_source)
+  end
 
   # join tables
   has_many :keeper_topics#, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'

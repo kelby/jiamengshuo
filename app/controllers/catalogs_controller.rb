@@ -11,6 +11,7 @@ class CatalogsController < ApplicationController
   end
 
   def show
+    @topics = @catalog.topics.page(params[:page])
     respond_with(@catalog)
   end
 

@@ -96,8 +96,18 @@ end
   Section.create!(user_id: User.ids.sample, heading: Faker::Name.name, body: Faker::Lorem.paragraph(2))
 end
 
-user = User.all.sample # User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com", faker: true)
-topic = Topic.create!(title: Faker::Name.name, user: user, body: Faker::Lorem.paragraph)
+# user = User.all.sample # User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com", faker: true)
+100.times do
+  topic = Topic.create!(title: Faker::Name.title, user: User.all.sample, body: Faker::Lorem.paragraph,
+                        category: Topic.categories.keys.sample,
+                        mode: Topic.modes.keys.sample,
+                        invoice: Topic.invoices.keys.sample,
+                        freight_source: Topic.freight_sources.keys.sample,
+                        catalog: Catalog.all.sample,
+                        deadline: Faker::Time.between(12.months.ago, Time.now))
+end
+
+# Topic.order('id desc').limit(100).destroy_all
 
 comment = Comment.create!(user: user, content: "
           <p>Nice start, Becky. I really like some of the elements you have going so far. The header and footer tie in nicely and the ribbon on tiles works well. The font is great also and looks readable. Here are a few areas you can keep iterating on:</p>

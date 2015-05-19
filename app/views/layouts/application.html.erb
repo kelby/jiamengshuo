@@ -17,13 +17,9 @@
   <body data-controller-name='<%= controller_name %>' data-action-name='<%= action_name %>'>
     <%= render 'layouts/header' %>
 
-    <%#= render 'layouts/sub_nav' %>
-
     <%= render 'layouts/flash_messages' %>
 
-    <!-- <div class="row"> -->
-      <%= yield %>
-    <!-- </div> -->
+    <%= yield %>
 
     <%= render 'layouts/scroll_top' %>
 

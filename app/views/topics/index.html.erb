@@ -4,105 +4,41 @@
 <div class="row">
   <div class="large-8 small-12 columns topic-list">
     <ul>
-      <li class="topic-body">
-        <div class="topic-status">
-          拼单中
-        </div>
-        <div class="topic-info large-4 small-8 columns">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-          <p class="topic-user">
-            free
-          </p>
-          <div class="topic-info-detail">            
-            <p>美国化妆品拼单</p>
-            <p>
-              <span>美国</span>
-              <span>化妆品</span>
-            </p>
-            <p>
-              截止日期: 
-              2015-01-01
-            </p>
+      <% @topics.each do |topic| %>
+        <li class="topic-body">
+          <div class="topic-status">
+            拼单中
           </div>
-          <div class="topic-users-list">
-              <span>44人跟单</span>
-              <span class="topic-users-list-avatar">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-              </span>
-          </div>
-        </div>
-        <div class="topic-detail">
-          <a href="#" class="small button">查看详情</a>
-        </div>
-      </li>
-      <li class="topic-body">
-        <div class="topic-status">
-          拼单中
-        </div>
-        <div class="topic-info large-4 small-8 columns">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-          <p class="topic-user">
-            free
-          </p>
-          <div class="topic-info-detail">            
-            <p>美国化妆品拼单</p>
-            <p>
-              <span>美国</span>
-              <span>化妆品</span>
+          <div class="topic-info large-4 small-8 columns">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+            <p class="topic-user">
+              free
             </p>
-            <p>
-              截止日期: 
-              2015-01-01
-            </p>
+            <div class="topic-info-detail">            
+              <p><%= link_to topic.title, topic %></p>
+              <p>
+                <span><%= topic.freight_source_to_cn %></span>
+                <span><%= topic.catalog.name %></span>
+              </p>
+              <p>
+                截止日期: 
+                <%= topic.deadline %>
+              </p>
+            </div>
+            <div class="topic-users-list">
+                <span>44人跟单</span>
+                <span class="topic-users-list-avatar">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                </span>
+            </div>
           </div>
-          <div class="topic-users-list">
-              <span>44人跟单</span>
-              <span class="topic-users-list-avatar">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-              </span>
+          <div class="topic-detail">
+            <%= link_to "查看详情", topic, class: "small button" %>
           </div>
-        </div>
-        <div class="topic-detail">
-          <a href="#" class="small button">查看详情</a>
-        </div>
-      </li>
-      <li class="topic-body">
-        <div class="topic-status">
-          拼单中
-        </div>
-        <div class="topic-info large-4 small-8 columns">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-          <p class="topic-user">
-            free
-          </p>
-          <div class="topic-info-detail">            
-            <p>美国化妆品拼单</p>
-            <p>
-              <span>美国</span>
-              <span>化妆品</span>
-            </p>
-            <p>
-              截止日期: 
-              2015-01-01
-            </p>
-          </div>
-          <div class="topic-users-list">
-              <span>44人跟单</span>
-              <span class="topic-users-list-avatar">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-              </span>
-          </div>
-        </div>
-        <div class="topic-detail">
-          <a href="#" class="small button">查看详情</a>
-        </div>
-      </li>
+        </li>
+      <% end %>
     </ul>
   </div>
   
@@ -110,41 +46,33 @@
     <div class="pindan-kinds">
       <p>拼单类型</p>
       <ul>
-        <li><a href="#">全部</a></li>
-        <li><a href="#">批发</a></li>
-        <li><a href="#">定做</a></li>
-        <li><a href="#">海淘</a></li>
+        <li><%= link_to "全部", topics_path %></li>
+        <li><%= link_to "批发", topics_pi_fa_path %></li>
+        <li><%= link_to "定做", topics_ding_zhuo_path %></li>
+        <li><%= link_to "海淘", topics_hai_tao_path %></li>
       </ul>
     </div>
     <div class="pindan-supply">
       <p>拼单货源</p>
       <ul>
-        <li><a href="#">全部</a></li>
-        <li><a href="#">国内</a></li>
-        <li><a href="#">美国</a></li>
-        <li><a href="#">香港</a></li>
-        <li><a href="#">韩国</a></li>
-        <li><a href="#">日本</a></li>
-        <li><a href="#">澳门</a></li>
-        <li><a href="#">澳大利亚</a></li>
-        <li><a href="#">欧洲</a></li>
+        <li><%= link_to "全部", topics_path %></li>
+        <% Topic.freight_sources.keys.each do |freight_source| %>
+          <li>
+            <%= link_to cn_for(freight_source), topics_path(freight_source: freight_source) %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="product-kind">
       <p>商品种类</p>
       <ul>
-        <li><a href="#">全部</a></li>
-        <li><a href="#">母婴</a></li>
-        <li><a href="#">化妆品</a></li>
-        <li><a href="#">鞋包</a></li>
-        <li><a href="#">手机数码</a></li>
-        <li><a href="#">酒类</a></li>
-        <li><a href="#">服饰</a></li>
-        <li><a href="#">儿童玩具</a></li>
-        <li><a href="#">美妆护肤</a></li>
-        <li><a href="#">食品饮料</a></li>
-        <li><a href="#">保健用品</a></li>
-        <li><a href="#">其他</a></li>
+        <li><%= link_to "全部", topics_path %></li>
+
+        <% Catalog.all.each do |catalog| %>
+          <li>
+            <%= link_to catalog.name, topics_path(catalog_id: catalog.id) %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

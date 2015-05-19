@@ -8,9 +8,27 @@
   <%= @catalog.info %>
 </p>
 
-<% @topics.each do |topic| %>
+<!-- From PagesController#index -->
+<div class="newest-pindan-body">
+  <ul class="newest-pindan-list">
+    <% @topics.each do |topic| %>
+      <li>
+        <%= link_to topic.user do %>
+          <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+        <% end %>
+        <span class="list-username"><%= topic.user.username %></span>
+        <span class="pindan-num"><%= topic.comments.count %></span>
+        <span class="pindan-title">
+          <%= link_to topic do %>
+            <%= topic.title %>
+          <% end %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
 
-<% end %>
+  <%= paginate @topics %>
+</div>
 
 <% if can? :update, @catalog %>
   <%= link_to 'Edit', edit_catalog_path(@catalog) %> |

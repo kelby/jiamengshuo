@@ -11,16 +11,21 @@ class TopicsController < ApplicationController
     if params["category"].present?
       case params["category"]
       when 1
-        @topics = Topic.pi_fa.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.pi_fa.page(params[:page]).per(8).order("updated_at DESC")
       when 2
-        @topics = Topic.ding_zhuo.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.ding_zhuo.page(params[:page]).per(8).order("updated_at DESC")
       when 3
-        @topics = Topic.hai_tao.page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.hai_tao.page(params[:page]).per(8).order("updated_at DESC")
       else
-        @topics = Topic.qi_ta.merge(Topic.where(category: nil)).page(params[:page]).per(15).order("updated_at DESC")
+        @topics = Topic.all.per(8).order("updated_at DESC")
       end
+    elsif params[:freight_source].present?
+      @topics = Topic.send(params[:freight_source]).page(params[:page]).per(8).order("updated_at DESC")
+    elsif params[:catalog_id].present?
+      catalog = Catalog.find params[:catalog_id]
+      @topics = catalog.topics.page(params[:page]).per(8).order("updated_at DESC")
     else
-      @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
+      @topics = Topic.page(params[:page]).per(8).order("updated_at DESC")
     end
 
     if user_signed_in?
