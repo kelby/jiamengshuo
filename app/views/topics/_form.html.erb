@@ -17,13 +17,17 @@
   </div>
 
   <div class="field">
-    <%= f.label :mode, "拼单方式" %><br>
-    <%= f.text_field :mode, required: true %>
+    <%= f.label :category, "拼单方式" %><br>
+    <%= radio_button("topic", "category", "pi_fa") %>&nbsp;拼单
+    <%= radio_button("topic", "category", "ding_zhuo") %>&nbsp;定做
+    <%= radio_button("topic", "category", "hai_tao") %>&nbsp;海淘
   </div>
 
   <div class="field">
     <%= f.label :invoice, "购买发票" %><br>
-    <%= f.text_field :invoice, required: true %>
+    <%= radio_button("topic", "invoice", "yes") %>&nbsp;提供发票
+    <%= radio_button("topic", "invoice", "no") %>&nbsp;无发票
+    <%= radio_button("topic", "invoice", "not_sure") %>&nbsp;不确定
   </div>
 
   <div class="field">
