@@ -37,6 +37,14 @@ header {
   margin-right: auto;
 }
 
+.header-logo {
+  background: url("/assets/jiamengshuo-logo.png") no-repeat;
+  background-size: 80px 47px;
+  width: 80px;
+  height: 100px;
+  position: absolute;
+}
+
 /* Begin From Github */
 .minibutton {
   position: relative;
