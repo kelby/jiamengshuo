@@ -33,16 +33,14 @@ Rails.application.routes.draw do
 
   post "topics/preview" => "topics#preview"
   get "topics/qi_ta/new" => "topics#new", category: 0
-  get "topics/bai_shi/new" => "topics#new", category: 1
-  get "topics/shou_tu/new" => "topics#new", category: 2
-  get "topics/bai_shi_he_shou_tu/new" => "topics#new", category: 3
-  get "topics/jiao_huan_ji_neng/new" => "topics#new", category: 4
+  get "topics/pi_fa/new" => "topics#new", category: 1
+  get "topics/ding_zhuo/new" => "topics#new", category: 2
+  get "topics/hai_tao/new" => "topics#new", category: 3
 
   get "topics/qi_ta" => "topics#index", category: 0
-  get "topics/bai_shi" => "topics#index", category: 1
-  get "topics/shou_tu" => "topics#index", category: 2
-  get "topics/bai_shi_he_shou_tu" => "topics#index", category: 3
-  get "topics/jiao_huan_ji_neng" => "topics#index", category: 4
+  get "topics/pi_fa" => "topics#index", category: 1
+  get "topics/ding_zhuo" => "topics#index", category: 2
+  get "topics/hai_tao" => "topics#index", category: 3
 
   resources :topics do
     member do
@@ -66,7 +64,7 @@ Rails.application.routes.draw do
 
   get 'page/:name' => "pages#show", as: :page
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'users/profile' => "users#profile"
   get 'users/pending_apply_students', to: "applies#pending_apply_students"
   resources :users, :only => [:show, :index] do

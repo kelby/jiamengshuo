@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:weibo, :qq_connect]
 
   has_many :topics, dependent: :destroy
   has_many :wishes, dependent: :destroy
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :sections, dependent: :destroy
   has_many :subjects, dependent: :destroy
+  has_many :authentications, dependent: :destroy
 
   # join table
   has_many :applies
@@ -50,6 +51,43 @@ class User < ActiveRecord::Base
   delegate :gender, :male?, :female?, :birth_date, :website, :phone, :weibo, :tqq_weibo, to: :user_body, allow_nil: true, prefix: nil
 
   after_create :ensure_create_user_body
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.image = auth.info.image # assuming the user model has an image
+    end
+  end
+
+  def apply_omniauth(omniauth)
+    self.email = omniauth['info']['email'] if email.blank?
+    self.password = Devise.friendly_token[0,20]
+    self.username = omniauth['info']['nickname']
+    self.avatar = omniauth.info.image # assuming the user model has an image
+    # raw_info = omniauth['extra']['raw_info']
+
+    # unless raw_info['avatar_large'].blank? || is_default_avatar?(raw_info['avatar_large'])
+      # self.remote_avatar_url = raw_info['avatar_large']
+    # end
+
+    # self.user_profile ||= UserProfile.new
+    # user_profile.location ||= omniauth["info"]["location"]
+    # user_profile.description ||= raw_info['description']
+    # user_profile.gender ||=  raw_info['gender'] == 'm' ? '男' : '女'
+    # user_profile.website ||= raw_info['url']
+
+    authentications.build(
+      :provider => omniauth['provider'],
+      :uid => omniauth['uid'],
+      :access_token => omniauth['credentials']['token'],
+      :expires_at => omniauth['credentials']['expires_at'])
+  end
+
+  def email_required?  
+    (authentications.empty? || !email.blank?) && super  
+  end  
 
   def chinese_gender
     return "男" if self.male?

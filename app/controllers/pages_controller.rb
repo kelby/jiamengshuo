@@ -11,10 +11,11 @@ class PagesController < ApplicationController
       "keeper_topic.keep", "marker_topic.mark", "keeper_topic.unkeep", "marker_topic.unmark",
       "wish.spurn_it", "wish.checkout_it", "wish.checkin_it", "wish.got_it"
       ]}
-    @activities = PublicActivity::Activity.order("created_at desc").page(params[:pub_page] || 1).per(15).where.not(condition)
-    @snippet = @topic.snippet
-    @four_users = User.where.not(avatar: nil).order("updated_at desc").limit(4)
+    # @activities = PublicActivity::Activity.order("created_at desc").page(params[:pub_page] || 1).per(15).where.not(condition)
+    # @snippet = @topic.snippet
+    # @four_users = User.where.not(avatar: nil).order("updated_at desc").limit(4)
 
     @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
+    @catalogs = Catalog.all
   end
 end

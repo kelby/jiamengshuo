@@ -8,6 +8,10 @@
   <%= @catalog.info %>
 </p>
 
+<% @topics.each do |topic| %>
+
+<% end %>
+
 <% if can? :update, @catalog %>
   <%= link_to 'Edit', edit_catalog_path(@catalog) %> |
 <% end %>
