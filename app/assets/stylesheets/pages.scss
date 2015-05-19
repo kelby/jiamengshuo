@@ -57,3 +57,171 @@
 .prefix.login, .prefix.password {
   color: #6CB683;
 }
+
+.header-nav li {
+  margin-right: 10px;
+}
+
+.header-nav a {
+  color: black;
+}
+
+.header-nav .header-login {
+  font-size: 13px;
+}
+
+.header-nav .post-pindan {
+  background-color: rgb(230, 75, 38);
+  padding: 8px 12px;
+  color: white;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+
+.pindan-sub-nav {
+  margin-top: 40px;
+}
+
+.pindan-sub-nav .circle-list-card {
+  width: 260px;
+  height: 330px;
+  margin-right: 40px;
+  border: 1px solid gray;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.25);
+  -moz-box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.25);
+  -webkit-box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.25);
+}
+
+.circle-list-card .circle-list-card-header {
+  width: 260px;
+  color: white;
+  text-align: center;
+  background-color: gray;
+  position: relative;
+  top: -3px;
+  right: 16px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+
+.circle-list-card .circle-list-card-body{
+  position: relative;
+  left: 40px;
+}
+
+.circle-list-card-body li {
+  font-size: 23px;
+  margin-top: 30px;
+}
+
+.circle-list-card-body a {
+  color: black;
+  line-height: 50px;
+}
+
+.circle-list-card-body a:hover {
+  color: red;
+}
+
+.newest-pindan-info {
+  width: 90%;
+  height: 800px;
+  margin: 0 auto;
+  border: 1px solid gba(222, 222, 222);
+  background-color: rgb(218, 227, 234);
+}
+
+.newest-pindan-kinds {
+  width: 30%;
+  float: left;
+}
+
+.newest-pindan-body {
+  width: 70%;
+  float: right;
+  height: 900px;
+  padding: 10px 5px;
+}
+
+.newest-pindan-kinds img {
+  padding: 6px;
+  width: 97%;
+  height: 20%;
+}
+
+.newest-pindan-list li {
+  padding: 10px;
+  height: 80px;
+  display: block;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.newest-pindan-list img {
+  width: 60px;
+  height: 60px;
+  border-radius: 60%;
+  -webkit-border-radius: 60%;
+}
+
+.newest-pindan-list .list-username {
+  position: relative;
+  top: -20px;
+  left: 7px;
+}
+
+.newest-pindan-list .pindan-num {
+  padding: 5px 10px;
+  background-color: rgb(140, 200, 220);
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  top: 25px;
+  right: 30px;
+}
+
+.newest-pindan-list .pindan-title {
+  position: relative;
+  top: 25px;
+  right: 30px;
+}
+
+.newest-pindan-kinds .newest-pindan-kind-list {
+  margin-top: 50px;
+  margin-right: 40px;
+}
+
+.newest-pindan-kind-list li {
+  padding: 5px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  background-color: white;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+.newest-pindan-kind-list li a {
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

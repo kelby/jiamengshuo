@@ -3,146 +3,122 @@
   <!-- http://jingyan.baidu.com/user/income/school -->
   <section class="body-wrapper">
     <section class="body">
-      <div class="row circle-list skill-list">
-        <div class="medium-3 columns">
-          <img src="assets/img/images/css.svg">
-          <h4>盟主发起拼单</h4>
-          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i></p>
-          <p>The straight CSS version is perfect if you want to just start writing code, rapid prototype, or building a simple, static site. We'll give you all the pieces you need, no setup required.</p>
-          <p><a href="css.html">CSS Install →</a></p>
+      <div class="row circle-list skill-list pindan-sub-nav">
+        <div class="medium-3 columns circle-list-card">
+          <h4 class="circle-list-card-header">盟主发起拼单</h4>
+          <ul class="circle-list-card-body">
+            <li><a href="#">30斤批发起</a></li>
+            <li><a href="#">10件订做起</a></li>
+            <li><a href="#">海淘高邮费</a></li>
+          </ul>
         </div>
 
         <hr class="dashed hide-for-medium-up">
 
-        <div class="medium-3 columns">
-          <img src="assets/img/images/scss.svg">
-          <h4>盟员跟单</h4>
-          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
-          <p>Check out to get started with Sass (SCSS) to let you customize... well, everything. Setup is straight forward and if you haven't used Sass before, once you do, you'll never look back.</p>
-          <p><a href="sass.html">Sass Install →</a></p>
+        <div class="medium-3 columns circle-list-card">
+          <h4 class="circle-list-card-header">盟员跟单</h4>
+          <ul class="circle-list-card-body">
+            <li><a href="#">30斤批发起</a></li>
+            <li><a href="#">10件订做起</a></li>
+            <li><a href="#">海淘高邮费</a></li>
+          </ul>
         </div>
 
         <hr class="dashed hide-for-medium-up">
 
-        <div class="medium-3 columns">
-          <img src="assets/img/images/rails.svg">
-          <h4>盟主下单付款</h4>
-          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
-          <p>We use Rails to build our apps (Notable, Verify, Solidify, ZURB University, and the Foundation Forum) and you can too. We'll show you how to use the Foundation gem and get set up.</p>
-          <p><a href="applications.html">App Install →</a></p>
+        <div class="medium-3 columns circle-list-card">
+          <h4 class="circle-list-card-header">盟主下单付款</h4>
+          <ul class="circle-list-card-body">
+            <li><a href="#">30斤批发起</a></li>
+            <li><a href="#">10件订做起</a></li>
+            <li><a href="#">海淘高邮费</a></li>
+          </ul>
         </div>
 
         <hr class="dashed hide-for-medium-up">
 
-        <div class="medium-3 columns">
-          <img src="assets/img/images/rails.svg">
-          <h4>付款收货</h4>
-          <p class="skill-level subheader">Skill level&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i>&nbsp;<i class="fi-star"></i></p>
-          <p>We use Rails to build our apps (Notable, Verify, Solidify, ZURB University, and the Foundation Forum) and you can too. We'll show you how to use the Foundation gem and get set up.</p>
-          <p><a href="applications.html">App Install →</a></p>
+        <div class="medium-3 columns circle-list-card">
+          <h4 class="circle-list-card-header">付款收货</h4>
+          <ul class="circle-list-card-body">
+            <li><a href="#">30斤批发起</a></li>
+            <li><a href="#">10件订做起</a></li>
+            <li><a href="#">海淘高邮费</a></li>
+          </ul>
         </div>
       </div>
 
       <section class="fot-con-par clearfix">
         <div class="fot-con">
           <h3>最新拼单信息</h3>
-
-          <div class="doing-wrap columns large-12">
-            <div class="joing columns large-4">
-              <div class="s-title"><h4>最新帖子</h4></div>
-              <div class="joing-list-wrap">
-                <% joing_list = Topic.limit(5).order(id: :desc) %>
-                <ul id="joing-list" class="joing-list" style="top: 0px; left: 0px;">
-                  <% joing_list.each do |topic| %>
-                    <li>
-                      <!-- <span class="join-uname"> -->
-                      <%= link_to topic do %>
-                      <%= truncate topic.title, length: 18 %>
-                      <% end %>
-                      <!-- </span> -->
-                        <%#= link_to topic.user do %>
-                          <%#= image_tag topic.user.avatar_url(:mini), class: "super_tiny" %>
-                        <%# end %>
-                    </li>
-                  <% end %>
+            <div class="newest-pindan-info">
+              <div class="newest-pindan-kinds">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                <ul class="newest-pindan-kind-list">
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
+                  <li><a href="#">母婴用品</a></li>
                 </ul>
               </div>
-            </div>
-
-            <div class="curcha columns large-4">
-              <div class="s-title"><h4>功课排名</h4></div>
-              <% curcha_list = User.order("posts_count desc").limit(5) %>
-              <div class="curcha-list">
-                <!-- <p class="tit">原创经验</p> -->
-                <p class="tit"></p>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="num num1">NO&nbsp;1</span>&nbsp;
-                        <span class="rankuanme" title="<%= curcha_list.first.username %>">
-                          <%= truncate curcha_list.first.username, length: 10 %>
-                        </span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.first.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="num num2">NO&nbsp;2</span>&nbsp;
-                        <span class="rankuanme" title="<%= curcha_list.second.username %>">
-                          <%= truncate curcha_list.second.username, length: 10 %>
-                        </span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.second.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td><span class="num num3">NO&nbsp;3</span>&nbsp;
-                      <span class="rankuanme" title="<%= curcha_list.third.username %>">
-                        <%= truncate curcha_list.third.username, length: 10 %></span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.third.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td><span class="num num4">NO&nbsp;4</span>&nbsp;
-                      <span class="rankuanme" title="<%= curcha_list.fourth.username %>">
-                        <%= truncate curcha_list.fourth.username, length: 10 %></span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.fourth.posts_count %>篇</td>
-                    </tr>
-                    <tr>
-                      <td><span class="num num5">NO&nbsp;5</span>&nbsp;
-                      <span class="rankuanme" title="<%= curcha_list.fifth.username %>">
-                        <%= truncate curcha_list.fifth.username, length: 10 %></span>
-                      </td>
-                      <td class="exp-num"><%= curcha_list.fifth.posts_count %>篇</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="prizes columns large-4">
-              <div class="s-title"><h4>本项功能待定</h4></div>
-              <div class="prizes-wrp">
-                <span class="ico-rk ico-rk1"></span>
-                <span class="ico-rk ico-rk2"></span>
-                <span class="ico-rk ico-rk3"></span>
-
-                <div class="pri-img pri-img1">
-                  <!-- <a target="_blank" href="/assets/huizhuanshousiDT.jpg"> -->
-                    <%= image_tag "huizhuanshousiDT.jpg" %>
-                  <!-- </a> -->
-                </div>
-                <div class="pri-img pri-img2">
-                  <!-- <a target="_blank" href="/assets/qinghuaci-418.jpg"> -->
-                    <%= image_tag "qinghuaci-418.jpg" %>
-                  <!-- </a> -->
-                </div>
-                <div class="pri-img pri-img3">
-                  <!-- <a target="_blank" href="/assets/xiaoduwufi-419.jpg"> -->
-                    <%= image_tag "xiaoduwufi-419.jpg" %>
-                  <!-- </a> -->
-                </div>
+              <div class="newest-pindan-body">
+                <ul class="newest-pindan-list">
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                  <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+                    <span class="list-username">名字</span>
+                    <span class="pindan-num">24</span>
+                    <span class="pindan-title"><a href="#">美国网站拼单</a></span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

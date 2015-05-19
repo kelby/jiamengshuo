@@ -39,14 +39,6 @@ ActiveRecord::Schema.define(version: 20150308050405) do
     t.string   "info",       limit: 255
   end
 
-  create_table "apply_students", force: :cascade do |t|
-    t.boolean  "approved",   limit: 1
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "user_id",    limit: 4
-    t.integer  "mentor_id",  limit: 4
-  end
-
   create_table "catalogs", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -88,12 +80,6 @@ ActiveRecord::Schema.define(version: 20150308050405) do
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
-  create_table "notifications", force: :cascade do |t|
-    t.boolean  "checked",    limit: 1, default: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-  end
-
   create_table "pages", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -102,19 +88,12 @@ ActiveRecord::Schema.define(version: 20150308050405) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id",     limit: 4
-    t.text     "description", limit: 65535
     t.string   "icon",        limit: 255
     t.integer  "icon_from",   limit: 4
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "body",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
   end
 
   create_table "replies", force: :cascade do |t|

@@ -1,3 +1,19 @@
+<header>
+  <div class="header-logo">
+    加盟说
+  </div>
+  <div class="header-nav text-right">
+    <ul>
+      <li><a href="#" class="header-login">微博登录</a></li>
+      <li><a href="#" class="header-login">QQ登录</a></li>
+      <li><a href="#" class="header-login">登录</a></li>
+      <li><a href="#" class="header-login">注册</a></li>
+      <li><a href="#" class="post-pindan">发布拼单</a></li>
+      <li><a href="#" class="post-pindan">参与拼单</a></li>
+    </ul>
+  </div>
+</header>
+
 <div class="contain-to-grid">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
@@ -5,7 +21,7 @@
         <h1>
           <%= link_to root_path do %>
             <!-- <span>Found</span> -->
-            <span style="color: rgb(240, 65, 36);">加盟说</span>
+            <span style="color: rgb(240, 65, 36);">首页</span>
           <% end %>
         </h1>
       </li>
@@ -15,17 +31,17 @@
 
     <section class="top-bar-section">
       <!-- Left Nav Section -->
-      <ul class="left">
+      <ul>
         <li class="divider"></li>
-        <li><%= link_to '微博登录', topics_path %></li>
-              <li class="divider"></li>
-        <li><%= link_to 'QQ登录', posts_path %></li>
+        <li><%= link_to '批发拼单', topics_path %></li>
         <li class="divider"></li>
-        <li><%= link_to '登录', wishes_path %></li>
-        <li><%= link_to '注册', wishes_path %></li>
+        <li><%= link_to '定做拼单', posts_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to '海淘拼单', wishes_path %></li>
+        <!-- <li><%#= link_to '拼单帮助', wishes_path %></li> -->
         <!-- <li><%#= link_to '分类导航', catalogs_path %></li> -->
 
-        <li class="divider"></li>
+        <!-- <li class="divider"></li> -->
         <!-- <li class="has-form">
           <%#= form_tag search_topics_path, method: :get, class: "row collapse" do |f| %>
             <div class="large-8 small-9 columns">
@@ -38,14 +54,14 @@
           <%# end %>
         </li> -->
 
-        <li>
+        <!-- <li>
           <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Dropdown Button</button><br>
           <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
             <li><a href="#">This is a link</a></li>
             <li><a href="#">This is another</a></li>
             <li><a href="#">Yet another</a></li>
           </ul>
-        </li>
+        </li> -->
 
         <!-- <li class="has-dropdown"> -->
           <%#= link_to "写点什么", "javascript:void(0);" %>
@@ -59,7 +75,7 @@
             <!-- <li class="divider"></li> -->
             <!-- <li><%#= link_to '心愿', new_wish_path %></li> -->
           <!-- </ul> -->
-        </li>
+        <!-- </li> -->
       </ul>
 
       <!-- Right Nav Section -->
@@ -94,11 +110,11 @@
           <li class="divider"></li>
         
           <li class="has-form">
-            <%= link_to '发布拼单', new_user_registration_path, class: "small button" %>
+            <%= link_to '拼单帮助', new_user_registration_path, class: "small button" %>
           </li>
 
-          <li class="divider"></li>
-          <li><%= link_to '参与拼单', new_user_session_path %></li>
+          <!-- <li class="divider"></li> -->
+          <!-- <li><%#= link_to '参与拼单', new_user_session_path %></li> -->
         <% end %>
       </ul>
     </section>
