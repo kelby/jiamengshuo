@@ -10,9 +10,9 @@
             拼单中
           </div>
           <div class="topic-info large-4 small-8 columns">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+            <%= image_tag topic.user.avatar_url(:thumb), class: 'thumb_avatar' %>
             <p class="topic-user">
-              free
+              <%= topic.user.username %>
             </p>
             <div class="topic-info-detail">            
               <p><%= link_to topic.title, topic %></p>
