@@ -16,6 +16,12 @@ class Topic < ActiveRecord::Base
     ::ApplicationController.helpers.cn_for(freight_source)
   end
 
+  after_create :generate_barcode
+
+  def generate_barcode
+    self.barcode = SecureRandom.hex(8) unless self.barcode
+  end
+
   # join tables
   has_many :keeper_topics#, ->{ where related_by: 'stick'}, class_name: 'TopicAndUser'
   has_many :marker_topics#, ->{ where related_by: 'follower'}, class_name: 'TopicAndUser'

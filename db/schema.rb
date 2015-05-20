@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520031910) do
+ActiveRecord::Schema.define(version: 20150520100937) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 20150520031910) do
     t.date     "deadline"
     t.integer  "rate",           limit: 4
     t.integer  "freight_source", limit: 4
+    t.string   "barcode",        limit: 255,                   null: false
   end
 
   create_table "user_bodies", force: :cascade do |t|

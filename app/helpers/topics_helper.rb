@@ -36,4 +36,26 @@ module TopicsHelper
       "欧洲"
     end
   end
+
+  def cn_for_category(category)
+    case category
+    when 'pi_fa'
+      "批发"
+    when 'ding_zhuo'
+      "定做"
+    when 'hai_tao'
+      "海淘"
+    end
+  end
+
+  def cn_for_invoice(invoice)
+    case invoice
+    when 'not_sure'
+      "不确定"
+    when 'yes'
+      "提供发票"
+    when 'no'
+      "无发票"
+    end
+  end
 end

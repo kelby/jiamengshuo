@@ -10,22 +10,22 @@
         <div class="pindan-content-kind">
           <p>
             <strong>拼单方式:</strong>
-            海淘拼单
+            <%= cn_for_category @topic.category %>
           </p>
           <p>
             <strong>拼单货源:</strong>
-            美国
+            <%= cn_for @topic.freight_source %>
           </p>
           <p>
             <strong>截至日期:</strong>
-            2015-05-20
+            <%= @topic.deadline %>
           </p>
         </div>
 
         <div class="pindan-content-kind">
           <p>
             <strong>购买发票:</strong>
-            无
+            <%= cn_for_invoice(@topic.invoice) %>
           </p>
           <p>
             <strong>手续费用:</strong>
@@ -40,11 +40,11 @@
         <div class="pindan-content-kind">
           <p>
             <strong>商品类型:</strong>
-            海淘拼单  
+            <%= @topic.catalog.name %>
           </p>
           <p>
             <strong>坐标地址:</strong>
-            美国
+            <%= cn_for(@topic.freight_source) %>
           </p>
         </div>
       </div>
