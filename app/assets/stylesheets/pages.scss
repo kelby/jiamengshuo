@@ -109,8 +109,7 @@
 }
 
 .circle-list-card .circle-list-card-body{
-  position: relative;
-  left: 40px;
+  text-align: center;
 }
 
 .circle-list-card-body li {
@@ -134,7 +133,7 @@
   margin: 0 auto;
   overflow: hidden;
   border: 1px solid gba(222, 222, 222);
-  background-color: rgb(218, 227, 234);
+  background-color: rgb(231, 243, 244);
 }
 
 .newest-pindan-kinds {
@@ -177,8 +176,8 @@
 }
 
 .newest-pindan-list .pindan-num {
-  padding: 5px 10px;
-  background-color: rgb(140, 200, 220);
+  padding: 3px 14px;
+  background-color: rgb(148, 204, 221);
   color: white;
   border-radius: 5px;
   position: relative;
@@ -190,6 +189,10 @@
   position: relative;
   top: 25px;
   right: 85px;
+}
+
+.newest-pindan-list .pindan-title a {
+  color: rgb(148, 204, 221);
 }
 
 .newest-pindan-kinds .newest-pindan-kind-list {
@@ -209,3 +212,19 @@
 .newest-pindan-kind-list li a {
   color: black;
 }
+
+.top-bar-section .left li {
+  margin-left: 140px;
+  font-size: 20px;
+}
+
+.top-bar-section .left li a {
+  font-size: 16px;
+  color: rgb(240, 65, 36);
+}
+
+.top-bar-section .right li a {
+  font-size: 17px;
+}
+
+
