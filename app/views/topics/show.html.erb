@@ -29,11 +29,11 @@
           </p>
           <p>
             <strong>手续费用:</strong>
-            无
+            <%= cn_for_rate @topic.rate %>
           </p>
           <p>
             <strong>拼单编号:</strong>
-            20150520
+            <%= @topic.barcode %>
           </p>
         </div>
 
@@ -50,11 +50,7 @@
       </div>
       <div class="pindan-content-info clearfix">
         <article>
-          拼单网站：drugstore.com / beauty、美亚（+手续费5%）、Origins、Saksfifthavenue等等
-          价格=网站价格*汇率【6.35】+国际运费【商品毛重（每百克）*5，特重、特轻件酌情】
-          跟单请提供商品全名（最好是英文，最好带链接，可以不带图），是点【我要拼单】哦~~~~回复不算跟单啊~~~~~~随后会确认价格。
-          因为价格变动、网站活动截止等，我会择机分批下单。如果发现价格有问题或临时需要撤单，请第一时间私信我哦！
-          下单后会通知淘宝支付，约在6月下旬到货。
+          <%= @topic.body %>
         </article>
       </div>
     </div>
@@ -111,20 +107,27 @@
 </div>
 
 <div class="pindan-user-sidebar large-3 columns">
-  <%= link_to "参与拼单", "#", class: "button success" %>
+  <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button" id="new_apply">参与拼单</a>
+
+  <div id="shopping_together" class="reveal-modal" data-reveal>
+    <%= render 'snippets/form' %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+
   <div class="user-sidebar">
     <strong>发单人</strong>
     <div class="user-sidebar-info margin-top-20">
       <div>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="medium-img">
-        <p class="user-sidebar-name">free</p>
+        <%= image_tag @topic.user.avatar_url(:thumb), class: 'thumb_avatar' %>
+        <p class="user-sidebar-name"><%= link_to @topic.user.username, @topic.user %></p>
       </div>
       <div class="user-sidebar-fun">
         <strong>电话: </strong>
-        12345678
+        <%= @topic.user.phone %>
         <div>
-          <span>2 发单</span> |
-          <span>20 被关注</span>
+          <span><%= @topic.user.topics.count %> 发单</span> |
+          <span><%= @topic.user.count_user_followers %> 被关注</span>
         </div>
       </div>
       <div class="gendan-users">

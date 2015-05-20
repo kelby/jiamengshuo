@@ -1,0 +1,49 @@
+<% @snippet = Snippet.new %>
+
+<%= form_for([@topic, @snippet]) do |f| %>
+  <% if @snippet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+
+      <ul>
+      <% @snippet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "商品名称" %><br>
+    <%= f.text_field :name, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :spec, "规格" %><br>
+    <%= f.text_field :spec, rows: 5, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :color, "颜色" %><br>
+    <%= f.text_field :color, rows: 5, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :per_price, "单价（元）" %><br>
+    <%= f.number_field :per_price, rows: 5, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity, "数量" %><br>
+    <%= f.number_field :quantity, rows: 5, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :address, "收货地址" %><br>
+    <%= f.text_field :address, rows: 5, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body, "备注说明" %><br>
+    <%= f.text_area :body, rows: 5, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "提交", class: "blue tiny button radius" %>
+  </div>
+<% end %>

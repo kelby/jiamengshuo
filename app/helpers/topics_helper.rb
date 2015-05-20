@@ -58,4 +58,9 @@ module TopicsHelper
       "无发票"
     end
   end
+
+  def cn_for_rate(rate)
+    rate ||= "无"
+    rate
+  end
 end

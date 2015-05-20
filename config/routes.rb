@@ -54,6 +54,7 @@ Rails.application.routes.draw do
        get :search
      end
     resources :comments
+    resources :snippets
   end
 
   resources :comments do
