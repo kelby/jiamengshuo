@@ -1,10 +1,10 @@
-<div class="row" id="comments">
+<div class="row large-3 columns" id="comments">
   <% @comments.each do |comment| %>
     <div class="comment" id="<%= dom_id comment %>">
       <section class="top">
         <h6 class="byline">
           <a href="#">
-            <i class="icon"></i>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img">
             <%= comment.user.username %>
             <% if comment.user == @topic.user %>
               <span class="label"> 作者</span>

@@ -1,78 +1,156 @@
 <% set_meta_tags :title => @topic.title %>
+<div class="row pindan-show">
+<div class="large-8 columns pindan-user-content">
 
-<div class="columns large-9" style="margin: auto 12.5%;">
-<p>
-  <h1><%= @topic.title %></h1>
-</p>
+    <div class="pindan-content clearfix">
+      <h3><%= @topic.title %></h3>
+      <span class="pindan-status">拼单已完成</span>
+      
+      <div class="pindan-kinds">
+        <div class="pindan-content-kind">
+          <p>
+            <strong>拼单方式:</strong>
+            海淘拼单
+          </p>
+          <p>
+            <strong>拼单货源:</strong>
+            美国
+          </p>
+          <p>
+            <strong>截至日期:</strong>
+            2015-05-20
+          </p>
+        </div>
 
-<p>
-  <strong>时间:</strong>
-  <%= time_ago_in_words @topic.created_at %> 前
-</p>
+        <div class="pindan-content-kind">
+          <p>
+            <strong>购买发票:</strong>
+            无
+          </p>
+          <p>
+            <strong>手续费用:</strong>
+            无
+          </p>
+          <p>
+            <strong>拼单编号:</strong>
+            20150520
+          </p>
+        </div>
 
-<p>
-  <strong>作者:</strong>
-  <%= @topic.user.username %>
-</p>
+        <div class="pindan-content-kind">
+          <p>
+            <strong>商品类型:</strong>
+            海淘拼单  
+          </p>
+          <p>
+            <strong>坐标地址:</strong>
+            美国
+          </p>
+        </div>
+      </div>
+      <div class="pindan-content-info clearfix">
+        <article>
+          拼单网站：drugstore.com / beauty、美亚（+手续费5%）、Origins、Saksfifthavenue等等
+          价格=网站价格*汇率【6.35】+国际运费【商品毛重（每百克）*5，特重、特轻件酌情】
+          跟单请提供商品全名（最好是英文，最好带链接，可以不带图），是点【我要拼单】哦~~~~回复不算跟单啊~~~~~~随后会确认价格。
+          因为价格变动、网站活动截止等，我会择机分批下单。如果发现价格有问题或临时需要撤单，请第一时间私信我哦！
+          下单后会通知淘宝支付，约在6月下旬到货。
+        </article>
+      </div>
+    </div>
+    
+    <br/>
+    <%# cache @topic do %>
+      <section class="panel social-share-section" style="padding: 0">
+            &nbsp;
+        <%= social_share_button_tag @topic.title %>
 
-<p>
-  <%= raw(markdown_for @topic.body) %>
-</p>
-
-<p class="tags">
-  <strong>标签:&nbsp;</strong>
-  <% @topic.tags.each do |tag| %>
-    <%= link_to tag.name, "javascript:void(0);", class: "tag-container" %>
-  <% end %>
-</p>
-
-<br>
-
-<%# cache @topic do %>
-  <section class="panel social-share-section" style="padding: 0">
-        &nbsp;
-    <%= social_share_button_tag @topic.title %>
-
-    <span class="right">
+        <span class="right">
 
 
-      <%# unless current_user.followering? @topic %>
-        <% if user_signed_in? && current_user.keeping?(@topic.id) %>
-          <%= render 'topic_and_user/unkeep', topic: @topic %>
-        <% else %>
-          <%= render 'topic_and_user/keep', topic: @topic %>
-        <% end %>
-        &nbsp;
-      <%# end %>
+          <%# unless current_user.followering? @topic %>
+            <% if user_signed_in? && current_user.keeping?(@topic.id) %>
+              <%= render 'topic_and_user/unkeep', topic: @topic %>
+            <% else %>
+              <%= render 'topic_and_user/keep', topic: @topic %>
+            <% end %>
+            &nbsp;
+          <%# end %>
 
-      <%# unless current_user.keepering? @topic %>
-        <% if user_signed_in? && current_user.marking?(@topic.id) %>
-          <%= render 'topic_and_user/unmark', topic: @topic %>
-        <% else %>
-          <%= render 'topic_and_user/mark', topic: @topic %>
-        <% end %>
-        &nbsp;
-      <%# end %>
-    </span>
-  </section>
-<%# end %>
+          <%# unless current_user.keepering? @topic %>
+            <% if user_signed_in? && current_user.marking?(@topic.id) %>
+              <%= render 'topic_and_user/unmark', topic: @topic %>
+            <% else %>
+              <%= render 'topic_and_user/mark', topic: @topic %>
+            <% end %>
+            &nbsp;
+          <%# end %>
+        </span>
+      </section>
+    <%# end %>
 
-<% if can? :update, @topic %>
-  <%= link_to 'Edit', edit_topic_path(@topic) %>
-<% end %>
+    <% if can? :update, @topic %>
+      <%= link_to 'Edit', edit_topic_path(@topic) %>
+    <% end %>
 
-<% if can? :delete, @topic %>
-  <td><%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %>
+    <% if can? :delete, @topic %>
+      <td><%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
 
-<hr>
+    <hr>
 
-<%= form_for :comment, url: topic_comments_path(@topic) do |f| %>
-  <%= f.text_area :content, rows: 10, required: true %>
-  <%= f.submit "提交", class: "blue tiny button radius" %>
-<% end %>
+    <%= form_for :comment, url: topic_comments_path(@topic) do |f| %>
+      <%= f.text_area :content, rows: 10, required: true %>
+      <%= f.submit "评论", class: "blue tiny button radius float-right" %>
+    <% end %>
 
-<hr>
+    <hr>
 
-<%= render 'topics/comments' %>
+    <%= render 'topics/comments' %>
+
+</div>
+
+<div class="pindan-user-sidebar large-3 columns">
+  <%= link_to "参与拼单", "#", class: "button success" %>
+  <div class="user-sidebar">
+    <strong>发单人</strong>
+    <div class="user-sidebar-info margin-top-20">
+      <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="medium-img">
+        <p class="user-sidebar-name">free</p>
+      </div>
+      <div class="user-sidebar-fun">
+        <strong>电话: </strong>
+        12345678
+        <div>
+          <span>2 发单</span> |
+          <span>20 被关注</span>
+        </div>
+      </div>
+      <div class="gendan-users">
+        <strong>44人跟单</strong>
+        <ul>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pindan-other">
+      <p>67件商品</p>
+      <strong><a href="#">商家链接</a></strong>
+    </div>
+  </div>
 </div>
