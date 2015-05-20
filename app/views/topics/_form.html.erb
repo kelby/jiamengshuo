@@ -1,3 +1,7 @@
+<%#= stylesheet_link_tag 'docs/base' %>
+<%#= stylesheet_link_tag 'docs/dark' %>
+<%#= stylesheet_link_tag 'docs/clean' %>
+
 <%= form_for @topic do |f| %>
   <% if @topic.errors.any? %>
     <div id="error_explanation">
@@ -29,11 +33,18 @@
     <%= radio_button("topic", "invoice", "no") %>&nbsp;无发票
     <%= radio_button("topic", "invoice", "not_sure") %>&nbsp;不确定
   </div>
-
+  
   <div class="field">
     <%= f.label :deadline, "截止日期" %><br>
-    <%= f.text_field :deadline, required: true %>
+    <%= f.text_field :deadline, id: "simple-calendar" %>
   </div>
+
+  <div class="span8">
+          <form class="form-inline">
+            <input class="inputDate" id="inputDate" value="">
+            <label id="closeOnSelect" class="checkbox"><input type="checkbox" checked="checked"> Close on selection</label>
+          </form>
+        </div>
 
   <div class="field">
     <%= f.label :rate, "手续费" %><br>
@@ -72,3 +83,33 @@
     <%= f.submit "提交", class: "blue tiny button radius" %>
   </div>
 <% end %>
+
+<script>
+  $(function(){
+    // $('#simple-calendar').DatePicker({
+    //   mode: 'single',
+    //   inline: true,
+    //   onBeforeShow: function(el){
+    //     if($('#simple-calendar').val())
+    //       $('#simple-calendar').DatePickerSetDate($('#simple-calendar').val(), true);
+    //   }
+    // });
+    $('#inputDate')
+
+    $('#inputDate').DatePicker({
+      mode: 'single',
+      position: 'right',
+      onBeforeShow: function(el){
+        if($('#inputDate').val())
+          $('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
+      },
+      onChange: function(date, el) {
+        $(el).val((date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear());
+        if($('#closeOnSelect input').attr('checked')) {
+          $(el).DatePickerHide();
+        }
+      }
+    });
+
+  }); 
+</script>
