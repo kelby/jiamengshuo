@@ -8,8 +8,8 @@
         <li><%= link_to '登录', new_user_session_path, class: "header-login" %></li>
         <li><%= link_to '注册', new_user_registration_path, class: "header-login" %></li>
       <% end %>
-      <li><%= link_to '发布拼单', new_topic_path, class: "post-pindan" %></li>
-      <li><%= link_to '参与拼单', topics_path, class: "post-pindan" %></li>
+      <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
+      <li><a class="post-pindan" href="/topics"><i class="fi-home"></i> 参与拼单</a></li>
     </ul>
   </div>
 </header>

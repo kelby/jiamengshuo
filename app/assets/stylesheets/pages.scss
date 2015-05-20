@@ -72,7 +72,7 @@
 }
 
 .header-nav .post-pindan {
-  background-color: rgb(230, 75, 38);
+  background-color: rgb(235, 130, 59);
   padding: 8px 12px;
   color: white;
   border-radius: 6px;
@@ -84,10 +84,11 @@
 }
 
 .pindan-sub-nav .circle-list-card {
-  width: 260px;
+  width: 230px;
   height: 330px;
-  margin-right: 40px;
+  margin-left: 55px;
   border: 1px solid gray;
+  font-weight: bold;
   border-radius: 6px;
   -webkit-border-radius: 6px;
   box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.25);
@@ -96,10 +97,10 @@
 }
 
 .circle-list-card .circle-list-card-header {
-  width: 260px;
+  width: 230px;
   color: white;
   text-align: center;
-  background-color: gray;
+  background-color: rgb(59, 59, 59);
   position: relative;
   top: -3px;
   right: 16px;
