@@ -15,7 +15,7 @@ stdout_path "#{Rails.root}/log/unicorn.stdout.log"
 
 listen 5001, :tcp_nopush => false
 
-listen "/tmp/unicorn.found_mentor.sock"
+listen "/tmp/unicorn.jiamengshuo.sock"
 worker_processes 2
 timeout 123
 
