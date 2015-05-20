@@ -41,6 +41,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :freight_source, "拼单货源" %><br>
+    <%= f.text_field :freight_source, required: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :body, "拼单说明" %><br>
     <!-- <div id="wmd-button-bar"></div> -->
     <%= f.text_area :body, rows: 15, required: true, id: "wmd-input" %>

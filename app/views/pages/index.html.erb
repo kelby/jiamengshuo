@@ -47,36 +47,35 @@
     <section class="fot-con-par clearfix">
       <div class="fot-con">
         <h3>最新拼单信息</h3>
-          <div class="newest-pindan-info">
-            <div class="newest-pindan-kinds">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
-              <ul class="newest-pindan-kind-list">
-                <% @catalogs.each do |catalog| %>
-                  <li><%= link_to catalog.name, catalog %></li>
-                <% end %>
-              </ul>
-            </div>
-            <div class="newest-pindan-body">
-              <ul class="newest-pindan-list">
-                <% @topics.each do |topic| %>
-                  <li>
-                    <%= link_to topic.user do %>
-                      <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+        <div class="newest-pindan-info">
+          <div class="newest-pindan-kinds">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+            <ul class="newest-pindan-kind-list">
+              <% @catalogs.each do |catalog| %>
+                <li><%= link_to catalog.name, catalog %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="newest-pindan-body">
+            <ul class="newest-pindan-list">
+              <% @topics.each do |topic| %>
+                <li>
+                  <%= link_to topic.user do %>
+                    <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+                  <% end %>
+                  <span class="list-username"><%= topic.user.username %></span>
+                  <span class="pindan-num"><%= topic.comments.count %></span>
+                  <span class="pindan-title">
+                    <%= link_to topic do %>
+                      <%= topic.title %>
                     <% end %>
-                    <span class="list-username"><%= topic.user.username %></span>
-                    <span class="pindan-num"><%= topic.comments.count %></span>
-                    <span class="pindan-title">
-                      <%= link_to topic do %>
-                        <%= topic.title %>
-                      <% end %>
-                    </span>
-                  </li>
-                <% end %>
-              </ul>
+                  </span>
+                </li>
+              <% end %>
+            </ul>
 
-              <%= paginate @topics %>
-            </div>
-          </aside>
+            <%= paginate @topics %>
+          </div>
         </div>
       </div>
     </section>

@@ -44,9 +44,16 @@
 
       <!-- Right Nav Section -->
       <ul class="right">
+        <li class="divider"></li>
         <li class="has-form">
-          <%= link_to "拼单帮助", page_path(:help), class: "small button" %>
+          <%= link_to "拼单帮助", page_path(:help) %>
         </li>
+        <li class="divider"></li>
+        <% if user_signed_in? %>
+          <li class="has-form">
+            <%= link_to "注销", destroy_user_session_path, method: :delete %>
+          </li>
+        <% end %>
       </ul>
     </section>
   </nav>

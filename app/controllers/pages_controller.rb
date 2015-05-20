@@ -15,7 +15,7 @@ class PagesController < ApplicationController
     # @snippet = @topic.snippet
     # @four_users = User.where.not(avatar: nil).order("updated_at desc").limit(4)
 
-    @topics = Topic.page(params[:page]).per(15).order("updated_at DESC")
+    @topics = Topic.page(params[:page]).per(8).order("updated_at DESC")
     @catalogs = Catalog.all
   end
 end

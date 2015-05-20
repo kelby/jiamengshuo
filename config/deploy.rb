@@ -7,8 +7,8 @@ lock '3.4.0'
 # server "foundmentor.com", :web, :app, :db, primary: true
 server 'foundmentor.com', user: 'deployer', roles: %w{web app db}
 
-set :application, 'found_mentor'
-set :repo_url, 'git@bitbucket.org:lkelby/found_mentor.git'
+set :application, 'jiamengshuo'
+set :repo_url, 'git@bitbucket.org:lkelby/jiamengshuo.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -18,7 +18,7 @@ set :deploy_via, :copy
 set :use_sudo, false
 
 set :scm, "git"
-set :repository,  "git@bitbucket.org:lkelby/found_mentor.git"
+set :repository,  "git@bitbucket.org:lkelby/jiamengshuo.git"
 set :branch, "master"
 
 set :stages, %w[production staging]
@@ -37,7 +37,7 @@ set :ssh_options, {:forward_agent => true}
 after "deploy", "deploy:cleanup"
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/var/www/found_mentor'
+set :deploy_to, '/var/www/jiamengshuo'
 
 # Default value for :scm is :git
 # set :scm, :git

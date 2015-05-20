@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519060149) do
+ActiveRecord::Schema.define(version: 20150520031910) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20150519060149) do
     t.integer  "user_id",    limit: 4
     t.integer  "mentor_id",  limit: 4
     t.string   "info",       limit: 255
+  end
+
+  create_table "apply_students", force: :cascade do |t|
+    t.boolean  "approved",   limit: 1
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "user_id",    limit: 4
+    t.integer  "mentor_id",  limit: 4
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -90,6 +98,12 @@ ActiveRecord::Schema.define(version: 20150519060149) do
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
+  create_table "notifications", force: :cascade do |t|
+    t.boolean  "checked",    limit: 1, default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -98,12 +112,19 @@ ActiveRecord::Schema.define(version: 20150519060149) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id",     limit: 4
+    t.text     "description", limit: 65535
     t.string   "icon",        limit: 255
     t.integer  "icon_from",   limit: 4
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "body",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "replies", force: :cascade do |t|
@@ -171,18 +192,19 @@ ActiveRecord::Schema.define(version: 20150519060149) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "body",       limit: 65535
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.integer  "user_id",    limit: 4
-    t.boolean  "essence",    limit: 1,     default: false
-    t.integer  "catalog_id", limit: 4,     default: 1003
-    t.integer  "category",   limit: 4
-    t.integer  "mode",       limit: 4
-    t.integer  "invoice",    limit: 4
+    t.string   "title",          limit: 255
+    t.text     "body",           limit: 65535
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "user_id",        limit: 4
+    t.boolean  "essence",        limit: 1,     default: false
+    t.integer  "catalog_id",     limit: 4,     default: 1003
+    t.integer  "category",       limit: 4
+    t.integer  "mode",           limit: 4
+    t.integer  "invoice",        limit: 4
     t.date     "deadline"
-    t.integer  "rate",       limit: 4
+    t.integer  "rate",           limit: 4
+    t.integer  "freight_source", limit: 4
   end
 
   create_table "user_bodies", force: :cascade do |t|
