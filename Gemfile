@@ -22,6 +22,8 @@ gem 'redcarpet'
 gem 'rouge'
 gem 'md_emoji'
 
+gem "pikaday-gem"
+
 gem 'carrierwave'
 # need install ImageMagick/GraphicsMagick
 gem "mini_magick"

@@ -36,15 +36,8 @@
   
   <div class="field">
     <%= f.label :deadline, "截止日期" %><br>
-    <%= f.text_field :deadline, id: "simple-calendar" %>
+    <%= f.text_field :deadline, id: "datepicker" %>
   </div>
-
-  <div class="span8">
-          <form class="form-inline">
-            <input class="inputDate" id="inputDate" value="">
-            <label id="closeOnSelect" class="checkbox"><input type="checkbox" checked="checked"> Close on selection</label>
-          </form>
-        </div>
 
   <div class="field">
     <%= f.label :rate, "手续费" %><br>
@@ -85,31 +78,11 @@
 <% end %>
 
 <script>
-  $(function(){
-    // $('#simple-calendar').DatePicker({
-    //   mode: 'single',
-    //   inline: true,
-    //   onBeforeShow: function(el){
-    //     if($('#simple-calendar').val())
-    //       $('#simple-calendar').DatePickerSetDate($('#simple-calendar').val(), true);
-    //   }
-    // });
-    $('#inputDate')
-
-    $('#inputDate').DatePicker({
-      mode: 'single',
-      position: 'right',
-      onBeforeShow: function(el){
-        if($('#inputDate').val())
-          $('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
-      },
-      onChange: function(date, el) {
-        $(el).val((date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear());
-        if($('#closeOnSelect input').attr('checked')) {
-          $(el).DatePickerHide();
-        }
+    var picker = new Pikaday({ 
+      field: document.getElementById('datepicker'),
+      format: 'D MMM YYYY',
+      onSelect: function() {
+        console.log(this.getMoment().format('Do MMMM YYYY'));
       }
     });
-
-  }); 
 </script>

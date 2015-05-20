@@ -193,6 +193,8 @@ GEM
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
     orm_adapter (0.5.0)
+    pikaday-gem (1.2.0)
+      railties (>= 3.1)
     pr_geohash (1.0.0)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
@@ -367,6 +369,7 @@ DEPENDENCIES
   net-ssh (= 2.7.0)
   omniauth
   omniauth-weibo-oauth2
+  pikaday-gem
   public_activity
   qq_client
   quiet_assets

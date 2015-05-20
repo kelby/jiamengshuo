@@ -14,6 +14,7 @@
  *= require 'bootstrap-markdown.min'
  *= require 'wmd/wmd'
  *= require social-share-button
+ *= require pikaday
  *= require_tree .
  *= require_self
 

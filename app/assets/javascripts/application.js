@@ -19,4 +19,5 @@
 //= require 'wmd/showdown'
 //= require social-share-button
 //= require_tree .
+//= require pikaday
 $(function(){ $(document).foundation(); });
