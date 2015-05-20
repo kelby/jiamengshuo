@@ -5,7 +5,7 @@ lock '3.4.0'
 # $ ssh-copy-id user_name@found_mentor.com
 
 # server "foundmentor.com", :web, :app, :db, primary: true
-server 'foundmentor.com', user: 'deployer', roles: %w{web app db}
+server 'jiamengshuo.com', user: 'deployer', roles: %w{web app db}
 
 set :application, 'jiamengshuo'
 set :repo_url, 'git@bitbucket.org:lkelby/jiamengshuo.git'
