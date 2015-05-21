@@ -225,9 +225,9 @@
   font-size: 17px;
 }
 
-.top-bar-section ul li > a {
+.top-bar-section ul li:first-child > a {
   font-weight: bold;
-  padding: 10px 0 12px 0.9375rem;
+  padding: 6px 0 12px 0.9375rem;
 }
 
 .top-bar-section ul li > a:hover {
