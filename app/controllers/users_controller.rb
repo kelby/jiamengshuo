@@ -17,9 +17,9 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
-    @teachers = UserRelationship.where(recipient_id: current_user.id).includes(:owner)
-    @students = UserRelationship.where(owner_id: current_user.id).includes(:recipient)
-    @followers = current_user.followers
+    # @followers = current_user.followers
+
+    @activities = PublicActivity::Activity.order("created_at desc").page(params[:pub_page] || 1).per(15)
   end
 
   def index
