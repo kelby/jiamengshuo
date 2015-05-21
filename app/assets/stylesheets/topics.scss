@@ -119,8 +119,10 @@ i.red{
 }
 
 .topic-info .topic-user {
+  height: 50px;
   width: 40%;
   text-align: center;
+  overflow: hidden;
 }
 
 .topic-info .topic-users-list {
