@@ -22,12 +22,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user.email = auth.info.email || "#{SecureRandom.hex(6)}@jiamengshuo.com"
         user.password = SecureRandom.hex(8)
 
-        user.save
+        user.save!
       end
 
       sign_in_and_redirect user, :event => :authentication #this will throw if user is not activated
     elsif current_user
-      current_user.authentications.create(provider: auth.provider,
+      current_user.authentications.create!(provider: auth.provider,
                                           uid: auth.uid,
                                           access_token: auth['credentials']['token'],
                                           expires_at: auth['credentials']['expires_at'])
@@ -37,9 +37,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user.email = auth.info.email || "#{SecureRandom.hex(6)}@jiamengshuo.com"
       user.password = SecureRandom.hex(8)
 
-      user.save
+      user.save!
 
-      user.authentications.create(provider: auth.provider,
+      user.authentications.create!(provider: auth.provider,
                                           uid: auth.uid,
                                           access_token: auth['credentials']['token'],
                                           expires_at: auth['credentials']['expires_at'])
