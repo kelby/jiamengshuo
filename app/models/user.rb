@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :sections, dependent: :destroy
   has_many :subjects, dependent: :destroy
   has_many :authentications, dependent: :destroy
+  has_many :snippets, dependent: :destroy
 
   # join table
   has_many :applies

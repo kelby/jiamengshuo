@@ -63,4 +63,15 @@ module TopicsHelper
     rate ||= "无"
     rate
   end
+
+  def cn_for_status(status)
+    case status
+    when 'shopping_end'
+      "拼单已经下单"
+    when 'shopping_finish'
+      "拼单已完成"
+    else
+      "拼单中"
+    end
+  end
 end

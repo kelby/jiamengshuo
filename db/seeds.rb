@@ -206,3 +206,6 @@ t = Topic.last
 t.essence = true
 t.save
 
+500.times do
+  snippet = Snippet.create body: "rewrijwe jw joew oewjr w", topic: Topic.all.sample, user: User.all.sample, name: "hehe ...", spec: "16px", color: "黑金", per_price: Faker::Number.number(2), quantity: Faker::Number.number(1), address: "广西-桂林-临桂..."
+end

@@ -4,7 +4,7 @@
 
     <div class="pindan-content clearfix">
       <h3><%= @topic.title %></h3>
-      <span class="pindan-status">拼单已完成</span>
+      <span class="pindan-status"><%= cn_for_status(@topic.status) %></span>
       
       <div class="pindan-kinds">
         <div class="pindan-content-kind">
@@ -114,7 +114,6 @@
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
-
   <div class="user-sidebar">
     <strong>发单人</strong>
     <div class="user-sidebar-info margin-top-20">
@@ -131,29 +130,17 @@
         </div>
       </div>
       <div class="gendan-users">
-        <strong>44人跟单</strong>
+        <strong><%= @topic.snippets.count %> 个跟单</strong>
         <ul>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
-          <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img"></li>
+          <% @topic.snippets.each do |snippet| %>
+            <li><%= link_to image_tag(snippet.user.avatar_url(:tiny)), [@topic, snippet] %></li>
+          <% end %>
         </ul>
       </div>
     </div>
     <div class="pindan-other">
-      <p>67件商品</p>
-      <strong><a href="#">商家链接</a></strong>
+      <p><%= @topic.snippets.sum(:quantity) %> 件商品</p>
+      <!-- <strong><a href="#">商家链接</a></strong> -->
     </div>
   </div>
 </div>

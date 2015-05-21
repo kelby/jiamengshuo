@@ -11,6 +11,7 @@ class Topic < ActiveRecord::Base
   enum mode: {online_shopping: 1, physical_store: 2}
   enum invoice: {not_sure: 0, yes: 1, no: 2}
   enum freight_source: {mainland: 1, america: 2, hongkong: 3, korea: 4, japan: 5, macao: 6, australia: 7, europe: 8}
+  enum status: { shopping_ing: 0, shopping_end: 1, shopping_finish: 2}
 
   def freight_source_to_cn
     ::ApplicationController.helpers.cn_for(freight_source)
