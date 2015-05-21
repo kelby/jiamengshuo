@@ -16,7 +16,7 @@ class Topic < ActiveRecord::Base
     ::ApplicationController.helpers.cn_for(freight_source)
   end
 
-  after_create :generate_barcode
+  before_create :generate_barcode
 
   def generate_barcode
     self.barcode = SecureRandom.hex(8) unless self.barcode

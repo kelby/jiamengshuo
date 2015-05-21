@@ -111,6 +111,6 @@ group :development do
   gem 'net-ssh', '2.7.0'
 end
 
+gem 'omniauth-oauth2'
 gem 'omniauth-weibo-oauth2'
-gem 'omniauth'
-gem 'qq_client'
+gem 'omniauth-qq-connect'
