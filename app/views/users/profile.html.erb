@@ -1,22 +1,22 @@
 <div class="raw">
 
   <div class="large-3 columns user-info-card">
-    <h4>free</h4>
+    <h4><%= @user.username %></h4>
     <div class="zm-profile-header-main">
-      <img src="http://qzapp.qlogo.cn/qzapp/101167045/E69931C5BC080FB68BCD304DD817DCC8/100">
+      <%= image_tag @user.avatar_url(:thumb) %>
       <div class="zm-follow-header-info">
         <div class="clearfix">
           <div class="follow-num float-left margin-left-10">
             <span class="font-follow">关注了</span> 
-            <strong>0人</strong>
+            <strong><%= @user.following_users_count %>人</strong>
           </div>
           <div class="follow-num float-right margin-right-10">
             <span class="font-follow">粉丝数</span>
-            <strong>0人</strong>
+            <strong><%= @user.count_user_followers %>人</strong>
           </div>
         </div>
         <div class="edit-user-info">
-          <a href="#">编辑我的资料</a>
+          <%= link_to "编辑我的资料", edit_user_registration_path %>
         </div>
       </div>
       <hr/>
@@ -29,13 +29,13 @@
     </div>
     <hr/>
     <div class="font-message pindan-num">
-      发起了 <a href="#">0 个拼单</a>
-      参加了 <a href="#">0 个拼单</a>
+      发起了 <a href="#"><%= @user.topics.count %> 个拼单</a>
+      参加了 <a href="#"><%= @user.snippets.count %> 个拼单</a>
     </div>
     <hr/>
     <div class="font-message user-resume">
       个人介绍: 
-      <i>这家伙很懒,什么也没留下~</i>
+      <i><%= cn_for_user_info(@user.info) %></i>
     </div>
   </div>
 
@@ -45,7 +45,23 @@
     </div>
     <hr/>
     <div class="zm-profile-section-content">
-      暂时没有动态
+      <%if @activities.present? %>
+        <% @activities.each_slice(5) do |activities| %>
+          <div>
+            <% activities.each do |activity| %>
+              <div class="activity">
+                <%= link_to activity.owner.username, activity.owner if activity.owner %>
+                <%= render_activity activity %>
+              </div>
+            <% end %>
+            <hr class="dashed"></hr>
+          </div>
+        <% end %>
+
+        <%#= paginate @activities, :param_name => 'pub_page' %>
+      <% else %>
+        暂时没有动态
+      <% end %>
     </div>
   </div>
 </div>
