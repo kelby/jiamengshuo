@@ -203,8 +203,8 @@ i.red{
 
 .user-sidebar-info .user-sidebar-fun {
   position: relative;
-  top: -80px;
-  left: 100px;
+  top: -100px;
+  left: 130px;
 }
 
 .user-sidebar-name {
@@ -221,13 +221,16 @@ i.red{
   margin-top: 6px;
 }
 
-
 .new_topic label {
   font-weight: bold;
   font-size: 17px;
 }
 
-
+.new_snippet label {
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 1em;
+}
 
 
 
