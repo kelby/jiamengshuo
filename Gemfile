@@ -1,6 +1,6 @@
 source 'https://ruby.taobao.org'
 
-gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
+gem 'devise'
 
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
