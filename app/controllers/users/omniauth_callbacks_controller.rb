@@ -39,7 +39,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       user.save
 
-      current_user.authentications.create(provider: auth.provider,
+      user.authentications.create(provider: auth.provider,
                                           uid: auth.uid,
                                           access_token: auth['credentials']['token'],
                                           expires_at: auth['credentials']['expires_at'])
