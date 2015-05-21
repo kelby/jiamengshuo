@@ -49,7 +49,7 @@
         <h3>最新拼单信息</h3>
         <div class="newest-pindan-info">
           <div class="newest-pindan-kinds">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I">
+            <%= image_tag 'pay_plan.png' %>
             <ul class="newest-pindan-kind-list">
               <% @catalogs.each do |catalog| %>
                 <li><%= link_to catalog.name, catalog %></li>
