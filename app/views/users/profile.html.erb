@@ -1,64 +1,41 @@
-<div class="large-12 columns">
-  <div class="large-3 columns" style="position: fixed;">
-    <h5>
-      <%= link_to edit_avatar_user_path(@user) do %>
-        <i class="fi-widget"></i>
-      <% end %>
-    </h5>
+<div class="raw">
 
-    <p>
-      <a href="" data-reveal-id="mapModal">
-        <%= image_tag @user.avatar_url(:thumb), class: 'thumb_avatar' %>
-      </a>
-      <br>
-      <%= @user.username %>
-      <br>
-      <%= @user.chinese_gender %>
-    </p>
-    <%= render "sidebar_profile", user: @user %>
-  </div>
-
-  <div class="large-9 columns">
-    <div>
-      <section class="section">
-        <h5 class="title">心愿卡片?</h5>
-        <div class="content">
-          <%= form_for :wish, url: wishes_path do |f| %>
-            <%= f.text_area :content, rows: 4, required: true, autofocus: true %>
-            <%= f.submit "提交", class: "blue tiny button radius" %>
-          <% end %>
+  <div class="large-3 columns user-info-card">
+    <h4>free</h4>
+    <div class="zm-profile-header-main">
+      <img src="http://qzapp.qlogo.cn/qzapp/101167045/E69931C5BC080FB68BCD304DD817DCC8/100">
+      <div class="zm-follow-header-info">
+        <div class="clearfix">
+          <div class="follow-num float-left margin-left-10">
+            <span class="font-follow">关注了</span> 
+            <strong>0人</strong>
+          </div>
+          <div class="follow-num float-right margin-right-10">
+            <span class="font-follow">粉丝数</span>
+            <strong>0人</strong>
+          </div>
         </div>
-      </section>
-
-      <% if @teachers.any? %>
-        <section class="section">
-          <h5 class="title">我的导师们:
-            <!-- <span class="right">对所有导师说 ~</span> -->
-          </h5>
-
-          <%= render "users/polaroids", locals: {collection: @teachers, relation: :owner} %>
-        </section>
-        <hr>
-      <% end %>
-
-      <% if @students.any? %>
-        <section class="section">
-          <h5 class="title">我的学生们:
-            <!-- <span class="right">对所有学生说 ~</span> -->
-          </h5>
-
-          <%= render "users/polaroids", locals: {collection: @students, relation: :recipient} %>
-        </section>
-        <hr>
-      <% end %>
-
-      <% if @followers.any? %>
-        <section class="section">
-          <h5 class="title">我的朋友们:</h5>
-
-          <%= render "users/polaroids", locals: {collection: @followers, relation: nil} %>
-        </section>
-      <% end %>
+        <div class="edit-user-info">
+          <a href="#">编辑我的资料</a>
+        </div>
+      </div>
+      <hr/>
+    </div>
+    <div class="user-profile-item">
+      <p>账号绑定:</p>
+      <p>所在城市:
+        <span>北京</span>
+      </p>
+    </div>
+    <hr/>
+    <div class="font-message pindan-num">
+      发起了 <a href="#">0 个拼单</a>
+      参加了 <a href="#">0 个拼单</a>
+    </div>
+    <hr/>
+    <div class="font-message user-resume">
+      个人介绍: 
+      <i>这家伙很懒,什么也没留下~</i>
     </div>
   </div>
 </div>

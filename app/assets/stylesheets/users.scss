@@ -1,6 +1,22 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.font-message {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.a-hover-underline {
+  text-decoration: underline;
+}
+
 .mini_avatar{
   width: 32px;
   height: 32px;
@@ -149,3 +165,71 @@
 span.prefix > i.large {
   font-size: 28px;
 }
+
+.user-info-card {
+  margin: 20px 50px;
+  border: 1px solid #ddd;
+  @include border-radius(4px);
+}
+
+.user-info-card .zm-profile-header-main img {
+  float: left;
+}
+
+.user-info-card .zm-follow-header-info {
+  
+}
+
+.user-info-card .follow-num {
+  height: 40px;
+  width: 50px;
+  margin-top: 20px;
+}
+
+.follow-num .font-follow {
+  @extend .font-message;
+  color: #999;
+}
+
+.zm-follow-header-info .edit-user-info {
+  width: 80px;
+  position: relative;
+  left: 60%;
+}
+.zm-follow-header-info .edit-user-info a {
+  font-size: 13px;
+  @extend .font-message;
+}
+
+.zm-follow-header-info .edit-user-info a:hover {
+  @extend .a-hover-underline;
+}
+
+.user-profile-item p {
+  font-size: 15px;
+}
+
+.user-resume {
+  margin-bottom: 20px;
+}
+
+.user-resume i {
+  color: #999;
+}
+
+.user-info-card .pindan-num a:hover {
+  @extend .a-hover-underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
