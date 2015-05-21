@@ -229,12 +229,11 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
-  require 'omniauth/strategies/qq_connect'
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :weibo, '1199980007', '179125ede01be4dbc1f740c92fc012df', provider_ignores_state: true
+  config.omniauth :weibo, '1199980007', '179125ede01be4dbc1f740c92fc012df'
   config.omniauth :qq_connect, '101215381', '2144c842885a8459ccf28378e5dd7fe1'
 
   # ==> Warden configuration
