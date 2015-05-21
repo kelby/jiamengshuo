@@ -52,7 +52,7 @@
             <%= image_tag 'pay_plan.png' %>
             <ul class="newest-pindan-kind-list">
               <% @catalogs.each do |catalog| %>
-                <li><%= link_to catalog.name, catalog %></li>
+                <li><%= link_to catalog.name, topics_path(catalog_id: catalog.id) %></li>
               <% end %>
             </ul>
           </div>
