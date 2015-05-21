@@ -59,7 +59,7 @@
 }
 
 .header-nav li {
-  margin-right: 10px;
+  margin-right: 20px;
   margin-top: 18px;
 }
 
@@ -77,6 +77,12 @@
   color: white;
   border-radius: 6px;
   -webkit-border-radius: 6px;
+}
+
+.header-nav .qq_logo {
+  background: url('/assets/qq_login.png') no-repeat 0 0;
+  position: relative;
+  left: 20px;
 }
 
 .pindan-sub-nav {
@@ -100,7 +106,7 @@
   background-color: rgb(59, 59, 59);
   position: relative;
   top: -3px;
-  right: 16px;
+  right: 17px;
   border-radius: 6px;
   -webkit-border-radius: 6px;
 }
