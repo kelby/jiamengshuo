@@ -1,18 +1,18 @@
-<header class="header-body">
+<!-- <header class="header-body">
   <div class="header-logo"><img src="/assets/jiamengshuo-logo.png"></div>
   <div class="header-nav text-right">
-    <ul>
-      <% unless user_signed_in? %>
-        <li><%= link_to '微博登录', user_omniauth_authorize_path(:weibo), class: "header-login" %></li>
-        <li><%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), class: "header-login" %></li>
-        <li><%= link_to '登录', new_user_session_path, class: "header-login" %></li>
-        <li><%= link_to '注册', new_user_registration_path, class: "header-login" %></li>
-      <% end %>
-      <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
+    <ul> -->
+      <%# unless user_signed_in? %>
+        <!-- <li><%#= link_to '微博登录', user_omniauth_authorize_path(:weibo), class: "header-login" %></li> -->
+        <!-- <li><%#= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), class: "header-login" %></li> -->
+        <!-- <li><%#= link_to '登录', new_user_session_path, class: "header-login" %></li> -->
+        <!-- <li><%#= link_to '注册', new_user_registration_path, class: "header-login" %></li> -->
+      <%# end %>
+     <!--  <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
       <li><a class="post-pindan" href="/topics"><i class="fi-home"></i> 参与拼单</a></li>
     </ul>
   </div>
-</header>
+</header> -->
 
 <div class="contain-to-grid">
   <nav class="top-bar" data-topbar role="navigation">
@@ -33,11 +33,11 @@
 
       <ul class="left">
         <!-- <li class="divider"></li> -->
-        <li><%= link_to "批发拼单", topics_pi_fa_path %></li>
+        <!-- <li><%#= link_to "批发拼单", topics_pi_fa_path %></li> -->
         <!-- <li class="divider"></li> -->
-        <li><%= link_to "定做拼单", topics_ding_zhuo_path %></li>
+        <!-- <li><%#= link_to "定做拼单", topics_ding_zhuo_path %></li> -->
         <!-- <li class="divider"></li> -->
-        <li><%= link_to "海淘拼单", topics_hai_tao_path %></li>
+        <!-- <li><%#= link_to "海淘拼单", topics_hai_tao_path %></li> -->
         <!-- <li class="divider"></li> -->
         </li>
       </ul>
@@ -45,6 +45,10 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <!-- <li class="divider"></li> -->
+        <li><a class="post-pindan" href="/topics"><i class="fi-home"></i> 参与拼单</a></li>
+        <li class="divider"></li>
+        <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
+        <li class="divider"></li>
         <li class="has-form">
           <a href="/page/help"><i class="help">?</i> 拼单帮助</a>
         </li>

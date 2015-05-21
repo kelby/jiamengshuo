@@ -221,16 +221,20 @@
 
 .top-bar-section .left li a {
   font-size: 16px;
-  color: rgb(240, 65, 36);
+  // color: rgb(240, 65, 36);
+}
+
+.top-bar-section .left li a:hover {
+  color: #eee;
 }
 
 .top-bar-section .right li a {
   font-size: 17px;
 }
 
-.top-bar-section ul li:first-child > a {
+.top-bar-section ul li > a {
   font-weight: bold;
-  padding: 6px 0 12px 0.9375rem;
+  padding: 5px 0 12px 0.9375rem;
 }
 
 .top-bar-section ul li > a:hover {
