@@ -13,33 +13,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name, "商品名称" %><br>
-    <%= f.text_field :name, required: true %>
+  <div class="field large-12 columns">
+    <%= f.label :name, "商品名称:" %><br>
+    <%= f.text_field :name, required: true, placeholder: "在这里输入商品名称" %>
   </div>
-  <div class="field">
-    <%= f.label :spec, "规格" %><br>
-    <%= f.text_field :spec, rows: 5, required: true %>
+  <div class="field large-3 columns">
+    <%= f.label :spec, "规格:" %><br>
+    <%= f.text_field :spec, rows: 5, required: true, placeholder: "规格" %>
   </div>
-  <div class="field">
-    <%= f.label :color, "颜色" %><br>
-    <%= f.text_field :color, rows: 5, required: true %>
+  <div class="field large-3 columns">
+    <%= f.label :color, "颜色:" %><br>
+    <%= f.text_field :color, rows: 5, required: true, placeholder: "颜色" %>
   </div>
-  <div class="field">
-    <%= f.label :per_price, "单价（元）" %><br>
-    <%= f.number_field :per_price, rows: 5, required: true %>
+  <div class="field large-3 columns">
+    <%= f.label :per_price, "单价（元）:" %><br>
+    <%= f.number_field :per_price, rows: 5, required: true, placeholder: "价格" %>
   </div>
-  <div class="field">
-    <%= f.label :quantity, "数量" %><br>
-    <%= f.number_field :quantity, rows: 5, required: true %>
+  <div class="field large-3 columns">
+    <%= f.label :quantity, "数量:" %><br>
+    <%= f.number_field :quantity, rows: 5, required: true, placeholder: "数量" %>
   </div>
-  <div class="field">
-    <%= f.label :address, "收货地址" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :address, "收货地址:" %><br>
     <%= f.text_field :address, rows: 5, required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :body, "备注说明" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :body, "备注说明:" %><br>
     <%= f.text_area :body, rows: 5, required: true %>
   </div>
 
