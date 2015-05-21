@@ -17,6 +17,11 @@
   text-decoration: underline;
 }
 
+.main-border-info {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}
+
 .mini_avatar{
   width: 32px;
   height: 32px;
@@ -167,17 +172,13 @@ span.prefix > i.large {
 }
 
 .user-info-card {
-  margin: 20px 50px;
-  border: 1px solid #ddd;
+  @extend .main-border-info;
   @include border-radius(4px);
+  margin-left: 100px;
 }
 
 .user-info-card .zm-profile-header-main img {
   float: left;
-}
-
-.user-info-card .zm-follow-header-info {
-  
 }
 
 .user-info-card .follow-num {
@@ -221,11 +222,24 @@ span.prefix > i.large {
   @extend .a-hover-underline;
 }
 
+.user-info-state {
+  @extend .main-border-info;
+  @include border-radius(4px);
+  min-height: 200px;
+  margin-right: 100px;
+}
 
+.zm-profile-section-head h3 {
+  font-size: 15px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
 
-
-
-
+.zm-profile-section-content {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
 
 
 
