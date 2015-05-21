@@ -164,7 +164,8 @@ i.red{
 }
 
 .pindan-user-content {
-  margin: 0 auto;
+  // margin: 0 auto;
+  margin-left: 60px;
 }
 
 .pindan-user-content .pindan-content {
@@ -181,7 +182,7 @@ i.red{
 
 .pindan-user-sidebar {
   height: 500px;
-  margin-right: 90px;
+  // margin-right: 90px;
 }
 
 .pindan-content .pindan-content-kind {
@@ -203,9 +204,11 @@ i.red{
   border: 1px solid gray;
   border-top-right-radius: 6px;
   -webkit-border-top-right-radius: 6px;
+  width: 100px;
+  text-align: center;
   position: relative;
-  top: -41px;
-  left: 652px;
+  top: -49px;
+  left: 654px;
 }
 
 .user-sidebar-info .user-sidebar-fun {
