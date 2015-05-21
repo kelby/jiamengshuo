@@ -81,6 +81,7 @@ i.red{
 
 .topic-list {
   margin-top: 50px;
+  margin-left: 30px;
 }
 
 .topic-body {
@@ -95,6 +96,8 @@ i.red{
 }
 
 .topic-body .topic-status {
+  width: 120px;
+  text-align: center;
   float: right;
   border: 1px solid gray;
   padding: 8px 30px;
@@ -109,9 +112,10 @@ i.red{
 }
 
 .topic-info .topic-info-detail {
+  width: 500px;
   position: relative;
-  top: -130px;
-  left: 90px;
+  top: -140px;
+  left: 100px;
 }
 
 .topic-info .topic-user {
@@ -122,7 +126,7 @@ i.red{
 .topic-info .topic-users-list {
   width: 700px;
   position: relative;
-  top: -140px;
+  top: -145px;
 }
 
 .topic-info img {
@@ -141,8 +145,12 @@ i.red{
 
 .topic-body .topic-detail {
   position: relative;
-  left: 370px;
+  left: 310px;
   top: 110px;
+}
+
+.topic-kinds {
+  margin-right: 30px;
 }
 
 .topic-kinds p {
