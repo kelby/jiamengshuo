@@ -64,12 +64,14 @@
                     <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
                   <% end %>
                   <span class="list-username"><%= topic.user.username %></span>
-                  <span class="pindan-num"><%= topic.comments.count %></span>
-                  <span class="pindan-title">
-                    <%= link_to topic do %>
-                      <%= topic.title %>
-                    <% end %>
-                  </span>
+                  <div class="pindan-title">
+                    <span class="pindan-num"><%= topic.comments.count %></span>
+                    <span>
+                      <%= link_to topic do %>
+                        <%= topic.title %>
+                      <% end %>
+                    </span>
+                  </div>
                 </li>
               <% end %>
             </ul>
