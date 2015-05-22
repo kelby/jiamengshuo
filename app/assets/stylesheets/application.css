@@ -276,7 +276,9 @@ p.tags {
 
 .bg-orange {
     background: #FF9D14;
+    /*background: #FFAD15 url(http://172.168.97.242:8000/1.jpg) scroll center no-repeat;*/
     background: #FFAD15;
+    background-size: cover;
 }
 
 div.empty-row {
