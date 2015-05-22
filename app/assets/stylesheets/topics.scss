@@ -12,6 +12,10 @@
   display: inline-block;
 }
 
+.border-radius-input {
+  @include border-radius(5px);
+}
+
 i.icon {
   display: inline-block;
   width: 32px;
@@ -265,8 +269,9 @@ i.red{
 
 .select-category-bar {
   @include border-radius(5px);
-  padding: 50px;
+  padding: 10px;
   border: 1px solid rgb(172,172,172);
+  margin-left: -100px;
 }
 
 
