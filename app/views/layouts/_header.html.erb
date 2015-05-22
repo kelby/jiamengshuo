@@ -64,17 +64,17 @@
             </ul>
           </li>
         <% else %>
-        <li><a class="post-pindan" href="/topics/new"><i class="fi-pencil"></i> 发布拼单</a></li>
+        <!-- <li><a class="post-pindan" href="/topics/new"><i class="fi-pencil"></i> 发布拼单</a></li> -->
         <!-- <li class="divider"></li> -->
         <li class=""><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
           <!-- <li class="divider"></li> -->
-          <li class="active"><a class="post-pindan" href="/users/sign_in">登录</a></li>
+          <li class="active"><a class="post-pindan" href="#" data-reveal-id="myModal">登录</a></li>
           <!-- <li class="divider"></li> -->
-          <li class=""><a class="post-pindan" href="/users/sign_up">注册</a></li>
+          <li class=""><a class="post-pindan" href="#" data-reveal-id="signup">注册</a></li>
         <% end %>
         <!-- <li class="divider"></li> -->
         <li class="has-form_">
-          <a href="/page/help"><i class="help">?</i> 拼单帮助</a>
+          <a href="/page/help"><i class="fa large fa-question-circle"></i> 拼单帮助</a>
         </li>
       </ul>
     </section>
@@ -108,12 +108,11 @@
               <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
             </div>
           </div>
-          <%= f.submit "登录", class: "button" %>
-        <% end %>
-
-        <div style="position: relative; top: 40px;" class="a-state-hover-underline">
+          <%= f.submit "登录", class: "button", style: "float: right;" %>
+        <% end %>        
+        <div style="position: relative; top: 15px; width: 75%;" class="a-state-hover-underline">
           <%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), style: "color: black; margin-right: 30px;" %>
-          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo), style: "color: black;" %>
+          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo), style: "color: black; margin-right: 30px;" %>
           <a href="#" style="color: gray;">忘记密码?</a>
         </div>
       </div>

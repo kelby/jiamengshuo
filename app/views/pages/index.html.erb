@@ -94,8 +94,9 @@
                         </div>
                         <div class="content-area-1">
                             <div class="tag-list">
-                                <span>Hello</span>
-                                <span>World</span>
+                              <% topic.tags.map(&:name).each do |tag| %>
+                                <span><%= tag %></span>
+                              <% end %>
                             </div>
                         </div>
                         <div class="content-area-2">
