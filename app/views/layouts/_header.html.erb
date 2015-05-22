@@ -35,14 +35,6 @@
         <li class="has-form">
 
         </li>
-        <!-- <li class="divider"></li> -->
-        <!-- <li><%#= link_to "批发拼单", topics_pi_fa_path %></li> -->
-        <!-- <li class="divider"></li> -->
-        <!-- <li><%#= link_to "定做拼单", topics_ding_zhuo_path %></li> -->
-        <!-- <li class="divider"></li> -->
-        <!-- <li><%#= link_to "海淘拼单", topics_hai_tao_path %></li> -->
-        <!-- <li class="divider"></li> -->
-        </li>
       </ul>
 
       <!-- Right Nav Section -->
@@ -91,36 +83,45 @@
 
 <div id="myModal" class="reveal-modal remove-whitespace" data-reveal>
 <div class="row">
+    <!-- 登录 -->
     <div class="large-6 columns auth-plain">
       <div class="signup-panel left-solid">
         <p class="welcome">已有账号</p>
-        <form>
+        <%= form_for(:user, url: user_session_path) do |f| %>
           <div class="row collapse">
             <div class="small-2  columns">
-              <span class="prefix"><i class="fi-torso-female"></i></span>
+              <%= f.label :login do %>
+                <span class="prefix"><i class="fi-torso large"></i></span>
+              <% end %>
             </div>
             <div class="small-10  columns">
-              <input type="text" placeholder="用户名或邮箱">
+              <%= f.text_field :login, required: true, autofocus: true, placeholder: t("devise.email_or_username") %>
             </div>
           </div>
           <div class="row collapse">
             <div class="small-2 columns ">
-              <span class="prefix"><i class="fi-lock"></i></span>
+              <%= f.label :password do %>
+                <span class="prefix"><i class="fi-lock large"></i></span>
+              <% end %>
             </div>
             <div class="small-10 columns ">
-              <input type="text" placeholder="密码">
+              <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
             </div>
           </div>
         </form>
         <div style="position: relative; top: 40px;" class="a-state-hover-underline">
-          <a href="#" style="color: black; margin-right: 30px;">QQ登录</a>
-          <a href="#" style="color: black; margin-right: 30px;">微博登录</a>
+          <%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), style: "color: black; margin-right: 30px;" %>
+          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo), style: "color: black;" %>
           <a href="#" style="color: gray;">忘记密码?</a>
+          <%= f.submit "登录", class: "button" %>
+        <% end %>
+
+        <div style="position: relative; top: 40px;">          
         </div>
-        <a href="#" class="button" style="float: right">登录 </a>
       </div>
     </div>
 
+    <!-- 注册 -->
     <div class="large-6 columns auth-plain">
       <div class="signup-panel newusers">
         <p class="welcome"> 还没有账号?</p>
@@ -140,32 +141,40 @@
       <div class="signup-panel" style="position: relative; left: 36%;">
         <p class="welcome"> 欢迎来到加盟说!</p>
         <form>
+        <%= form_for(:user, url: user_registration_path) do |f| %>
           <div class="row collapse">
             <div class="small-2  columns">
-              <span class="prefix"><i class="fi-torso-female"></i></span>
+              <%= f.label :username do %>
+                <span class="prefix"><i class="fi-torso large"></i></span>
+              <% end %>
             </div>
             <div class="small-10  columns">
-              <input type="text" placeholder="用户名">
+              <%= f.text_field :username, required: true, placeholder: t("devise.username") %>
             </div>
           </div>
           <div class="row collapse">
             <div class="small-2 columns">
-              <span class="prefix"><i class="fi-mail"></i></span>
+              <%= f.label :email do %>
+                <span class="prefix"><i class="fi-mail large"></i></span>
+              <% end %>
             </div>
             <div class="small-10  columns">
-              <input type="text" placeholder="邮箱">
+              <%= f.email_field :email, required: true, autofocus: true, placeholder: t("devise.email") %>
             </div>
           </div>
           <div class="row collapse">
             <div class="small-2 columns ">
-              <span class="prefix"><i class="fi-lock"></i></span>
+              <%= f.label :password do %>
+                <span class="prefix"><i class="fi-lock large"></i></span>
+              <% end %>
             </div>
             <div class="small-10 columns ">
-              <input type="text" placeholder="密码">
+              <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
             </div>
           </div>
+          <%= f.submit "注册!", class: "button" %>
         </form>
-        <a href="#" class="button ">注册! </a>
+        <% end %>
          <!-- <p>Already have an account? <a href="#">denglu</a></p> -->
       </div>
 
