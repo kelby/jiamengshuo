@@ -11,42 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title, "拼单标题" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :title, "拼单标题" %>
     <%= f.text_field :title, required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :category, "拼单方式" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :category, "拼单方式" %>
     <%= radio_button("topic", "category", "pi_fa") %>&nbsp;拼单
     <%= radio_button("topic", "category", "ding_zhuo") %>&nbsp;定做
     <%= radio_button("topic", "category", "hai_tao") %>&nbsp;海淘
   </div>
 
-  <div class="field">
-    <%= f.label :invoice, "购买发票" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :invoice, "购买发票" %>
     <%= radio_button("topic", "invoice", "yes") %>&nbsp;提供发票
     <%= radio_button("topic", "invoice", "no") %>&nbsp;无发票
     <%= radio_button("topic", "invoice", "not_sure") %>&nbsp;不确定
   </div>
   
-  <div class="field">
-    <%= f.label :deadline, "截止日期" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :deadline, "截止日期" %>
     <%= f.text_field :deadline, id: "datepicker" %>
   </div>
 
-  <div class="field">
-    <%= f.label :rate, "手续费" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :rate, "手续费" %>
     <%= f.text_field :rate, required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :freight_source, "拼单货源" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :freight_source, "拼单货源" %>
     <%= f.text_field :freight_source, required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :body, "拼单说明" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :body, "拼单说明" %>
     <!-- <div id="wmd-button-bar"></div> -->
     <%= f.text_area :body, rows: 15, required: true, id: "wmd-input" %>
     <!-- <textarea name="content" data-provide="markdown" rows="10"></textarea> -->
@@ -58,17 +58,17 @@
 
   <div id="preview"></div>
 
-  <div class="field">
-    <%= f.label :tag_list, "海拼关键词(标签)" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :tag_list, "海拼关键词(标签)" %>
     <%= f.text_field :tag_list, required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :catalog_id, "品类" %><br>
+  <div class="field large-12 columns">
+    <%= f.label :catalog_id, "品类" %>
     <%= f.select :catalog_id, Catalog.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
   </div>
 
-  <div class="actions">
+  <div class="actions large-12 columns">
     <%= f.submit "提交", class: "blue tiny button radius" %>
   </div>
 <% end %>
