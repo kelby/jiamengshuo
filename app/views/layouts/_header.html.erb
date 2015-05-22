@@ -80,7 +80,7 @@
             </ul>
           </li>
         <% else %>
-          <li class="active"><a class="post-pindan" href="/users/sign_in">登录</a></li>
+          <li class="active"><a class="post-pindan" data-reveal-id="myModal" href="#">登录</a></li>
         <% end %>
         <li class="divider"></li>
         <li class="has-form">
@@ -90,3 +90,46 @@
     </section>
   </nav>
 </div>
+
+<div id="myModal" class="reveal-modal remove-whitespace" data-reveal>
+<div class="row">
+    <div class="large-6 columns auth-plain">
+      <div class="signup-panel left-solid">
+        <p class="welcome">已有账号</p>
+        <form>
+          <div class="row collapse">
+            <div class="small-2  columns">
+              <span class="prefix"><i class="fi-torso-female"></i></span>
+            </div>
+            <div class="small-10  columns">
+              <input type="text" placeholder="用户名或邮箱">
+            </div>
+          </div>
+          <div class="row collapse">
+            <div class="small-2 columns ">
+              <span class="prefix"><i class="fi-lock"></i></span>
+            </div>
+            <div class="small-10 columns ">
+              <input type="text" placeholder="密码">
+            </div>
+          </div>
+        </form>
+        <div style="position: relative; top: 40px;">
+          <a href="#" style="color: black; margin-right: 30px;">QQ登录</a>
+          <a href="#" style="color: black;">微博登录</a>
+        </div>
+        <a href="#" class="button" style="float: right">登录 </a>
+      </div>
+    </div>
+
+    <div class="large-6 columns auth-plain">
+      <div class="signup-panel newusers">
+        <p class="welcome"> 还没有账号?</p>
+        <p>注册账户以后就可以参与拼单或者发布拼单啦!</p><br>
+        <a href="#" class="button ">立即注册</a></br>
+      </div>
+    </div>
+
+   </div>   
+  <a class="close-reveal-modal">&#215;</a>
+</div>   
