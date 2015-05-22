@@ -302,3 +302,12 @@ div.empty-line {
 .top-bar .right * {
     font-size: 16px !important;
 }
+
+#error_explanation h2 {
+  font-size: 17px;
+  color: red;
+}
+
+#error_explanation ul li {
+  font-size: 14px;
+}
