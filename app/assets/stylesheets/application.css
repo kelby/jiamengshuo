@@ -265,3 +265,19 @@ p.tags {
 .h3_it * {
   font-size: 1.5rem;
 }
+
+.paddingful-wrapper {
+    padding: 1px 0 1px;
+}
+
+.bg-orange {
+    background: #FF9D14;
+}
+
+div.empty-row {
+    height: 30px
+}
+
+div.empty-line {
+    height: 10px
+}

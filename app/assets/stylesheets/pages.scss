@@ -86,7 +86,7 @@
 }
 
 .pindan-sub-nav {
-  margin-top: 40px;
+  margin: 60px auto;
 }
 
 .pindan-sub-nav .circle-list-card {
@@ -133,8 +133,13 @@
 .circle-list-card-body li {
   display: block;
   font-size: 18px;
+  padding: 0 0 0 10px;
   margin-top: 10px;
   // margin-top: 10px;
+  i {
+      color: #2475D1;
+      margin-right: 14px;
+  }
 }
 
 .circle-list-card-body a {
@@ -255,4 +260,15 @@
 
 .top-bar-section ul li > a:hover {
   color: #eee;
+}
+
+.max-width-600px {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.index-search-input {
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 1px 2px inset;
 }
