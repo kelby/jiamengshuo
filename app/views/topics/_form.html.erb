@@ -42,7 +42,7 @@
 
   <div class="field large-12 columns">
     <%= f.label :freight_source, "拼单货源" %>
-    <%= f.text_field :freight_source, required: true %>
+    <%= f.select :freight_source, Topic.freight_sources.map { |key, value| [cn_for_freight_source(key), value] }, include_blank: true, required: true %>
   </div>
 
   <div class="field large-12 columns">
