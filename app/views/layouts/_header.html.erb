@@ -9,7 +9,7 @@
         <!-- <li><%#= link_to '注册', new_user_registration_path, class: "header-login" %></li> -->
       <%# end %>
      <!--  <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
-      <li><a class="post-pindan" href="/topics"><i class="fi-home"></i> 参与拼单</a></li>
+      <li><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
     </ul>
   </div>
 </header> -->
@@ -33,14 +33,7 @@
 
       <ul class="left">
         <li class="has-form">
-          <div class="row collapse">
-            <div class="large-8 small-9 columns">
-              <input type="text" placeholder="查找拼单">
-            </div>
-            <div class="large-4 small-3 columns">
-              <a href="#" class="alert button expand"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
+
         </li>
         <!-- <li class="divider"></li> -->
         <!-- <li><%#= link_to "批发拼单", topics_pi_fa_path %></li> -->
@@ -64,8 +57,7 @@
 
           <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
           <li class="divider"></li>
-          <li class="active"><a class="post-pindan" href="/topics"><i class="fi-home"></i> 参与拼单</a></li>
-          <li class="divider"></li> 
+          <li class="active"><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
           <li class="divider"></li>
           <li class="has-dropdown">
             <%= link_to current_user.username, "javascript:void(0);" %>
@@ -80,7 +72,13 @@
             </ul>
           </li>
         <% else %>
+        <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
+        <li class="divider"></li>
+        <li class=""><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
+          <li class="divider"></li>
           <li class="active"><a class="post-pindan" data-reveal-id="myModal" href="#">登录</a></li>
+          <li class="divider"></li>
+          <li class=""><a class="post-pindan" data-reveal-id="signup" href="#">注册</a></li>
         <% end %>
         <li class="divider"></li>
         <li class="has-form">
@@ -130,7 +128,7 @@
       </div>
     </div>
 
-   </div>   
+   </div>
   <a class="close-reveal-modal">&#215;</a>
 </div>   
 
