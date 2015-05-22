@@ -32,7 +32,7 @@ class Topic < ActiveRecord::Base
   # has_many :followered_users, class_name: 'User', through: :followers
   # has_many :keepered_users, class_name: 'User', through: :keepers
 
-  validates_presence_of :user_id, :title, :body, :catalog_id
+  validates_presence_of :user_id, :title, :body, :catalog_id, :category, :mode, :invoice, :freight_source, :status
 
   scope :essences, -> { where(essence: true) }
 
