@@ -20,6 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user = User.new
         user.username = auth.info.name
         user.email = auth.info.email || "#{SecureRandom.hex(6)}@jiamengshuo.com"
+        user.build_user_body.location = get_location_from(auth)
         user.password = SecureRandom.hex(8)
 
         user.save!
@@ -35,6 +36,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user = User.new
       user.username = auth.info.name
       user.email = auth.info.email || "#{SecureRandom.hex(6)}@jiamengshuo.com"
+      user.build_user_body.location = get_location_from(auth)
       user.password = SecureRandom.hex(8)
 
       user.save!
@@ -45,6 +47,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
                                           expires_at: auth['credentials']['expires_at'])
 
       sign_in_and_redirect user, :event => :authentication #this will throw if user is not activated
+    end
+  end
+
+  private
+  def get_location_from(auth)
+    if auth.info.location
+      auth.info.location
+    else
+      "#{auth['extra']['raw_info']['province']}#{auth['extra']['raw_info']['city']}"
     end
   end
 end

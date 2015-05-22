@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   has_one :user_body, dependent: :destroy
   accepts_nested_attributes_for :user_body
 
-  delegate :gender, :male?, :female?, :birth_date, :website, :phone, :weibo, :tqq_weibo, to: :user_body, allow_nil: true, prefix: nil
+  delegate :gender, :male?, :female?, :birth_date, :website, :phone, :weibo, :tqq_weibo, :location, to: :user_body, allow_nil: true, prefix: nil
 
   after_create :ensure_create_user_body
 
