@@ -108,12 +108,12 @@
               <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
             </div>
           </div>
-          <%= f.submit "登录", class: "button" %>
+          <%= f.submit "登录", class: "button", style: "float: right;" %>
         <% end %>
         
-        <div style="position: relative; top: 40px;" class="a-state-hover-underline">
+        <div style="position: relative; top: 15px; width: 75%;" class="a-state-hover-underline">
           <%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), style: "color: black; margin-right: 30px;" %>
-          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo), style: "color: black;" %>
+          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo), style: "color: black; margin-right: 30px;" %>
           <a href="#" style="color: gray;">忘记密码?</a>
         </div>
       </div>
