@@ -290,7 +290,7 @@ div.empty-line {
 .top-bar *, .top-bar {
     color: #F07605 !important;
     background: #FFF !important;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .top-bar .title-area * {
