@@ -49,17 +49,20 @@
               </div>
             </div>
             <div class="max-width-600px">
-                <div class="row collapse postfix-round">
-                    <!-- <div class=""> -->
-                        <div class="columns small-10">
-                            <input class="index-search-input" type="text" placeholder="查找拼单">
-                        </div>
-                        <div class="columns small-2">
-                            <a href="#" class="button postfix"><i class="fa fa-search"></i></a>
-                        </div>
-                    <!-- </div> -->
-                </div>
-                <div class="empty-row"></div>
+              <div class="row collapse postfix-round">
+                <%= form_tag search_topics_path, method: :get do |f| %>
+                  <div class="small-10 columns">
+                    <%= text_field_tag 'q', params[:q], placeholder: '查找拼单', required: true %>
+                  </div>
+
+                  <div class="small-2 columns">
+                    <%= button_tag(type: 'submit', class: "button postfix") do %>
+                      <i class="fa fa-search"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="empty-row"></div>
             </div>
         </div>
     <section class="fot-con-par clearfix">

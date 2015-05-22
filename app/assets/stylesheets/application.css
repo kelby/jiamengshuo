@@ -38,6 +38,10 @@ header {
   margin-right: auto;
 }
 
+.a-state-hover-underline a:hover {
+  text-decoration: underline;
+}
+
 .float-right {
   float: right;
 }
