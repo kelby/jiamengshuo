@@ -29,7 +29,7 @@
     </div>
     <hr/>
     <div class="font-message pindan-num">
-      发起了 <a href="#"><%= @user.topics.count %> 个拼单</a>
+      发起了 <%= link_to "#{@user.topics.count} 个拼单", topics_path(user_id: @user.id) %>
       参加了 <a href="#"><%= @user.snippets.count %> 个拼单</a>
     </div>
     <hr/>
