@@ -247,6 +247,10 @@ i.red{
   font-size: 17px;
 }
 
+.new_topic .field input {
+  @include border-radius(4px);
+}
+
 .new_snippet label {
   font-size: 13px;
 }
@@ -259,6 +263,10 @@ i.red{
    @include border-radius(5px);
 }
 
-
+.select-category-bar {
+  @include border-radius(5px);
+  padding: 50px;
+  border: 1px solid rgb(172,172,172);
+}
 
 
