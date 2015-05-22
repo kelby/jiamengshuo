@@ -108,15 +108,13 @@
               <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
             </div>
           </div>
-        </form>
+          <%= f.submit "登录", class: "button" %>
+        <% end %>
+        
         <div style="position: relative; top: 40px;" class="a-state-hover-underline">
           <%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), style: "color: black; margin-right: 30px;" %>
           <%= link_to '微博登录', user_omniauth_authorize_path(:weibo), style: "color: black;" %>
           <a href="#" style="color: gray;">忘记密码?</a>
-          <%= f.submit "登录", class: "button" %>
-        <% end %>
-
-        <div style="position: relative; top: 40px;">          
         </div>
       </div>
     </div>
@@ -140,7 +138,6 @@
     <div class="large-7 columns">
       <div class="signup-panel" style="position: relative; left: 36%;">
         <p class="welcome"> 欢迎来到加盟说!</p>
-        <form>
         <%= form_for(:user, url: user_registration_path) do |f| %>
           <div class="row collapse">
             <div class="small-2  columns">
@@ -173,7 +170,6 @@
             </div>
           </div>
           <%= f.submit "注册!", class: "button" %>
-        </form>
         <% end %>
          <!-- <p>Already have an account? <a href="#">denglu</a></p> -->
       </div>
