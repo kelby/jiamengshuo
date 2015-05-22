@@ -44,8 +44,8 @@
       <h3>最新动态</h3>  
     </div>
     <hr/>
-    <div class="zm-profile-section-content">
-      <%if @activities.present? %>
+    <%if @activities.present? %>
+      <div class="zm-profile-section-content">
         <% @activities.each_slice(5) do |activities| %>
           <div>
             <% activities.each do |activity| %>
@@ -54,14 +54,14 @@
                 <%= render_activity activity %>
               </div>
             <% end %>
-            <hr class="dashed"></hr>
+            <!-- <hr class="dashed"></hr> -->
           </div>
         <% end %>
-
+      </div>
         <%#= paginate @activities, :param_name => 'pub_page' %>
-      <% else %>
-        暂时没有动态
-      <% end %>
-    </div>
+    <% else %>
+      <div class="zm-profile-section-empty">暂时没有动态</div>
+    <% end %>
+    
   </div>
 </div>
