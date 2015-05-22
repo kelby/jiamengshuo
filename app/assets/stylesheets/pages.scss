@@ -90,35 +90,51 @@
 }
 
 .pindan-sub-nav .circle-list-card {
+    background: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px;
+    border-radius: 3px;
+
   width: 230px;
-  height: 310px;
+  height: auto;
+  padding: 0 16px 20px;
   margin-left: 55px;
-  border: 2px solid rgb(172,172,172);
-  font-weight: bold;
-  border-radius: 6px;
-  -webkit-border-radius: 6px;
+
+
+  .floating-number {
+      font-size: 42px;
+      font-weight: 600;
+      color: #2475D1;
+      font-style: italic;
+      text-align: center;
+      background: #FFF;
+      box-shadow: rgba(0, 0, 0, 0.5) 0 0 2px;
+      border-radius: 800px;
+
+      display: block;
+      float: left;
+      width: 68px;
+      height: 68px;
+      margin-top: -34px;
+    //   -webkit-transform: translateY(-50%);
+  }
 }
 
 .circle-list-card .circle-list-card-header {
-  width: 230px;
-  color: white;
-  text-align: center;
-  background-color: rgb(59, 59, 59);
-  position: relative;
-  top: -3px;
-  right: 17px;
-  border-radius: 6px;
-  -webkit-border-radius: 6px;
+    font-size: 26px;
+    line-height: 1.15em;
+    margin: 50px 0 20px;
 }
 
-.circle-list-card .circle-list-card-body{
-  text-align: center;
+.circle-list-card .circle-list-card-body {
+  // text-align: center;
+  margin: 0;
 }
 
 .circle-list-card-body li {
   display: block;
-  font-size: 23px;
-  margin-top: 30px;
+  font-size: 18px;
+  margin-top: 10px;
+  // margin-top: 10px;
 }
 
 .circle-list-card-body a {
@@ -240,4 +256,3 @@
 .top-bar-section ul li > a:hover {
   color: #eee;
 }
-

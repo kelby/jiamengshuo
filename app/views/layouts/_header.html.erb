@@ -9,7 +9,7 @@
         <!-- <li><%#= link_to '注册', new_user_registration_path, class: "header-login" %></li> -->
       <%# end %>
      <!--  <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
-      <li><a class="post-pindan" href="/topics"><i class="fi-home"></i> 参与拼单</a></li>
+      <li><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
     </ul>
   </div>
 </header> -->
@@ -64,8 +64,7 @@
 
           <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
           <li class="divider"></li>
-          <li class="active"><a class="post-pindan" href="/topics"><i class="fi-home"></i> 参与拼单</a></li>
-          <li class="divider"></li> 
+          <li class="active"><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
           <li class="divider"></li>
           <li class="has-dropdown">
             <%= link_to current_user.username, "javascript:void(0);" %>
@@ -78,7 +77,13 @@
             </ul>
           </li>
         <% else %>
+        <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
+        <li class="divider"></li>
+        <li class=""><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
+          <li class="divider"></li>
           <li class="active"><a class="post-pindan" href="/users/sign_in">登录</a></li>
+          <li class="divider"></li>
+          <li class=""><a class="post-pindan" href="/users/sign_up">注册</a></li>
         <% end %>
         <li class="divider"></li>
         <li class="has-form">
