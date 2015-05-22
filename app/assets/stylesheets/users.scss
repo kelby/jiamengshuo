@@ -8,6 +8,10 @@
           border-radius: $radius;
 }
 
+.border-line {
+  border: 1px solid rgb(172,172,172);
+}
+
 .font-message {
   font-weight: 400;
   font-size: 15px;
@@ -241,8 +245,13 @@ span.prefix > i.large {
   color: #999;
 }
 
+input {
+  @include border-radius(4px);
+}
 
-
+// .tabbable .tabs {
+//   @extend .border-line;
+// }
 
 
 
