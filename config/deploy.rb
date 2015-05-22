@@ -63,7 +63,7 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 set :linked_files, %w{config/database.yml config/mailer.yml config/redis.yml config/secrets.yml config/sidekiq.yml}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/images public/uploads solr/data solr/pids}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/images public/uploads public/assets solr/data solr/pids}
 
 namespace :deploy do
 
