@@ -267,11 +267,12 @@ p.tags {
 }
 
 .paddingful-wrapper {
-    padding: 1px 0 1px;
+    padding: 100px 0;
 }
 
 .bg-orange {
     background: #FF9D14;
+    background: #FFAD15;
 }
 
 div.empty-row {
@@ -280,4 +281,20 @@ div.empty-row {
 
 div.empty-line {
     height: 10px
+}
+
+.top-bar *, .top-bar {
+    color: #F07605 !important;
+    background: #FFF !important;
+    overflow: hidden;
+}
+
+.top-bar .title-area * {
+    font-size: 26px !important;
+    font-weight: 600;
+    /*color: #DF9D10 !important;*/
+}
+
+.top-bar .right * {
+    font-size: 16px !important;
 }

@@ -66,35 +66,46 @@
       <div class="fot-con">
         <h3>最新拼单信息</h3>
         <div class="newest-pindan-info">
-          <div class="newest-pindan-kinds">
-            <%= image_tag 'pay_plan.png' %>
-            <ul class="newest-pindan-kind-list">
-              <% @catalogs.each do |catalog| %>
-                <li><%= link_to catalog.name, topics_path(catalog_id: catalog.id) %></li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="newest-pindan-body">
-            <ul class="newest-pindan-list">
-              <% @topics.each do |topic| %>
-                <li>
-                  <%= link_to topic.user do %>
-                    <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+          <!-- <div class="newest-pindan-kinds"> -->
+            <%#= image_tag 'pay_plan.png' %>
+                <!--ul class="newest-pindan-kind-list">
+                  <% @catalogs.each do |catalog| %>
+                    <li><%= link_to catalog.name, topics_path(catalog_id: catalog.id) %></li>
                   <% end %>
-                  <span class="list-username"><%= topic.user.username %></span>
-                  <div class="pindan-title">
-                    <span class="pindan-num"><%= topic.comments.count %></span>
-                    <span>
-                      <%= link_to topic do %>
-                        <%= topic.title %>
-                      <% end %>
-                    </span>
-                  </div>
+                </ul-->
+          <!-- </div> -->
+          <div class="newest-pindan-body">
+            <ul class="newest-pindan-list row">
+              <% @topics.each do |topic| %>
+                <li class="columns large-6 medium-6 small-12">
+                    <div class="newest-pindan-list-item-inside-wrapper">
+                        <div class="heading-area">
+                            <%= link_to topic.user do %>
+                              <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar avatar' %>
+                            <% end %>
+                            <h4 class="order-title">
+                                <%= link_to topic do %>
+                                  <%= topic.title %>
+                                <% end %>
+                            </h4>
+                        </div>
+                        <div class="content-area-1">
+                            <div class="tag-list">
+                                <span>Hello</span>
+                                <span>World</span>
+                            </div>
+                        </div>
+                        <div class="content-area-2">
+                            <div class="order-comments">
+
+                            </div>
+                        </div>
+                    </div>
                 </li>
               <% end %>
             </ul>
 
-            <%= paginate @topics %>
+            <%#= paginate @topics %>
           </div>
         </div>
       </div>
