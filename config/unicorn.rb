@@ -1,19 +1,11 @@
-module Rails
-  class <<self
-    def root
-      File.expand_path(__FILE__).split('/')[0..-3].join('/')
-    end
-  end
-end
 rails_env = ENV["RAILS_ENV"] || "production"
+root = "/var/www/jiamengshuo/current"
 
 preload_app true
-working_directory Rails.root
-pid "#{Rails.root}/tmp/pids/unicorn.pid"
-stderr_path "#{Rails.root}/log/unicorn.stderr.log"
-stdout_path "#{Rails.root}/log/unicorn.stdout.log"
-
-listen 5001, :tcp_nopush => false
+working_directory root
+pid "#{root}/tmp/pids/unicorn.pid"
+stderr_path "#{root}/log/unicorn.stderr.log"
+stdout_path "#{root}/log/unicorn.stdout.log"
 
 listen "/tmp/unicorn.jiamengshuo.sock"
 worker_processes 2
@@ -24,7 +16,7 @@ if GC.respond_to?(:copy_on_write_friendly=)
 end
 
 before_fork do |server, worker|
-  old_pid = "#{Rails.root}/tmp/pids/unicorn.pid.oldbin"
+  old_pid = "#{root}/tmp/pids/unicorn.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
@@ -32,4 +24,18 @@ before_fork do |server, worker|
       puts "Send 'QUIT' signal to unicorn error!"
     end
   end
+
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+  end
+end
+
+after_fork do |server, worker|
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+  end
+end
+
+before_exec do |server|
+  ENV["BUNDLE_GEMFILE"] = "#{root}/Gemfile"
 end

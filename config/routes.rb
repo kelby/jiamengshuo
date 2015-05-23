@@ -48,6 +48,8 @@ Rails.application.routes.draw do
       delete :unmark, to: 'topic_and_user#unmark'
       post :keep, to: 'topic_and_user#keep'
       delete :unkeep, to: 'topic_and_user#unkeep'
+
+      put 'change_status/:status', to: 'topics#change_status', as: :change_status
     end
 
     collection do
@@ -59,6 +61,11 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :replies
+
+    member do
+      post :like_it, to: 'liker_comments#like_it'
+      delete :unlike_it, to: 'liker_comments#unlike_it'
+    end
   end
 
   resources :replies, only: [:new, :create, :edit, :update, :destroy]

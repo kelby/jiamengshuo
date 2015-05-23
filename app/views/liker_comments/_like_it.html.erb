@@ -1,0 +1,3 @@
+<%= link_to like_it_comment_path(comment), method: :post, remote: true, title: '喜欢', id: "#{dom_id(comment, 'like_unlike')}" do %>
+  <i class="fi fi-heart"></i>&nbsp;(<%= comment.liker_comments.count %>)
+<% end %>
