@@ -47,14 +47,15 @@
             <%# end %>
           <!-- </li> -->
 
-          <li><a class="post-pindan" href="/topics/new"><i class="fi-pencil"></i> 发布拼单</a></li>
+          <li><a class="post-pindan" href="/topics/new"><i class="fa fa-pencil"></i> 发布拼单</a></li>
           <!-- <li class="divider"></li> -->
-          <li class="active"><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
+          <li class="active"><a class="post-pindan" href="/topics"><i class="fa fa-star"></i> 参与拼单</a></li>
           <!-- <li class="divider"></li> -->
-          <li><%= link_to '消息提醒', "#" %></li>
+          <!-- <li><%= link_to '消息', "#" %></li> -->
+          <li><a class="post-pindan" href="/notifications"><i class="fa fa-bell"></i> 消息</a></li>
           <!-- <li class="divider"></li> -->
           <li class="has-dropdown">
-            <%= link_to current_user.username, "javascript:void(0);" %>
+              <%#= image_tag current_user.avatar_url(:tiny), class: 'tiny_avatar' %><%= link_to current_user.username, "javascript:void(0);" %>
             <ul class="dropdown">
               <li><%= link_to '我的主页', users_profile_path %></li>
               <!-- <li class="divider"></li> -->
@@ -74,7 +75,7 @@
         <% end %>
         <!-- <li class="divider"></li> -->
         <li class="has-form_">
-          <a href="/page/help"><i class="fa large fa-question-circle"></i> 拼单帮助</a>
+          <a style="color: #555 !important;" href="/page/help"><i class="fa large fa-question-circle" style="color: #5F5F5F !important;"></i> 拼单帮助</a>
         </li>
       </ul>
     </section>
