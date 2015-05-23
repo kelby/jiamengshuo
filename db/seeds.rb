@@ -215,3 +215,11 @@ Topic.find_each do |topic|
   topic.tag_list = Faker::Lorem.words.join(',')
   topic.save(validate: false)
 end
+
+400.times do
+  jack = User.all.sample
+  mary = User.all.sample
+
+  jack.follow mary
+  jack.create_activity :follow, owner: jack, recipient: mary
+end

@@ -328,6 +328,43 @@ div.empty-line {
     display: block !important;
 }
 
+
+/* Begin nologin index */
+.contain-to-grid {
+  background: #FFF;
+  box-shadow: rgba(0, 0, 0, 0.29) 0 1px 3px 0;
+}
+
+.jms-logo {
+  color: rgb(240, 65, 36);
+}
+
+.help-page {
+  color: #555 !important;
+}
+
+.help-page i {
+  color: #5F5F5F !important;
+}
+
+.qq-weibo-login {
+  position: relative;
+  top: 15px;
+  width: 75%;
+}
+
+.qq-weibo-login a {
+  color: #000000;
+  margin-right: 30px;
+}
+
+.forgot-your-password {
+  color: gray;
+}
+/* End nologin index */
+
+
+
 /* ------------ font-size series overrides ------------ */
 
 .font-size-20 {

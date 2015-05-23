@@ -1,3 +1,4 @@
+=begin
 module Rails
   class <<self
     def root
@@ -6,12 +7,14 @@ module Rails
   end
 end
 rails_env = ENV["RAILS_ENV"] || "production"
+=end
+application_root = "/var/www/jiamengshuo/current"
 
 preload_app true
-working_directory Rails.root
-pid "#{Rails.root}/tmp/pids/unicorn.pid"
-stderr_path "#{Rails.root}/log/unicorn.stderr.log"
-stdout_path "#{Rails.root}/log/unicorn.stdout.log"
+working_directory "#{application_root}"
+pid "#{application_root}/tmp/pids/unicorn.pid"
+stderr_path "#{application_root}/log/unicorn.stderr.log"
+stdout_path "#{application_root}/log/unicorn.stdout.log"
 
 listen 5001, :tcp_nopush => false
 
@@ -24,7 +27,7 @@ if GC.respond_to?(:copy_on_write_friendly=)
 end
 
 before_fork do |server, worker|
-  old_pid = "#{Rails.root}/tmp/pids/unicorn.pid.oldbin"
+  old_pid = "#{application_root}/tmp/pids/unicorn.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
@@ -45,5 +48,5 @@ after_fork do |server, worker|
 end
 
 before_exec do |server|
-  ENV["BUNDLE_GEMFILE"] = "#{Rails.root}/Gemfile"
+  ENV["BUNDLE_GEMFILE"] = "#{application_root}/Gemfile"
 end
