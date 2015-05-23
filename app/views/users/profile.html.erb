@@ -49,6 +49,12 @@
     <hr/>
     <%if @activities.present? %>
       <div class="zm-profile-section-content">
+        <!-- 进入处理拼单页面 -->
+        <!-- <div class="activity"> -->
+          <!-- 您有 5 个拼单等待处理，点击 <%#= link_to "立即处理", users_pending_apply_students_path %> -->
+        <!-- </div> -->
+        <!-- <hr class="dashed"></hr> -->
+
         <% @activities.each_slice(5) do |activities| %>
           <div>
             <% activities.each do |activity| %>

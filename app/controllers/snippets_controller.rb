@@ -1,6 +1,11 @@
 class SnippetsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
+  def index
+    @topic = Topic.find params[:topic_id]
+    @snippets = @topic.snippets.page(params[:page]).per(24)
+  end
+
   def create
     @topic = Topic.find params[:topic_id]
 
