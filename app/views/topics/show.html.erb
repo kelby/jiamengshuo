@@ -3,9 +3,11 @@
 <div class="large-8 columns pindan-user-content">
 
     <div class="pindan-content clearfix">
+        <% if cn_for_status(@topic.status) != '拼单中' %>
+            <div class="pindan-status"><%= cn_for_status(@topic.status) %></div>
+        <% end %>
       <h3><%= @topic.title %></h3>
-      <div class="pindan-status"><%= cn_for_status(@topic.status) %></div>
-      
+
       <div class="pindan-kinds">
         <div class="pindan-content-kind">
           <p>
@@ -54,7 +56,7 @@
         </article>
       </div>
     </div>
-    
+
     <br/>
     <%# cache @topic do %>
       <section class="panel social-share-section" style="padding: 0">
@@ -84,14 +86,14 @@
       </section>
     <%# end %>
 
-    <hr>
+    <!-- <hr> -->
 
     <%= form_for :comment, url: topic_comments_path(@topic) do |f| %>
       <%= f.text_area :content, rows: 10, required: true %>
       <%= f.submit "评论", class: "blue tiny button radius float-right" %>
     <% end %>
 
-    <hr>
+    <!-- <hr> -->
 
     <%= render 'topics/comments' %>
 
@@ -110,7 +112,7 @@
         <% end %>
       </ul>
     <% else%>
-      <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button" id="new_apply">参与拼单</a>
+      <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button" id="new_apply" style="display: block;">参与拼单</a>
     <% end %>
 
     <%# if can? :delete, @topic %>
@@ -129,9 +131,7 @@
     <div class="user-sidebar-info margin-top-20">
       <div>
         <%= image_tag @topic.user.avatar_url(:thumb), class: 'thumb_avatar' %>
-        <p class="user-sidebar-name"><%= link_to @topic.user.username, @topic.user %></p>
-      </div>
-      <div class="user-sidebar-fun">
+        <h3 class="user-sidebar-name"><strong><%= link_to @topic.user.username, @topic.user %></strong></h3>
         <strong>电话: </strong>
         <%= @topic.user.phone %>
         <div>
@@ -140,7 +140,7 @@
         </div>
       </div>
       <div class="gendan-users">
-        <strong><%= @topic.snippets.count %> 个跟单</strong>
+        <div><%= @topic.snippets.count %> 个跟单，<%= @topic.snippets.sum(:quantity) %> 件商品</div>
         <ul>
           <% @topic.snippets.each do |snippet| %>
             <li><%= link_to image_tag(snippet.user.avatar_url(:tiny)), [@topic, snippet] %></li>
@@ -149,7 +149,7 @@
       </div>
     </div>
     <div class="pindan-other">
-      <p><%= @topic.snippets.sum(:quantity) %> 件商品</p>
+
       <!-- <strong><a href="#">商家链接</a></strong> -->
     </div>
   </div>

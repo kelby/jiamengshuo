@@ -24,6 +24,10 @@ a.no_background {
   background: #333333;
 }
 
+a {
+    color: #2475D1;
+}
+
 ul {
   list-style: none;
 }
@@ -290,7 +294,7 @@ div.empty-line {
 }
 
 .top-bar *, .top-bar {
-    color: #F07605 !important;
+    color: #2475D1 !important;
     background: #FFF !important;
     /*overflow: hidden;*/
 }
@@ -312,4 +316,8 @@ div.empty-line {
 
 #error_explanation ul li {
   font-size: 14px;
+}
+
+.block {
+    display: block !important;
 }
