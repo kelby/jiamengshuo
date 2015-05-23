@@ -32,4 +32,18 @@ before_fork do |server, worker|
       puts "Send 'QUIT' signal to unicorn error!"
     end
   end
+
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+  end
+end
+
+after_fork do |server, worker|
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+  end
+end
+
+before_exec do |server|
+  ENV["BUNDLE_GEMFILE"] = "#{root}/Gemfile"
 end
