@@ -1,24 +1,24 @@
-<h2><%= '联系我们' %></h2>
+<div class="small-9 columns large-centered">
+  <h2><%= '联系我们' %></h2>
 
-<%= form_for :contact, url: contact_create_path do |f| %>
-  <%= f.label :email, "邮箱" %>
-  <% if user_signed_in? %>
-    <%= f.text_field :email, value: current_user.email, required: true %><br>
-  <% else %>
-    <%= f.text_field :email, required: true %><br>
+  <%= form_for :contact, url: contact_create_path do |f| %>
+    <%= f.label :email, "邮箱" %>
+    <% if user_signed_in? %>
+      <%= f.text_field :email, value: current_user.email, required: true %><br>
+    <% else %>
+      <%= f.text_field :email, required: true %><br>
+    <% end %>
+    <%= f.label :subject, "主题" %>
+    <%= f.text_field :subject, required: true %>
+    <%= f.label :message, "反馈内容" %>
+    <%= f.text_area :message, rows: 15, required: true %>
+
+    <%= f.submit "提交", class: "button blue tiny radius" %>
   <% end %>
-  <%= f.label :subject, "主题" %>
-  <%= f.text_field :subject, required: true %>
-  <%= f.label :message, "反馈内容" %>
-  <%= f.text_area :message, rows: 15, required: true %>
+</div>
 
-  <%= f.submit "提交", class: "button blue tiny radius" %>
-<% end %>
-
-<div class="row">
-  <div class="large-12 columns centered-text">
-    <!-- <h2>感谢您的反馈</h2> -->
-    <h4 class="subheader">发单、拼单过程中，无论您发现什么问题，或者对网站有什么建议，请一定联系我。</h4>
-    <p>感谢您的反馈！如果您在使用我们网站过程中发现问题，或者对产品有什么好的建议，请直接向我提出。我会认真研究您所提供的反馈，并以实际行动来回复您。再次表示谢谢。</p>
-  </div>
+<div class="small-9 columns large-centered thanks-feedback">
+  <p>感谢您的反馈！如果您在使用我们网站过程中发现问题，或者对产品有什么好的建议，请直接向我们提出。
+  <br>
+  我们会认真研究您所提供的反馈，并以实际行动来回复您。再次表示谢谢。</p>
 </div>
