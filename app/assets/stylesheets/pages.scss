@@ -203,15 +203,15 @@
             -webkit-border-radius: 60%;
         }
         .order-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: #333;
+            font-size: 20px;
+            font-weight: 300;
+            color: #505050;
             display: inline-block;
             padding: 0 0 0 10px;
             a {
-                color: inherit;
+                color: #088AED;
                 &:hover {
-                    color: #FFAD15;
+                    color: #0670C0;
                 }
             }
         }
