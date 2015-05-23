@@ -25,7 +25,7 @@ set :stages, %w[production staging]
 set :default_stage, 'production'
 set :rails_env, "production"
 
-set :keep_releases,   10
+set :keep_releases, 5
 
 # set unicorn_config_path
 set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }

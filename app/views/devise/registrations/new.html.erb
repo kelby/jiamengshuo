@@ -1,49 +1,45 @@
-<section class="small-9 large-9 columns" style="margin: auto 12.5%;">
-  <h2>
-    <%= t("devise.signup") %>
-    <%= link_to "https://github.com/plataformatec/devise", target: "_blank" do %>
-      <%= image_tag 'devise.png', class: 'right devise_logo' %>
+<div class="large-12">
+  <section class="small-9 large-6 columns centered" style="margin: auto 12.5%;">
+    <h2>注册</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="row collapse">
+        <div class="small-2 columns">
+          <%= f.label :email do %>
+            <span class="prefix"><i class="fi-mail large"></i></span>
+          <% end %>
+        </div>
+        <div class="small-10 columns">
+          <%= f.email_field :email, required: true, autofocus: true, placeholder: t("devise.email") %>
+        </div>
+      </div>
+
+      <div class="row collapse">
+        <div class="small-2 columns">
+          <%= f.label :username do %>
+            <span class="prefix"><i class="fi-torso large"></i></span>
+          <% end %>
+        </div>
+        <div class="small-10 columns">
+          <%= f.text_field :username, required: true, placeholder: t("devise.username") %>
+        </div>
+      </div>
+
+      <div class="row collapse">
+        <div class="small-2 columns">
+          <%= f.label :password do %>
+            <span class="prefix"><i class="fi-lock large"></i></span>
+          <% end %>
+        </div>
+        <div class="small-10 columns">
+          <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
+        </div>
+      </div>
+
+      <div><%= f.submit "提交", class: "blue tiny button radius" %></div>
     <% end %>
-  </h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="row collapse">
-      <div class="small-2 columns">
-        <%= f.label :email do %>
-          <span class="prefix"><i class="fi-mail large"></i></span>
-        <% end %>
-      </div>
-      <div class="small-10 columns">
-        <%= f.email_field :email, required: true, autofocus: true, placeholder: t("devise.email") %>
-      </div>
-    </div>
-
-    <div class="row collapse">
-      <div class="small-2 columns">
-        <%= f.label :username do %>
-          <span class="prefix"><i class="fi-torso large"></i></span>
-        <% end %>
-      </div>
-      <div class="small-10 columns">
-        <%= f.text_field :username, required: true, placeholder: t("devise.username") %>
-      </div>
-    </div>
-
-    <div class="row collapse">
-      <div class="small-2 columns">
-        <%= f.label :password do %>
-          <span class="prefix"><i class="fi-lock large"></i></span>
-        <% end %>
-      </div>
-      <div class="small-10 columns">
-        <%= f.password_field :password, required: true, autocomplete: "off", placeholder: t("devise.password") %>
-      </div>
-    </div>
-
-    <div><%= f.submit "提交", class: "blue tiny button radius" %></div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-</section>
+    <%= render "devise/shared/links" %>
+  </section>
+</div>

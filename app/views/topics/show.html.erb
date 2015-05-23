@@ -63,7 +63,6 @@
 
         <span class="right">
 
-
           <%# unless current_user.followering? @topic %>
             <% if user_signed_in? && current_user.keeping?(@topic.id) %>
               <%= render 'topic_and_user/unkeep', topic: @topic %>
@@ -85,14 +84,6 @@
       </section>
     <%# end %>
 
-    <% if can? :update, @topic %>
-      <%= link_to 'Edit', edit_topic_path(@topic) %>
-    <% end %>
-
-    <% if can? :delete, @topic %>
-      <td><%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-
     <hr>
 
     <%= form_for :comment, url: topic_comments_path(@topic) do |f| %>
@@ -107,7 +98,19 @@
 </div>
 
 <div class="pindan-user-sidebar large-3 columns">
-  <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button" id="new_apply">参与拼单</a>
+    <% if can? :update, @topic %>
+      <%= link_to edit_topic_path(@topic), class: "success button tiny" do %>
+        <i class="fa fa-cog"></i>&nbsp;编辑
+      <% end %>
+    <% else%>
+      <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button" id="new_apply">参与拼单</a>
+    <% end %>
+
+    <%# if can? :delete, @topic %>
+      <%#= link_to @topic, method: :delete, class: "secondary button tiny",data: { confirm: '你确定要删除吗？删除后其他人并不再可见，包括已跟单的人。' } do %>
+        <!-- <i class="fa fa-trash"></i>&nbsp;删除 -->
+      <%# end %>
+    <%# end %>
 
   <div id="shopping_together" class="reveal-modal small" data-reveal>
     <%= render 'snippets/form' %>

@@ -11,22 +11,27 @@ class TopicsController < ApplicationController
     if params["category"].present?
       case params["category"]
       when 1
-        @topics = Topic.pi_fa.page(params[:page]).per(8).order("updated_at DESC")
+        @topics = Topic.pi_fa
       when 2
-        @topics = Topic.ding_zhuo.page(params[:page]).per(8).order("updated_at DESC")
+        @topics = Topic.ding_zhuo
       when 3
-        @topics = Topic.hai_tao.page(params[:page]).per(8).order("updated_at DESC")
+        @topics = Topic.hai_tao
       else
-        @topics = Topic.all.per(8).order("updated_at DESC")
+        @topics = Topic.all
       end
     elsif params[:freight_source].present?
-      @topics = Topic.send(params[:freight_source]).page(params[:page]).per(8).order("updated_at DESC")
+      @topics = Topic.send(params[:freight_source])
     elsif params[:catalog_id].present?
       catalog = Catalog.find params[:catalog_id]
-      @topics = catalog.topics.page(params[:page]).per(8).order("updated_at DESC")
+      @topics = catalog.topics
+    elsif params[:user_id]
+      user = User.find params[:user_id]
+      @topics = user.topics
     else
-      @topics = Topic.page(params[:page]).per(8).order("updated_at DESC")
+      @topics = Topic.all
     end
+
+    @topics = @topics.page(params[:page]).per(8).order("updated_at DESC") if @topics.present?
 
     if user_signed_in?
       @users = current_user.recomment_users
@@ -94,6 +99,6 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :body, :category, :tag_list, :catalog_id)
+      params.require(:topic).permit([:title, :body, :catalog_id, :category, :mode, :invoice, :deadline, :rate, :freight_source, :barcode, :status])
     end
 end

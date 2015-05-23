@@ -1,14 +1,21 @@
-<h4>
-  编辑帖子
-</h4>
-
 <div class="large-9 columns">
-  <%= render 'form' %>
+  <div class="row large-9 columns margin-left-10 margin-top-20">
+    <%= render 'form' %>
+  </div>
 </div>
 
-<div class="large-3 columns">
-  <div>
-    <h5>新建帖子，并选择类型：</h5>
-    <%= render 'select_category' %>
-  </div>
+<div class="large-3 columns margin-top-20 select-category-bar">
+  <h4 style="text-align: center;">发单规则</h4>
+  <hr/>
+  <ol style="font-size: 14px;">
+    <li>禁发布以代购为目的的广告或推广内容；</li>
+    <li>本版可发布团购拼单信息，禁发本站、淘宝产品地址和海淘商家以外的链接；</li>
+    <li>拼单或团购贴必须包含：产品图片、产品描述、价格和购买链，否则视为广告贴删除；</li>
+    <li>淘宝店家发起出售海淘产品贴可回答网友咨询的问题，禁止无意义顶帖内容，违者警告1次，3次被警告系统自动禁言30天；</li>
+    <li>交易完成或交易过程中将帖子内容清空等属于严重违规行为第一次给予关闭警告，第二次直接禁止其在所有交易板块发帖和回帖权限；</li>
+    <li>非海淘品请勿发布，团购必须有相关团购细节描述。</li>
+    <!-- <h5>请选择：</h5> -->
+
+    <%#= render 'select_category' %>
+  </ol>
 </div>
