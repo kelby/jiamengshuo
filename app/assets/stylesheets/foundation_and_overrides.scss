@@ -1455,3 +1455,7 @@ $button-bg-color: $primary-color;
   border: 1px dotted #ccc;
   color: #000000;
 }
+
+.button.half-round {
+    border-radius: 4px;
+}

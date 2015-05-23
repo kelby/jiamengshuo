@@ -87,17 +87,20 @@
 
 .pindan-sub-nav {
   margin: 60px auto;
+  text-align: center;
 }
 
 .pindan-sub-nav .circle-list-card {
+    text-align: left;
     background: #FFF;
     box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px;
     border-radius: 3px;
 
-  width: 230px;
-  height: auto;
-  padding: 0 16px 20px;
-  margin-left: 55px;
+    display: inline-block;
+    width: 200px;
+    height: auto;
+    padding: 0 16px 20px;
+    margin: 0 30px 10px;
 
 
   .floating-number {
@@ -220,18 +223,20 @@
     .content-area-1 {
         // padding-top: 10px;
         padding-left: 55px;
-        .tag-list {
-            span {
-                color: #FFF;
-                line-height: 1.4em;
-                background: #4CC9FF;
-                border-radius: 3px;
+    }
+}
 
-                display: inline-block;
-                padding: 2px 8px;
-                margin: 0 6px 6px 0;
-            }
-        }
+.tag-list {
+    span {
+        color: #0073AD;
+        line-height: 1.4em;
+        background: rgba(240,250,255,0.54);
+        border: 1px solid rgba(73,143,225,0.11);
+        border-radius: 3px;
+
+        display: inline-block;
+        padding: 2px 8px;
+        margin: 0 6px 6px 0;
     }
 }
 

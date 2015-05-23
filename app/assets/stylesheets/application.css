@@ -327,3 +327,12 @@ div.empty-line {
 .block {
     display: block !important;
 }
+
+/* ------------ font-size series overrides ------------ */
+
+.font-size-20 {
+    font-size: 20px !important;
+}
+.font-size-15 {
+    font-size: 15px !important;
+}

@@ -101,18 +101,18 @@
 
 <div class="pindan-user-sidebar large-3 columns">
     <% if can? :update, @topic %>
-      <%= link_to edit_topic_path(@topic), class: "success button tiny" do %>
-        <i class="fa fa-cog"></i>&nbsp;编辑
+      <%= link_to edit_topic_path(@topic), class: "success button half-round tiny font-size-15" do %>
+        <i class="fa fa-pencil-square-o"></i>&nbsp;编辑
       <% end %>
 
-      <button href="javascript:void(0);" data-dropdown="change-status" aria-controls="change-status" aria-expanded="false" class="button dropdown tiny">更改状态</button><br>
+      <button href="javascript:void(0);" data-dropdown="change-status" aria-controls="change-status" aria-expanded="false" class="button dropdown half-round tiny font-size-15">更改状态</button><br>
       <ul id="change-status" data-dropdown-content class="f-dropdown" aria-hidden="true">
         <% Topic.statuses.keys.each do |status| %>
           <li><%= link_to cn_for_status(status), change_status_topic_path(@topic, status), method: :put %></li>
         <% end %>
       </ul>
     <% else%>
-      <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button" id="new_apply" style="display: block;">参与拼单</a>
+      <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button small font-size-20" id="new_apply" style="line-height: 1.24em; width: 170px; height: 50px;">参与拼单</a>
     <% end %>
 
     <%# if can? :delete, @topic %>
@@ -131,8 +131,8 @@
     <div class="user-sidebar-info margin-top-20">
       <div>
         <%= image_tag @topic.user.avatar_url(:thumb), class: 'thumb_avatar' %>
-        <h3 class="user-sidebar-name"><strong><%= link_to @topic.user.username, @topic.user %></strong></h3>
-        <strong>电话: </strong>
+        <legend class="user-sidebar-name"><strong><%= link_to @topic.user.username, @topic.user %></strong></legend>
+        <span>电话: </span>
         <%= @topic.user.phone %>
         <div>
           <span><%= @topic.user.topics.count %> 发单</span> |
