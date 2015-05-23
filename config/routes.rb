@@ -48,6 +48,8 @@ Rails.application.routes.draw do
       delete :unmark, to: 'topic_and_user#unmark'
       post :keep, to: 'topic_and_user#keep'
       delete :unkeep, to: 'topic_and_user#unkeep'
+
+      put 'change_status/:status', to: 'topics#change_status', as: :change_status
     end
 
     collection do

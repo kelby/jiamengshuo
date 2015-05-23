@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy, :sticking, :followering, :keepering]
-  before_action :set_topic, only: [:show, :edit, :update, :destroy, :sticking, :followering, :keepering]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :change_status, :destroy, :sticking, :followering, :keepering]
+  before_action :set_topic, only: [:show, :edit, :update, :change_status, :destroy, :sticking, :followering, :keepering]
   authorize_resource
 
   authorize_resource
@@ -67,6 +67,13 @@ class TopicsController < ApplicationController
 
   def update
     @topic.update(topic_params)
+    respond_with(@topic)
+  end
+
+  def change_status
+    change_to_status = "#{params[:status]}!" if params[:status]
+    @topic.send(change_to_status)
+
     respond_with(@topic)
   end
 
