@@ -1,61 +1,39 @@
-<!-- <header class="header-body">
-  <div class="header-logo"><img src="/assets/jiamengshuo-logo.png"></div>
-  <div class="header-nav text-right">
-    <ul> -->
-      <%# unless user_signed_in? %>
-        <!-- <li><%#= link_to '微博登录', user_omniauth_authorize_path(:weibo), class: "header-login" %></li> -->
-        <!-- <li><%#= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), class: "header-login" %></li> -->
-        <!-- <li><%#= link_to '登录', new_user_session_path, class: "header-login" %> -->
-        <!-- <li><%#= link_to '注册', new_user_registration_path, class: "header-login" %></li> -->
-      <%# end %>
-     <!--  <li><a class="post-pindan" href="/topics/new"><i class="fi-volume"></i> 发布拼单</a></li>
-      <li><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
-    </ul>
-  </div>
-</header> -->
-
-<div class="contain-to-grid" style="background: #FFF; box-shadow: rgba(0, 0, 0, 0.29) 0 1px 3px 0;">
+<div class="contain-to-grid">
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
         <h1>
           <%= link_to root_path do %>
-            <span style="color: rgb(240, 65, 36);">加盟说</span>
+            <span class="jms-logo">加盟说</span>
           <% end %>
         </h1>
       </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
 
     <section class="top-bar-section">
-      <!-- Left Nav Section -->
-
-      <ul class="left">
-        <!-- <li class="has-form"> -->
-
-        </li>
-      </ul>
-
       <!-- Right Nav Section -->
       <ul class="right">
         <!-- <li class="divider"></li> -->
         <% if user_signed_in? %>
-          <!-- <li class="active"> -->
-            <%#= link_to users_profile_path, style: 'background: #333333;' do %>
-              <%#= image_tag current_user.avatar_url(:tiny), class: 'tiny_avatar' %>
-            <%# end %>
-          <!-- </li> -->
+          <li>
+            <%= link_to new_topic_path, class: "post-pindan" do %>
+              <i class="fa fa-pencil"></i> 发布拼单
+            <% end %>
+          </li>
+          <li class="active">
+            <%= link_to topics_path, class: "post-pindan" do %>
+              <i class="fa fa-star"></i> 参与拼单
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "javascript:void(0);", class: "post-pindan" do %>
+              <i class="fa fa-bell"></i> 消息
+            <% end %>
+          </li>
 
-          <li><a class="post-pindan" href="/topics/new"><i class="fa fa-pencil"></i> 发布拼单</a></li>
-          <!-- <li class="divider"></li> -->
-          <li class="active"><a class="post-pindan" href="/topics"><i class="fa fa-star"></i> 参与拼单</a></li>
-          <!-- <li class="divider"></li> -->
-          <!-- <li><%= link_to '消息', "#" %></li> -->
-          <li><a class="post-pindan" href="/notifications"><i class="fa fa-bell"></i> 消息</a></li>
-          <!-- <li class="divider"></li> -->
           <li class="has-dropdown">
-              <%#= image_tag current_user.avatar_url(:tiny), class: 'tiny_avatar' %><%= link_to current_user.username, "javascript:void(0);" %>
+            <%= link_to current_user.username, "javascript:void(0);" %>
             <ul class="dropdown">
               <li><%= link_to '我的主页', users_profile_path %></li>
               <!-- <li class="divider"></li> -->
@@ -65,17 +43,26 @@
             </ul>
           </li>
         <% else %>
-        <!-- <li><a class="post-pindan" href="/topics/new"><i class="fi-pencil"></i> 发布拼单</a></li> -->
-        <!-- <li class="divider"></li> -->
-        <li class=""><a class="post-pindan" href="/topics"><i class="fi-star"></i> 参与拼单</a></li>
           <!-- <li class="divider"></li> -->
-          <li class="active"><a class="post-pindan" href="#" data-reveal-id="myModal">登录</a></li>
+          <li>
+            <%= link_to topics_path, class: "post-pindan" do %>
+              <i class="fa fa-star"></i> 参与拼单
+            <% end %>
+          </li>
           <!-- <li class="divider"></li> -->
-          <li class=""><a class="post-pindan" href="#" data-reveal-id="signup">注册</a></li>
+          <li class="active">
+            <a class="post-pindan" href="javascript:void(0);" data-reveal-id="myModal">登录</a>
+          </li>
+          <!-- <li class="divider"></li> -->
+          <li>
+            <a class="post-pindan" href="javascript:void(0);" data-reveal-id="signup">注册</a>
+          </li>
         <% end %>
-        <!-- <li class="divider"></li> -->
-        <li class="has-form_">
-          <a style="color: #555 !important;" href="/page/help"><i class="fa large fa-question-circle" style="color: #5F5F5F !important;"></i> 拼单帮助</a>
+
+        <li>
+          <%= link_to page_path(:help), class: "help-page" do %>
+            <i class="fa large fa-question-circle"></i> 拼单帮助</a>
+          <% end %>
         </li>
       </ul>
     </section>
@@ -90,7 +77,7 @@
         <p class="welcome">已有账号</p>
         <%= form_for(:user, url: user_session_path) do |f| %>
           <div class="row collapse">
-            <div class="small-2  columns">
+            <div class="small-2 columns">
               <%= f.label :login do %>
                 <span class="prefix"><i class="fi-torso large"></i></span>
               <% end %>
@@ -111,10 +98,12 @@
           </div>
           <%= f.submit "登录", class: "button", style: "float: right;" %>
         <% end %>
-        <div style="position: relative; top: 15px; width: 75%;" class="a-state-hover-underline">
-          <%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect), style: "color: black; margin-right: 30px;" %>
-          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo), style: "color: black; margin-right: 30px;" %>
-          <a href="#" style="color: gray;">忘记密码?</a>
+        <div class="a-state-hover-underline qq-weibo-login">
+          <%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect) %>
+          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo) %>
+          <%= link_to new_user_password_path, class: "forgot-your-password" do %>
+            忘记密码?
+          <% end %>
         </div>
       </div>
     </div>
@@ -173,16 +162,6 @@
         <% end %>
          <!-- <p>Already have an account? <a href="#">denglu</a></p> -->
       </div>
-
-      <!-- <div style="position: relative; top: -300px; left: 400px;">
-        <p class="welcome" style="font-size: 25px;"> 已有账号?</p>
-        <a href="#" data-reveal-id="myModal" >直接登录</a><br>
-        <div style="margin-top: 50px;">
-          <a href="#" style="color: black; margin-right: 30px; margin-top: 100px;">QQ登录</a>
-          <a href="#" style="color: black;">微博登录</a>
-        </div>
-      </div> -->
-
     </div>
    </div>
    <a class="close-reveal-modal">&#215;</a>
