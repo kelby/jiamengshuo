@@ -59,6 +59,11 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :replies
+
+    member do
+      post :like_it, to: 'liker_comments#like_it'
+      delete :unlike_it, to: 'liker_comments#unlike_it'
+    end
   end
 
   resources :replies, only: [:new, :create, :edit, :update, :destroy]

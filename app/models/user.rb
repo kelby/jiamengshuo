@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
   has_many :students, foreign_key: :owner_id
   has_many :classmates, foreign_key: :owner_id
 
+  has_many :liker_comments, foreign_key: :liker_id, dependent: :destroy
+
   scope :fakers, -> { where(faker: true)}
   scope :desc, -> { order(updated_at: :desc)}
 
@@ -97,6 +99,10 @@ class User < ActiveRecord::Base
 
   def marking? topic_id
     MarkerTopic.where(topic_id: topic_id, user_id: self.id).exists?
+  end
+
+  def liking_it? comment_id
+    LikerComment.where(comment_id: comment_id, liker_id: self.id).exists?
   end
 
   def keeping? topic_id

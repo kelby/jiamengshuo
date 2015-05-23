@@ -3,17 +3,18 @@
     <div class="comment" id="<%= dom_id comment %>">
       <section class="top">
         <h6 class="byline">
-          <a href="#">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBxP56GfB_bGbS236FRYFk3JYmC8I9oA1-VSk9HykZVYQJJGG5_BFIg-I" class="small-img">
-            <%= comment.user.username %>
-            <% if comment.user == @topic.user %>
-              <span class="label"> 作者</span>
-            <% end %>
-          </a>
+          <%= link_to comment.user do %>
+            <%= image_tag comment.user.avatar_url(:mini) %>
+          <% end %>
 
-          <small>评论于&nbsp;
+          <%= link_to comment.user.username, comment.user %>
+          <% if comment.user == @topic.user %>
+            <span class="label"> 作者</span>
+          <% end %>
+
+          <small>评论于
             <span class="data">
-              <%= time_ago_in_words comment.created_at %> 前
+              <%= time_ago_in_words comment.created_at %>前
             </span>
           </small>
         </h6>
@@ -25,8 +26,18 @@
 
       <section class="actions">
         <ul class="inline-list">
-          <li><a href="#">喜欢 (3)</a></li>
-          <li><a href="#">分享</a></li>
+          <!-- <li><a href="#">喜欢 (3)</a></li> -->
+          <% if user_signed_in? && current_user.liking_it?(comment.id) %>
+            <li>
+              <%= render 'liker_comments/unlike_it', comment: comment %>
+            </li>
+          <% else %>
+            <li>
+              <%= render 'liker_comments/like_it', comment: comment %>
+            </li>
+          <% end %>
+
+          <!-- <li><a href="#">分享</a></li> -->
           <li>
             <%= link_to "回复", new_comment_reply_path(comment), remote: true %>
           </li>
