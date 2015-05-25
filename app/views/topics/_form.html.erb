@@ -18,16 +18,16 @@
 
   <div class="field field-radios large-12 columns">
     <%= f.label :category, "拼单方式" %>
-    <span><%= radio_button("topic", "category", "pi_fa") %>&nbsp;拼单</span>
-    <span><%= radio_button("topic", "category", "ding_zhuo") %>&nbsp;定做</span>
-    <span><%= radio_button("topic", "category", "hai_tao") %>&nbsp;海淘</span>
+    <label class="radio-button-field"><%= radio_button("topic", "category", "pi_fa") %>&nbsp;拼单</label>
+    <label class="radio-button-field"><%= radio_button("topic", "category", "ding_zhuo") %>&nbsp;定做</label>
+    <label class="radio-button-field"><%= radio_button("topic", "category", "hai_tao") %>&nbsp;海淘</label>
   </div>
 
   <div class="field field-radios large-12 columns">
     <%= f.label :invoice, "购买发票" %>
-    <span><%= radio_button("topic", "invoice", "yes") %>&nbsp;提供发票</span>
-    <span><%= radio_button("topic", "invoice", "no") %>&nbsp;无发票</span>
-    <span><%= radio_button("topic", "invoice", "not_sure") %>&nbsp;不确定</span>
+    <label class="radio-button-field"><%= radio_button("topic", "invoice", "yes") %>&nbsp;提供发票</label>
+    <label class="radio-button-field"><%= radio_button("topic", "invoice", "no") %>&nbsp;无发票</label>
+    <label class="radio-button-field"><%= radio_button("topic", "invoice", "not_sure") %>&nbsp;不确定</label>
   </div>
 
   <div class="field large-12 columns">
