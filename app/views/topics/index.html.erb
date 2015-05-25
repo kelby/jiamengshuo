@@ -5,34 +5,36 @@
     <ul>
       <% @topics.each do |topic| %>
         <li class="topic-body">
-          <div class="topic-status">
-            <%= cn_for_status(topic.status) %>
-          </div>
-          <div class="topic-info large-4 small-8 columns">
-            <%= image_tag topic.user.avatar_url(:thumb), class: 'thumb_avatar avatar' %>
-            <p class="topic-user">
-              <%= topic.user.username %>
-            </p>
-            <div class="topic-info-detail">
-              <h3><%= link_to topic.title, topic %></h3>
-              <div class="tag-list">
-                <span><%= topic.freight_source_to_cn %></span>
-                <span><%= topic.catalog.name %></span>
-              </div>
-              <p class="topic-deadline">
-                截止日期:
-                <%= topic.deadline %>
+          <%= link_to topic do %>
+            <div class="topic-status">
+              <%= cn_for_status(topic.status) %>
+            </div>
+            <div class="topic-info large-4 small-8 columns">
+              <%= image_tag topic.user.avatar_url(:thumb), class: 'thumb_avatar avatar' %>
+              <p class="topic-user">
+                <%= topic.user.username %>
               </p>
+              <div class="topic-info-detail">
+                <h3><%= topic.title %></h3>
+                <div class="tag-list">
+                  <span><%= topic.freight_source_to_cn %></span>
+                  <span><%= topic.catalog.name %></span>
+                </div>
+                <p class="topic-deadline">
+                  截止日期:
+                  <%= topic.deadline %>
+                </p>
+              </div>
+              <div class="topic-users-list">
+                <span><%= topic.snippets.count %> 人跟单</span>
+                <span class="topic-users-list-avatar">
+                  <% topic.snippets.limit(10).each do |snippet| %>
+                    <%= image_tag snippet.user.avatar_url(:mini) %>
+                  <% end %>
+                </span>
+              </div>
             </div>
-            <div class="topic-users-list">
-              <span><%= topic.snippets.count %> 人跟单</span>
-              <span class="topic-users-list-avatar">
-                <% topic.snippets.limit(10).each do |snippet| %>
-                  <%= image_tag snippet.user.avatar_url(:mini) %>
-                <% end %>
-              </span>
-            </div>
-          </div>
+          <% end %>
         </li>
       <% end %>
     </ul>

@@ -33,7 +33,9 @@
           </li>
 
           <li class="has-dropdown">
-            <%= link_to current_user.username, "javascript:void(0);" %>
+            <%= link_to "javascript:void(0);" do %>
+              <%= current_user.username %> <i class="fa fa-caret-down"></i>
+            <% end %>
             <ul class="dropdown">
               <li><%= link_to '我的主页', users_profile_path %></li>
               <!-- <li class="divider"></li> -->

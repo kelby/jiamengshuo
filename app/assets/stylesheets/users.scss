@@ -178,6 +178,7 @@ span.prefix > i.large {
 .user-info-card {
   @extend .main-border-info;
   @include border-radius(4px);
+  padding-top: 10px;
   margin-left: 100px;
 }
 
