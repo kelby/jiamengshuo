@@ -1,0 +1,5 @@
+var snippet = "#<%= dom_id(@snippet) %>"
+var snippet_manage = "#<%= dom_id(@snippet, 'manage') %>"
+
+$(snippet).text("<%= cn_for_snippet_status @snippet.status %>")
+$(snippet_manage).html("<%= j(render partial: 'snippets/disabled_manage_links') %>")

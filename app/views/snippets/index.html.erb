@@ -8,7 +8,7 @@
         <% snippets.each do |snippet| %>
           <div class="large-4 small-4 columns end large-offset-1">
             <div class="approve-status">
-              已同意
+              <%= cn_for_snippet_status(snippet.status) %>
             </div>
             <div class="snippet-content">
               <div class="field">
@@ -30,10 +30,6 @@
               <div class="field">
                 数量:
                 <span><%= snippet.quantity %></span>
-              </div>
-              <div class="field">
-                收货地址:
-                <span><%= snippet.address %></span>
               </div>
 
               <div class="field">
