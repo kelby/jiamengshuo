@@ -13,8 +13,9 @@
             <p class="topic-user">
               <%= topic.user.username %>
             </p>
+            <%= link_to topic do %>
             <div class="topic-info-detail">
-              <h3><%= link_to topic.title, topic %></h3>
+              <h3><%= topic.title %></h3>
               <div class="tag-list">
                 <span><%= topic.freight_source_to_cn %></span>
                 <span><%= topic.catalog.name %></span>
@@ -24,6 +25,7 @@
                 <%= topic.deadline %>
               </p>
             </div>
+            <% end %>
             <div class="topic-users-list">
               <span><%= topic.snippets.count %> 人跟单</span>
               <span class="topic-users-list-avatar">
