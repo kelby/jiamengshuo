@@ -70,6 +70,11 @@
     <%= f.select :catalog_id, Catalog.all.collect { |p| [ p.name, p.id ] }, prompt: "请选择" %>
   </div>
 
+  <div class="field large-12 columns">
+    <%= f.label :website, "参考网址链接" %>
+    <%= f.text_field :website, required: true %>
+  </div>
+
   <div class="actions large-12 columns">
     <%= f.submit "提交", class: "blue tiny button radius" %>
   </div>

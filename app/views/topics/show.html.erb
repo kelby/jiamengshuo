@@ -112,7 +112,11 @@
         <% end %>
       </ul>
     <% else%>
-      <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button small font-size-20" id="new_apply" style="line-height: 1.24em; width: 170px; height: 50px;">参与拼单</a>
+      <% if user_signed_in? %>
+        <a href="javascript:void(0);" data-reveal-id="shopping_together" class="success button small font-size-20" id="new_apply" style="line-height: 1.24em; width: 170px; height: 50px;">参与拼单</a>
+      <% else %>
+        <a href="javascript:void(0);" data-reveal-id="myModal" class="success button small font-size-20" id="new_apply" style="line-height: 1.24em; width: 170px; height: 50px;">参与拼单</a>
+      <% end %>
     <% end %>
 
     <%# if can? :delete, @topic %>
