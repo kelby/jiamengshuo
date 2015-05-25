@@ -1,0 +1,17 @@
+.pindan-message {
+	.pindan-message-detail-info{
+		position: relative;
+		left: 2%;
+		top: 10px;
+	}
+}
+
+.pindan-message-detail-info {
+	p {
+		margin-bottom: 1rem;
+		line-height: 1;
+	}
+	p:first-child {
+		font-size: 20px;
+	}
+}

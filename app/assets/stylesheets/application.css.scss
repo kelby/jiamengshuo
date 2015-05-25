@@ -27,6 +27,7 @@
  *= require topics
  *= require users
  *= require wishes
+ *= require message
  *= require_self
 
  */
@@ -171,6 +172,11 @@ header {
   border-left: 0;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+
+.user-tiny-avatar-size {
+  width: 100px;
+  height: 100px;
 }
 
 .minibutton:hover{
