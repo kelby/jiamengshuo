@@ -17,7 +17,7 @@ class SnippetsController < ApplicationController
     @snippet = @topic.snippets.build(snippet_params.merge(user_id: current_user.id))
     @snippet.save
 
-    redirect_to @topic, notice: "创建成功，等待盟主的批准"
+    redirect_to @topic, notice: "跟单请求提交成功，等待盟主的批准"
   end
 
   def show

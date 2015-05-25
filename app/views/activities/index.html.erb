@@ -1,26 +1,54 @@
-<% if user_signed_in? %>
-  私信&nbsp;(<%= DirectMessage.where(to_user_id: current_user.id).not_read.count %>&nbsp;未读)：
+<div class="small-12 columns">
+  <ul class="tabs" data-tab role="tablist">
+    <li class="tab-title active" role="presentational" >
+      <a href="#pindan" role="tab" tabindex="0" aria-selected="true" controls="pindan">拼单</a>
+      </li>
+    <li class="tab-title" role="presentational" >
+      <a href="#direct_messages" role="tab" tabindex="0"aria-selected="false" controls="direct_messages">私信</a>
+    </li>
+    <li class="tab-title" role="presentational">
+      <a href="#followers" role="tab" tabindex="0" aria-selected="false" controls="followers">关注</a>
+    </li>
+  </ul>
 
-  <% @direct_messages.each_slice(5) do |dms| %>
-    <div>
-      <% dms.each do |dm| %>
-        <div class="activity">
-          <%= link_to dm.from_user do %>
-            <%= dm.from_user.username %>
+  <div class="tabs-content">
+    <!-- 拼单 -->
+    <section role="tabpanel" aria-hidden="false" class="content active" id="pindan">
+      <h2>First panel content goes here...</h2>
+    </section>
+
+    <!-- 私信 -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="direct_messages">
+      私信&nbsp;(<%= DirectMessage.where(to_user_id: current_user.id).not_read.count %>&nbsp;未读)：
+
+      <% @direct_messages.each_slice(5) do |dms| %>
+        <div>
+          <% dms.each do |dm| %>
+            <div class="activity">
+              <%= link_to dm.from_user do %>
+                <%= dm.from_user.username %>
+              <% end %>
+              私信了你：
+
+              <%= dm.content %>
+            </div>
           <% end %>
-          私信了你：
-
-          <%= dm.content %>
         </div>
+        <hr class="dashed"></hr>
       <% end %>
-    </div>
-    <hr class="dashed"></hr>
-  <% end %>
 
-  <%= paginate @direct_messages, :param_name => 'dm_page' %>
+      <%= paginate @direct_messages, :param_name => 'dm_page' %>
+    </section>
 
-  <hr>
-<% end %>
+    <!-- 关注 -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="followers">
+      <% current_user.followers.each do |user| %>
+        <%= user.username %> 关注了你。
+        <br>
+      <% end %>
+    </section>
+  </div>
+</div>
 
 <!-- 公共消息： -->
 

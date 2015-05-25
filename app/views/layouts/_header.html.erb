@@ -27,19 +27,21 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "javascript:void(0);", class: "post-pindan" do %>
+            <%= link_to activities_index_path, class: "post-pindan" do %>
               <i class="fa fa-bell"></i> 消息
             <% end %>
           </li>
 
           <li class="has-dropdown">
-            <%= link_to current_user.username, "javascript:void(0);" %>
-            <ul class="dropdown box-shadow" >
+            <%= link_to "javascript:void(0);" do %>
+              <%= current_user.username %> <i class="fa fa-caret-down"></i>
+            <% end %>
+            <ul class="dropdown box-shadow">
               <li><%= link_to '我的主页', users_profile_path %></li>
               <!-- <li class="divider"></li> -->
               <li><%= link_to '设置', edit_user_registration_path %></li>
               <!-- <li class="divider"></li> -->
-              <li><%= link_to '注销', destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to '退出', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
