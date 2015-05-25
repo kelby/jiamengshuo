@@ -1,47 +1,51 @@
-<div class="row">  
-  <%= link_to @topic.title, @topic %> 共有 <%= @topic.snippets.count %> 个跟单, <%= @topic.snippets.sum(:quantity) %> 件商品。
-  <hr class="dashed"></hr>
+<div class="row large-12 columns">  
+  <div class="margin-content">
+    <%= link_to @topic.title, @topic %> 共有 <%= @topic.snippets.count %> 个跟单, <%= @topic.snippets.sum(:quantity) %> 件商品。
+    <!-- <hr class="dashed"></hr> -->
+    
+    <div class="large-12 columns margin-content">
+      <% @snippets.each_slice(3) do |snippets| %>
+        <% snippets.each do |snippet| %>
+          <div class="large-3 small-4 columns snippet-content large-offset-1">
+            <div class="field">
+              商品名称:
+              <span><%= snippet.name %></span>
+            </div>
+            <div class="field">
+              规格:
+              <span><%= snippet.spec %></span>
+            </div>
+            <div class="field">
+              颜色:
+              <span><%= snippet.color %></span>
+            </div>
+            <div class="field">
+              单价（元）:
+              <span><%= snippet.per_price %></span>
+            </div>
+            <div class="field">
+              数量:
+              <span><%= snippet.quantity %></span>
+            </div>
+            <div class="field">
+              收货地址:
+              <span><%= snippet.address %></span>
+            </div>
 
-  <% @snippets.each_slice(3) do |snippets| %>
-    <% snippets.each do |snippet| %>
-      <div class="small-4 columns">
-        <div class="field">
-          商品名称<br>
-          <%= snippet.name %>
-        </div>
-        <div class="field">
-          规格<br>
-          <%= snippet.spec %>
-        </div>
-        <div class="field">
-          颜色<br>
-          <%= snippet.color %>
-        </div>
-        <div class="field">
-          单价（元）<br>
-          <%= snippet.per_price %>
-        </div>
-        <div class="field">
-          数量<br>
-          <%= snippet.quantity %>
-        </div>
-        <div class="field">
-          收货地址<br>
-          <%= snippet.address %>
-        </div>
-
-        <div class="field">
-          备注说明<br>
-          <%= snippet.body %>
-        </div>
-        <div class="field">
-          参考网站链接<br>
-          <%= snippet.website %>
-        </div>
-      </div>
-    <% end %>
-    <hr class="dashed"></hr>
-  <% end %>
+            <div class="field">
+              备注说明:
+              <span><%= snippet.body %></span>
+            </div>
+            <div class="field">
+              参考网站链接:
+              <span><%= snippet.website %></span>
+            </div>
+          </div>
+        <% end %>
+        <!-- <hr class="dashed"></hr> -->
+      <% end %>
+    </div>
+  </div>
 
   <%= paginate @snippets %>
 </div>
