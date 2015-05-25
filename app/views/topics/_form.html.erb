@@ -81,13 +81,17 @@
 <% end %>
 
 <script>
-    var picker = new Pikaday({
+    var config = {
       field: document.getElementById('datepicker'),
       format: 'YYYY-MM-DD',
       onSelect: function() {
         console.log(this.getMoment().format('YYYY-MM-DD'));
-      }
-    });
+      } 
+    }
+    if (!config["field"].value) {
+      config["minDate"]=new Date();
+    };
+    var picker = new Pikaday(config);
 </script>
 
 <%= javascript_include_tag "simditor/simditor" %>

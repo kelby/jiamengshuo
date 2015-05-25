@@ -8,9 +8,9 @@
     background: #FFF !important;
 }
 </style>
-<div class="row large-9 columns margin-left-10 margin-top-20">
-<div class="tabbable">
-  <ul class="tabs" data-tab>
+<div class="row large-10" style="margin:20px auto;">
+<div class="tabbable" >
+  <ul class="tabs user-tabs" data-tab>
     <li class="active tab-title">
       <a data-toggle="tab" href="#edit-basic" aria-selected="true">
         <i class="green icon-edit bigger-125"></i>
@@ -31,7 +31,7 @@
       <%= form_for @user, url: update_basic_user_path(@user), method: :put do |f| %>
         <!-- <h4 class="header blue bolder smaller">基本信息</h4> -->
 
-        <div class="columns large-10">
+        <div>
           <!-- <div class="columns large-4"> -->
             <%= f.label :avatar, "头像" %>
             <%= image_tag @user.avatar_url(:thumb), style: 'margin-top: 10px;margin-bottom: 10px;' %>
@@ -65,12 +65,9 @@
               <%= f.text_area :info %>
             </div>
           <!-- </div> -->
-        </div>
-        <hr />
 
         <% @user.build_user_body unless @user.user_body.present? %>
 
-        <div class="columns large-10">
           <%= f.fields_for :user_body do |ff| %>
             <div class="control-group">
               <%= ff.label :birth_date, "生日"%>
@@ -150,8 +147,8 @@
           <% end %>
 
           <%= f.submit "提交", class: "blue tiny button radius" %>
-        </div>
       <% end %>
+    </div>
     </div>
 
     <div id="edit-password" class="content columns large-12">
