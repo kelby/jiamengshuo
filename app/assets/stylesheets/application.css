@@ -28,6 +28,10 @@ a {
     color: #2475D1;
 }
 
+a:hover {
+    color: #1465BF;
+}
+
 ul {
   list-style: none;
 }
@@ -297,6 +301,8 @@ div.empty-line {
     color: #2475D1 !important;
     background: #FFF !important;
     /*overflow: hidden;*/
+    a {
+    }
 }
 
 .top-bar .title-area * {
@@ -372,4 +378,18 @@ div.empty-line {
 }
 .font-size-15 {
     font-size: 15px !important;
+}
+
+
+/* ------------ settings ------------ */
+
+#user_avatar {
+    -webkit-appearance: none;
+    appearance: none;
+
+    /*background: #222;*/
+}
+
+body {
+    font-size: 14px;
 }

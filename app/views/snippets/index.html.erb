@@ -1,5 +1,5 @@
-<div class="row">  
-  <%= link_to @topic.title, @topic %> 共有 <%= @topic.snippets.count %> 个跟单, <%= @topic.snippets.sum(:quantity) %> 件商品。
+<div class="row">
+  <%= link_to @topic.title, @topic %> 共有 <%= @topic.snippets.count %> 人跟单, <%= @topic.snippets.sum(:quantity) %> 件商品。
   <hr class="dashed"></hr>
 
   <% @snippets.each_slice(3) do |snippets| %>

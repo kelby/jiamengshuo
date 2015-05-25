@@ -12,7 +12,8 @@ module TopicsHelper
     when "bai_shi_he_shou_tu"
       "拜师兼收徒帖"
     else "qita"
-      "其它类型的帖子"
+    #   "其它类型的帖子"
+      "拼单"
     end
   end
 

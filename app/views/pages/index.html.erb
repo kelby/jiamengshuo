@@ -94,9 +94,8 @@
                         </div>
                         <div class="content-area-1">
                             <div class="tag-list">
-                              <% topic.tags.map(&:name).each do |tag| %>
-                                <span><%= tag %></span>
-                              <% end %>
+                                <span><%= topic.freight_source_to_cn %></span>
+                                <span><%= topic.catalog.name %></span>
                             </div>
                         </div>
                         <div class="content-area-2">

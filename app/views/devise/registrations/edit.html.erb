@@ -1,16 +1,25 @@
 <!-- <h2>信息/</h2> -->
+<style>
+[aria-selected="true"] {
+    background: #EEE !important;
+}
+
+[aria-selected="false"] {
+    background: #FFF !important;
+}
+</style>
 <div class="row large-9 columns margin-left-10 margin-top-20">
 <div class="tabbable">
   <ul class="tabs" data-tab>
     <li class="active tab-title">
-      <a data-toggle="tab" href="#edit-basic">
+      <a data-toggle="tab" href="#edit-basic" aria-selected="true">
         <i class="green icon-edit bigger-125"></i>
         基本信息
       </a>
     </li>
 
     <li class="tab-title">
-      <a data-toggle="tab" href="#edit-password">
+      <a data-toggle="tab" href="#edit-password" aria-selected="false">
         <i class="blue icon-key bigger-125"></i>
         密码重置
       </a>
@@ -44,7 +53,7 @@
             <%= f.label :tag_list, "个人标签（多个标签之间用逗号分隔）" %>
 
             <div class="controls">
-              <%= f.text_area :tag_list %>
+              <%= f.text_area :tag_list, class: "input" %>
             </div>
           <!-- </div> -->
 
@@ -98,18 +107,6 @@
             <h4 class="header blue bolder smaller">联系</h4>
 
             <div class="control-group">
-              <%= ff.label :website do %>
-                <i class="fa fa-globe"></i>&nbsp;个人网站
-              <% end %>
-
-              <div class="controls">
-                <span class="input-icon input-icon-right">
-                  <%= ff.text_field :website %>
-                </span>
-              </div>
-            </div>
-
-            <div class="control-group">
               <%= ff.label :phone do %>
                 <i class="fa fa-phone icon-flip-horizontal"></i>&nbsp;电话号码
               <% end %>
@@ -139,7 +136,7 @@
 
             <div class="control-group">
               <%= ff.label :tqq_weibo do %>
-                <i class="fa fa-tencent-weibo"></i>&nbsp;腾讯微博
+                <i class="fa fa-qq"></i>&nbsp;QQ
               <% end %>
 
               <div class="controls">
