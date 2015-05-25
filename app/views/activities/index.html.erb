@@ -57,7 +57,6 @@
       <!-- 关注 -->
       <section role="tabpanel" aria-hidden="true" class="content" id="followers">
         <% current_user.followers.each do |user| %>
-          <img class="user-tiny-avatar-size float-left" src="http://shixian.com/upload/user/avatar/13222/62ed1a30ec86ccbc203948df098cd84e">
           <%= user.username %> 关注了你。
           <br/>
         <% end %>
