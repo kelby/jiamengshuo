@@ -31,7 +31,7 @@ class TopicsController < ApplicationController
       @topics = Topic.all
     end
 
-    @topics = @topics.page(params[:page]).per(8).order("updated_at DESC") if @topics.present?
+    @topics = @topics.page(params[:page]).per(8).order("updated_at DESC").includes(:user,:catalog) if @topics.present?
 
     if user_signed_in?
       @users = current_user.recomment_users
