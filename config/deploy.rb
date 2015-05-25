@@ -78,10 +78,11 @@ namespace :deploy do
 
 end
 
+# preload_app:true and you need capistrano to cleanup your oldbin pid
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
-    invoke 'unicorn:reload'
+    invoke 'unicorn:legacy_restart'
   end
 end
 
