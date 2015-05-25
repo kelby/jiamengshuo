@@ -7,8 +7,8 @@
       <% @snippets.each_slice(3) do |snippets| %>
         <% snippets.each do |snippet| %>
           <div class="large-4 small-4 columns end large-offset-1">
-            <div class="approve-status">
-              已同意
+            <div class="approve-status" id="<%= dom_id(snippet) %>">
+              <%= cn_for_snippet_status(snippet.status) %>
             </div>
             <div class="snippet-content">
               <div class="field">
@@ -45,9 +45,13 @@
                 <span><%= snippet.website %></span>
               </div>
               
-              <div class="buttons margin-content">
-                <%= link_to "同意", approve_snippet_path(snippet), method: :put, remote: true, class: 'button tiny' %>
-                <%= link_to "拒绝", refuse_snippet_path(snippet), method: :put, remote: true, class: 'button tiny alert' %>
+              <div class="buttons margin-content" id="<%= dom_id(snippet, 'manage') %>">
+                <% if snippet.pendding? %>
+                  <%= link_to "同意", approve_snippet_path(snippet), method: :put, remote: true, data: { confirm: "同意后不可再更改，你确定吗？" }, class: 'button tiny' %>
+                  <%= link_to "拒绝", refuse_snippet_path(snippet), method: :put, remote: true, data: { confirm: "拒绝后不可再更改，你确定吗？" }, class: 'button tiny alert' %>
+                <% else %>
+                  <%= render "snippets/disabled_manage_links" %>
+                <% end %>
               </div>
             </div>
           </div>
