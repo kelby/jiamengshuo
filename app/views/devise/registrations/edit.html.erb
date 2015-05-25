@@ -34,6 +34,7 @@
         <div class="columns large-10">
           <!-- <div class="columns large-4"> -->
             <%= f.label :avatar, "头像" %>
+            <%= image_tag @user.avatar_url(:thumb), style: 'margin-top: 10px;margin-bottom: 10px;' %>
             <%= f.file_field :avatar %>
           <!-- </div> -->
 
@@ -72,11 +73,11 @@
         <div class="columns large-10">
           <%= f.fields_for :user_body do |ff| %>
             <div class="control-group">
-              <%= ff.label :birth_date, "生日" %>
+              <%= ff.label :birth_date, "生日"%>
 
               <div class="controls">
                 <div class="input-append">
-                  <%= ff.datetime_field :birth_date %>
+                  <%= ff.datetime_field :birth_date ,id: "datepicker"%>
                   <span class="add-on">
                     <i class="icon-calendar"></i>
                   </span>
@@ -185,3 +186,13 @@
   </div>
 </div>
 </div>
+
+<script>
+    var picker = new Pikaday({
+      field: document.getElementById('datepicker'),
+      format: 'YYYY-MM-DD',
+      onSelect: function() {
+        console.log(this.getMoment().format('YYYY-MM-DD'));
+      }
+    });
+</script>
