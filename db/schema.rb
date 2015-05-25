@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150523034335) do
+ActiveRecord::Schema.define(version: 20150525014046) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 20150523034335) do
     t.decimal  "per_price",                precision: 10
     t.integer  "quantity",   limit: 4
     t.string   "address",    limit: 255
+    t.string   "website",    limit: 255
   end
 
   create_table "subjects", force: :cascade do |t|
