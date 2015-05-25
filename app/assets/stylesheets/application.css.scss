@@ -112,6 +112,12 @@ header {
   height: 60px;
 }
 
+.box-shadow{
+  -moz-box-shadow:1px 1px 5px #333333; 
+  -webkit-box-shadow:1px 1px 5px #333333; 
+  box-shadow:1px 1px 5px #333333;
+}
+
 /* Begin From Github */
 .minibutton {
   position: relative;
@@ -372,7 +378,7 @@ div.empty-line {
 
 .qq-weibo-login a {
   color: #000000;
-  margin-right: 30px;
+  margin-right: 40px;
 }
 
 .forgot-your-password {
