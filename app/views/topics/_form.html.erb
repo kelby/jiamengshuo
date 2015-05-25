@@ -70,6 +70,11 @@
     <%= f.select :catalog_id, Catalog.all.collect { |p| [ p.name, p.id ] }, prompt: "请选择" %>
   </div>
 
+  <div class="field large-12 columns">
+    <%= f.label :website, "参考网址链接" %>
+    <%= f.text_field :website, required: true %>
+  </div>
+
   <div class="actions large-12 columns">
     <%= f.submit "提交", class: "blue tiny button radius" %>
   </div>
@@ -78,9 +83,9 @@
 <script>
     var picker = new Pikaday({
       field: document.getElementById('datepicker'),
-      format: 'D MMM YYYY',
+      format: 'YYYY-MM-DD',
       onSelect: function() {
-        console.log(this.getMoment().format('Do MMMM YYYY'));
+        console.log(this.getMoment().format('YYYY-MM-DD'));
       }
     });
 </script>
