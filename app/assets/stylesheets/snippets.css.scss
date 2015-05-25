@@ -22,7 +22,7 @@ $line-color: #ddd;
 .snippet-content {
 	border: 1px solid $border-color;
 	padding: 20px;
-	margin-bottom: 2%;
+	margin-bottom: 10%;
 	@include border-radius(5px);
 	.field {
 		color: $font-color;
