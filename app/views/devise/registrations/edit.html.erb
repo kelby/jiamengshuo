@@ -87,14 +87,9 @@
 
               <div class="controls">
                 <div class="space-2"></div>
-
                 <label>
                   <%= ff.radio_button :gender, "male" %>
                   <span class="lbl"> 男</span>
-                </label>
-
-                <!-- &nbsp; &nbsp; &nbsp; -->
-                <label>
                   <%= ff.radio_button :gender, "female" %>
                   <span class="lbl"> 女</span>
                 </label>
@@ -111,7 +106,7 @@
 
               <div class="controls">
                 <span class="input-icon input-icon-right">
-                  <%= ff.text_field :phone %>
+                  <%= ff.text_field :phone ,:pattern => '[0-9\-]{7,14}'%>
                 </span>
               </div>
             </div>
@@ -139,7 +134,7 @@
 
               <div class="controls">
                 <span class="input-icon">
-                  <%= ff.text_field :tqq_weibo %>
+                  <%= ff.text_field :tqq_weibo ,:pattern => '[0-9]{5,15}'%>
                   <i class="icon-twitter"></i>
                 </span>
               </div>
