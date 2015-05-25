@@ -20,14 +20,14 @@
 
   <div class="field field-radios large-12 columns">
     <%= f.label :category, "拼单方式" %>
-    <label class="radio-button-field"><%= radio_button("topic", "category", "pi_fa") %>&nbsp;拼单</label>
+    <label class="radio-button-field"><%= radio_button("topic", "category", "pi_fa",required: true) %>&nbsp;拼单</label>
     <label class="radio-button-field"><%= radio_button("topic", "category", "ding_zhuo") %>&nbsp;定做</label>
     <label class="radio-button-field"><%= radio_button("topic", "category", "hai_tao") %>&nbsp;海淘</label>
   </div>
 
   <div class="field field-radios large-12 columns">
     <%= f.label :invoice, "购买发票" %>
-    <label class="radio-button-field"><%= radio_button("topic", "invoice", "yes") %>&nbsp;提供发票</label>
+    <label class="radio-button-field"><%= radio_button("topic", "invoice", "yes",required: true) %>&nbsp;提供发票</label>
     <label class="radio-button-field"><%= radio_button("topic", "invoice", "no") %>&nbsp;无发票</label>
     <label class="radio-button-field"><%= radio_button("topic", "invoice", "not_sure") %>&nbsp;不确定</label>
   </div>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="field large-12 columns">
-    <%= f.label :freight_source, "拼单货源" %>
+    <%= f.label :freight_source, "拼单货源"%>
     <%= f.select :freight_source, Topic.freight_sources.map{|key, _| [cn_for_freight_source(key), key]}, required: true, prompt: "请选择" %>
   </div>
 
