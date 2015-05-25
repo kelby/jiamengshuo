@@ -26,13 +26,13 @@
       </div>
       <hr/>
     </div>
-    <div class="user-profile-item">
+    <!-- <div class="user-profile-item">
       <p>账号绑定:</p>
       <p>所在城市:
-        <span><%= @user.location %></span>
+        <span><%#= @user.location %></span>
       </p>
-    </div>
-    <hr/>
+    </div> 
+    <hr/>-->
     <div class="font-message pindan-num" style="color: #999;">
       发起了 <%= link_to "#{@user.topics.count} 个拼单", topics_path(user_id: @user.id) %>
       参加了 <a href="#"><%= @user.snippets.count %> 个拼单</a>
