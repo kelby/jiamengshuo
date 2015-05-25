@@ -78,9 +78,9 @@
 <script>
     var picker = new Pikaday({
       field: document.getElementById('datepicker'),
-      format: 'D MMM YYYY',
+      format: 'YYYY-MM-DD',
       onSelect: function() {
-        console.log(this.getMoment().format('Do MMMM YYYY'));
+        console.log(this.getMoment().format('YYYY-MM-DD'));
       }
     });
 </script>
