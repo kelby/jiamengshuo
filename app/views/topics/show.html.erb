@@ -146,17 +146,14 @@
               <li><%= image_tag snippet.user.avatar_url(:tiny) %></li>
             <% end %>
         </ul>
-        <div><%= @topic.snippets.sum(:quantity) %> 件商品</div>
-        <div><%= @topic.snippets.sum(:quantity) %> 件商品</div>
 
-        <% if can? :manage_snippets, @topic %>
-          <% @topic.snippets.each do |snippet| %>
+        <% if @topic.snippets.sum(:quantity) == 0 %>
+        <% else %>
+          <% if can? :manage_snippets, @topic %>
             <%= link_to topic_manage_snippets_path(@topic) do %>
               <%= @topic.snippets.sum(:quantity) %> 件商品
             <% end %>
-          <% end %>
-        <% else %>
-          <% @topic.snippets.each do |snippet| %>
+          <% else %>
             <%= link_to topic_snippets_path(@topic) do %>
               <%= @topic.snippets.sum(:quantity) %> 件商品
             <% end %>
