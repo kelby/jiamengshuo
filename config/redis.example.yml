@@ -1,0 +1,12 @@
+development:
+  sidekiq_url: redis://127.0.0.1:6379/4
+  cache_url: redis://127.0.0.1:6379/4
+  sidekiq_namespace: fm_dev_sidekiq
+test:
+  sidekiq_url: redis://127.0.0.1:6379/5
+  cache_url: redis://127.0.0.1:6379/5
+  sidekiq_namespace: fm_test_sidekiq
+production:
+  sidekiq_url: ''
+  cache_url: ''
+  sidekiq_namespace: ''

@@ -37,7 +37,7 @@
       <% end %>
     </ul>
 
-    <%= paginate @topics %>
+    <%= paginate @topics if @topics.count>0 %>
   </div>
 
   <div class="large-3 columns topic-list topic-kinds">

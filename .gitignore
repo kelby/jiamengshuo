@@ -11,8 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
-config/secrets.yml
-config/database.yml
+
 
 solr/data
 solr/default/data
@@ -24,7 +23,9 @@ public/uploads
 
 public/assets/
 
+#local config
 config/mailer.yml
-
+config/secrets.yml
+config/database.yml
 config/sidekiq.yml
 config/redis.yml
