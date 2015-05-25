@@ -185,7 +185,7 @@ end
 
 user_ids = User.ids
 200.times do
-  # Apply.create(user_id: user_ids.sample, mentor_id: user_ids.sample, info: Faker::Lorem.paragraph)
+  Apply.create(user_id: user_ids.sample, mentor_id: user_ids.sample, info: Faker::Lorem.paragraph.first(20))
 end
 
 User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。 无限感激"

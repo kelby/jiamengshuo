@@ -52,6 +52,13 @@ ul li {
   display: inline-block;
 }
 
+.text-wrapper {
+  ul li {
+    /*display: block;*/
+    margin: 10px 0;
+  }
+}
+
 header {
   width: 80%;
   margin-left: auto;
@@ -306,8 +313,7 @@ p.tags {
 }
 
 .bg-orange {
-    background: #FF9D14;
-    background: #FFAD15 image-url('cover/cover-1.jpg') scroll center no-repeat;
+    background: #FFF url('cover/cover-1.jpg') scroll center no-repeat;
     /*background: #FFAD15;*/
     background-size: cover;
 }
