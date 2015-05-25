@@ -39,8 +39,8 @@
           <%= snippet.website %>
         </div>
 
-        <%= link_to "同意", approve_snippet_path(snippet), method: :put, remote: true %>
-        <%= link_to "拒绝", refuse_snippet_path(snippet), method: :put, remote: true %>
+        <%= link_to "同意", approve_snippet_path(snippet), method: :put, remote: true, class: 'button tiny' %>
+        <%= link_to "拒绝", refuse_snippet_path(snippet), method: :put, remote: true, class: 'button tiny' %>
       </div>
     <% end %>
     <hr class="dashed"></hr>
