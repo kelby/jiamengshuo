@@ -51,6 +51,13 @@ ul li {
   display: inline-block;
 }
 
+.text-wrapper {
+  ul li {
+    /*display: block;*/
+    margin: 10px 0;
+  }
+}
+
 header {
   width: 80%;
   margin-left: auto;
