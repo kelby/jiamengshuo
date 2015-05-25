@@ -188,7 +188,7 @@ span.prefix > i.large {
 .user-info-card .follow-num {
   height: 40px;
   width: 50px;
-  margin-top: 20px;
+  margin-top: 9px;
 }
 
 .follow-num .font-follow {
@@ -240,7 +240,7 @@ span.prefix > i.large {
 }
 
 .zm-profile-section-content {
-  font-size: 14px;
+  font-size: 15px;
   color: #999;
 }
 
@@ -327,4 +327,12 @@ margin-bottom: 0px;
   margin-right: 2.0rem;
   font-size: 18px;
   line-height: 42px;
+}
+
+
+.user-profile-item {
+    color: #999;
+    span {
+        color: #505050;
+    }
 }

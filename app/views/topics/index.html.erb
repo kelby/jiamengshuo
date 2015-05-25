@@ -25,7 +25,7 @@
               </p>
             </div>
             <div class="topic-users-list">
-              <span><%= topic.snippets.count %> 个跟单</span>
+              <span><%= topic.snippets.count %> 人跟单</span>
               <span class="topic-users-list-avatar">
                 <% topic.snippets.limit(10).each do |snippet| %>
                   <%= image_tag snippet.user.avatar_url(:mini) %>

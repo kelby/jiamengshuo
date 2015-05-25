@@ -140,7 +140,7 @@
         </div>
       </div>
       <div class="gendan-users">
-        <div><%= @topic.snippets.count %> 个跟单，<%= @topic.snippets.sum(:quantity) %> 件商品</div>
+        <div><%= @topic.snippets.count %> 人跟单</div>
         <ul>
           <% if can? :manage_snippets, @topic %>
             <% @topic.snippets.each do |snippet| %>
@@ -152,6 +152,7 @@
             <% end %>
           <% end %>
         </ul>
+        <div><%= @topic.snippets.sum(:quantity) %> 件商品</div>
       </div>
     </div>
     <div class="pindan-other">
