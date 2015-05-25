@@ -11,11 +11,22 @@
  * file per style scope.
  *
  *= require foundation_and_overrides
- *= require 'bootstrap-markdown.min'
- *= require 'wmd/wmd'
  *= require social-share-button
  *= require pikaday
- *= require_tree .
+ *= require applies
+ *= require catalogs
+ *= require fancy_button
+ *= require foundation_icons
+ *= require incomeschool
+ *= require pages
+ *= require polaroids
+ *= require posts
+ *= require questions
+ *= require sections
+ *= require snippets
+ *= require topics
+ *= require users
+ *= require wishes
  *= require_self
 
  */

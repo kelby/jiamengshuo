@@ -4,7 +4,7 @@ class Topic < ActiveRecord::Base
   acts_as_taggable
   belongs_to :user
   has_many   :comments, as: :commentable, dependent: :destroy
-  has_many    :snippets
+  has_many   :snippets
   belongs_to :catalog
 
   enum category: { pi_fa: 1, ding_zhuo: 2, hai_tao: 3 }

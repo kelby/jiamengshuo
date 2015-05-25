@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "simditor/simditor" %>
+
 <%= form_for @topic do |f| %>
   <% if @topic.errors.any? %>
     <div id="error_explanation">
@@ -48,7 +50,7 @@
   <div class="field large-12 columns">
     <%= f.label :body, "拼单说明" %>
     <!-- <div id="wmd-button-bar"></div> -->
-    <%= f.text_area :body, rows: 15, required: true, id: "wmd-input" %>
+    <%= f.text_area :body, rows: 15, required: true, id: "editor", placeholder: "这里输入内容" %>
     <!-- <textarea name="content" data-provide="markdown" rows="10"></textarea> -->
 
     <style type="text/css">
@@ -82,3 +84,6 @@
       }
     });
 </script>
+
+<%= javascript_include_tag "simditor/simditor" %>
+<%= javascript_include_tag "simditor_config" %>
