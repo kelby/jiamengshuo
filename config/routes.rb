@@ -60,6 +60,13 @@ Rails.application.routes.draw do
     resources :snippets
   end
 
+  resources :snippets do
+    member do
+      put :approve
+      put :refuse
+    end
+  end
+
   resources :comments do
     resources :replies
 
