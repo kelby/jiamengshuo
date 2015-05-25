@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = current_user
     # @followers = current_user.followers
 
-    @activities = PublicActivity::Activity.order("created_at desc").page(params[:pub_page] || 1).per(15)
+    @activities = PublicActivity::Activity.includes(:owner,:trackable,:recipient).order("created_at desc").page(params[:pub_page] || 1).per(15)
   end
 
   def index
