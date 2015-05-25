@@ -8,6 +8,12 @@
           border-radius: $radius;
 }
 
+.box-border{
+  -moz-box-shadow:0px 0px 1px #333333;
+  -webkit-box-shadow:0px 0px 1px #333333;
+  box-shadow:0px 0px 1px #333333;
+}
+
 .border-line {
   border: 1px solid rgb(172,172,172);
 }
@@ -256,6 +262,17 @@ span.prefix > i.large {
 // .tabbable .tabs {
 //   @extend .border-line;
 // }
+
+.user-tabs{
+  @extend .box-border;
+  width: 280px;
+  margin:20px auto;
+}
+
+.user-tabs li a
+{
+  width: 140px;
+}
 
 .auth-plain {
   padding-right: 0px;
