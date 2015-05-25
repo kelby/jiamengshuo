@@ -4,6 +4,12 @@
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
+@mixin border-top-right-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+     -moz-border-top-right-radius: $radius;
+      -ms-border-top-right-radius: $radius;
+          border-top-right-radius: $radius;
+}
 
 $border-color: #BBB;
 $font-color: #777;
@@ -27,5 +33,19 @@ $line-color: #ddd;
 	}
 	.buttons a + a {
 		margin-left: 30%;
+	}
+}
+.approve-status {
+	float: right;
+	padding: 10px;
+	border: 1px solid $border-color;
+	@include border-top-right-radius(5px);
+}
+.snippet-list {
+	.large-4 {
+		width: 29%;
+	}
+	.large-offset-1 {
+		margin-left: 3% !important; 
 	}
 }
