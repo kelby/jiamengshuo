@@ -132,14 +132,14 @@ i.red{
 
 .topic-info .topic-info-detail {
   width: 500px;
-  position: relative;
-  top: -140px;
-  left: 100px;
-  a {
-      &:hover {
-          color: #1465BF;
-      }
-  }
+  position: absolute;
+  left: 50%;
+  top: 0;
+  // a {
+  //     &:hover {
+  //         color: #1465BF;
+  //     }
+  // }
 }
 
 .topic-info .topic-user {
@@ -150,10 +150,8 @@ i.red{
 }
 
 .topic-info .topic-users-list {
-    color: #666;
+  color: #666;
   width: 700px;
-  position: relative;
-  top: -145px;
 }
 
 .topic-info img {
