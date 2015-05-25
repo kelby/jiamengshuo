@@ -223,3 +223,17 @@ end
   jack.follow mary
   jack.create_activity :follow, owner: jack, recipient: mary
 end
+
+1000.times do
+  from_user_id = User.ids.sample
+  to_user_id = User.ids.sample
+  if from_user_id != to_user_id
+    DirectMessage.create(from_user_id: from_user_id, to_user_id: to_user_id, content: Faker::Lorem.paragraph)
+
+    from_user = User.find from_user_id
+    to_user = User.find to_user_id
+
+    from_user.follow to_user
+    from_user.create_activity :follow, owner: from_user, recipient: to_user
+  end
+end
