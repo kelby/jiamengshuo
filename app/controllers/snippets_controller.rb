@@ -6,6 +6,11 @@ class SnippetsController < ApplicationController
     @snippets = @topic.snippets.page(params[:page]).per(24)
   end
 
+  def manage_snippets
+    @topic = Topic.find params[:topic_id]
+    @snippets = @topic.snippets.page(params[:page]).per(24)
+  end
+
   def create
     @topic = Topic.find params[:topic_id]
 

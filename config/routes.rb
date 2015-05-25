@@ -51,6 +51,7 @@ Rails.application.routes.draw do
 
       put 'change_status/:status', to: 'topics#change_status', as: :change_status
     end
+    get :manage_snippets, to: "snippets#manage_snippets"
 
     collection do
        get :search

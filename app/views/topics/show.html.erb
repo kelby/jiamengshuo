@@ -142,8 +142,14 @@
       <div class="gendan-users">
         <div><%= @topic.snippets.count %> 个跟单，<%= @topic.snippets.sum(:quantity) %> 件商品</div>
         <ul>
-          <% @topic.snippets.each do |snippet| %>
-            <li><%= link_to image_tag(snippet.user.avatar_url(:tiny)), topic_snippets_path(@topic) %></li>
+          <% if can? :manage_snippets, @topic %>
+            <% @topic.snippets.each do |snippet| %>
+              <li><%= link_to image_tag(snippet.user.avatar_url(:tiny)), manage_snippets_topic_path(@topic) %></li>
+            <% end %>
+          <% else %>
+            <% @topic.snippets.each do |snippet| %>
+              <li><%= link_to image_tag(snippet.user.avatar_url(:tiny)), topic_snippets_path(@topic) %></li>
+            <% end %>
           <% end %>
         </ul>
       </div>
