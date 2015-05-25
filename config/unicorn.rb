@@ -1,43 +1,44 @@
-=begin
-module Rails
-  class <<self
-    def root
-      File.expand_path(__FILE__).split('/')[0..-3].join('/')
-    end
-  end
-end
-rails_env = ENV["RAILS_ENV"] || "production"
-=end
-application_root = "/var/www/jiamengshuo/current"
 
-preload_app true
-working_directory "#{application_root}"
-pid "#{application_root}/tmp/pids/unicorn.pid"
-stderr_path "#{application_root}/log/unicorn.stderr.log"
-stdout_path "#{application_root}/log/unicorn.stdout.log"
+# https://raw.githubusercontent.com/tablexi/capistrano3-unicorn/master/examples/unicorn.rb
+# paths
+app_path = "/var/www/jiamengshuo"
+working_directory "#{app_path}/current"
+pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
-listen 5001, :tcp_nopush => false
+# listen
+listen "/tmp/unicorn.jiamengshuo.sock", :backlog => 64
 
-listen "/tmp/unicorn.jiamengshuo.sock"
+# logging
+stderr_path "log/unicorn.stderr.log"
+stdout_path "log/unicorn.stdout.log"
+
+# workers
 worker_processes 2
-timeout 123
 
-if GC.respond_to?(:copy_on_write_friendly=)
-  GC.copy_on_write_friendly = true
+# use correct Gemfile on restarts
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
 end
+
+# preload
+preload_app true
 
 before_fork do |server, worker|
-  old_pid = "#{application_root}/tmp/pids/unicorn.pid.oldbin"
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+  end
+
+  # Before forking, kill the master process that belongs to the .oldbin PID.
+  # This enables 0 downtime deploys.
+  old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
-      puts "Send 'QUIT' signal to unicorn error!"
+      # someone else did our job for us
     end
-  end
-
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.connection.disconnect!
   end
 end
 
@@ -45,8 +46,4 @@ after_fork do |server, worker|
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection
   end
-end
-
-before_exec do |server|
-  ENV["BUNDLE_GEMFILE"] = "#{application_root}/Gemfile"
 end
