@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   validates :username, :presence => true, :uniqueness => {:case_sensitive => false }
+  
+  validates_format_of :email, :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -51,7 +54,7 @@ class User < ActiveRecord::Base
   has_one :user_body, dependent: :destroy
   accepts_nested_attributes_for :user_body
 
-  delegate :gender, :male?, :female?, :birth_date, :website, :phone, :weibo, :tqq_weibo, :location, to: :user_body, allow_nil: true, prefix: nil
+  delegate :gender, :male?, :female?, :birth_date, :website, :phone, :weibo, :qq, :location, to: :user_body, allow_nil: true, prefix: nil
 
   after_create :ensure_create_user_body
 

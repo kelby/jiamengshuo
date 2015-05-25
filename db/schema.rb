@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525083456) do
+ActiveRecord::Schema.define(version: 20150525111043) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(version: 20150525083456) do
     t.string   "website",    limit: 255
     t.string   "phone",      limit: 255
     t.string   "weibo",      limit: 255
-    t.string   "tqq_weibo",  limit: 255
+    t.string   "qq",         limit: 255
     t.integer  "user_id",    limit: 4
     t.string   "location",   limit: 255
   end

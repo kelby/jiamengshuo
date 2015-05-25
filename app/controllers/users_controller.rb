@@ -78,7 +78,7 @@ class UsersController < ApplicationController
   private
   def basic_params
     params.require(:user).permit(:avatar, :username, :info, :tag_list,
-                                 user_body_attributes: [:id, :gender, :birth_date, :website, :phone, :weibo, :tqq_weibo]) if params[:user]
+                                 user_body_attributes: [:id, :gender, :birth_date, :website, :phone, :weibo, :qq]) if params[:user]
   end
 
   def settings_params
