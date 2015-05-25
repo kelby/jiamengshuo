@@ -24,6 +24,26 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.find params[:id]
   end
 
+  def approve
+    @snippet = Snippet.find params[:id]
+    @snippet.approve!
+    @snippet.create_activity :approve, owner: current_user, recipient: @snippet.user
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def refuse
+    @snippet = Snippet.find params[:id]
+    @snippet.refuse!
+    @snippet.create_activity :refuse, owner: current_user, recipient: @snippet.user
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   def snippet_params
     params.require(:snippet).permit([:name, :spec, :color, :per_price, :quantity, :address, :body])
