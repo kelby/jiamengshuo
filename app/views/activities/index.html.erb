@@ -43,7 +43,7 @@
     <!-- 关注 -->
     <section role="tabpanel" aria-hidden="true" class="content" id="followers">
       <% current_user.followers.each do |user| %>
-        <%= user.username %> 关注了你。
+        <%= link_to user.username, user %> 关注了你。
         <br>
       <% end %>
     </section>
