@@ -1,20 +1,21 @@
 <div class="raw">
 
   <div class="large-3 columns user-info-card">
-    <div class="user-username">
-      <h4><%= @user.username %></h4>
-      <%= render 'users/icon_for_gender', user: @user %>
-    </div>
 
     <div class="zm-profile-header-main">
-      <%= image_tag @user.avatar_url(:thumb) %>
+      <%= image_tag @user.avatar_url(:thumb), style: 'margin-top: 10px;' %>
       <div class="zm-follow-header-info">
+
         <div class="clearfix">
-          <div class="follow-num float-left margin-left-10">
-            <span class="font-follow">关注了</span> 
+          <div class="user-username">
+            <h4 style="font-size: 16px; margin-left: 10px;"><%= @user.username %></h4>
+            <%= render 'users/icon_for_gender', user: @user %>
+          </div>
+          <div class="follow-num float-left" style="margin-left: 10px;">
+            <span class="font-follow">关注了</span>
             <strong><%= @user.following_users_count %>人</strong>
           </div>
-          <div class="follow-num float-right margin-right-10">
+          <div class="follow-num float-left" style="margin-left: 10px;">
             <span class="font-follow">粉丝数</span>
             <strong><%= @user.count_user_followers %>人</strong>
           </div>
@@ -36,20 +37,22 @@
       </p>
     </div>
     <hr/>
-    <div class="font-message pindan-num">
+    <div class="font-message pindan-num" style="color: #999;">
       发起了 <%= link_to "#{@user.topics.count} 个拼单", topics_path(user_id: @user.id) %>
       参加了 <a href="#"><%= @user.snippets.count %> 个拼单</a>
     </div>
     <hr/>
-    <div class="font-message user-resume">
-      个人介绍: 
-      <i><%= cn_for_user_info(@user.info) %></i>
+    <div class="font-message user-resume" style="color: #999;">
+      个人介绍:
+      <span style="color: #444;">
+          <%= cn_for_user_info(@user.info) %>
+      </span>
     </div>
   </div>
 
   <section class="section large-7 columns direct_message">
     <div class="zm-profile-section-head">
-      <h3>私信 Ta ?</h3>  
+      <h3>私信 Ta ?</h3>
     </div>
 
     <div class="content" data-slug="panel1">
@@ -63,7 +66,7 @@
 
   <div class="large-7 columns user-info-state">
     <div class="zm-profile-section-head">
-      <h3>最新动态</h3>  
+      <h3>最新动态</h3>
     </div>
     <hr/>
     <%if @activities.present? %>
@@ -87,6 +90,6 @@
     <% else %>
       <div class="zm-profile-section-empty">暂时没有动态</div>
     <% end %>
-    
+
   </div>
 </div>

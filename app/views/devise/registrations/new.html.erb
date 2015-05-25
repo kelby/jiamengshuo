@@ -6,23 +6,23 @@
 
       <div class="row collapse">
         <div class="small-2 columns">
-          <%= f.label :email do %>
-            <span class="prefix"><i class="fi-mail large"></i></span>
-          <% end %>
-        </div>
-        <div class="small-10 columns">
-          <%= f.email_field :email, required: true, autofocus: true, placeholder: t("devise.email") %>
-        </div>
-      </div>
-
-      <div class="row collapse">
-        <div class="small-2 columns">
           <%= f.label :username do %>
             <span class="prefix"><i class="fi-torso large"></i></span>
           <% end %>
         </div>
         <div class="small-10 columns">
           <%= f.text_field :username, required: true, placeholder: t("devise.username") %>
+        </div>
+      </div>
+
+      <div class="row collapse">
+        <div class="small-2 columns">
+          <%= f.label :email do %>
+            <span class="prefix"><i class="fi-mail large"></i></span>
+          <% end %>
+        </div>
+        <div class="small-10 columns">
+          <%= f.email_field :email, required: true, autofocus: true, placeholder: t("devise.email") %>
         </div>
       </div>
 
