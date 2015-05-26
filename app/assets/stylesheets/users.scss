@@ -355,9 +355,17 @@ margin-bottom: 0px;
     }
 }
 
-.class-a-selected{
-    font-weight: bold;
-    color: #0065BB;
+.class-a-selected {
+    color: #FFF;
+    background: #2095E3;
+    padding: 3px;
+    &:hover {
+        color: #FFF;
+    }
     // background-color: rgb(240, 245, 245);
     // border: 1px solid rgb(226, 238, 250);
+}
+
+#follower_to_me {
+    font-size: 15px;
 }
