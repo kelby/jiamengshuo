@@ -32,6 +32,10 @@
 
  */
 
+ html, body, section, div, h1, h2, h3, h4, h5, h6, p, span {
+     font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif;
+ }
+
 a.no_background {
   background: #333333;
 }
@@ -319,8 +323,8 @@ p.tags {
 }
 
 .bg-orange {
-    background: #FFF image-url('cover/cover-1.jpg') scroll center no-repeat;
-    /*background: #FFAD15;*/
+    // background: #FFF image-url('cover/cover-1.jpg') scroll center no-repeat;
+    background: #F0F0F0;
     background-size: cover;
 }
 
