@@ -4,8 +4,8 @@
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= devise_error_messages! %>
     <hr class="large-7"/>
-    <div><%= f.label :username, "用户名" %><br />
-    <%= f.text_field :username, autofocus: true ,style:'width:200px' ,placeholder:"用户名" %></div>
+    <div><%= f.label :email, "用户邮箱" %><br />
+    <%= f.text_field :email, autofocus: true ,style:'width:200px' ,placeholder:"用户邮箱" %></div>
 
     <div><%= f.submit "发送邮件，找回密码", class: "blue tiny button radius" %></div>
   <% end %>

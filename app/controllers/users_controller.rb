@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     @teachers = @user.teachers.includes(:recipient)
     @students = @user.students.includes(:recipient)
     @followers = @user.followers
-
+    # @activities = PublicActivity::Activity.includes(:owner,:trackable,:recipient).order("created_at desc").page(params[:pub_page] || 1).per(15)
+    
     @direct_message = DirectMessage.new
   end
 
