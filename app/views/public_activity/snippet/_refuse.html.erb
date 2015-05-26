@@ -1,0 +1,11 @@
+<div class="margin-content">
+  <%= link_to image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar'), activity.owner %>
+  <%= link_to activity.owner.username, activity.owner %> 拒绝了
+
+  <% if activity.recipient %>
+    <%= link_to activity.recipient.username, activity.recipient %>
+  <% else %>
+    已经被删除
+  <% end %>
+  的拼单。
+</div>
