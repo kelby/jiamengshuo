@@ -184,8 +184,6 @@ span.prefix > i.large {
 .user-info-card {
   @extend .main-border-info;
   @include border-radius(4px);
-  padding-top: 10px;
-  margin-left: 100px;
 }
 
 .user-info-card .zm-profile-header-main img {
@@ -237,7 +235,6 @@ span.prefix > i.large {
   @extend .main-border-info;
   @include border-radius(4px);
   min-height: 200px;
-  margin-right: 100px;
 }
 
 .zm-profile-section-head h3 {
