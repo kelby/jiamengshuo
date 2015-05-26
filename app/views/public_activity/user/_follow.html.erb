@@ -1,5 +1,5 @@
 <%= link_to activity.owner do %>
-  <%= image_tag(activity.owner.avatar_url(:tiny)) %>
+  <%= image_tag(activity.owner.avatar_url(:tiny), class: 'avatar') %>
 <% end %>
 <%= link_to activity.owner.username, activity.owner %> 关注了
 

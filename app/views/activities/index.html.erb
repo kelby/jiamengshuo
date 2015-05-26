@@ -21,7 +21,7 @@
       <!-- 普通消息 -->
       <section role="tabpanel" aria-hidden="false" class="content active" id="notification-1">
         <%= render_activities(@to_my_resource, locals: {to_me: true}) %>
-        
+
         <%= paginate @to_my_resource %>
       </section>
 
@@ -39,7 +39,7 @@
         <% @direct_messages.each_slice(5) do |dms| %>
           <% dms.each do |dm| %>
             <div class="pindan-message-detail margin-content">
-              <%= image_tag dm.from_user.avatar_url(:tiny), class: "user-tiny-avatar-size float-left" %>
+              <%= image_tag dm.from_user.avatar_url(:tiny), class: "user-tiny-avatar-size avatar float-left" %>
               <div class="clearfix pindan-message-detail-info">
                 <p><%= dm.from_user.username %></p>
                 <p>私信了我： <%= dm.content %></p>

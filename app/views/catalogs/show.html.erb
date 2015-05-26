@@ -14,7 +14,7 @@
     <% @topics.each do |topic| %>
       <li>
         <%= link_to topic.user do %>
-          <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar' %>
+          <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar avatar' %>
         <% end %>
         <span class="list-username"><%= topic.user.username %></span>
         <span class="pindan-num"><%= topic.comments.count %></span>

@@ -134,7 +134,7 @@
     <strong>发单人</strong>
     <div class="user-sidebar-info margin-top-20">
       <div>
-        <%= image_tag @topic.user.avatar_url(:thumb), class: 'thumb_avatar' %>
+        <%= image_tag @topic.user.avatar_url(:thumb), class: 'thumb_avatar avatar' %>
         <legend class="user-sidebar-name"><strong><%= link_to @topic.user.username, @topic.user %></strong></legend>
         <span>电话: </span>
         <%= @topic.user.phone %>
@@ -147,7 +147,7 @@
         <div><%= @topic.snippets.count %> 人跟单</div>
         <ul>
             <% @topic.snippets.each do |snippet| %>
-              <li><%= image_tag snippet.user.avatar_url(:tiny) %></li>
+              <li><%= image_tag snippet.user.avatar_url(:tiny), class: 'avatar' %></li>
             <% end %>
         </ul>
 
