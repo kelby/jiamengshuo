@@ -47,19 +47,6 @@
     <%= f.select :freight_source, Topic.freight_sources.map{|key, _| [cn_for_freight_source(key), key]}, required: true, prompt: "请选择" %>
   </div>
 
-  <div class="field large-12 columns">
-    <%= f.label :body, "拼单说明" %>
-    <!-- <div id="wmd-button-bar"></div> -->
-    <%= f.text_area :body, rows: 15, required: true, id: "editor", placeholder: "这里输入内容" %>
-    <!-- <textarea name="content" data-provide="markdown" rows="10"></textarea> -->
-
-    <style type="text/css">
-      div.btn-group {display: inline-block;}
-    </style>
-  </div>
-
-  <div id="preview"></div>
-
   <!-- <div class="field large-12 columns">
     <%#= f.label :tag_list, "拼单关键词(标签)" %>
     <%#= f.text_field :tag_list, required: true %>
@@ -67,12 +54,27 @@
 
   <div class="field large-12 columns">
     <%= f.label :catalog_id, "品类" %>
-    <%= f.select :catalog_id, Catalog.all.collect { |p| [ p.name, p.id ] }, prompt: "请选择" %>
+    <%= f.select :catalog_id, Catalog.all.collect { |p| [ p.name, p.id ] }, required: true, prompt: "请选择" %>
   </div>
 
   <div class="field large-12 columns">
     <%= f.label :website, "商品链接" %>
-    <%= f.text_field :website, required: true %>
+    <%= f.text_field :website, required: true, placeholder: "淘宝等链接，方便他人浏览、确认。" %>
+  </div>
+
+  <div class="field large-12 columns">
+    <%= f.label :from_address, "发货地址" %>
+    <%= f.text_field :from_address, required: true, placeholder: "指定某个范围内的地址，可以不是具体的。" %>
+  </div>
+
+  <div class="field large-12 columns">
+    <%= f.label :to_address, "收货地址" %>
+    <%= f.text_field :to_address, required: true, placeholder: "指定某个范围内的地址，可以不是具体的。" %>
+  </div>
+
+  <div class="field large-12 columns">
+    <%= f.label :body, "拼单说明" %>
+    <%= f.text_area :body, rows: 15, required: true, id: "editor", placeholder: "这里输入内容" %>
   </div>
 
   <div class="actions large-12 columns">
@@ -80,18 +82,15 @@
   </div>
 <% end %>
 
-<script>
-    var config = {
-      field: document.getElementById('datepicker'),
-      format: 'YYYY-MM-DD',
-      onSelect: function() {
-        console.log(this.getMoment().format('YYYY-MM-DD'));
-      } 
-    }
-    if (!config["field"].value) {
-      config["minDate"]=new Date();
-    };
-    var picker = new Pikaday(config);
+<script type="text/javascript">
+  var config = {
+    field: document.getElementById('datepicker'),
+    format: 'YYYY-MM-DD'
+  }
+  if (!config["field"].value) {
+    config["minDate"]=new Date();
+  };
+  var picker = new Pikaday(config);
 </script>
 
 <%= javascript_include_tag "simditor/simditor" %>

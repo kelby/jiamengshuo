@@ -89,7 +89,7 @@
     <!-- <hr> -->
 
     <%= form_for :comment, url: topic_comments_path(@topic) do |f| %>
-      <%= f.text_area :content, rows: 10, required: true %>
+      <%= f.text_area :content, rows: 10, required: true, placeholder: "这里是评论区。如要拼单，请点击右上角的“参与拼单”，填写要购买的商品详细信息，并提交。" %>
       <%= f.submit "评论", class: "blue tiny button radius float-right" %>
     <% end %>
 
