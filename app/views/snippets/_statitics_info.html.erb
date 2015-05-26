@@ -1,0 +1,1 @@
+<%= link_to topic.title, topic %> 共有 <%= topic.snippets.pluck(:user_id).uniq.count %> 人参与，<%= topic.snippets.count %> 个跟单, <%= topic.snippets.sum(:quantity) %> 件商品。
