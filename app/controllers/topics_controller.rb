@@ -108,6 +108,7 @@ class TopicsController < ApplicationController
   end
 
   def search
+    @params={};
     search = Topic.search do
       fulltext params[:q]
 
