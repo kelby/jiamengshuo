@@ -1,4 +1,4 @@
-<div class="raw">
+<div class="columns large-8 large-centered margin-content">
 
   <div class="large-3 columns user-info-card">
 
@@ -49,46 +49,47 @@
       </span>
     </div>
   </div>
-
-  <section class="section large-7 columns direct_message">
-    <div class="zm-profile-section-head">
-      <h3>私信 Ta ?</h3>
-    </div>
-
-    <div class="content" data-slug="panel1">
-      <%= form_for :direct_message, url: direct_messages_path, remote: true, html: { id: 'direct_message' } do |f| %>
-        <%= f.text_area :content, required: true, autofocus: true %><br />
-        <%= hidden_field_tag 'direct_message[to_user_id]', @user.id %>
-        <%= f.submit "提交", class: "blue tiny button radius" %>
-      <% end %>
-    </div>
-  </section>
-
-  <div class="large-7 columns user-info-state">
-    <div class="zm-profile-section-head">
-      <h3>最新动态</h3>
-    </div>
-    <hr/>
-    <%if @activities.present? %>
-      <div class="zm-profile-section-content">
-        <div class="activity">
-        </div>
-        <% @activities.each_slice(5) do |activities| %>
-          <div>
-            <% activities.each do |activity| %>
-              <div class="activity">
-                <%= link_to activity.owner.username, activity.owner if activity.owner %>
-                <%= render_activity activity %>
-              </div>
-            <% end %>
-            <!-- <hr class="dashed"></hr> -->
-          </div>
+  <div class="columns large-9">
+    
+    <div class="raw direct_message">
+      <div class="zm-profile-section-head">
+        <h3>私信 Ta ?</h3>
+      </div>
+      <div class="content" style="padding: 10px" data-slug="panel1">
+        <%= form_for :direct_message, url: direct_messages_path, remote: true, html: { id: 'direct_message' } do |f| %>
+          <%= f.text_area :content, required: true, autofocus: true %><br />
+          <%= hidden_field_tag 'direct_message[to_user_id]', @user.id %>
+          <%= f.submit "提交", class: "blue tiny button radius" %>
         <% end %>
       </div>
-        <%#= paginate @activities, :param_name => 'pub_page' %>
-    <% else %>
-      <div class="zm-profile-section-empty">暂时没有动态</div>
-    <% end %>
+    </div>
 
+    <div class="raw user-info-state">
+      <div class="zm-profile-section-head">
+        <h3>最新动态</h3>
+      </div>
+      <hr/>
+      <%if @activities.present? %>
+        <div class="zm-profile-section-content">
+          <div class="activity">
+          </div>
+          <% @activities.each_slice(5) do |activities| %>
+            <div>
+              <% activities.each do |activity| %>
+                <div class="activity">
+                  <%= link_to activity.owner.username, activity.owner if activity.owner %>
+                  <%= render_activity activity %>
+                </div>
+              <% end %>
+              <!-- <hr class="dashed"></hr> -->
+            </div>
+          <% end %>
+        </div>
+          <%#= paginate @activities, :param_name => 'pub_page' %>
+      <% else %>
+        <div class="zm-profile-section-empty">暂时没有动态</div>
+      <% end %>
+
+    </div>
   </div>
 </div>

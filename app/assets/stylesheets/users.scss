@@ -331,10 +331,8 @@ margin-bottom: 0px;
 }
 
 .direct_message{
-  margin-left: 13px;
-  border: 1px solid #ddd;
+  @extend .main-border-info;
   border-radius: 4px;
-  margin-top: 20px;
 }
 
 .user-username > h4{
