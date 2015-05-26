@@ -99,8 +99,13 @@ i.red{
   -webkit-box-shadow: 2px rgba(0,0,0,0.25);
 
   h3 {
-    color: #2475D1 !important;
+    color: #2095E3 !important;
     font-size: 20px !important;
+  }
+  &:hover {
+      h3 {
+          color: #0065BB !important;
+      }
   }
 
   .topic-deadline {
@@ -138,7 +143,7 @@ i.red{
   top: 0;
   // a {
   //     &:hover {
-  //         color: #1465BF;
+  //         color: #0065BB;
   //     }
   // }
 }
@@ -190,7 +195,7 @@ i.red{
 }
 
 .topic-kinds a:hover {
-  color: #1465BF;
+  color: #0065BB;
   font-weight: bold;
 }
 
