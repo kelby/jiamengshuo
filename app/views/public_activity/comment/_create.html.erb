@@ -6,7 +6,7 @@
     对
 
     <% if activity.recipient.user %>
-      <%= image_tag activity.recipient.user.avatar_url(:mini), class: "super_tiny_avatar avatar" %>
+      <%#= image_tag activity.recipient.user.avatar_url(:mini), class: "super_tiny_avatar avatar" %>
       <%= link_to activity.recipient.user.username, activity.recipient.user %>
     <% end %>
 

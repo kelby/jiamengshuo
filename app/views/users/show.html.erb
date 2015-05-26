@@ -3,7 +3,7 @@
   <div class="large-3 columns user-info-card">
 
     <div class="zm-profile-header-main">
-      <%= image_tag @user.avatar_url(:thumb), style: 'margin-top: 10px;' %>
+      <%= image_tag @user.avatar_url(:thumb), class: 'avatar', style: 'margin-top: 10px;' %>
       <div class="zm-follow-header-info">
 
         <div class="clearfix">
@@ -35,7 +35,7 @@
       <p>所在城市:
         <span><%#= @user.location %></span>
       </p>
-    </div> 
+    </div>
     <hr/> -->
     <div class="font-message pindan-num" style="color: #999;">
       发起了 <%= link_to "#{@user.topics.count} 个拼单", topics_path(user_id: @user.id) %>
@@ -50,7 +50,7 @@
     </div>
   </div>
   <div class="columns large-9">
-    
+
     <div class="raw direct_message">
       <div class="zm-profile-section-head">
         <h3>私信 Ta ?</h3>
