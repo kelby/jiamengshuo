@@ -47,26 +47,9 @@
           <%= render partial: "direct_messages/direct_message", collection: @direct_messages %>
         </div>
 
-<<<<<<< HEAD
-        <% @direct_messages.each_slice(5) do |dms| %>
-          <% dms.each do |dm| %>
-            <div class="pindan-message-detail margin-content">
-              <%= image_tag dm.from_user.avatar_url(:tiny), class: "user-tiny-avatar-size avatar float-left" %>
-              <div class="clearfix pindan-message-detail-info">
-                <p><%= dm.from_user.username %></p>
-                <p>私信了我： <%= dm.content %></p>
-                <p class="font-color-gray"><%= time_ago_in_words dm.created_at %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-
-        <%= paginate @direct_messages, :param_name => 'dm_page' %>
-=======
         <div id="direct_messages_paginate">
           <%= paginate @direct_messages, remote: true, :param_name => 'direct_messages' %>
         </div>
->>>>>>> 8bf4ad32bdafff2e39963a07b84c4dc86fb34e94
       </section>
 
       <!-- 关注我 -->
