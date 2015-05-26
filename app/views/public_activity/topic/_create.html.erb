@@ -1,3 +1,4 @@
+<div style="margin-bottom: 1%;">
 <% if activity.trackable %>
   <div class="activity">
     <%= image_tag activity.owner.avatar_url(:mini), class: "super_tiny_avatar" %>
@@ -7,3 +8,4 @@
     <%= link_to activity.trackable.title, activity.trackable %>
   </div>
 <% end %>
+</div>
