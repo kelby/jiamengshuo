@@ -45,6 +45,9 @@ class TopicsController < ApplicationController
   def show
     @comment = @topic.comments.build
     @comments = @topic.comments.reload
+
+    @snippet_uniq_users = User.where(id: @topic.snippets.pluck(:user_id).uniq)
+
     respond_with(@topic)
   end
 
