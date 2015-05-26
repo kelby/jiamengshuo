@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526140639) do
+ActiveRecord::Schema.define(version: 20150526190728) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 20150526140639) do
     t.datetime "deleted_at"
   end
 
-  add_index "catalogs", ["deleted_at"], name: "index_catalogs_on_deleted_at", using: :btree
-
   create_table "comments", force: :cascade do |t|
     t.text     "content",          limit: 65535
     t.datetime "created_at",                     null: false
@@ -73,7 +71,6 @@ ActiveRecord::Schema.define(version: 20150526140639) do
   end
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
-  add_index "comments", ["deleted_at"], name: "index_comments_on_deleted_at", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "direct_messages", force: :cascade do |t|
@@ -235,7 +232,6 @@ ActiveRecord::Schema.define(version: 20150526140639) do
   end
 
   add_index "topics", ["catalog_id"], name: "index_topics_on_catalog_id", using: :btree
-  add_index "topics", ["deleted_at"], name: "index_topics_on_deleted_at", using: :btree
   add_index "topics", ["title"], name: "index_topics_on_title", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
@@ -296,7 +292,6 @@ ActiveRecord::Schema.define(version: 20150526140639) do
     t.datetime "deleted_at"
   end
 
-  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
