@@ -18,7 +18,9 @@
                 <h3><%= topic.title %></h3>
                 <div class="tag-list">
                   <span><%= topic.freight_source_to_cn %></span>
-                  <span><%= topic.catalog.name %></span>
+                  <% if topic.catalog %>
+                    <span><%= topic.catalog.name %></span>
+                  <% end %>
                 </div>
                 <p class="topic-deadline">
                   截止日期:
@@ -46,19 +48,26 @@
     <div class="pindan-kinds">
       <p>拼单类型</p>
       <ul>
-        <li><%= link_to "全部", topics_path %></li>
-        <li><%= link_to "批发", topics_pi_fa_path %></li>
-        <li><%= link_to "定做", topics_ding_zhuo_path %></li>
-        <li><%= link_to "海淘", topics_hai_tao_path %></li>
+        <li><%= link_to "全部", topics_path(@params.select{|key| key != :category }) ,:class=> (@params[:category].present? ? nil : 'class-a-selected')  %></li>
+        <li><%= link_to "批发", topics_pi_fa_path(@params) ,:class=> (@params[:category]&&@params[:category].to_i==1 ? 'class-a-selected' : nil )%></li>
+        <li><%= link_to "定做", topics_ding_zhuo_path(@params) ,:class=> (@params[:category]&&@params[:category].to_i==2 ? 'class-a-selected' : nil )%></li>
+        <li><%= link_to "海淘", topics_hai_tao_path(@params) ,:class=> (@params[:category]&&@params[:category].to_i==3 ? 'class-a-selected' : nil )%></li>
       </ul>
     </div>
     <div class="pindan-supply">
       <p>拼单货源</p>
       <ul>
-        <li><%= link_to "全部", topics_path %></li>
+        <li><%= link_to "全部", topics_path(@params.select{|key| key != :freight_source }),:class=> (@params[:freight_source].present? ? nil : 'class-a-selected')  %></li>
+        
         <% Topic.freight_sources.keys.each do |freight_source| %>
           <li>
-            <%= link_to cn_for(freight_source), topics_path(freight_source: freight_source) %>
+            <%
+              clazz=nil
+              if @params[:freight_source] == freight_source
+                clazz='class-a-selected'
+              end
+            %>
+            <%= link_to cn_for(freight_source), topics_path(@params.merge({freight_source: freight_source})),:class=>clazz %>
           </li>
         <% end %>
       </ul>
@@ -66,11 +75,17 @@
     <div class="product-kind">
       <p>商品种类</p>
       <ul>
-        <li><%= link_to "全部", topics_path %></li>
+        <li><%= link_to "全部", topics_path(@params.select{|key| key != :catalog_id }),:class=> (@params[:catalog_id].present? ? nil : 'class-a-selected') %></li>
 
         <% Catalog.all.each do |catalog| %>
           <li>
-            <%= link_to catalog.name, topics_path(catalog_id: catalog.id) %>
+            <%
+              clazz=nil
+              if @params[:catalog_id].to_i == catalog.id 
+                clazz='class-a-selected'
+              end
+            %>
+            <%= link_to catalog.name, topics_path(@params.merge({catalog_id: catalog.id})),:class=>clazz %>
           </li>
         <% end %>
       </ul>

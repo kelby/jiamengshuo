@@ -8,27 +8,49 @@ class TopicsController < ApplicationController
   respond_to :html
 
   def index
+    @params={};
+    @topics
     if params["category"].present?
       case params["category"]
       when 1
         @topics = Topic.pi_fa
+        @params[:category]=1
       when 2
         @topics = Topic.ding_zhuo
+        @params[:category]=2
       when 3
         @topics = Topic.hai_tao
+        @params[:category]=3
       else
         @topics = Topic.all
       end
-    elsif params[:freight_source].present?
-      @topics = Topic.send(params[:freight_source])
-    elsif params[:catalog_id].present?
-      catalog = Catalog.find params[:catalog_id]
-      @topics = catalog.topics
-    elsif params[:user_id]
-      user = User.find params[:user_id]
-      @topics = user.topics
+    # elsif params[:freight_source].present?
+    #   @topics = Topic.send(params[:freight_source])
+    # elsif params[:catalog_id].present?
+    #   catalog = Catalog.find params[:catalog_id]
+    #   @topics = catalog.topics
+    # elsif params[:user_id]
+    #   user = User.find params[:user_id]
+    #   @topics = user.topics
+    # else
+    #   @topics = Topic.all
     else
       @topics = Topic.all
+    end
+
+    if params[:freight_source].present?
+      @topics = @topics.send(params[:freight_source])
+      @params[:freight_source]=params[:freight_source];
+    end
+
+    if params[:catalog_id].present?
+      @topics = @topics.where('catalog_id=?',params[:catalog_id].to_i)
+      @params[:catalog_id]=params[:catalog_id];
+    end
+
+    if params[:user_id].present?
+      @topics = @topics.where('user_id=?',params[:user_id].to_i)
+      @params[:user_id]=params[:user_id];
     end
 
     @topics = @topics.page(params[:page]).per(8).order("updated_at DESC").includes(:user,:catalog) if @topics.present?

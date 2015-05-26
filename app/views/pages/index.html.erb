@@ -97,7 +97,9 @@
                         <div class="content-area-1">
                             <div class="tag-list">
                                 <span><%= topic.freight_source_to_cn %></span>
-                                <span><%= topic.catalog.name %></span>
+                                <% if topic.catalog %>
+                                  <span><%= topic.catalog.name %></span>
+                                <% end %>
                             </div>
                         </div>
                         <div class="content-area-2">
