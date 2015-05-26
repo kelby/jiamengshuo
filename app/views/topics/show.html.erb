@@ -172,7 +172,11 @@
         <div><%= @snippet_uniq_users.size %> 人跟单</div>
         <ul>
           <% @snippet_uniq_users.each do |user| %>
-            <li><%= image_tag user.avatar_url(:tiny), class: 'avatar' %></li>
+            <li>
+                <%= link_to user do %>
+                    <%= image_tag user.avatar_url(:tiny), class: 'avatar' %>
+                <% end %>
+            </li>
           <% end %>
         </ul>
 
