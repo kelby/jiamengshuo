@@ -54,28 +54,18 @@
     <hr/>
     <%if @activities.present? %>
       <div class="zm-profile-section-content">
-        <!-- <div class="activity">
-        本功能紧张开发中...
-        </div> -->
-        <!-- 进入处理拼单页面 -->
-        <!-- <div class="activity"> -->
-          <!-- 您有 5 个拼单等待处理，点击 <%#= link_to "立即处理", users_pending_apply_students_path %> -->
-        <!-- </div> -->
-        <!-- <hr class="dashed"></hr> -->
-
         <% @activities.each_slice(5) do |activities| %>
           <div>
             <% activities.each do |activity| %>
               <div class="activity">
-                <%#= link_to activity.owner.username, activity.owner if activity.owner %>
                 <%= render_activity activity %>
               </div>
             <% end %>
             <!-- <hr class="dashed"></hr> -->
           </div>
         <% end %>
+        <%= paginate @activities %>
       </div>
-        <%#= paginate @activities, :param_name => 'pub_page' %>
     <% else %>
       <div class="zm-profile-section-empty">暂时没有动态</div>
     <% end %>
