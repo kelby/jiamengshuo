@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526104513) do
+ActiveRecord::Schema.define(version: 20150526113906) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -68,7 +68,8 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.string   "commentable_type", limit: 255
   end
 
-  add_index "comments", ["user_id", "commentable_id"], name: "index_comments_on_user_id_and_commentable_id", using: :btree
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "direct_messages", force: :cascade do |t|
     t.text     "content",      limit: 65535
@@ -79,7 +80,8 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.boolean  "read",         limit: 1,     default: false
   end
 
-  add_index "direct_messages", ["to_user_id", "from_user_id"], name: "index_direct_messages_on_to_user_id_and_from_user_id", using: :btree
+  add_index "direct_messages", ["from_user_id"], name: "index_direct_messages_on_from_user_id", using: :btree
+  add_index "direct_messages", ["to_user_id"], name: "index_direct_messages_on_to_user_id", using: :btree
 
   create_table "follows", force: :cascade do |t|
     t.integer  "followable_id",   limit: 4,                   null: false
@@ -127,7 +129,8 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.integer  "comment_id", limit: 4
   end
 
-  add_index "replies", ["user_id", "comment_id"], name: "index_replies_on_user_id_and_comment_id", using: :btree
+  add_index "replies", ["comment_id"], name: "index_replies_on_comment_id", using: :btree
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
     t.string   "heading",     limit: 255
@@ -142,7 +145,9 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.integer  "head",        limit: 4,     default: 2
   end
 
-  add_index "sections", ["post_id", "user_id", "subject_id"], name: "index_sections_on_post_id_and_user_id_and_subject_id", using: :btree
+  add_index "sections", ["post_id"], name: "index_sections_on_post_id", using: :btree
+  add_index "sections", ["subject_id"], name: "index_sections_on_subject_id", using: :btree
+  add_index "sections", ["user_id"], name: "index_sections_on_user_id", using: :btree
 
   create_table "snippets", force: :cascade do |t|
     t.text     "body",       limit: 65535
@@ -160,7 +165,8 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.integer  "status",     limit: 4,                    default: 0
   end
 
-  add_index "snippets", ["topic_id", "user_id"], name: "index_snippets_on_topic_id_and_user_id", using: :btree
+  add_index "snippets", ["topic_id"], name: "index_snippets_on_topic_id", using: :btree
+  add_index "snippets", ["user_id"], name: "index_snippets_on_user_id", using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -198,7 +204,8 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.datetime "updated_at",             null: false
   end
 
-  add_index "topic_and_users", ["topic_id", "user_id"], name: "index_topic_and_users_on_topic_id_and_user_id", using: :btree
+  add_index "topic_and_users", ["topic_id"], name: "index_topic_and_users_on_topic_id", using: :btree
+  add_index "topic_and_users", ["user_id"], name: "index_topic_and_users_on_user_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",          limit: 255
@@ -221,7 +228,9 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.string   "to_address",     limit: 255
   end
 
-  add_index "topics", ["title", "user_id", "catalog_id"], name: "index_topics_on_title_and_user_id_and_catalog_id", using: :btree
+  add_index "topics", ["catalog_id"], name: "index_topics_on_catalog_id", using: :btree
+  add_index "topics", ["title"], name: "index_topics_on_title", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "user_bodies", force: :cascade do |t|
     t.integer  "gender",     limit: 4,   default: 0
@@ -246,7 +255,8 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.datetime "updated_at",               null: false
   end
 
-  add_index "user_relationships", ["owner_id", "recipient_id"], name: "index_user_relationships_on_owner_id_and_recipient_id", using: :btree
+  add_index "user_relationships", ["owner_id"], name: "index_user_relationships_on_owner_id", using: :btree
+  add_index "user_relationships", ["recipient_id"], name: "index_user_relationships_on_recipient_id", using: :btree
 
   create_table "user_wishes", force: :cascade do |t|
     t.integer  "wish_id",    limit: 4
@@ -255,7 +265,8 @@ ActiveRecord::Schema.define(version: 20150526104513) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "user_wishes", ["wish_id", "user_id"], name: "index_user_wishes_on_wish_id_and_user_id", using: :btree
+  add_index "user_wishes", ["user_id"], name: "index_user_wishes_on_user_id", using: :btree
+  add_index "user_wishes", ["wish_id"], name: "index_user_wishes_on_wish_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: ""
