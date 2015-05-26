@@ -21,15 +21,15 @@
   <div class="field field-radios large-12 columns">
     <%= f.label :category, "拼单方式" %>
     <label class="radio-button-field"><%= radio_button("topic", "category", "pi_fa",required: true) %>&nbsp;批发</label>
-    <label class="radio-button-field"><%= radio_button("topic", "category", "ding_zhuo") %>&nbsp;定做</label>
-    <label class="radio-button-field"><%= radio_button("topic", "category", "hai_tao") %>&nbsp;海淘</label>
+    <label class="radio-button-field"><%= radio_button("topic", "category", "ding_zhuo",required: true) %>&nbsp;定做</label>
+    <label class="radio-button-field"><%= radio_button("topic", "category", "hai_tao",required: true) %>&nbsp;海淘</label>
   </div>
 
   <div class="field field-radios large-12 columns">
     <%= f.label :invoice, "购买发票" %>
     <label class="radio-button-field"><%= radio_button("topic", "invoice", "yes",required: true) %>&nbsp;提供发票</label>
-    <label class="radio-button-field"><%= radio_button("topic", "invoice", "no") %>&nbsp;无发票</label>
-    <label class="radio-button-field"><%= radio_button("topic", "invoice", "not_sure") %>&nbsp;不确定</label>
+    <label class="radio-button-field"><%= radio_button("topic", "invoice", "no",required: true) %>&nbsp;无发票</label>
+    <label class="radio-button-field"><%= radio_button("topic", "invoice", "not_sure",required: true) %>&nbsp;不确定</label>
   </div>
 
   <div class="field large-12 columns">
@@ -59,17 +59,17 @@
 
   <div class="field large-12 columns">
     <%= f.label :website, "商品链接" %>
-    <%= f.text_field :website, required: true, placeholder: "淘宝等链接，方便他人浏览、确认。" %>
+    <%= f.text_field :website, placeholder: "淘宝等链接，方便他人浏览、确认。" %>
   </div>
 
   <div class="field large-12 columns">
-    <%= f.label :from_address, "发货地址" %>
-    <%= f.text_field :from_address, required: true, placeholder: "指定某个范围内的地址，可以不是具体的。" %>
+    <label for="topic_from_address">发货地址&nbsp;<span data-tooltip aria-haspopup="true" class="has-tip" title="海淘拼单指国内转运地址；批发和定做订单指发货地址。"><i class="fa fa-question"></i></span></label>
+    <%= f.text_field :from_address, placeholder: "指定某个范围内的地址，可以不是具体的。" %>
   </div>
 
   <div class="field large-12 columns">
-    <%= f.label :to_address, "收货地址" %>
-    <%= f.text_field :to_address, required: true, placeholder: "指定某个范围内的地址，可以不是具体的。" %>
+    <label for="topic_to_address">收货地址&nbsp;<span data-tooltip aria-haspopup="true" class="has-tip" title="只想在一个区域发起拼单时？您可以在这里指定跟单人的收货地址。"><i class="fa fa-question"></i></span></label>
+    <%= f.text_field :to_address, placeholder: "指定某个范围内的地址，可以不是具体的。" %>
   </div>
 
   <div class="field large-12 columns">

@@ -50,12 +50,6 @@ class TopicsController < ApplicationController
 
     @topics = @topics.page(params[:page]).per(8).order("updated_at DESC").includes(:user,:catalog) if @topics.present?
 
-    if user_signed_in?
-      @users = current_user.recomment_users
-    else
-      @users = User.where(id: User.where.not(avatar: nil).ids.sample(5))
-    end
-
     respond_with(@topics)
   end
 

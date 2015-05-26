@@ -49,7 +49,32 @@
             <%= cn_for(@topic.freight_source) %>
           </p>
         </div>
+
       </div>
+
+      <% if @topic.website.present? %>
+        <p>
+          参考网站链接：<%= @topic.website %>
+        </p>
+      <% end %>
+
+      <% if @topic.from_address.present? %>
+        <p>
+          <% if @topic.hai_tao? %>
+            海淘拼单国内的转运地址：
+          <% else %>
+            订单的发货地址：
+          <% end %>
+          <%= @topic.from_address %>
+        </p>
+      <% end %>
+      <% if @topic.to_address.present? %>
+        <p>
+          收货地址，仅限于以下区域:
+          <%= @topic.to_address %>
+        </p>
+      <% end %>
+
       <div class="pindan-content-info clearfix">
         <article>
           <%= @topic.body.html_safe %>
