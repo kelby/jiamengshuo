@@ -235,6 +235,7 @@ span.prefix > i.large {
   @extend .main-border-info;
   @include border-radius(4px);
   min-height: 200px;
+  padding:10px;
 }
 
 .zm-profile-section-head h3 {
