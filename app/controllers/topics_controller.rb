@@ -24,16 +24,6 @@ class TopicsController < ApplicationController
       else
         @topics = Topic.all
       end
-    # elsif params[:freight_source].present?
-    #   @topics = Topic.send(params[:freight_source])
-    # elsif params[:catalog_id].present?
-    #   catalog = Catalog.find params[:catalog_id]
-    #   @topics = catalog.topics
-    # elsif params[:user_id]
-    #   user = User.find params[:user_id]
-    #   @topics = user.topics
-    # else
-    #   @topics = Topic.all
     else
       @topics = Topic.all
     end
@@ -49,8 +39,13 @@ class TopicsController < ApplicationController
     end
 
     if params[:user_id].present?
-      @topics = @topics.where('user_id=?',params[:user_id].to_i)
-      @params[:user_id]=params[:user_id];
+      if params[:from_snippet].present?
+        snippets = Snippet.where(user_id: params[:user_id])
+        @topics = @topics.where(id: snippets.pluck(:topic_id))
+      else
+        @topics = @topics.where('user_id=?',params[:user_id].to_i)
+        @params[:user_id]=params[:user_id];
+      end
     end
 
     @topics = @topics.page(params[:page]).per(8).order("updated_at DESC").includes(:user,:catalog) if @topics.present?
