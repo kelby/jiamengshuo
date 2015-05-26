@@ -20,22 +20,34 @@
     <div class="tabs-content">
       <!-- 普通消息 -->
       <section role="tabpanel" aria-hidden="false" class="content active" id="notification-1">
-        <%= render_activities(@to_my_resource, locals: {to_me: true}) %>
+        <div id="to_my_resource">
+          <%= render_activities(@to_my_resource, locals: {to_me: true}) %>
+        </div>
 
-        <%= paginate @to_my_resource %>
+        <div id="to_my_resource_paginate">
+          <%= paginate @to_my_resource, :remote => true, param_name: :to_my_resource %>
+        </div>
       </section>
 
       <!-- 拼单反馈 -->
       <section role="tabpanel" aria-hidden="true" class="content" id="notification-2">
-        <%= render_activities(@to_my_request, locals: {to_me: true}) %>
+        <div id="to_my_request">
+          <%= render_activities(@to_my_request, locals: {to_me: true}) %>
+        </div>
 
-        <%= paginate @to_my_request %>
+        <div id="to_my_request_paginate">
+          <%= paginate @to_my_request, remote: true, :param_name => 'to_my_request' %>
+        </div>
       </section>
 
       <!-- 私信我 -->
       <section role="tabpanel" aria-hidden="true" class="content" id="notification-3">
         <!-- 私信&nbsp;(<%#= DirectMessage.where(to_user_id: current_user.id).not_read.count %>&nbsp;未读)： -->
+        <div id="direct_messages">
+          <%= render partial: "direct_messages/direct_message", collection: @direct_messages %>
+        </div>
 
+<<<<<<< HEAD
         <% @direct_messages.each_slice(5) do |dms| %>
           <% dms.each do |dm| %>
             <div class="pindan-message-detail margin-content">
@@ -50,13 +62,22 @@
         <% end %>
 
         <%= paginate @direct_messages, :param_name => 'dm_page' %>
+=======
+        <div id="direct_messages_paginate">
+          <%= paginate @direct_messages, remote: true, :param_name => 'direct_messages' %>
+        </div>
+>>>>>>> 8bf4ad32bdafff2e39963a07b84c4dc86fb34e94
       </section>
 
       <!-- 关注我 -->
       <section role="tabpanel" aria-hidden="true" class="content" id="notification-4">
-        <%= render_activities(@follower_to_me, locals: {to_me: true}) %>
+        <div id="follower_to_me">
+          <%= render_activities(@follower_to_me, locals: {to_me: true}) %>
+        </div>
 
-        <%= paginate @follower_to_me %>
+        <div id="follower_to_me_paginate">
+          <%= paginate @follower_to_me, remote: true, :param_name => 'follower_to_me' %>
+        </div>
       </section>
     </div>
 

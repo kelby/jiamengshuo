@@ -1,0 +1,16 @@
+<% if params[:to_my_resource].present? %>
+  $('#to_my_resource').html("<%= j render_activities(@to_my_resource, locals: {to_me: true}) %>");
+  $('#to_my_resource_paginate').html("<%= j(paginate @to_my_resource, :remote => true, param_name: :to_my_resource) %>");
+
+<% elsif params[:to_my_request].present? %>
+  $('#to_my_request').html("<%= j render_activities(@to_my_request, locals: {to_me: true}) %>");
+  $('#to_my_request_paginate').html("<%= j(paginate @to_my_request, remote: true, :param_name => 'to_my_request') %>");
+
+<% elsif params[:direct_messages].present? %>
+  $('#direct_messages').html("<%= j(render partial: 'direct_messages/direct_message', collection: @direct_messages) %>");
+  $('#direct_messages_paginate').html("<%= j(paginate @direct_messages, remote: true, :param_name => 'direct_messages') %>");
+
+<% elsif params[:follower_to_me].present? %>
+  $('#follower_to_me').html('<%= j render_activities(@follower_to_me, locals: {to_me: true}) %>');
+  $('#follower_to_me_paginate').html("<%= j(paginate @follower_to_me, remote: true, :param_name => 'follower_to_me') %>");
+<% end %>
