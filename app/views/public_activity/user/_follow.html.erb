@@ -1,7 +1,7 @@
 关注了
 
 <% if activity.recipient %>
-  <%= link_to activity.recipient.username, activity.recipient %>
+  <%= link_to (current_user?(activity.recipient) ? '我' : activity.recipient.username), activity.recipient %>
 <% else %>
   which has since been removed
 <% end %>

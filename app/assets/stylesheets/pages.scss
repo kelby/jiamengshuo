@@ -106,7 +106,7 @@
   .floating-number {
       font-size: 42px;
       font-weight: 600;
-      color: #2475D1;
+
       font-style: italic;
       text-align: center;
       background: #FFF;
@@ -139,7 +139,7 @@
   padding: 0 0 0 2px;
   margin-top: 10px;
   i {
-      color: #2475D1;
+
       margin-right: 7px;
   }
 }
@@ -206,14 +206,12 @@
         }
         .order-title {
             font-size: 20px;
-            font-weight: 300;
+            font-weight: 400;
             color: #505050;
             display: inline-block;
             padding: 0 0 0 10px;
             a {
-                color: #2475D1;
                 &:hover {
-                    color: #1465BF;
                 }
             }
         }
