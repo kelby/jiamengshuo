@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 
   def index
     @params={};
-    @topics
+
     if params["category"].present?
       case params["category"]
       when 1
