@@ -8,8 +8,9 @@
 
         <div class="clearfix">
           <div class="user-username">
-            <h4 style="font-size: 16px; margin-left: 10px;"><%= @user.username %></h4>
-            <%= render 'users/icon_for_gender', user: @user %>
+            <h4 style="font-size: 16px; margin-left: 10px;"><%= @user.username %>
+              &nbsp;<%= render 'users/icon_for_gender', user: @user %>
+            </h4>
           </div>
           <div class="follow-num float-left" style="margin-left: 10px;">
             <span class="font-follow">关注了</span>
