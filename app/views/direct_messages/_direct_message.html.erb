@@ -1,0 +1,12 @@
+<%# @direct_messages.each_slice(5) do |dms| %>
+  <%# dms.each do |direct_message| %>
+    <div class="pindan-message-detail margin-content">
+      <%= image_tag direct_message.from_user.avatar_url(:tiny), class: "user-tiny-avatar-size float-left" %>
+      <div class="clearfix pindan-message-detail-info">
+        <p><%= direct_message.from_user.username %></p>
+        <p>私信了我： <%= direct_message.content %></p>
+        <p class="font-color-gray"><%= time_ago_in_words direct_message.created_at %></p>
+      </div>
+    </div>
+  <%# end %>
+<%# end %>
