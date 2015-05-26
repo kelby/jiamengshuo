@@ -28,10 +28,10 @@
                 </p>
               </div>
               <div class="topic-users-list">
-                <span><%= topic.snippets.count %> 人跟单</span>
+                <span><%= topic.snippets.pluck(:user_id).uniq.count %> 人跟单</span>
                 <span class="topic-users-list-avatar">
                   <% topic.snippets.includes(:user).limit(10).each do |snippet| %>
-                    <%= image_tag snippet.user.avatar_url(:mini) %>
+                    <%= image_tag snippet.user.avatar_url(:mini), class: 'avatar' %>
                   <% end %>
                 </span>
               </div>

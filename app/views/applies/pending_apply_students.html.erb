@@ -23,7 +23,7 @@
               <p>
                 <%= link_to apply.apply_student do %>
                   <span> </span>
-                  <%= image_tag apply.apply_student.avatar_url(:medium), class: 'thumb_avatar', alt: apply.apply_student.username %>
+                  <%= image_tag apply.apply_student.avatar_url(:medium), class: 'thumb_avatar avatar', alt: apply.apply_student.username %>
                 <% end %>
 
                 <%#= render 'shared/want_mentor_button', user: apply.apply_student %>

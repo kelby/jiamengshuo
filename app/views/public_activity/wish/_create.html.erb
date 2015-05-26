@@ -1,6 +1,6 @@
 <% if activity.trackable %>
   <div class="activity">
-    <%= image_tag activity.owner.avatar_url(:mini), class: "super_tiny_avatar" %>
+    <%= image_tag activity.owner.avatar_url(:mini), class: "super_tiny_avatar avatar" %>
     <%= link_to activity.owner.username, activity.owner if activity.owner %>
     新建了心愿：
 

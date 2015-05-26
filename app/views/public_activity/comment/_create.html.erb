@@ -1,11 +1,12 @@
+<div style="margin-bottom: 1%;">
 <% if activity.recipient %>
 
-    <%= image_tag activity.owner.avatar_url(:mini), class: "super_tiny_avatar" %>
+    <%= image_tag activity.owner.avatar_url(:mini), class: "super_tiny_avatar avatar" %>
     <%= link_to activity.owner.username, activity.owner if activity.owner %>
     对
 
     <% if activity.recipient.user %>
-      <%= image_tag activity.recipient.user.avatar_url(:mini), class: "super_tiny_avatar" %>
+      <%#= image_tag activity.recipient.user.avatar_url(:mini), class: "super_tiny_avatar avatar" %>
       <%= link_to activity.recipient.user.username, activity.recipient.user %>
     <% end %>
 
@@ -16,4 +17,4 @@
     留下了评论。
 
 <% end %>
-<br>
+</div>

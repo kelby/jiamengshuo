@@ -1,7 +1,6 @@
 <div class="row">
   <div class="margin-content">
-    <%= link_to @topic.title, @topic %> 共有 <%= @topic.snippets.count %> 个跟单, <%= @topic.snippets.sum(:quantity) %> 件商品。
-    <!-- <hr class="dashed"></hr> -->
+    <%= render "snippets/statitics_info", topic: @topic %>
     
     <div class="large-12 columns margin-content snippet-list">
       <% @snippets.each_slice(3) do |snippets| %>
