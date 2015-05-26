@@ -27,8 +27,14 @@
             <% end %>
           </li>
           <li>
-            <%= link_to activities_index_path, class: "post-pindan" do %>
-              <i class="fa fa-bell"></i> 消息
+            <% if has_notification?(current_user) %>
+              <%= link_to activities_index_path, class: "post-pindan" do %>
+                <i class="fa fa-bell"></i> 消息
+              <% end %>
+            <% else %>
+              <%= link_to activities_index_path, class: "post-pindan" do %>
+                消息
+              <% end %>
             <% end %>
           </li>
 
