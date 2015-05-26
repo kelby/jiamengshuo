@@ -211,6 +211,11 @@ t.save
   snippet = Snippet.create body: "rewrijwe jw joew oewjr w", topic: Topic.all.sample, user: User.all.sample, name: "hehe ...", spec: "16px", color: "黑金", per_price: Faker::Number.number(2), quantity: Faker::Number.number(1), address: "广西-桂林-临桂..."
 end
 
+Snippet.pendding.find_each do |snippet|
+  snippet.approve!
+  snippet.create_activity :approve, owner: snippet.topic.user, recipient: snippet.user
+end
+
 Topic.find_each do |topic|
   topic.tag_list = Faker::Lorem.words.join(',')
   topic.save(validate: false)
