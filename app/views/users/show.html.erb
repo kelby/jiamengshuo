@@ -40,7 +40,7 @@
     <hr/> -->
     <div class="font-message pindan-num" style="color: #999;">
       发起了 <%= link_to "#{@user.topics.count} 个拼单", topics_path(user_id: @user.id) %>
-      参加了 <a href="#"><%= @user.snippets.count %> 个拼单</a>
+      参加了 <%= link_to "#{@user.snippets.count} 个拼单", topics_path(user_id: @user.id, from_snippet: true) %>
     </div>
     <hr/>
     <div class="font-message user-resume" style="color: #999;">
