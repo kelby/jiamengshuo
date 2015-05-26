@@ -1,3 +1,4 @@
+<div style="margin-bottom: 1%;">
 <%= link_to image_tag(activity.owner.avatar_url(:tiny)), activity.owner %>
 <%= link_to activity.owner.username, activity.owner %> 关注了拼单
 
@@ -6,4 +7,4 @@
 <% else %>
   已经被删除
 <% end %>
-<br>
+</div>
