@@ -1,7 +1,9 @@
-<% activity.owner.username %>关注了话题讨论
+<%= link_to image_tag(activity.owner.avatar_url(:tiny)), activity.owner %>
+<%= link_to activity.owner.username, activity.owner %> 关注了拼单
 
 <% if activity.recipient %>
   <%= link_to activity.recipient.title, activity.recipient %>
 <% else %>
-  which has since been removed
+  已经被删除
 <% end %>
+<br>

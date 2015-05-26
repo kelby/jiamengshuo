@@ -3,53 +3,57 @@
     <!-- tabs header -->
     <ul class="tabs box-border" data-tab role="tablist">
       <li class="tab-title active" role="presentational" >
-        <a href="#panel2-1" role="tab" tabindex="0" aria-selected="true" controls="panel2-1">普通消息</a>
+        <a href="#notification-1" role="tab" tabindex="0" aria-selected="true" controls="notification-1">普通消息</a>
       </li>
       <li class="tab-title" role="presentational" >
-        <a href="#panel2-2" role="tab" tabindex="0"aria-selected="false" controls="panel2-2">拼单反馈</a>
+        <a href="#notification-2" role="tab" tabindex="0"aria-selected="false" controls="notification-2">拼单反馈</a>
       </li>
       <li class="tab-title" role="presentational">
-        <a href="#panel2-3" role="tab" tabindex="0" aria-selected="false" controls="panel2-3">私信我</a>
+        <a href="#notification-3" role="tab" tabindex="0" aria-selected="false" controls="notification-3">私信我</a>
       </li>
       <li class="tab-title" role="presentational" >
-        <a href="#panel2-4" role="tab" tabindex="0" aria-selected="false" controls="panel2-4">关注我</a>
+        <a href="#notification-4" role="tab" tabindex="0" aria-selected="false" controls="notification-4">关注我</a>
       </li>
     </ul>
 
     <!-- tabs content -->
     <div class="tabs-content">
-      <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-1">
+      <!-- 普通消息 -->
+      <section role="tabpanel" aria-hidden="false" class="content active" id="notification-1">
         <%= render_activities(@to_my_resource, locals: {to_me: true}) %>
 
         <%= paginate @to_my_resource %>
       </section>
 
-      <section role="tabpanel" aria-hidden="true" class="content" id="panel2-2">
+      <!-- 拼单反馈 -->
+      <section role="tabpanel" aria-hidden="true" class="content" id="notification-2">
         <%= render_activities(@to_my_request, locals: {to_me: true}) %>
 
         <%= paginate @to_my_request %>
       </section>
 
-      <section role="tabpanel" aria-hidden="true" class="content" id="panel2-3">
-        私信&nbsp;(<%= DirectMessage.where(to_user_id: current_user.id).not_read.count %>&nbsp;未读)：
+      <!-- 私信我 -->
+      <section role="tabpanel" aria-hidden="true" class="content" id="notification-3">
+        <!-- 私信&nbsp;(<%#= DirectMessage.where(to_user_id: current_user.id).not_read.count %>&nbsp;未读)： -->
 
         <% @direct_messages.each_slice(5) do |dms| %>
-            <% dms.each do |dm| %>
-              <div class="pindan-message-detail margin-content">
-                <%= image_tag dm.from_user.avatar_url(:tiny), class: "user-tiny-avatar-size float-left" %>
-                <div class="clearfix pindan-message-detail-info">
-                  <p><%= dm.from_user.username %></p>
-                  <p>私信了你： <%= dm.content %></p>
-                  <p class="font-color-gray"><%= time_ago_in_words dm.created_at %></p>
-                </div>
+          <% dms.each do |dm| %>
+            <div class="pindan-message-detail margin-content">
+              <%= image_tag dm.from_user.avatar_url(:tiny), class: "user-tiny-avatar-size float-left" %>
+              <div class="clearfix pindan-message-detail-info">
+                <p><%= dm.from_user.username %></p>
+                <p>私信了我： <%= dm.content %></p>
+                <p class="font-color-gray"><%= time_ago_in_words dm.created_at %></p>
               </div>
-            <% end %>
+            </div>
+          <% end %>
         <% end %>
 
         <%= paginate @direct_messages, :param_name => 'dm_page' %>
       </section>
 
-      <section role="tabpanel" aria-hidden="true" class="content" id="panel2-4">
+      <!-- 关注我 -->
+      <section role="tabpanel" aria-hidden="true" class="content" id="notification-4">
         <%= render_activities(@follower_to_me, locals: {to_me: true}) %>
 
         <%= paginate @follower_to_me %>
