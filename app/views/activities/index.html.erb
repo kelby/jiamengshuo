@@ -21,7 +21,7 @@
       <!-- 普通消息 -->
       <section role="tabpanel" aria-hidden="false" class="content active" id="notification-1">
         <%= render_activities(@to_my_resource, locals: {to_me: true}) %>
-
+        
         <%= paginate @to_my_resource %>
       </section>
 
