@@ -4,7 +4,7 @@
 
 "zh-CN":
   devise:
-    username: "用户名"
+    username: "昵称"
     email: "邮箱"
     password: "密码"
     password_confirmation: "再次确认密码"
@@ -12,7 +12,7 @@
     login: "登录"
     signup: "注册"
     forgot_your_password: "忘记密码？"
-    email_or_username: "邮箱/用户名"
+    email_or_username: "邮箱/昵称"
     confirmations:
       confirmed: 您的帐号已经确认，请登录.
       send_instructions: 几分钟后，您将收到确认帐号的电子邮件.
