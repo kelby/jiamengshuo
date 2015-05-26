@@ -1,4 +1,4 @@
-<section class="small-9 large-9 columns" style="margin: auto 12.5%;">
+<section class="small-9 large-6 columns large-centered small-centered">
   <h2><%= t("devise.login") %></h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -9,7 +9,7 @@
         <% end %>
       </div>
       <div class="small-10 columns">
-        <%= f.text_field :login, required: true, autofocus: true, placeholder: t("devise.email_or_username") %>
+        <%= f.text_field :login, required: true, autofocus: true, placeholder: t("devise.email") %>
       </div>
     </div>
 

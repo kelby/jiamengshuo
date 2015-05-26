@@ -1,9 +1,11 @@
-回复了
+<%= link_to image_tag(activity.owner.avatar_url(:tiny)), activity.owner %>
+<%= link_to activity.owner.username, activity.owner %> 回复了
 
 <% if activity.recipient %>
   <%= link_to activity.recipient.user.username, activity.recipient.user %>
 <% else %>
-  <%= raw markdown_for "~已经删除~" %>
+  <%= raw markdown_for "~已经被删除~" %>
 <% end %>
 
 的评论。
+<br>

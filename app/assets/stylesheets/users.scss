@@ -184,8 +184,6 @@ span.prefix > i.large {
 .user-info-card {
   @extend .main-border-info;
   @include border-radius(4px);
-  padding-top: 10px;
-  margin-left: 100px;
 }
 
 .user-info-card .zm-profile-header-main img {
@@ -237,7 +235,7 @@ span.prefix > i.large {
   @extend .main-border-info;
   @include border-radius(4px);
   min-height: 200px;
-  margin-right: 100px;
+  padding:10px;
 }
 
 .zm-profile-section-head h3 {
@@ -334,14 +332,13 @@ margin-bottom: 0px;
 }
 
 .direct_message{
-  margin-left: 13px;
-  border: 1px solid #ddd;
+  @extend .main-border-info;
   border-radius: 4px;
-  margin-top: 20px;
 }
 
 .user-username > h4{
   display: inline-block;
+  margin-top:10px;
 }
 
 .user-username > .vertical-center{

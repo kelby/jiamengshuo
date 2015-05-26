@@ -8,18 +8,25 @@ class UsersController < ApplicationController
 
     redirect_to users_profile_path and return if current_user == @user
 
-    @teachers = @user.teachers.includes(:recipient)
-    @students = @user.students.includes(:recipient)
-    @followers = @user.followers
+    @activities = PublicActivity::Activity.where("(`activities`.`key` IN (?) AND `activities`.`owner_id` = ?)
+                                                 OR (`activities`.`key` IN (?) AND `activities`.`owner_id` = ?)
+                                                 OR (`activities`.`key` = ? AND `activities`.`owner_id` = ?)",
+                                                 ['keeper_topic.keep', 'reply.create', 'comment.create', 'liker_comment.like_it'], @user.id,
+                                                 ['snippet.approve', 'snippet.refuse'], @user.id,
+                                                 'user.follow', @user.id).page(params[:page]).per(15)
 
     @direct_message = DirectMessage.new
   end
 
   def profile
     @user = current_user
-    # @followers = current_user.followers
 
-    @activities = PublicActivity::Activity.includes(:owner,:trackable,:recipient).order("created_at desc").page(params[:pub_page] || 1).per(15)
+    @activities = PublicActivity::Activity.where("(`activities`.`key` IN (?) AND `activities`.`owner_id` = ?)
+                               OR (`activities`.`key` IN (?) AND `activities`.`owner_id` = ?)
+                               OR (`activities`.`key` = ? AND `activities`.`owner_id` = ?)",
+                               ['keeper_topic.keep', 'reply.create', 'comment.create', 'liker_comment.like_it'], @user.id,
+                               ['snippet.approve', 'snippet.refuse'], @user.id,
+                               'user.follow', @user.id).page(params[:page]).per(15)
   end
 
   def index
