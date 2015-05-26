@@ -13,7 +13,7 @@ class UsersController < ApplicationController
                                                  OR (`activities`.`key` = ? AND `activities`.`owner_id` = ?)",
                                                  ['keeper_topic.keep', 'reply.create', 'comment.create', 'liker_comment.like_it'], @user.id,
                                                  ['snippet.approve', 'snippet.refuse'], @user.id,
-                                                 'user.follow', @user.id).page(params[:page]).per(15)
+                                                 'user.follow', @user.id).order("created_at DESC").page(params[:page]).per(15)
 
     @direct_message = DirectMessage.new
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
                                OR (`activities`.`key` = ? AND `activities`.`owner_id` = ?)",
                                ['keeper_topic.keep', 'reply.create', 'comment.create', 'liker_comment.like_it'], @user.id,
                                ['snippet.approve', 'snippet.refuse'], @user.id,
-                               'user.follow', @user.id).page(params[:page]).per(15)
+                               'user.follow', @user.id).order("created_at DESC").page(params[:page]).per(15)
   end
 
   def index
