@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   include PublicActivity::Common
-  acts_as_taggable
 
+  acts_as_paranoid
+  acts_as_taggable
+  
   attr_accessor :login
 
   validates :username, :presence => true, :uniqueness => {:case_sensitive => false },length: { in: 3..15 }
@@ -45,6 +47,8 @@ class User < ActiveRecord::Base
 
   scope :fakers, -> { where(faker: true)}
   scope :desc, -> { order(updated_at: :desc)}
+
+  default_scope { where('deleted_at is NULL') }
 
   acts_as_followable
   acts_as_follower

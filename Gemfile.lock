@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/radar/paranoia.git
+  revision: 3a3a0992fb63018258e82be36f3e33766ce77e1a
+  branch: rails4
+  specs:
+    paranoia (2.1.2)
+      activerecord (~> 4.0)
+
+GIT
   remote: git://github.com/svenfuchs/rails-i18n.git
   revision: bfa65aa8dc3ede5c01026ca6e89d7aaec0b5ea99
   branch: master
@@ -373,6 +381,7 @@ DEPENDENCIES
   omniauth-oauth2
   omniauth-qq-connect
   omniauth-weibo-oauth2
+  paranoia!
   pikaday-gem
   pry-rails
   public_activity

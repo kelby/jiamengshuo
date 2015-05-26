@@ -96,6 +96,7 @@ group :development, :test do
 end
 
 gem 'faker'
+gem "paranoia", :github => "radar/paranoia", :branch => "rails4"
 
 group :development do
   gem 'quiet_assets'
