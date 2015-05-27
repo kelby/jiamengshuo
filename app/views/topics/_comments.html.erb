@@ -4,7 +4,7 @@
       <section class="top">
         <h6 class="byline">
           <%= link_to comment.user do %>
-            <%= image_tag comment.user.avatar_url(:mini), class: 'avatar' %>
+            <%= image_tag comment.user.avatar_url(:mini), class: 'avatar' ,style: 'width: 32px;height: 32px;margin-bottom:4px'%>
           <% end %>
 
           <%= link_to comment.user.username, comment.user %>
@@ -49,7 +49,7 @@
           <section class="top">
             <h6 class="byline">
               <a href="#">
-                <%= image_tag reply.user.avatar_url(:mini), class: 'avatar' %>
+                <%= image_tag reply.user.avatar_url(:mini), class: 'avatar',style: 'width: 24px;height: 24px;;margin-bottom:2px' %>
                 <!-- <i class="icon"></i> -->
                 <%= reply.user.username %>
                 <% if reply.user == @topic.user %>
