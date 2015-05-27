@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   has_many :classmates, foreign_key: :owner_id
 
   has_many :liker_comments, foreign_key: :liker_id, dependent: :destroy
+  has_many :direct_messages_to_user, foreign_key: :to_user_id, class_name: 'DirectMessage'
 
   scope :fakers, -> { where(faker: true)}
   scope :desc, -> { order(updated_at: :desc)}
@@ -130,6 +131,7 @@ class User < ActiveRecord::Base
   def read_direct_messages(direct_messages)
     dm_ids = direct_messages.map(&:id)
     DirectMessage.not_read.where(id: dm_ids).update_all(read: true)
+    PublicActivity::Activity.where(owner_id: self.id).update_all(read: true)
   end
 
   def login=(login)
