@@ -1,4 +1,4 @@
 <div class="margin-content">
-    <%= link_to image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar'), activity.owner %>
-<%= link_to activity.owner.username, activity.owner %> 点赞了我的评论。
+  <%= link_to image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar'), activity.owner %>
+  <%= link_to activity.owner.username, activity.owner %> 点赞了 <%= link_to activity.recipient.username, activity.recipient %> 的评论。
 </div>

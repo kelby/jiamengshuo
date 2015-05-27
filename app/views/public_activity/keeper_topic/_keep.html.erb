@@ -1,11 +1,11 @@
 <div class="margin-content">
+  <%= link_to image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar'), activity.owner %>
+  <%= link_to activity.owner.username, activity.owner %> 关注了拼单
 
-    <%= link_to image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar'), activity.owner %>
-<%= link_to activity.owner.username, activity.owner %> 关注了拼单
-
-<% if activity.recipient %>
-  <%= link_to activity.recipient.title, activity.recipient %>
-<% else %>
-  ~已经被删除~
-<% end %>
+  <% topic = Topic.where(id: activity.parameters[:topic_id]).first %>
+  <% if topic %>
+    <%= link_to topic.title, topic %>
+  <% else %>
+    ~已经被删除~
+  <% end %>
 </div>

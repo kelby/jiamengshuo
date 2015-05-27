@@ -22,8 +22,10 @@ class RepliesController < ApplicationController
   def create
     @comment = Comment.find params[:comment_id]
     reply = @comment.replies.build(reply_params.merge(user_id: current_user.id))
-    reply.save
-    reply.create_activity :create, owner: current_user, recipient: @comment if reply.persisted?
+
+    if reply.save
+      reply.create_activity :create, owner: current_user, recipient: @comment.user, parameters: {comment_id: @comment.id}
+    end
 
     redirect_to @comment.commentable
   end

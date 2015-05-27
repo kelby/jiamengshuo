@@ -25,8 +25,10 @@ class TopicAndUserController < ApplicationController
 
   def keep
     kt = KeeperTopic.new topic_id: @topic.id, user_id: current_user.id
-    kt.save
-    kt.create_activity :keep, owner: current_user, recipient: @topic if user_signed_in? && kt.persisted?
+
+    if kt.save
+      kt.create_activity :keep, owner: current_user, recipient: @topic.user, parameters: {topic_id: @topic.id}
+    end
 
     respond_to do |format|
       format.js

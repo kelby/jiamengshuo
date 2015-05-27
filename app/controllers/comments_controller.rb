@@ -24,16 +24,13 @@ class CommentsController < ApplicationController
 
   def create
     @topic = Topic.find(params[:topic_id]) if params[:topic_id]
-    @subject = Subject.find(params[:subject_id]) if params[:subject_id]
-    commentable = @topic || @subject
 
-    redirect_to(commentable, alert: "只有已登录用户，及导师、学生、同学、朋友可以评论哦 ~") and return if @subject && !can_comment?(@subject)
+    @comment = @topic.comments.build(comment_params.merge(user_id: current_user.id))
+    if @comment.save
+      @comment.create_activity :create, owner: current_user, recipient: @topic.user, parameters: {topic_id: @topic.id}
+    end
 
-    @comment = commentable.comments.build(comment_params.merge(user_id: current_user.id))
-    @comment.save
-    @comment.create_activity :create, owner: current_user, recipient: commentable if @comment.persisted?
-
-    redirect_to commentable
+    redirect_to @topic
   end
 
   def update

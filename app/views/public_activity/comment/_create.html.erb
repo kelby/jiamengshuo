@@ -1,20 +1,24 @@
 <div class="margin-content">
-<% if activity.recipient %>
+  <% if activity.recipient %>
 
     <%= image_tag activity.owner.avatar_url(:mini), class: "super_tiny_avatar avatar" %>
     <%= link_to activity.owner.username, activity.owner if activity.owner %>
     对
 
-    <% if activity.recipient.user %>
+    <% if activity.recipient %>
       <%#= image_tag activity.recipient.user.avatar_url(:mini), class: "super_tiny_avatar avatar" %>
-      <%= link_to activity.recipient.user.username, activity.recipient.user %>
+      <%= link_to activity.recipient.username, activity.recipient %>
     <% end %>
 
     的拼单
-
-      <%= link_to activity.recipient.title, activity.recipient %>
+      <% topic = Topic.where(id: activity.parameters[:topic_id]).first %>
+      <% if topic %>
+        <%= link_to topic.title, topic %>
+      <% else %>
+        已经被删除
+      <% end %>
 
     留下了评论。
 
-<% end %>
+  <% end %>
 </div>

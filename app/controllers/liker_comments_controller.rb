@@ -4,8 +4,9 @@ class LikerCommentsController < ApplicationController
 
   def like_it
     lc = LikerComment.new comment_id: @comment.id, liker_id: current_user.id
-    lc.save
-    lc.create_activity :like_it, owner: current_user, recipient: @comment if user_signed_in? && lc.persisted?
+    if lc.save
+      lc.create_activity :like_it, owner: current_user, recipient: @comment.user, parameters: {comment_id: @comment.id}
+    end
 
     respond_to do |format|
       format.js
