@@ -16,6 +16,10 @@ class ActivitiesController < ApplicationController
   end
  
   def messages_count
-    @message_count = current_user.direct_messages_to_user.not_read.count + PublicActivity::Activity.where(recipient_id: current_user.id, read: false).count
+    if current_user
+      @message_count = current_user.direct_messages_to_user.not_read.count + PublicActivity::Activity.where(recipient_id: current_user.id, read: false).count  
+    else
+      @message_count = 0
+    end
   end
 end
