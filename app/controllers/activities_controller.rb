@@ -14,4 +14,8 @@ class ActivitiesController < ApplicationController
       format.js
     end
   end
+
+  def messages_count
+    @message_count = current_user.direct_messages_to_user.not_read.count + PublicActivity::Activity.where(owner_id: current_user.id, read: false).count
+  end
 end

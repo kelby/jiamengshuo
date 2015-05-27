@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'activities/index'
+  get 'activities/messages_count'
 
   resources :subjects do
     resources :comments

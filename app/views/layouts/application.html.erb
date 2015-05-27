@@ -30,5 +30,13 @@
     <%= render 'layouts/scroll_top' %>
 
     <%= render 'layouts/footer' %>
+
+    <script>
+        $(function(){
+            window.setInterval(function() {
+                $.getScript("/activities/messages_count.js");
+            }, 2000);
+        })
+    </script>
   </body>
 </html>

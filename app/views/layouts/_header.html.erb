@@ -28,12 +28,12 @@
           </li>
           <li>
             <%= link_to activities_index_path, class: "post-pindan" do %>
-              <% message_count = current_user.direct_messages_to_user.not_read.count + PublicActivity::Activity.where(owner_id: current_user.id, read: false).count %>
-              <% if message_count > 0 %>
-                <i class="messahe-count"><%= message_count %></i> 消息
-              <% else %>
-                <i class="fa fa-bell"></i> 消息
-              <% end %>
+              <%# message_count = current_user.direct_messages_to_user.not_read.count + PublicActivity::Activity.where(owner_id: current_user.id, read: false).count %>
+              <%# if message_count > 0 %>
+                <!-- <i class="message-count" id="message_count"><%#= message_count %></i> 消息 -->
+              <%# else %>
+                <i class="fa fa-bell" id="message_count"></i> 消息
+              <%# end %>
             <% end %>
           </li>
 
