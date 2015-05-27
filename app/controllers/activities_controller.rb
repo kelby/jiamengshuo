@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :messages_count]
 
   def index
     get_notifications
