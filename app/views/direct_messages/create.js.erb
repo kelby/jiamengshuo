@@ -1,3 +1,6 @@
 var textarea = $("#direct_message textarea");
 
 textarea.val('').focus().attr("placeholder", "发送成功，请耐心等待回复 ~");
+
+<% subject = "/direct_message/#{@user.id}" %>
+<% MessageBus.publish(subject, 'norris') %>

@@ -9,6 +9,8 @@
     <%= stylesheet_link_tag    "application", media: 'all' %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "message-bus" %>
+
     <%= favicon_link_tag %>
 
     <%= csrf_meta_tags %>
@@ -24,21 +26,43 @@
     <%= render 'layouts/header' %>
 
     <%= render 'layouts/flash_messages' %>
+    <%= render 'layouts/private_messages' %>
 
     <%= yield %>
 
     <%= render 'layouts/scroll_top' %>
 
     <%= render 'layouts/footer' %>
+
+        <% if user_signed_in? %>
+          <script type="text/javascript">
+
+              // $(function(){
+              //     window.setInterval(function() {
+              //         $.getScript("/activities/messages_count.js");
+              //     }, 2000);
+              // })
+
+
+
+
+              MessageBus.start(); // call once at startup
+
+              // how often do you want the callback to fire in ms
+              MessageBus.callbackInterval = 500;
+
+
+
+              var subject = "/direct_message/" + "<%= current_user.id %>"
+
+
+              MessageBus.subscribe(subject, function(data){
+                $("i.fa.fa-bell").addClass('red');
+              });
+
+          </script>
+        <% end %>
     
-    <% if user_signed_in? %>
-        <script>
-            $(function(){
-                window.setInterval(function() {
-                    $.getScript("/activities/messages_count.js");
-                }, 2000);
-            })
-        </script>
-    <% end %>
+
   </body>
 </html>

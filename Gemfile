@@ -117,3 +117,5 @@ end
 gem 'omniauth-oauth2'
 gem 'omniauth-weibo-oauth2'
 gem 'omniauth-qq-connect'
+
+gem 'message_bus'

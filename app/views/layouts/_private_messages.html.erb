@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  <script type="text/javascript">
+    // var subject = "/direct_message/<%= current_user.id %>"
+    // var client = new Faye.Client('http://localhost:9292/faye');
+
+    // client.subscribe(subject, function(data){
+    //   $("i.fa.fa-bell").hide();
+    // });
+    MessageBus.start(); // call once at startup
+
+    // how often do you want the callback to fire in ms
+    MessageBus.callbackInterval = 500;
+
+
+
+    var subject = "/direct_message/" + "<%= current_user.id %>"
+
+
+    MessageBus.subscribe(subject, function(data){
+      $("i.fa.fa-bell").addClass('red');
+    });
+
+  </script>
+<% end %>
