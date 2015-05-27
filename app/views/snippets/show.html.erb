@@ -1,31 +1,55 @@
-<div class="row margin-content">
-  <div class="field">
-    商品名称<br>
-    <%= @snippet.name %>
-  </div>
-  <div class="field">
-    规格<br>
-    <%= @snippet.spec %>
-  </div>
-  <div class="field">
-    颜色<br>
-    <%= @snippet.color %>
-  </div>
-  <div class="field">
-    单价（元）<br>
-    <%= @snippet.per_price %>
-  </div>
-  <div class="field">
-    数量<br>
-    <%= @snippet.quantity %>
-  </div>
-  <div class="field">
-    收货地址<br>
-    <%= @snippet.address %>
-  </div>
+<div class="row large-centered">
+  <div class="margin-content">
+    <%= render "snippets/statitics_info", topic: @snippet.topic %>
 
-  <div class="field">
-    备注说明<br>
-    <%= @snippet.body %>
+    <% if can? :manage_snippets, @snippet.topic %>
+      <%= link_to topic_manage_snippets_path(@snippet.topic) do %>
+        查看全部
+      <% end %>
+    <% else %>
+      <%= link_to topic_snippets_path(@snippet.topic) do %>
+        查看全部
+      <% end %>
+    <% end %>
+
+    <div class="large-12 columns margin-content snippet-list">
+      <div class="large-4 small-4 columns end large-offset-1">
+        <div class="approve-status">
+          <%= cn_for_snippet_status(@snippet.status) %>
+        </div>
+
+        <div class="snippet-content">
+          <div class="field">
+            商品名称:
+            <span><%= @snippet.name %></span>
+          </div>
+          <div class="field">
+            规格:
+            <span><%= @snippet.spec %></span>
+          </div>
+          <div class="field">
+            颜色:
+            <span><%= @snippet.color %></span>
+          </div>
+          <div class="field">
+            单价（元）:
+            <span><%= @snippet.per_price %></span>
+          </div>
+          <div class="field">
+            数量:
+            <span><%= @snippet.quantity %></span>
+          </div>
+
+          <div class="field">
+            备注说明:
+            <span><%= @snippet.body %></span>
+          </div>
+          <div class="field">
+            参考网站链接:
+            <span><%= @snippet.website %></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
