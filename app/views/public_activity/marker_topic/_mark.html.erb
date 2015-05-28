@@ -1,10 +1,10 @@
 <div class="margin-content">
-    <%= link_to image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar'), activity.owner %>
-<%= link_to activity.owner.username, activity.owner %> 收藏了拼单
+  <%= link_to image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar'), activity.owner %>
+  <%= link_to activity.owner.username, activity.owner %> 收藏了拼单
 
-<% if activity.recipient %>
-  <%= link_to activity.recipient.title, activity.recipient %>
-<% else %>
-  ~已经被删除~
-<% end %>
+  <% if activity.recipient %>
+    <%= link_to activity.recipient.title, activity.recipient %>
+  <% else %>
+    ~已经被删除~
+  <% end %>
 </div>

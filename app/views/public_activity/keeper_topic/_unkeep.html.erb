@@ -1,9 +1,9 @@
 <div class="margin-content">
-取消了关注话题讨论
+  取消了关注话题讨论
 
-<% if activity.recipient %>
-  <%= link_to activity.recipient.title, activity.recipient %>
-<% else %>
-  which has since been removed
-<% end %>
+  <% if activity.recipient %>
+    <%= link_to activity.recipient.title, activity.recipient %>
+  <% else %>
+    ~已经被删除~
+  <% end %>
 </div>

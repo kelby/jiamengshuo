@@ -1,15 +1,15 @@
 <div class="margin-content" class="margin-content">
-	<%= link_to activity.owner do %>
-        <%= image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar') %>
-	<% end %>
+  <%= link_to activity.owner do %>
+    <%= image_tag(activity.owner.avatar_url(:tiny), class: 'avatar super_tiny_avatar') %>
+  <% end %>
 
-	<%= link_to activity.owner.username, activity.owner %> 关注了
+  <%= link_to activity.owner.username, activity.owner %> 关注了
 
-	<% if defined?(to_me) && to_me -%>
-	我
-	<% elsif activity.recipient %>
-	  <%= link_to (current_user?(activity.recipient) ? '我' : activity.recipient.username), activity.recipient %>
-	<% else %>
-	  which has since been removed
-	<% end %>
+  <% if defined?(to_me) && to_me -%>
+  我
+  <% elsif activity.recipient %>
+    <%= link_to (current_user?(activity.recipient) ? '我' : activity.recipient.username), activity.recipient %>
+  <% else %>
+    ~已经被删除~
+  <% end %>
 </div>
