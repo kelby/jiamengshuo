@@ -1,2 +1,0 @@
-class Student < UserRelationship
-end

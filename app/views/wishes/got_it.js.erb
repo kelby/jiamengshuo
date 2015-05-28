@@ -1,3 +1,0 @@
-// $("#got_or_spurn_wish_<%= params[:id] %> span").text(" 已加到心愿卡");
-$("#got_or_spurn_active_wish_<%= params[:id] %>").replaceWith("<%= j render(partial: 'wishes/spurn_active', locals: {wish: @wish}) %>");
-$("#got_or_spurn_wish_<%= params[:id] %>").html("<%= j render(partial: 'wishes/spurn_it', locals: {wish: @wish}) %>");

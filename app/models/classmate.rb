@@ -1,2 +1,0 @@
-class Classmate < UserRelationship
-end

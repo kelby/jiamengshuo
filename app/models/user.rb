@@ -16,32 +16,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:weibo, :qq_connect]
 
   has_many :topics, dependent: :destroy
-  has_many :wishes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :replies, dependent: :destroy
-  has_many :posts, dependent: :destroy
-  has_many :sections, dependent: :destroy
-  has_many :subjects, dependent: :destroy
   has_many :authentications, dependent: :destroy
   has_many :snippets, dependent: :destroy
 
   # join table
-  has_many :applies
-  has_many :apply_students, class_name: 'User', through: :applies, foreign_key: :mentor_id
-  has_many :applied_mentors,  class_name: 'User', through: :applies, foreign_key: :user_id
-
-  # join table
-  has_many :mentor_pending_applies, ->{ pending }, class_name: 'Apply', foreign_key: :mentor_id
-  has_many :pending_apply_students, class_name: 'User', through: :mentor_pending_applies, foreign_key: :mentor_id
-
-  # join table
   has_many :marker_topics
   has_many :keeper_topics
-
-  # join tables, for user relationship.
-  has_many :teachers, foreign_key: :owner_id
-  has_many :students, foreign_key: :owner_id
-  has_many :classmates, foreign_key: :owner_id
 
   has_many :liker_comments, foreign_key: :liker_id, dependent: :destroy
   has_many :direct_messages_to_user, foreign_key: :to_user_id, class_name: 'DirectMessage'

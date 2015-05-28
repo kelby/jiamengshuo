@@ -17,7 +17,6 @@
 //= require datepicker
 //= require jquery-scrolltofixed-min
 //= require moment.min
-//= require posts
 //= require topics
 //= require pikaday
 $(function(){ $(document).foundation(); });

@@ -8,31 +8,8 @@ Rails.application.routes.draw do
   get 'activities/index'
   get 'activities/messages_count'
 
-  resources :subjects do
-    resources :comments
-  end
-
   resources :catalogs, only: [:index, :show]
 
-  resources :posts
-
-  post '/add_section', to: "sections#add", as: :add_section
-  delete '/remove_section', to: "sections#remove", as: :remove_section
-
-  resources :sections
-
-  resources :wishes, only: [:show, :new, :create, :index] do
-    member do
-      post :got_it
-      delete :spurn_it
-      get  :followers_by_user
-      get  :checkin_by_users
-      post :checkin_it
-      delete :checkout_it
-    end
-  end
-
-  post "topics/preview" => "topics#preview"
   get "topics/qi_ta/new" => "topics#new", category: 0
   get "topics/pi_fa/new" => "topics#new", category: 1
   get "topics/ding_zhuo/new" => "topics#new", category: 2
@@ -83,7 +60,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'users/profile' => "users#profile"
-  get 'users/pending_apply_students', to: "applies#pending_apply_students"
+
   resources :users, :only => [:show, :index] do
     member do
       get :edit_avatar
@@ -92,12 +69,8 @@ Rails.application.routes.draw do
       put :update_settings
     end
 
-    put :approve_apply, to: "applies#approve_apply"
-    put :refuse_apply, to: "applies#refuse_apply"
     post :follow
     delete :stop_following
-
-    resources :applies
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

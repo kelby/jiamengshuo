@@ -19,52 +19,6 @@ end
   Page.create!(name: page)
 end
 
-10.times do
-  Wish.create(content: Faker::Lorem.paragraph, user_id: User.ids.sample)
-  Wish.create(content: Faker::Lorem.paragraph(2), user_id: User.ids.sample, updated_at: Faker::Time.between(100.days.ago, Time.now))
-end
-
-Wish.create!(content: "我老爸不断提醒我：“干活一定要找个好师傅，跟他学习，对你很有帮助，一定要找一个师傅。”<br>
-              我希望在这个网站里，能找到自己的导师；或者发现欣赏的人，成为他的导师。", user_id: User.first.id)
-
-=begin
-['个人发展', '职场', '兴趣爱好', '生活', '设计师', '语言', 'IT技术', '投资理财', '演讲', '其它'].each do |name|
-  Catalog.create!(name: name)
-end
-
-['创业', '管理', '沟通技巧'].each do |name|
-  catalog = Catalog.create!(name: name)
-  catalog.parent = Catalog.find_by(name: "职场")
-  catalog.save
-end
-
-['写小说', '拍微电影', '开咖啡馆'].each do |name|
-  Catalog.create!(name: name, parent: Catalog.find_by(name: "兴趣爱好"))
-end
-
-['购物', '美食', '理财', '健康', '运动'].each do |name|
-  Catalog.create!(name: name, parent: Catalog.find_by(name: "生活"))
-end
-
-['艺术', '创意'].each do |name|
-  Catalog.create!(name: name, parent: Catalog.find_by(name: "设计师"))
-end
-
-['英语', '课程', '书箱'].each do |name|
-  Catalog.create!(name: name, parent: Catalog.find_by(name: "语言"))
-end
-
-['操作系统', 'ios', 'android', 'web开发'].each do |name|
-  Catalog.create!(name: name, parent: Catalog.find_by(name: "IT技术"))
-end
-
-['产品', '需求分析', 'axure'].each do |name|
-  Catalog.create!(name: name, parent: Catalog.find_by(name: "IT技术"))
-end
-
-Catalog.update_all(info: "Cupcake ipsum dolor sit. Amet I love liquorice jujubes pudding croissant I love pudding. Apple pie macaroon toffee jujubes pie tart.")
-=end
-
 Catalog.destroy_all
 
 [['母婴用品', "母婴用品是指为孕产期女性与0-3岁婴儿这两类特殊相关联群体提供的专业健康产品。"],
@@ -88,12 +42,6 @@ Catalog.find_each do |catalog|
   catalog.icon = icons.sample
   catalog.icon_from = 'fi'
   catalog.save
-end
-
-50.times do
-  Section.create!(user_id: User.ids.sample, heading: Faker::Name.name, body: Faker::Lorem.sentence)
-  Section.create!(user_id: User.ids.sample, heading: Faker::Lorem.sentence, body: Faker::Lorem.paragraph)
-  Section.create!(user_id: User.ids.sample, heading: Faker::Name.name, body: Faker::Lorem.paragraph(2))
 end
 
 user = User.all.sample # User.create!(username: 'Caleb Winters', password: 'password', email: "Caleb_Winters@gmail.com", faker: true)
@@ -184,24 +132,13 @@ end
 end
 
 user_ids = User.ids
-200.times do
-  Apply.create(user_id: user_ids.sample, mentor_id: user_ids.sample, info: Faker::Lorem.paragraph.first(20))
-end
 
 User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。 无限感激"
 User.where(id: user_ids.sample(10)).update_all info: "互联网爱好者，努力充电，寻找机遇。"
 User.where(id: user_ids.sample(10)).update_all info: "Dreams will keep me young."
 User.where(id: user_ids.sample(10)).update_all info: "求指导，求教育，万一我一不小心绽放了。。。 。。。有想法去实现~shixian.com"
 
-Post.where(description: nil).each do |post|
-  post.description = Faker::Lorem.paragraph(2)
-  post.save
-end
-
 user_ids = User.ids
-user_ids.each do |i|
-  User.reset_counters(i, :posts)
-end
 
 t = Topic.last
 t.essence = true

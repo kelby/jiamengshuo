@@ -7,21 +7,12 @@ class Ability
     user ||= User.new # guest user (not logged in)
     can :read, :all
     can :manage, Topic, :user_id => user.id
-    can :manage, Post, :user_id => user.id
-    can :manage, Section, :user_id => user.id
-    can :manage, Wish, :user_id => user.id
-    can [:got_it, :spurn_it, :followers_by_user, :checkout_it, :checkin_it, :checkin_by_users], Wish
-    can :manage, Subject, :user_id => user.id
     can :manage, Reply, :user_id => user.id
     can :manage, Comment, :user_id => user.id
-
-    can :manage, Apply, :user_id => user.id
-    can :manage, Apply, :mentor_id => user.id
 
     can :manage, User, :id => user.id
     can :manage, UserBody, :user_id => user.id
 
-    can [:approve_apply, :refuse_apply], Apply, :mentor_id => user.id
     # can :manage, Question, :user_id => user.id
 
     # if user.admin?

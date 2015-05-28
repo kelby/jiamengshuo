@@ -4,7 +4,7 @@ namespace :curl do
   # add  127.0.0.1 fm.com
   desc "Run curl Test ok."
   task :run_ok => :environment do
-    url_elements = ["users", "subjects", "posts", "topics", "wishes", "catalogs", "activities/index", "page/about",
+    url_elements = ["users", "topics", "catalogs", "activities/index", "page/about",
                     "page/development", "contact-us", "users/sign_in", "users/sign_up", "users/password/new", "users/1",
                     "topics/1"]
 
@@ -20,7 +20,7 @@ namespace :curl do
 
   desc "Run curl Test found."
   task :run_found => :environment do
-    url_elements = ["subjects/new", "posts/new", "topics/new", "wishes/new"]
+    url_elements = ["topics/new"]
 
     url_elements.each do |url|
       str = `curl -Is http://fm.com:3000/#{url} | head -n 1`
