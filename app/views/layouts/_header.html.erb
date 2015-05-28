@@ -31,9 +31,11 @@
               <%# message_count = current_user.direct_messages_to_user.not_read.count + PublicActivity::Activity.where(owner_id: current_user.id, read: false).count %>
               <%# if message_count > 0 %>
                 <!-- <i class="message-count" id="message_count"><%#= message_count %></i> 消息 -->
-              <%# else %>
+              <% if user_signed_in? && has_unread_notification_count(current_user) > 0 %>
+                <i class="fa fa-bell"></i> 消息 <span id="message_count" style="color: #DD0505 !important; font-size: 13px !important;"><%= has_unread_notification_count(current_user) %></span>
+              <% else %>
                 <i class="fa fa-bell"></i> 消息 <span id="message_count" style="color: #DD0505 !important; font-size: 13px !important;"></span>
-              <%# end %>
+              <% end %>
             <% end %>
           </li>
 
