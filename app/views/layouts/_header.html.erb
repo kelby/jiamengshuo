@@ -108,8 +108,12 @@
           <%= f.submit "登录", class: "button", style: "float: right;" %>
         <% end %>
         <div class="a-state-hover-underline qq-weibo-login">
-          <%= link_to 'QQ登录', user_omniauth_authorize_path(:qq_connect) %>
-          <%= link_to '微博登录', user_omniauth_authorize_path(:weibo) %>
+          <%= link_to user_omniauth_authorize_path(:qq_connect) do %>
+            <i class="fa fa-qq"></i>&nbsp;QQ登录
+          <% end %>
+          <%= link_to user_omniauth_authorize_path(:weibo) do %>
+            <i class="fa fa-weibo"></i>&nbsp;微博登录
+          <% end %>
           <%= link_to new_user_password_path, class: "forgot-your-password" do %>
             忘记密码?
           <% end %>

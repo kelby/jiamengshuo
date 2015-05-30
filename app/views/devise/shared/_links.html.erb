@@ -19,7 +19,15 @@
 <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "#{cn_for_provider(provider)}登录", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
+  <%#- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to omniauth_authorize_path(resource_name, :weibo) do %>
+      <i class="fa fa-weibo"></i>&nbsp;<%= "#{cn_for_provider(:weibo)}登录" %>
+    <% end %>
+    <br />
+
+    <%= link_to omniauth_authorize_path(resource_name, :qq_connect) do %>
+      <i class="fa fa-qq"></i>&nbsp;<%= "#{cn_for_provider(:qq_connect)}登录" %>
+    <% end %>
+    <br />
+  <%# end -%>
 <% end -%>
