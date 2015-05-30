@@ -78,40 +78,41 @@
                 </ul-->
           <!-- </div> -->
           <div class="newest-pindan-body">
-            <ul class="newest-pindan-list row">
-              <% @topics.each do |topic| %>
-                <li class="columns large-6 medium-6 small-12">
-                    <div class="newest-pindan-list-item-inside-wrapper">
-                        <div class="heading-area">
-                            <div class="avatar-container">
-                                <%= link_to topic.user do %>
-                                  <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar avatar' %>
-                                <% end %>
-                            </div>
-                            <h4 class="order-title">
-                                <%= link_to topic do %>
-                                  <%= topic.title %>
-                                <% end %>
-                            </h4>
-                        </div>
-                        <div class="content-area-1">
-                            <div class="tag-list">
-                                <span><%= topic.freight_source_to_cn %></span>
-                                <% if topic.catalog %>
-                                  <span><%= topic.catalog.name %></span>
-                                <% end %>
-                            </div>
-                        </div>
-                        <div class="content-area-2">
-                            <div class="order-comments">
+            <div class="newest-pindan-list row">
+              <ul class="large-12 large-centered columns">
+                <% @topics.each do |topic| %>
+                  <li class="columns large-6 medium-6 small-12">
+                      <div class="newest-pindan-list-item-inside-wrapper">
+                          <div class="heading-area">
+                              <div class="avatar-container">
+                                  <%= link_to topic.user do %>
+                                    <%= image_tag topic.user.avatar_url(:tiny), class: 'tiny_avatar avatar' %>
+                                  <% end %>
+                              </div>
+                              <h4 class="order-title">
+                                  <%= link_to topic do %>
+                                    <%= topic.title %>
+                                  <% end %>
+                              </h4>
+                          </div>
+                          <div class="content-area-1">
+                              <div class="tag-list">
+                                  <span><%= topic.freight_source_to_cn %></span>
+                                  <% if topic.catalog %>
+                                    <span><%= topic.catalog.name %></span>
+                                  <% end %>
+                              </div>
+                          </div>
+                          <div class="content-area-2">
+                              <div class="order-comments">
 
-                            </div>
-                        </div>
-                    </div>
-                </li>
-              <% end %>
-            </ul>
-
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
             <%#= paginate @topics %>
           </div>
         </div>
