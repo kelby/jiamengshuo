@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   has_one :user_body, dependent: :destroy
-  accepts_nested_attributes_for :user_body
+  accepts_nested_attributes_for :user_body, update_only: true
 
   delegate :gender, :male?, :female?, :birth_date, :website, :phone, :weibo, :qq, :location, to: :user_body, allow_nil: true, prefix: nil
 
