@@ -5,10 +5,10 @@ lock '3.4.0'
 # $ ssh-copy-id user_name@found_mentor.com
 
 # server "foundmentor.com", :web, :app, :db, primary: true
-server 'jiamengshuo.com', user: 'deployer', roles: %w{web app db}
+server '120.26.37.89', user: 'deployer', roles: %w{web app db}
 
 set :application, 'jiamengshuo'
-set :repo_url, 'git@bitbucket.org:lkelby/jiamengshuo.git'
+set :repo_url, 'git@bitbucket.org:kelbylee/jiamengshuo.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -18,7 +18,7 @@ set :deploy_via, :copy
 set :use_sudo, false
 
 set :scm, "git"
-set :repository,  "git@bitbucket.org:lkelby/jiamengshuo.git"
+set :repository,  "git@bitbucket.org:kelbylee/jiamengshuo.git"
 set :branch, "master"
 
 set :stages, %w[production staging]
